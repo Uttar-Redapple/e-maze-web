@@ -86,7 +86,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                    'Login',
                            style: TextStyle(
                            color: Colors.white,
-                           fontSize: 35.sp
+
                        ),
                                )
                            ),
