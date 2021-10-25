@@ -43,10 +43,7 @@ class _SplashScreenState extends State<Splashscreen> {
               ),
             ),
             decoration:  BoxDecoration(
-               image: DecorationImage(
-                 image: AssetImage("images/trsansparent.png"),
-                 fit: BoxFit.cover
-               ),
+
                 gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
