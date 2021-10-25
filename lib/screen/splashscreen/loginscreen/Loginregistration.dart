@@ -43,15 +43,20 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
           body: Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
+
             decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("images/trsansparent.png"),
+                fit: BoxFit.cover,
+              ),
               gradient:
               LinearGradient(
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                   tileMode: TileMode.repeated,
-                  colors: [ Color(0xFF000000),
-                    Color(0xFF01002A),
-                    Color(0xFF007CB0)]),
+                  colors: [ Color(0xFF000002),
+                    Color(0xFF0079AE),
+                    ]),
             ),
             child: Column(
                 children:<Widget> [
@@ -119,17 +124,32 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
 
                                 padding: EdgeInsets.all(20.0),
-                               child: Center(
+                               child: Align(
+                                 alignment: Alignment.topLeft,
                                  child: Container(
 
 
                                    padding: EdgeInsets.all(10.0),
                                    width: 500.sp,
-                                   height: 500.sp,
+                                   height: 350.sp,
 
                                    decoration: BoxDecoration(
+                                       gradient: LinearGradient(
+                                           begin: Alignment.centerLeft,
+                                           end: Alignment.centerRight,
+                                           colors: <Color> [
+                                             Color(0xFF282842),
+                                             Color(0xFF1C3973)
+
+
+
+
+                                           ],
+                                           tileMode: TileMode.repeated
+                                       ),
                                      border: Border.all(
-                                       color: Colors.transparent
+                                       
+                                       color: Colors.transparent.withOpacity(1.0)
                                      ),
                                        borderRadius: BorderRadius.all(Radius.circular(40))
 
@@ -256,19 +276,25 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                           ),
                                         ),
                                         Container(
-                                          child: ElevatedButton(
-                                            onPressed: () {  },
+                                          height: 40.sp,
 
-                                            style: ElevatedButton.styleFrom(
-                                              primary:  Color(0xFF29AAE1),
-                                              fixedSize: Size(158.sp, 56.sp),
-
-
+                                        ),
+                                        Container(
+                                          child: ButtonTheme(
+                                            minWidth: 158.sp,
+                                            height: 56.sp,
+                                            shape: new RoundedRectangleBorder(
+                                              borderRadius: new BorderRadius.circular(40.sp),
                                             ),
-                                            child: Text("Sign In",
-                                              style: TextStyle(
-                                                color: Colors.white,
+                                            child: RaisedButton(
+                                              onPressed: () {  },
 
+                                               color: Color(0xFF29AAE1),
+                                              child: Text("Sign In",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -305,38 +331,45 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
 
                                 padding: EdgeInsets.all(20.0),
-                                child: Center(
+                                child: Align(
+                                  alignment: Alignment.topRight,
                                   child: Container(
 
+
                                     padding: EdgeInsets.all(10.0),
-                                    width: 800.sp,
-                                    height: 500.sp,
+                                    width: 500.sp,
+                                    height: 900.sp,
+
                                     decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                            begin: Alignment.centerLeft,
+                                            end: Alignment.centerRight,
+                                            colors: <Color> [
+                                              Color(0xFF263E7A),
 
-                                        color: Color(0xFF007CB0),
-                                        border: Border.all(color: Color(0xFF007CB0)),
-                                        borderRadius: BorderRadius.all(Radius.circular(20))
+                                              Color(0xFF0070A8)
 
-                                      /* border: Border.all(
-                        color: Colors.white,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(40))*/
-                                    ),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          "USER/EMAIL/ID/PHONE",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15.sp
-                                          ),
 
+
+                                            ],
+                                            tileMode: TileMode.repeated
                                         ),
-                                      ],
+                                       /* border: Border.all(
+
+                                            color: Colors.transparent
+                                        ),*/
+                                        borderRadius: BorderRadius.all(Radius.circular(40))
+
                                     ),
+                                    child: Column(
+                                       children: [
+                                         Row(
+
+                                         )
+                                       ],
+
+                                    ),
+
                                   ),
                                 ),
 

@@ -30,6 +30,7 @@ class _SplashScreenState extends State<Splashscreen> {
       builder: () =>Material(
         type: MaterialType.transparency,
           child: new Container(
+            constraints: BoxConstraints.expand(),
             child: Center(
               child: Text(
                 "eMazeBrain",
@@ -42,13 +43,17 @@ class _SplashScreenState extends State<Splashscreen> {
               ),
             ),
             decoration:  BoxDecoration(
+               image: DecorationImage(
+                 image: AssetImage("images/trsansparent.png"),
+                 fit: BoxFit.cover
+               ),
                 gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                     colors: <Color> [
-                      Color(0xFF000000),
-                      Color(0xFF01002A),
-                      Color(0xFF007CB0)
+                      Color(0xFF000002),
+                      Color(0xFF0079AE)
+
 
 
 
