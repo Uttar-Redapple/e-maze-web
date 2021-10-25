@@ -43,12 +43,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
           body: Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("images/trsansparent.png"),
-                fit: BoxFit.cover,
-              ),
               gradient:
               LinearGradient(
                   begin: Alignment.centerLeft,
@@ -148,7 +143,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                            tileMode: TileMode.repeated
                                        ),
                                      border: Border.all(
-                                       
+
                                        color: Colors.transparent.withOpacity(1.0)
                                      ),
                                        borderRadius: BorderRadius.all(Radius.circular(40))
@@ -302,7 +297,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                       ],
 
                                    ),
-                                   
+
                                  ),
                                ),
 
