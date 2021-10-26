@@ -19,9 +19,8 @@ class TherapistorpatientState extends State<Therapistorpatient>{
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
                 colors: <Color> [
-                  Color(0xFF000000),
-                  Color(0xFF01002A),
-                  Color(0xFF007CB0)
+                  Color(0xFF000002),
+                  Color(0xFF0079AE)
 
 
 
@@ -35,7 +34,7 @@ class TherapistorpatientState extends State<Therapistorpatient>{
             child: Card(
 
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.sp),
+                borderRadius: BorderRadius.circular(30.sp),
                 side: BorderSide(
                   color: Color(0xFFF1F1F1),
                   width: 1.sp,
@@ -60,6 +59,7 @@ class TherapistorpatientState extends State<Therapistorpatient>{
                               DecoratedBox(
 
                                 decoration: BoxDecoration(
+
                                     borderRadius: BorderRadius.only(
                                         topRight: Radius.circular(40.sp),
                                         bottomRight: Radius.circular(40.sp),
@@ -79,31 +79,48 @@ class TherapistorpatientState extends State<Therapistorpatient>{
                                         tileMode: TileMode.repeated)
 
                                 ),
-                                child: ElevatedButton(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints.tightFor(width: 426, height: 149),
+                                  child: ElevatedButton(
 
 
-                                  onPressed: () {  },
-
-                                  style: ElevatedButton.styleFrom(
-                                    primary:  Colors.transparent,
-
-                                    fixedSize: Size(426.sp, 149.sp),
-
-
-
-
-                                  ),
-
-
-                                  child: Text("I would like to optimize"
-                                      " my brain function",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                      fontSize: 16.sp
-
+                                    onPressed: () {  },
+                                    style: ButtonStyle(
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(20.0),
+                                        ),
+                                      ),
+                                     
+                                     // fixedSize: Size(426.sp, 149.sp),
+                                     // minimumSize: MaterialStateProperty.all(Size(width, 50)),
+                                      backgroundColor:
+                                      MaterialStateProperty.all(Colors.transparent),
+                                      // elevation: MaterialStateProperty.all(3),
+                                      shadowColor:
+                                      MaterialStateProperty.all(Colors.transparent),
                                     ),
-                                  ),
+                                  /*  style: ElevatedButton.styleFrom(
+                                      primary:  Colors.transparent,
 
+                                      fixedSize: Size(426.sp, 149.sp),
+
+
+
+
+                                    ),*/
+
+
+                                    child: Text("I would like to optimize"
+                                        " my brain function",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                        fontSize: 16.sp
+
+                                      ),
+                                    ),
+
+                                  ),
                                 ),
                               )
                             ],
@@ -141,25 +158,37 @@ class TherapistorpatientState extends State<Therapistorpatient>{
                                         ],
                                         tileMode: TileMode.repeated)
                                 ),
-                                child: ElevatedButton(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints.tightFor(width: 426, height: 149),
+                                  child: ElevatedButton(
 
-                                  onPressed: () {  },
+                                    onPressed: () {  },
 
-                                  style: ElevatedButton.styleFrom(
-                                    primary:  Colors.transparent,
-                                    fixedSize: Size(425.sp, 148.sp),
+                                    style: ButtonStyle(
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(20.0),
+                                        ),
+                                      ),
 
-
-                                  ),
-
-
-                                  child: Text("I am certified therapist",
-                                    style: TextStyle(
-                                        color: Colors.white,
-
+                                      // fixedSize: Size(426.sp, 149.sp),
+                                      // minimumSize: MaterialStateProperty.all(Size(width, 50)),
+                                      backgroundColor:
+                                      MaterialStateProperty.all(Colors.transparent),
+                                      // elevation: MaterialStateProperty.all(3),
+                                      shadowColor:
+                                      MaterialStateProperty.all(Colors.transparent),
                                     ),
-                                  ),
 
+
+                                    child: Text("I am certified therapist",
+                                      style: TextStyle(
+                                          color: Colors.white,
+
+                                      ),
+                                    ),
+
+                                  ),
                                 ),
                               )
                             ],

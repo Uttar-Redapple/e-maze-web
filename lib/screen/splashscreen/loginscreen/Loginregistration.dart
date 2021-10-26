@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
+
+import 'Therapistorpatient.dart';
 class Loginregistration extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -118,7 +120,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                               Container(
 
 
-                                padding: EdgeInsets.all(20.0),
+                                padding: EdgeInsets.all(40.0),
                                child: Align(
                                  alignment: Alignment.topLeft,
                                  child: Container(
@@ -150,34 +152,42 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                    ),
                                    child: Column(
+
                                       children:<Widget>[
-                                        Row(
 
-                                          children: [
-                                            Text(
-                                              "USER/EMAIL/ID/PHONE",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 15.sp
+                                        Container(
+                                          margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                                          padding: EdgeInsets.symmetric(vertical: 10.0,),
+                                          child: Row(
+
+                                            children: [
+                                              Text(
+                                                "USER/EMAIL/ID/PHONE",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 15.sp
+                                                ),
+
                                               ),
-
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                         Container(
                                           height: 10.sp,
 
                                         ),
                                         Container(
+
                                            height: 140.sp,
-                                          width: 800.sp,
+                                          width: 700.sp,
+                                          margin: new EdgeInsets.symmetric(horizontal: 20.0),
                                           padding: EdgeInsets.all(20.0),
                                           decoration: BoxDecoration(
 
                                               color: Colors.white,
                                               border: Border.all(color: Colors.white),
-                                              borderRadius: BorderRadius.all(Radius.circular(10))
+                                              borderRadius: BorderRadius.all(Radius.circular(25))
                                           ),
                                           child: Column(
                                             children: [
@@ -223,7 +233,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                         ),
                                         Container(
-                                          margin: const EdgeInsets.only(left: 5.0, right: 5.0),
+                                          margin: const EdgeInsets.only(left: 15.0, right: 15.0),
 
                                           child: Row(
 
@@ -255,7 +265,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                               Container(
                                                 width: 10.sp,
                                                 height: 10.sp,
-                                                margin: const EdgeInsets.only(left: 110.0, right: 110.0),
+                                                margin: const EdgeInsets.only(left: 100.0, right: 100.0),
                                               ),
                                               Text(
                                                 "Forgot password",
@@ -282,7 +292,12 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                               borderRadius: new BorderRadius.circular(40.sp),
                                             ),
                                             child: RaisedButton(
-                                              onPressed: () {  },
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(builder: (context) => Therapistorpatient()),
+                                                );
+                                              },
 
                                                color: Color(0xFF29AAE1),
                                               child: Text("Sign In",
@@ -358,9 +373,187 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                     ),
                                     child: Column(
                                        children: [
-                                         Row(
+                                         Container(
+                                           height: 20.sp,
+                                         ),
+                                         Container(
+                                             margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                                           padding: EdgeInsets.all(20.0),
+                                           decoration: BoxDecoration(
 
+                                               color: Colors.white,
+                                               border: Border.all(color: Colors.white),
+                                               borderRadius: BorderRadius.all(Radius.circular(25))
+                                           ),
+                                    child: Column(
+                                       children: [
+                                         SizedBox(
+                                           height: 40.sp,
+                                           width: 500.sp,
+                                           child: TextFormField(
+                                             controller: nameController,
+                                             decoration: InputDecoration(
+                                               border: OutlineInputBorder(
+                                                 borderRadius: BorderRadius.circular(20.0),
+                                               ),
+                                               filled: true,
+                                               fillColor: Colors.white70,
+                                               labelText: 'User Name',
+                                                 icon: IconButton(
+                                                   icon: Image.asset('assets/images/username.png'), onPressed: () {  },
+                                                 )
+                                             ),
+                                           ),
+                                         ),
+                                         Container(
+                                           height: 10.sp,
+                                         ),
+                                         SizedBox(
+                                           height: 40.sp,
+                                           width: 500.sp,
+                                           child: TextFormField(
+                                             controller: nameController,
+
+                                             decoration: InputDecoration(
+                                               border: OutlineInputBorder(
+
+                                                 borderRadius: BorderRadius.circular(20.0),
+                                               ),
+                                               filled: true,
+                                               fillColor: Colors.white70,
+
+                                               labelText: 'Email',
+                                               icon: IconButton(
+                                                 icon: Image.asset('assets/images/message.png'), onPressed: () {  },
+                                               )
+                                             ),
+                                           ),
+                                         ),
+                                         Container(
+                                           height: 10.sp,
+                                         ),
+                                         SizedBox(
+                                           height: 40.sp,
+                                           width: 500.sp,
+                                           child: TextFormField(
+                                             controller: nameController,
+                                             decoration: InputDecoration(
+                                               border: OutlineInputBorder(
+                                                 borderRadius: BorderRadius.circular(20.0),
+
+                                               ),
+                                               filled: true,
+                                               fillColor: Colors.white70,
+                                               labelText: 'Phone number',
+                                                 icon: IconButton(
+                                                   icon: Image.asset('assets/images/contact.png'), onPressed: () {  },
+                                                 )
+                                             ),
+                                           ),
+                                         ),
+                                         Container(
+                                           height: 10.sp,
+                                         ),
+                                         SizedBox(
+                                           height: 40.sp,
+                                           width: 500.sp,
+                                           child: TextFormField(
+
+                                             obscureText: !_passwordVisible,
+                                             controller: passwordController,
+                                             decoration: InputDecoration(
+
+                                                 border: OutlineInputBorder(
+                                                   borderRadius: BorderRadius.circular(20.0),
+                                                 ),
+                                                 labelText: 'Password',
+                                                 icon: IconButton(
+                                                   icon: Image.asset('assets/images/lock.png'), onPressed: () {  },
+                                                 ),
+                                                 suffixIcon: GestureDetector(
+                                                   onLongPress: () {
+                                                     setState(() {
+                                                       _passwordVisible = true;
+                                                     });
+                                                   },
+                                                   onLongPressUp: () {
+                                                     setState(() {
+                                                       _passwordVisible = false;
+                                                     });
+                                                   },
+                                                   child: Icon(
+                                                       _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                   ),
+                                                 )
+                                             ),
+                                           ),
+                                         ),
+                                       ],
+                                    )
+                                         ),
+                                         Container(
+                                           height: 10.sp,
+                                         ),
+                                         Container(
+                                           margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+
+                                           child: Row(
+
+                                             children: [
+                                               Container(
+                                                 height: 25.sp,
+                                                 width: 25.sp,
+                                                 child: RoundCheckBox(
+                                                   onTap: (selected) {},
+
+                                                   animationDuration: Duration(
+                                                     milliseconds: 50,
+                                                   ),
+                                                 ),
+                                               ),
+                                               Container(
+                                                 width: 10.sp,
+                                                 height: 10.sp,
+                                               ),
+                                               Text(
+                                                 "I am agree with privacu policy,terms and conditions.",
+                                                 textAlign: TextAlign.center,
+                                                 style: TextStyle(
+                                                     color: Colors.white,
+                                                     fontSize: 15.sp
+                                                 ),
+
+                                               ),
+
+
+                                             ],
+                                           ),
+                                         ),
+                                         Container(
+                                           height: 40.sp,
+
+                                         ),
+                                         Container(
+                                           child: ButtonTheme(
+                                             minWidth: 158.sp,
+                                             height: 56.sp,
+                                             shape: new RoundedRectangleBorder(
+                                               borderRadius: new BorderRadius.circular(40.sp),
+                                             ),
+                                             child: RaisedButton(
+                                               onPressed: () {  },
+
+                                               color: Color(0xFF29AAE1),
+                                               child: Text("Sign Up",
+                                                 style: TextStyle(
+                                                   color: Colors.white,
+
+                                                 ),
+                                               ),
+                                             ),
+                                           ),
                                          )
+
                                        ],
 
                                     ),
@@ -384,6 +577,67 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                       ],
                     ),
 
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 500.0, right: 400.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Text(
+                                  "Dont have an account?",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Color(0xFF28ABE3),
+                                      fontSize: 15.sp
+                                  ),
+                                ),
+
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Text(
+                                  "Sign up or login using other account",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Color(0xFFE6EAED),
+                                      fontSize: 15.sp
+                                  ),
+                                ),
+
+                              ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: IconButton(
+                                  icon: Image.asset('images/google.png'),
+                                  onPressed: () {  },
+                                )
+
+                              ),
+                              Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: IconButton(
+                                    icon: Image.asset('images/facebook.png'),
+                                    onPressed: () {  },
+                                  )
+
+                              ),
+                              Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: IconButton(
+                                    icon: Image.asset('images/twitter.png'),
+                                    onPressed: () {  },
+                                  )
+
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
                   )
                 ]
             ),
