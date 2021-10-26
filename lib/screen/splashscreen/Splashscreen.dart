@@ -3,11 +3,11 @@
 
 import 'dart:async';
 
+import 'package:emaze_brain/screen/loginscreen/Loginregistration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'loginscreen/Loginregistration.dart';
-import 'loginscreen/Therapistorpatient.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 class Splashscreen extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<Splashscreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 10),
+        Duration(seconds: 1),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) => Loginregistration())));
   }

@@ -1,9 +1,11 @@
+import 'package:emaze_brain/screen/gamestartscreen/Gamestartscreen.dart';
+import 'package:emaze_brain/screen/loginscreen/Therapistorpatient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 
-import 'Therapistorpatient.dart';
+
 class Loginregistration extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -179,7 +181,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                         ),
                                         Container(
 
-                                           height: 140.sp,
+                                          height: 140.sp,
                                           width: 700.sp,
                                           margin: new EdgeInsets.symmetric(horizontal: 20.0),
                                           padding: EdgeInsets.all(20.0),
@@ -295,7 +297,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                               onPressed: () {
                                                 Navigator.push(
                                                   context,
-                                                  MaterialPageRoute(builder: (context) => Therapistorpatient()),
+                                                  MaterialPageRoute(builder: (context) => Gamestartscreen()),
                                                 );
                                               },
 
