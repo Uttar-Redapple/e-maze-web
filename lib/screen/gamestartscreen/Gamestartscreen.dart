@@ -1,14 +1,17 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-
+import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:flutter/foundation.dart';
 class Gamestartscreen extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return GamestartscreenState();
   }
-  
+
 }
 class GamestartscreenState extends State<Gamestartscreen>{
   @override
@@ -32,15 +35,19 @@ class GamestartscreenState extends State<Gamestartscreen>{
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     "GAME LOGO",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.white,
+
                         fontSize: 65.sp,
-                       fontWeight:  FontWeight.bold
+                        fontWeight:  FontWeight.bold,
+                        color: Colors.white,
+                        shadows: outlinedText(
+                            strokeColor: Color(0xFFEAD315)
+                        )
 
                     ),
 
@@ -60,7 +67,8 @@ class GamestartscreenState extends State<Gamestartscreen>{
                     height: 10.sp,
                   ),
                   Container(
-                    height: 50.sp,
+                    padding: EdgeInsets.all(15.0),
+                    height: 80.sp,
                     width: 400.sp,
                     decoration: BoxDecoration(
 
@@ -69,17 +77,55 @@ class GamestartscreenState extends State<Gamestartscreen>{
                         borderRadius: BorderRadius.all(Radius.circular(10))
                     ),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+
                       children: [
-                        CircularPercentIndicator(
-                          radius: 60.0,
-                          lineWidth: 5.0,
-                          percent: 1.0,
-                          center: new Text("100%"),
-                          progressColor: Colors.green,
-                        )
+
+                        LinearPercentIndicator(
+                          width: 350.sp,
+                          animation: true,
+                          animationDuration: 1000,
+                          lineHeight: 20.0,
+                          backgroundColor:Color(0xFFEFEFEF),
+                          percent: 0.2,
+                          center: Text("20.0%"),
+                          linearStrokeCap: LinearStrokeCap.butt,
+
+                          progressColor: Color(0xFFFD6900),
+
+                        ),
+
+                        Text(
+                          "30Mb/60Mb",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20.sp
+                          ),
+
+                        ),
                       ],
                     ),
-                  )
+                  ),
+                  Container(
+                    height: 20.sp,
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          "Lorem ipusm Lorem ipusm Lorem ipusm Lorem ipusm Lorem ipusm Lorem ipusm Lorem ipusm Lorem ipusm",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.sp
+                          ),
+
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -89,5 +135,20 @@ class GamestartscreenState extends State<Gamestartscreen>{
     );
 
   }
-  
+
+  static List<Shadow> outlinedText({double strokeWidth = 2, Color strokeColor = Colors.black, int precision = 5}) {
+    Set<Shadow> result = HashSet();
+    for (int x = 1; x < strokeWidth + precision; x++) {
+      for(int y = 1; y < strokeWidth + precision; y++) {
+        double offsetX = x.toDouble();
+        double offsetY = y.toDouble();
+        result.add(Shadow(offset: Offset(-strokeWidth / offsetX, -strokeWidth / offsetY), color: strokeColor));
+        result.add(Shadow(offset: Offset(-strokeWidth / offsetX, strokeWidth / offsetY), color: strokeColor));
+        result.add(Shadow(offset: Offset(strokeWidth / offsetX, -strokeWidth / offsetY), color: strokeColor));
+        result.add(Shadow(offset: Offset(strokeWidth / offsetX, strokeWidth / offsetY), color: strokeColor));
+      }
+    }
+    return result.toList();
+  }
+
 }
