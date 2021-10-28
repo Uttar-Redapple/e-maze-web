@@ -87,6 +87,9 @@ flutter:
     - assets/images/search.png
     - assets/images/reloadicon.png
     - assets/images/addperson.png
+    - assets/images/userprofile.png
+    - assets/images/online.png
+    - assets/images/offline.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

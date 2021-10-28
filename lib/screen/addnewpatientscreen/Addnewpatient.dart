@@ -1,4 +1,5 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:emaze_brain/screen/therapistuserprofile/Therapistuserprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -727,7 +728,12 @@ class Addnewpatientstate extends State<Addnewpatient>{
                                                             child: ElevatedButton(
 
 
-                                                              onPressed: () {  },
+                                                              onPressed: () {
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(builder: (context) => Therapistuserprofile()),
+                                                                );
+                                                              },
                                                               style: ButtonStyle(
                                                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                                                   RoundedRectangleBorder(
