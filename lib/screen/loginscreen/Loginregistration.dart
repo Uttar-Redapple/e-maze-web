@@ -91,8 +91,8 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
 
                             tabBarProperties: TabBarProperties(
-                              width: 1000,
-                              height: 47,
+                              width: 1000.sp,
+                              height: 47.sp,
                               background: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -122,13 +122,13 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                               Container(
 
 
-                                padding: EdgeInsets.all(40.0),
+                                padding: EdgeInsets.all(40.sp),
                                child: Align(
                                  alignment: Alignment.topLeft,
                                  child: Container(
 
 
-                                   padding: EdgeInsets.all(10.0),
+                                   padding: EdgeInsets.all(10.sp),
                                    width: 500.sp,
                                    height: 350.sp,
 
@@ -150,7 +150,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                        color: Colors.transparent.withOpacity(1.0)
                                      ),
-                                       borderRadius: BorderRadius.all(Radius.circular(40))
+                                       borderRadius: BorderRadius.all(Radius.circular(40.sp))
 
                                    ),
                                    child: Column(
@@ -158,8 +158,8 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                       children:<Widget>[
 
                                         Container(
-                                          margin: new EdgeInsets.symmetric(horizontal: 20.0),
-                                          padding: EdgeInsets.symmetric(vertical: 10.0,),
+                                          margin: new EdgeInsets.symmetric(horizontal: 20.sp),
+                                          padding: EdgeInsets.symmetric(vertical: 10.sp,),
                                           child: Row(
 
                                             children: [
@@ -183,13 +183,13 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                           height: 140.sp,
                                           width: 700.sp,
-                                          margin: new EdgeInsets.symmetric(horizontal: 20.0),
-                                          padding: EdgeInsets.all(20.0),
+                                          margin: new EdgeInsets.symmetric(horizontal: 20.sp),
+                                          padding: EdgeInsets.all(20.sp),
                                           decoration: BoxDecoration(
 
                                               color: Colors.white,
                                               border: Border.all(color: Colors.white),
-                                              borderRadius: BorderRadius.all(Radius.circular(25))
+                                              borderRadius: BorderRadius.all(Radius.circular(25.sp))
                                           ),
                                           child: Column(
                                             children: [
@@ -235,7 +235,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                         ),
                                         Container(
-                                          margin: const EdgeInsets.only(left: 15.0, right: 15.0),
+                                          margin:  EdgeInsets.only(left: 15.sp, right: 15.sp),
 
                                           child: Row(
 
@@ -267,7 +267,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                               Container(
                                                 width: 10.sp,
                                                 height: 10.sp,
-                                                margin: const EdgeInsets.only(left: 100.0, right: 100.0),
+                                                margin:  EdgeInsets.only(left: 80.sp, right: 80.sp),
                                               ),
                                               Text(
                                                 "Forgot password",
@@ -342,13 +342,13 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                               Container(
 
 
-                                padding: EdgeInsets.all(20.0),
+                                padding: EdgeInsets.all(20.sp),
                                 child: Align(
                                   alignment: Alignment.topRight,
                                   child: Container(
 
 
-                                    padding: EdgeInsets.all(10.0),
+                                    padding: EdgeInsets.all(10.sp),
                                     width: 500.sp,
                                     height: 900.sp,
 
@@ -370,7 +370,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                             color: Colors.transparent
                                         ),*/
-                                        borderRadius: BorderRadius.all(Radius.circular(40))
+                                        borderRadius: BorderRadius.all(Radius.circular(40.sp))
 
                                     ),
                                     child: Column(
@@ -379,8 +379,8 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                            height: 20.sp,
                                          ),
                                          Container(
-                                             margin: new EdgeInsets.symmetric(horizontal: 20.0),
-                                           padding: EdgeInsets.all(20.0),
+                                             margin: new EdgeInsets.symmetric(horizontal: 20.sp),
+                                           padding: EdgeInsets.all(20.sp),
                                            decoration: BoxDecoration(
 
                                                color: Colors.white,
@@ -396,7 +396,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                              controller: nameController,
                                              decoration: InputDecoration(
                                                border: OutlineInputBorder(
-                                                 borderRadius: BorderRadius.circular(20.0),
+                                                 borderRadius: BorderRadius.circular(20.sp),
                                                ),
                                                filled: true,
                                                fillColor: Colors.white70,
@@ -419,7 +419,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                              decoration: InputDecoration(
                                                border: OutlineInputBorder(
 
-                                                 borderRadius: BorderRadius.circular(20.0),
+                                                 borderRadius: BorderRadius.circular(20.sp),
                                                ),
                                                filled: true,
                                                fillColor: Colors.white70,
@@ -441,7 +441,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                              controller: nameController,
                                              decoration: InputDecoration(
                                                border: OutlineInputBorder(
-                                                 borderRadius: BorderRadius.circular(20.0),
+                                                 borderRadius: BorderRadius.circular(20.sp),
 
                                                ),
                                                filled: true,
@@ -466,7 +466,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                              decoration: InputDecoration(
 
                                                  border: OutlineInputBorder(
-                                                   borderRadius: BorderRadius.circular(20.0),
+                                                   borderRadius: BorderRadius.circular(20.sp),
                                                  ),
                                                  labelText: 'Password',
                                                  icon: IconButton(
@@ -497,7 +497,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                            height: 10.sp,
                                          ),
                                          Container(
-                                           margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                                           margin:  EdgeInsets.only(left: 20.sp, right: 20.sp),
 
                                            child: Row(
 
@@ -582,7 +582,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                   ),
                   Center(
                     child: Container(
-                      margin: const EdgeInsets.only(left: 500.0, right: 400.0),
+                      margin:  EdgeInsets.only(left: 500.sp, right: 400.sp),
                       child: Column(
                         children: [
                           Row(

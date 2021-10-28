@@ -81,6 +81,12 @@ flutter:
     - assets/images/home.png
     - assets/images/bag.png
     - assets/images/spec.png
+    - assets/images/refresh.png
+    - assets/images/warining.png
+    - assets/images/re.png
+    - assets/images/search.png
+    - assets/images/reloadicon.png
+    - assets/images/addperson.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

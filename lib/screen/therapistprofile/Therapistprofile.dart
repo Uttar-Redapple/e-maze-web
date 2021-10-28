@@ -1,4 +1,5 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:emaze_brain/screen/addnewpatientscreen/Addnewpatient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -217,7 +218,7 @@ class TherapistprofileState extends State<Therapistprofile>{
 
                 ),
                 Container(
-                  height: 50.sp,
+                  height: 10.sp,
                 ),
                 Container(
                   padding: EdgeInsets.only(left: 70.sp,right: 70.sp),
@@ -229,11 +230,10 @@ class TherapistprofileState extends State<Therapistprofile>{
                       Container(
                         child: Column(
                           children: [
-                            Container(
-                              height: 10.sp,
 
-                            ),
                             Container(
+                              height: 296.sp,
+                              width: 252.sp,
                               padding: EdgeInsets.all(10.0),
                               decoration: BoxDecoration(
                                   gradient: LinearGradient(
@@ -257,8 +257,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                                   borderRadius: BorderRadius.all(Radius.circular(40))
 
                               ),
-                              height: 296.sp,
-                              width: 252.sp,
+
                               child: ContainedTabBarView(
                                 tabs: [
                                   Text(
@@ -326,6 +325,19 @@ class TherapistprofileState extends State<Therapistprofile>{
 
                                               )
                                           ),
+                                          child:
+                                            Column(
+                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment: MainAxisAlignment.end,
+                                              children: [
+                                                IconButton(
+                                                  icon: Image.asset('assets/images/reloadicon.png'), onPressed: () {  },
+                                                )
+                                              ],
+
+                                            ),
+
                                         ),
                                         Container(
                                           height: 5.sp,
@@ -378,6 +390,17 @@ class TherapistprofileState extends State<Therapistprofile>{
                                                 ),
 
                                               )
+                                          ),
+                                          child:   Column(
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: [
+                                              IconButton(
+                                                icon: Image.asset('assets/images/reloadicon.png'), onPressed: () {  },
+                                              )
+                                            ],
+
                                           ),
                                         ),
                                         Container(
@@ -657,11 +680,18 @@ class TherapistprofileState extends State<Therapistprofile>{
 
                                       ),
                                       child: ConstrainedBox(
-                                        constraints: BoxConstraints.tightFor(width: 200, height: 60),
-                                        child: ElevatedButton(
+                                        constraints: BoxConstraints.tightFor(width: 200, height: 46),
+                                        child: ElevatedButton.icon(
+                                            icon: IconButton(
+                                              icon: Image.asset('assets/images/refresh.png'), onPressed: () {  },
+                                            ),
 
-
-                                          onPressed: () {  },
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(builder: (context) => Addnewpatient()),
+                                            );
+                                          },
                                           style: ButtonStyle(
                                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
@@ -688,7 +718,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                                     ),*/
 
 
-                                          child: Text("Upload",
+                                          label: Text("Upload       ",
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 16.sp
@@ -729,7 +759,8 @@ class TherapistprofileState extends State<Therapistprofile>{
                                    fontSize: 15.sp
                                ),
                              ),
-                             )
+                             ),
+
 
                            ],
                         ),
@@ -738,9 +769,51 @@ class TherapistprofileState extends State<Therapistprofile>{
                     ],
                   ),
 
-                )
+                ),
+                Container(
+                  height: 20.sp,
+                ),
+                Container(
+                  height: 95.sp,
+                  width: 1202.sp,
+                  decoration:  BoxDecoration(
 
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: <Color> [
+                            Color(0xFF414141),
+                            Color(0xFFBABABA)
+
+
+
+
+                          ],
+                          tileMode: TileMode.repeated
+                      )
+                  ),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: Image.asset('assets/images/warining.png'), onPressed: () {  },
+                      ),
+                      Container(
+                        width: 10.sp,
+                      ),
+                      Text(
+                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15.sp
+                        ),
+
+                      ),
+                    ],
+                  ),
+                )
               ],
+
 
             ),
 
