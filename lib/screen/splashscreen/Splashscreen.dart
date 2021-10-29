@@ -19,7 +19,7 @@ class _SplashScreenState extends State<Splashscreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 10),
+        Duration(seconds: 1),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) => Loginregistration())));
   }
@@ -43,10 +43,7 @@ class _SplashScreenState extends State<Splashscreen> {
               ),
             ),
             decoration:  BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/poligon.png"),
-                  fit: BoxFit.cover,
-                ),
+
                 gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
