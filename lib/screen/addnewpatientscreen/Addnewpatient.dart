@@ -225,6 +225,8 @@ class Addnewpatientstate extends State<Addnewpatient>{
                           Container(
                             padding: EdgeInsets.only(left: 70.sp,right: 70.sp),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
                                   width: 20.sp,
@@ -257,9 +259,9 @@ class Addnewpatientstate extends State<Addnewpatient>{
                                                 color: Colors.transparent.withOpacity(1.0)
                                             ),
                                             borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(40.sp),
+                                                topRight: Radius.circular(20.sp),
                                                // bottomRight: Radius.circular(40.sp),
-                                                topLeft: Radius.circular(40.sp))
+                                                topLeft: Radius.circular(20.sp))
                                                // bottomLeft: Radius.circular(40.sp))
 
                                         ),
@@ -515,7 +517,7 @@ class Addnewpatientstate extends State<Addnewpatient>{
 
                                           color: Colors.transparent.withOpacity(1.0)
                                       ),
-                                      borderRadius: BorderRadius.all(Radius.circular(40))
+                                      borderRadius: BorderRadius.all(Radius.circular(20))
                                   ),
                                   height: 440.sp,
                                   width: 895.sp,

@@ -223,12 +223,15 @@ class TherapistprofileState extends State<Therapistprofile>{
                 Container(
                   padding: EdgeInsets.only(left: 70.sp,right: 70.sp),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         width: 20.sp,
                       ),
                       Container(
                         child: Column(
+
                           children: [
 
                             Container(
@@ -254,7 +257,7 @@ class TherapistprofileState extends State<Therapistprofile>{
 
                                       color: Colors.transparent.withOpacity(1.0)
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(40))
+                                  borderRadius: BorderRadius.all(Radius.circular(20))
 
                               ),
 
@@ -457,7 +460,7 @@ class TherapistprofileState extends State<Therapistprofile>{
 
                                 color: Colors.transparent.withOpacity(1.0)
                             ),
-                            borderRadius: BorderRadius.all(Radius.circular(40))
+                            borderRadius: BorderRadius.all(Radius.circular(20))
                         ),
                         height: 482.sp,
                         width: 895.sp,
