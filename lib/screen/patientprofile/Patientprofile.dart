@@ -1,34 +1,22 @@
-import 'dart:async';
-
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-import 'package:emaze_brain/screen/patientprofile/Patientprofile.dart';
-import 'package:emaze_brain/screen/patientusermanagement/Patientusermanagement.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-class Therapistuserprofile extends StatefulWidget{
+class Patientprofile extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return TherapistuserprofileState();
+    return PatientprofileState();
   }
 
 }
-class TherapistuserprofileState extends State<Therapistuserprofile>{
-  /*@override
-  void initState() {
-    super.initState();
-    Timer(
-        Duration(seconds: 10),
-            () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => Patientprofile())));
-  }*/
+class PatientprofileState extends State<Patientprofile>{
   bool status = false;
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     var radius = Radius.circular(40);
     return ScreenUtilInit(
         builder: () =>
@@ -82,7 +70,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                             "eMazeBrain",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                              color: Color(0xFFFF2D5E),
+                                              color: Color(0xFF29AAE1),
                                               fontSize: 35.sp,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -176,7 +164,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
                                                   child: IconButton(
                                                     icon: Image.asset(
-                                                        'assets/images/userprofile.png'),
+                                                        'assets/images/profile.png'),
                                                     onPressed: () {},
                                                   ),
                                                 ),
@@ -287,7 +275,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                               indicator: ShapeDecoration(
                                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
                                                       topLeft: radius,bottomLeft: radius,bottomRight: radius)),
-                                                  color: Color(0xFFB24761)
+                                                  color: Color(0xFF29AAE1)
                                               ),
                                               indicatorColor: Colors.transparent,
                                               labelColor: Colors.white,
@@ -1016,35 +1004,35 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                     mainAxisAlignment: MainAxisAlignment.start,
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
-                                                       Row(
-                                                         children: [
-                                                           SizedBox(
-                                                             height: 40.sp,
-                                                             width: 40.sp,
-                                                             child: IconButton(
-                                                               icon: Image.asset('assets/images/eye.png'),
-                                                               onPressed: () {
+                                                      Row(
+                                                        children: [
+                                                          SizedBox(
+                                                            height: 40.sp,
+                                                            width: 40.sp,
+                                                            child: IconButton(
+                                                              icon: Image.asset('assets/images/eye.png'),
+                                                              onPressed: () {
 
-                                                               },
-                                                             ),
-                                                           ),
-                                                           FlutterSwitch(
-                                                             width: 80.sp,
-                                                             height: 40.sp,
-                                                             //valueFontSize: 15.sp,
-                                                            // toggleSize: 40.sp,
-                                                             value: status,
-                                                             borderRadius: 30.sp,
-                                                             padding: 8.sp,
-                                                             showOnOff: true,
-                                                             onToggle: (val) {
-                                                               setState(() {
-                                                                 status = val;
-                                                               });
-                                                             },
-                                                           )
-                                                         ],
-                                                       ),
+                                                              },
+                                                            ),
+                                                          ),
+                                                          FlutterSwitch(
+                                                            width: 120.sp,
+                                                            height: 40.sp,
+                                                            valueFontSize: 15.sp,
+                                                            toggleSize: 40.sp,
+                                                            value: status,
+                                                            borderRadius: 30.0,
+                                                            padding: 8.sp,
+                                                            showOnOff: true,
+                                                            onToggle: (val) {
+                                                              setState(() {
+                                                                status = val;
+                                                              });
+                                                            },
+                                                          )
+                                                        ],
+                                                      ),
                                                       Container(
                                                         height: 10.sp,
                                                       ),
@@ -1089,12 +1077,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                           borderRadius: new BorderRadius.circular(40.sp),
                                                         ),
                                                         child: RaisedButton(
-                                                          onPressed: () {
-                                                            Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(builder: (context) => Patientusermanagement()),
-                                                            );
-                                                          },
+                                                          onPressed: () {  },
 
                                                           color: Color(0xFFB24761),
                                                           child: Text("Change password >",

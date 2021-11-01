@@ -19,7 +19,7 @@ class _SplashScreenState extends State<Splashscreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 1),
+        Duration(seconds: 10),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) => Loginregistration())));
   }
@@ -42,7 +42,28 @@ class _SplashScreenState extends State<Splashscreen> {
 
               ),
             ),
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
+
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: <Color> [
+                  Color(0xFF000002),
+                  Color(0xFF0079AE)
+
+
+
+
+                ],
+                  tileMode: TileMode.repeated
+              ),
+              image: DecorationImage(
+                image: AssetImage("assets/images/whitebackground.png"),
+
+                fit: BoxFit.cover,
+              ),
+            ),
+           /* decoration:  BoxDecoration(
 
                 gradient: LinearGradient(
                     begin: Alignment.centerLeft,
@@ -57,7 +78,7 @@ class _SplashScreenState extends State<Splashscreen> {
                     ],
                     tileMode: TileMode.repeated
                 )
-            ),
+            ),*/
           )
       ),
     );

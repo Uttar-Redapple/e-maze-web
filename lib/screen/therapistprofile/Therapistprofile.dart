@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:emaze_brain/screen/addnewpatientscreen/Addnewpatient.dart';
+import 'package:emaze_brain/screen/patientprofile/Patientprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -13,6 +16,14 @@ class Therapistprofile extends StatefulWidget{
 
 }
 class TherapistprofileState extends State<Therapistprofile>{
+  /*@override
+  void initState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 5),
+            () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => Patientprofile())));
+  }*/
   TextEditingController nameController = TextEditingController();
   TextEditingController phonenumbercontroller = TextEditingController();
   TextEditingController currentpositioncontroller = TextEditingController();

@@ -94,6 +94,15 @@ flutter:
     - assets/images/eye.png
     - assets/images/key.png
     - assets/images/poligon.png
+    - assets/images/profile.png
+    - assets/images/whiteback.png
+    - assets/images/performance.png
+    - assets/images/smiley.png
+    - assets/images/tick.png
+    - assets/images/up.png
+    - assets/images/down.png
+    - assets/images/edit.png
+    - assets/images/whitebackground.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
