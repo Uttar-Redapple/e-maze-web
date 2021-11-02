@@ -35,6 +35,11 @@ class PatientprofileState extends State<Patientprofile>{
                             .size
                             .width,
                         decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/whitepoligon.png"),
+
+                            fit: BoxFit.cover,
+                          ),
                           gradient:
                           LinearGradient(
 

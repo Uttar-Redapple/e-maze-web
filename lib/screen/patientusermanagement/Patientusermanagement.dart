@@ -1,4 +1,5 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:emaze_brain/screen/patientgeneralpreferance/Patientgeneralpreference.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -34,6 +35,11 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                             .size
                             .width,
                         decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/whitepoligon.png"),
+
+                            fit: BoxFit.cover,
+                          ),
                           gradient:
                           LinearGradient(
 
@@ -172,7 +178,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                                 width: 20.sp,
                                               ),
                                               Text(
-                                                "User's Profile",
+                                                "Patients User management",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   color: Colors.black,
@@ -459,7 +465,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                                   Align(
                                                       alignment: Alignment.centerLeft,
                                                       child: IconButton(
-                                                        icon: Image.asset('assets/images/search.png'), onPressed: () {  },
+                                                        icon: Image.asset('assets/images/addpersonwhite.png'), onPressed: () {  },
                                                       )
                                                   ),
                                                 ],
@@ -746,7 +752,10 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                                                ),
 
                                                                onPressed: () {
-
+                                                                 Navigator.push(
+                                                                   context,
+                                                                   MaterialPageRoute(builder: (context) => Patientgeneralpreference()),
+                                                                 );
                                                                },
                                                                style: ButtonStyle(
                                                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(

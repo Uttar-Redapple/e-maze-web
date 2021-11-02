@@ -48,6 +48,11 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/whitepoligon.png"),
+
+                fit: BoxFit.cover,
+              ),
               gradient:
               LinearGradient(
                   begin: Alignment.centerLeft,
