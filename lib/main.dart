@@ -1,4 +1,14 @@
+import 'package:emaze_brain/screen/addnewpatientscreen/Addnewpatient.dart';
+import 'package:emaze_brain/screen/loginscreen/Loginregistration.dart';
+import 'package:emaze_brain/screen/loginscreen/Therapistorpatient.dart';
+import 'package:emaze_brain/screen/patientgeneralpreferance/Patientgeneralpreference.dart';
+import 'package:emaze_brain/screen/patientloginregistration/Patientloginregistration.dart';
+import 'package:emaze_brain/screen/patientprofile/Patientprofile.dart';
+import 'package:emaze_brain/screen/patientusermanagement/Patientusermanagement.dart';
 import 'package:emaze_brain/screen/splashscreen/Splashscreen.dart';
+import 'package:emaze_brain/screen/therapistgeneralpreference/Therapistgeneralpreference.dart';
+import 'package:emaze_brain/screen/therapistprofile/Therapistprofile.dart';
+import 'package:emaze_brain/screen/therapistuserprofile/Therapistuserprofile.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,19 +23,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'eMazeBrain',
+     // debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        '/': (context) =>  Splashscreen(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+
+        'patient/loginregistration': (context) =>  Patientloginregistration(),
+        'therapist/loginregistration': (context) =>  Loginregistration(),
+        'therapist/verifycertificates': (context) =>  Therapistprofile(),
+        'therapist/addnewpatient': (context) =>  Addnewpatient(),
+        'therapist/profile': (context) =>  Therapistuserprofile(),
+        'therapist/usermanagement': (context) =>  Patientusermanagement(),
+        'patient/generalpreference': (context) =>  Patientgeneralpreference(),
+        'therapist/generalpreference': (context) =>  Therapistgeneralpreference(),
+        'patient/profile': (context) =>  Patientprofile(),
+
+      },
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
+
       ),
-      home:  Splashscreen(),
+    //  home:  Splashscreen(),
     );
   }
 }

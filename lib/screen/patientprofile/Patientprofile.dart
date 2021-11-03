@@ -127,7 +127,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                         child: IconButton(
                                                           icon: Image.asset(
                                                               'assets/images/menu.png'),
-                                                          onPressed: () {},
+                                                          onPressed: () {
+                                                            showPopupMenu();
+                                                          },
                                                         ),
                                                       ),
 
@@ -1084,7 +1086,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                         child: RaisedButton(
                                                           onPressed: () {  },
 
-                                                          color: Color(0xFFB24761),
+                                                          color: Color(0xFF29AAE1),
                                                           child: Text("Change password >",
                                                             style: TextStyle(
                                                                 color: Colors.white,
@@ -1141,6 +1143,292 @@ class PatientprofileState extends State<Patientprofile>{
                 }
             )
     );
+  }
+
+  void showPopupMenu() {
+    showMenu<String>(
+      context: context,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30.0))
+      ),
+      position: RelativeRect.fromLTRB(25.0, 25.0, 0.0, 0.0),  //position where you want to show the menu on screen
+      items: [
+        PopupMenuItem<String>(
+            child: Container(
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 40.sp,
+                    width: 40.sp,
+                    child: IconButton(
+                      icon: Image.asset('assets/images/profile.png'), onPressed: () {
+
+                    },
+
+                    ),
+                  ),
+                  Text(
+                    "SETTING",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.sp,
+
+
+                    ),
+
+                  ),
+                  Expanded(
+                    child: SizedBox(
+                      height: 40.sp,
+                      width: 40.sp,
+                      child: IconButton(
+                        icon: Image.asset('assets/images/logout.png'), onPressed: () {
+
+                      },
+
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+        ),
+        const PopupMenuDivider(),
+        PopupMenuItem<String>(
+            child:   Container(
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 40.sp,
+                    width: 40.sp,
+                    child: IconButton(
+                      icon: Image.asset('assets/images/username.png'), onPressed: () {
+
+                    },
+
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'patient/profile');
+                    },
+                    child: Text(
+                      "PROFILE",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15.sp,
+
+
+                      ),
+
+                    ),
+                  ),
+
+                ],
+              ),
+            )
+        ),
+        PopupMenuItem<String>(
+            child:  Container(
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 40.sp,
+                    width: 40.sp,
+                    child: IconButton(
+                      icon: Image.asset('assets/images/reminder.png'), onPressed: () {
+
+                    },
+
+                    ),
+                  ),
+                  Text(
+                    "REMINDERS",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.sp,
+
+
+                    ),
+
+                  ),
+
+                ],
+              ),
+            )
+        ),
+        PopupMenuItem<String>(
+            child:  Container(
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 40.sp,
+                    width: 40.sp,
+                    child: IconButton(
+                      icon: Image.asset('assets/images/payment.png'), onPressed: () {
+
+                    },
+
+                    ),
+                  ),
+                  Text(
+                    "PAYMENT METHOD",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.sp,
+
+
+                    ),
+
+                  ),
+
+                ],
+              ),
+            )
+        ),
+        PopupMenuItem<String>(
+            child:  Container(
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 40.sp,
+                    width: 40.sp,
+                    child: IconButton(
+                      icon: Image.asset('assets/images/username.png'), onPressed: () {
+
+                    },
+
+                    ),
+                  ),
+                  Text(
+                    "REPORTS",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.sp,
+
+
+                    ),
+
+                  ),
+
+                ],
+              ),
+            )
+        ),
+        PopupMenuItem<String>(
+            child:  Container(
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 40.sp,
+                    width: 40.sp,
+                    child: IconButton(
+                      icon: Image.asset('assets/images/share.png'), onPressed: () {
+
+                    },
+
+                    ),
+                  ),
+                  Text(
+                    "SHARE",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.sp,
+
+
+                    ),
+
+                  ),
+
+                ],
+              ),
+            )
+        ),
+        PopupMenuItem<String>(
+            child:  Container(
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 40.sp,
+                    width: 40.sp,
+                    child: IconButton(
+                      icon: Image.asset('assets/images/generalperef.png'), onPressed: () {
+
+                    },
+
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'patient/generalpreference');
+                    },
+                    child: Text(
+                      "GENERAL PREFERENCE",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15.sp,
+
+
+                      ),
+
+                    ),
+                  ),
+
+                ],
+              ),
+            )
+        ),
+        PopupMenuItem<String>(
+            child:  Container(
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 40.sp,
+                    width: 40.sp,
+                    child: IconButton(
+                      icon: Image.asset('assets/images/logous.png'), onPressed: () {
+
+                    },
+
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/');
+                    },
+                    child: Text(
+                      "LOG OUT",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15.sp,
+
+
+                      ),
+
+                    ),
+                  ),
+
+                ],
+              ),
+            )
+        ),
+
+
+      ],
+      elevation: 8.0,
+
+    );
+
+
+
   }
 
 }

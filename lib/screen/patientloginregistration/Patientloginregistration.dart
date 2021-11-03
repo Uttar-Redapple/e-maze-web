@@ -5,16 +5,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 
-
-class Loginregistration extends StatefulWidget{
+class Patientloginregistration extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return LoginregistrationState();
+    return PatientloginregistrationState();
   }
-
+  
 }
-class LoginregistrationState extends State<Loginregistration> with TickerProviderStateMixin{
+class PatientloginregistrationState extends State<Patientloginregistration> with TickerProviderStateMixin{
   late TabController _tabController;
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -60,7 +59,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                   tileMode: TileMode.repeated,
                   colors: [ Color(0xFF000002),
                     Color(0xFF0079AE),
-                    ]),
+                  ]),
             ),
             child: Column(
                 children:<Widget> [
@@ -100,16 +99,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                               height: 47.sp,
                               background: Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.all(Radius.circular(40.0)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.white,
-                                      spreadRadius: 0.5,
-                                      blurRadius: 2,
-                                      offset: Offset(1, -1),
-                                    ),
-                                  ]
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.white,
+                                        spreadRadius: 0.5,
+                                        blurRadius: 2,
+                                        offset: Offset(1, -1),
+                                      ),
+                                    ]
 
                                 ),
                               ),
@@ -128,37 +127,37 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
 
                                 padding: EdgeInsets.all(40.sp),
-                               child: Align(
-                                 alignment: Alignment.topLeft,
-                                 child: Container(
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Container(
 
 
-                                   padding: EdgeInsets.all(10.sp),
-                                   width: 500.sp,
-                                   height: 350.sp,
+                                    padding: EdgeInsets.all(10.sp),
+                                    width: 500.sp,
+                                    height: 350.sp,
 
-                                   decoration: BoxDecoration(
-                                       gradient: LinearGradient(
-                                           begin: Alignment.centerLeft,
-                                           end: Alignment.centerRight,
-                                           colors: <Color> [
-                                             Color(0xFF282842),
-                                             Color(0xFF1C3973)
-
-
+                                    decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                            begin: Alignment.centerLeft,
+                                            end: Alignment.centerRight,
+                                            colors: <Color> [
+                                              Color(0xFF282842),
+                                              Color(0xFF1C3973)
 
 
-                                           ],
-                                           tileMode: TileMode.repeated
-                                       ),
-                                     border: Border.all(
 
-                                       color: Colors.transparent.withOpacity(1.0)
-                                     ),
-                                       borderRadius: BorderRadius.all(Radius.circular(40.sp))
 
-                                   ),
-                                   child: Column(
+                                            ],
+                                            tileMode: TileMode.repeated
+                                        ),
+                                        border: Border.all(
+
+                                            color: Colors.transparent.withOpacity(1.0)
+                                        ),
+                                        borderRadius: BorderRadius.all(Radius.circular(40.sp))
+
+                                    ),
+                                    child: Column(
 
                                       children:<Widget>[
 
@@ -211,23 +210,23 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                 controller: passwordController,
                                                 decoration: InputDecoration(
 
-                                                  border: UnderlineInputBorder(),
-                                                  labelText: 'Password',
-                                                  suffixIcon: GestureDetector(
-                                                    onLongPress: () {
-                                                      setState(() {
-                                                        _passwordVisible = true;
-                                                      });
-                                                    },
-                                                    onLongPressUp: () {
-                                                      setState(() {
-                                                        _passwordVisible = false;
-                                                      });
-                                                    },
-                                                    child: Icon(
-                                                        _passwordVisible ? Icons.visibility : Icons.visibility_off
-                                                    ),
-                                                  )
+                                                    border: UnderlineInputBorder(),
+                                                    labelText: 'Password',
+                                                    suffixIcon: GestureDetector(
+                                                      onLongPress: () {
+                                                        setState(() {
+                                                          _passwordVisible = true;
+                                                        });
+                                                      },
+                                                      onLongPressUp: () {
+                                                        setState(() {
+                                                          _passwordVisible = false;
+                                                        });
+                                                      },
+                                                      child: Icon(
+                                                          _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                      ),
+                                                    )
                                                 ),
                                               ),
 
@@ -260,7 +259,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                 width: 10.sp,
                                                 height: 10.sp,
                                               ),
-                                               Text(
+                                              Text(
                                                 "Remember me",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
@@ -300,10 +299,10 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                             ),
                                             child: RaisedButton(
                                               onPressed: () {
-                                                Navigator.pushNamed(context, 'therapist/verifycertificates');
+                                                Navigator.pushNamed(context, 'patient/profile');
                                               },
 
-                                               color: Color(0xFF29AAE1),
+                                              color: Color(0xFF29AAE1),
                                               child: Text("Sign In",
                                                 style: TextStyle(
                                                   color: Colors.white,
@@ -315,10 +314,10 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                         )
                                       ],
 
-                                   ),
+                                    ),
 
-                                 ),
-                               ),
+                                  ),
+                                ),
 
 
 
@@ -368,7 +367,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                             ],
                                             tileMode: TileMode.repeated
                                         ),
-                                       /* border: Border.all(
+                                        /* border: Border.all(
 
                                             color: Colors.transparent
                                         ),*/
@@ -376,189 +375,189 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                     ),
                                     child: Column(
-                                       children: [
-                                         Container(
-                                           height: 20.sp,
-                                         ),
-                                         Container(
-                                             margin: new EdgeInsets.symmetric(horizontal: 20.sp),
-                                           padding: EdgeInsets.all(20.sp),
-                                           decoration: BoxDecoration(
+                                      children: [
+                                        Container(
+                                          height: 20.sp,
+                                        ),
+                                        Container(
+                                            margin: new EdgeInsets.symmetric(horizontal: 20.sp),
+                                            padding: EdgeInsets.all(20.sp),
+                                            decoration: BoxDecoration(
 
-                                               color: Colors.white,
-                                               border: Border.all(color: Colors.white),
-                                               borderRadius: BorderRadius.all(Radius.circular(25))
-                                           ),
-                                    child: Column(
-                                       children: [
-                                         SizedBox(
-                                           height: 40.sp,
-                                           width: 500.sp,
-                                           child: TextFormField(
-                                             controller: nameController,
-                                             decoration: InputDecoration(
-                                               border: OutlineInputBorder(
-                                                 borderRadius: BorderRadius.circular(20.sp),
-                                               ),
-                                               filled: true,
-                                               fillColor: Colors.white70,
-                                               labelText: 'User Name',
-                                                 icon: IconButton(
-                                                   icon: Image.asset('assets/images/username.png'), onPressed: () {  },
-                                                 )
-                                             ),
-                                           ),
-                                         ),
-                                         Container(
-                                           height: 10.sp,
-                                         ),
-                                         SizedBox(
-                                           height: 40.sp,
-                                           width: 500.sp,
-                                           child: TextFormField(
-                                             controller: nameController,
+                                                color: Colors.white,
+                                                border: Border.all(color: Colors.white),
+                                                borderRadius: BorderRadius.all(Radius.circular(25))
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 40.sp,
+                                                  width: 500.sp,
+                                                  child: TextFormField(
+                                                    controller: nameController,
+                                                    decoration: InputDecoration(
+                                                        border: OutlineInputBorder(
+                                                          borderRadius: BorderRadius.circular(20.sp),
+                                                        ),
+                                                        filled: true,
+                                                        fillColor: Colors.white70,
+                                                        labelText: 'User Name',
+                                                        icon: IconButton(
+                                                          icon: Image.asset('assets/images/username.png'), onPressed: () {  },
+                                                        )
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 10.sp,
+                                                ),
+                                                SizedBox(
+                                                  height: 40.sp,
+                                                  width: 500.sp,
+                                                  child: TextFormField(
+                                                    controller: nameController,
 
-                                             decoration: InputDecoration(
-                                               border: OutlineInputBorder(
+                                                    decoration: InputDecoration(
+                                                        border: OutlineInputBorder(
 
-                                                 borderRadius: BorderRadius.circular(20.sp),
-                                               ),
-                                               filled: true,
-                                               fillColor: Colors.white70,
+                                                          borderRadius: BorderRadius.circular(20.sp),
+                                                        ),
+                                                        filled: true,
+                                                        fillColor: Colors.white70,
 
-                                               labelText: 'Email',
-                                               icon: IconButton(
-                                                 icon: Image.asset('assets/images/message.png'), onPressed: () {  },
-                                               )
-                                             ),
-                                           ),
-                                         ),
-                                         Container(
-                                           height: 10.sp,
-                                         ),
-                                         SizedBox(
-                                           height: 40.sp,
-                                           width: 500.sp,
-                                           child: TextFormField(
-                                             controller: nameController,
-                                             decoration: InputDecoration(
-                                               border: OutlineInputBorder(
-                                                 borderRadius: BorderRadius.circular(20.sp),
+                                                        labelText: 'Email',
+                                                        icon: IconButton(
+                                                          icon: Image.asset('assets/images/message.png'), onPressed: () {  },
+                                                        )
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 10.sp,
+                                                ),
+                                                SizedBox(
+                                                  height: 40.sp,
+                                                  width: 500.sp,
+                                                  child: TextFormField(
+                                                    controller: nameController,
+                                                    decoration: InputDecoration(
+                                                        border: OutlineInputBorder(
+                                                          borderRadius: BorderRadius.circular(20.sp),
 
-                                               ),
-                                               filled: true,
-                                               fillColor: Colors.white70,
-                                               labelText: 'Phone number',
-                                                 icon: IconButton(
-                                                   icon: Image.asset('assets/images/contact.png'), onPressed: () {  },
-                                                 )
-                                             ),
-                                           ),
-                                         ),
-                                         Container(
-                                           height: 10.sp,
-                                         ),
-                                         SizedBox(
-                                           height: 40.sp,
-                                           width: 500.sp,
-                                           child: TextFormField(
+                                                        ),
+                                                        filled: true,
+                                                        fillColor: Colors.white70,
+                                                        labelText: 'Phone number',
+                                                        icon: IconButton(
+                                                          icon: Image.asset('assets/images/contact.png'), onPressed: () {  },
+                                                        )
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 10.sp,
+                                                ),
+                                                SizedBox(
+                                                  height: 40.sp,
+                                                  width: 500.sp,
+                                                  child: TextFormField(
 
-                                             obscureText: !_passwordVisible,
-                                             controller: passwordController,
-                                             decoration: InputDecoration(
+                                                    obscureText: !_passwordVisible,
+                                                    controller: passwordController,
+                                                    decoration: InputDecoration(
 
-                                                 border: OutlineInputBorder(
-                                                   borderRadius: BorderRadius.circular(20.sp),
-                                                 ),
-                                                 labelText: 'Password',
-                                                 icon: IconButton(
-                                                   icon: Image.asset('assets/images/lock.png'), onPressed: () {  },
-                                                 ),
-                                                 suffixIcon: GestureDetector(
-                                                   onLongPress: () {
-                                                     setState(() {
-                                                       _passwordVisible = true;
-                                                     });
-                                                   },
-                                                   onLongPressUp: () {
-                                                     setState(() {
-                                                       _passwordVisible = false;
-                                                     });
-                                                   },
-                                                   child: Icon(
-                                                       _passwordVisible ? Icons.visibility : Icons.visibility_off
-                                                   ),
-                                                 )
-                                             ),
-                                           ),
-                                         ),
-                                       ],
-                                    )
-                                         ),
-                                         Container(
-                                           height: 10.sp,
-                                         ),
-                                         Container(
-                                           margin:  EdgeInsets.only(left: 20.sp, right: 20.sp),
+                                                        border: OutlineInputBorder(
+                                                          borderRadius: BorderRadius.circular(20.sp),
+                                                        ),
+                                                        labelText: 'Password',
+                                                        icon: IconButton(
+                                                          icon: Image.asset('assets/images/lock.png'), onPressed: () {  },
+                                                        ),
+                                                        suffixIcon: GestureDetector(
+                                                          onLongPress: () {
+                                                            setState(() {
+                                                              _passwordVisible = true;
+                                                            });
+                                                          },
+                                                          onLongPressUp: () {
+                                                            setState(() {
+                                                              _passwordVisible = false;
+                                                            });
+                                                          },
+                                                          child: Icon(
+                                                              _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                          ),
+                                                        )
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Container(
+                                          margin:  EdgeInsets.only(left: 20.sp, right: 20.sp),
 
-                                           child: Row(
+                                          child: Row(
 
-                                             children: [
-                                               Container(
-                                                 height: 25.sp,
-                                                 width: 25.sp,
-                                                 child: RoundCheckBox(
-                                                   onTap: (selected) {},
+                                            children: [
+                                              Container(
+                                                height: 25.sp,
+                                                width: 25.sp,
+                                                child: RoundCheckBox(
+                                                  onTap: (selected) {},
 
-                                                   animationDuration: Duration(
-                                                     milliseconds: 50,
-                                                   ),
-                                                 ),
-                                               ),
-                                               Container(
-                                                 width: 10.sp,
-                                                 height: 10.sp,
-                                               ),
-                                               Text(
-                                                 "I am agree with privacu policy,terms and conditions.",
-                                                 textAlign: TextAlign.center,
-                                                 style: TextStyle(
-                                                     color: Colors.white,
-                                                     fontSize: 15.sp
-                                                 ),
+                                                  animationDuration: Duration(
+                                                    milliseconds: 50,
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                width: 10.sp,
+                                                height: 10.sp,
+                                              ),
+                                              Text(
+                                                "I am agree with privacu policy,terms and conditions.",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 15.sp
+                                                ),
 
-                                               ),
+                                              ),
 
 
-                                             ],
-                                           ),
-                                         ),
-                                         Container(
-                                           height: 40.sp,
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 40.sp,
 
-                                         ),
-                                         Container(
-                                           child: ButtonTheme(
-                                             minWidth: 158.sp,
-                                             height: 56.sp,
-                                             shape: new RoundedRectangleBorder(
-                                               borderRadius: new BorderRadius.circular(40.sp),
-                                             ),
-                                             child: RaisedButton(
-                                               onPressed: () {  },
+                                        ),
+                                        Container(
+                                          child: ButtonTheme(
+                                            minWidth: 158.sp,
+                                            height: 56.sp,
+                                            shape: new RoundedRectangleBorder(
+                                              borderRadius: new BorderRadius.circular(40.sp),
+                                            ),
+                                            child: RaisedButton(
+                                              onPressed: () {  },
 
-                                               color: Color(0xFF29AAE1),
-                                               child: Text("Sign Up",
-                                                 style: TextStyle(
-                                                   color: Colors.white,
+                                              color: Color(0xFF29AAE1),
+                                              child: Text("Sign Up",
+                                                style: TextStyle(
+                                                  color: Colors.white,
 
-                                                 ),
-                                               ),
-                                             ),
-                                           ),
-                                         )
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )
 
-                                       ],
+                                      ],
 
                                     ),
 
@@ -576,7 +575,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                           ),
 
 
-                          ),
+                        ),
 
                       ],
                     ),
@@ -614,11 +613,11 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                               ),
                               Align(
-                                alignment: Alignment.bottomCenter,
-                                child: IconButton(
-                                  icon: Image.asset('images/google.png'),
-                                  onPressed: () {  },
-                                )
+                                  alignment: Alignment.bottomCenter,
+                                  child: IconButton(
+                                    icon: Image.asset('images/google.png'),
+                                    onPressed: () {  },
+                                  )
 
                               ),
                               Align(

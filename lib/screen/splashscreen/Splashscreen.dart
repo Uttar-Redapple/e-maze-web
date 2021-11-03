@@ -4,6 +4,7 @@
 import 'dart:async';
 
 import 'package:emaze_brain/screen/loginscreen/Loginregistration.dart';
+import 'package:emaze_brain/screen/loginscreen/Therapistorpatient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class _SplashScreenState extends State<Splashscreen> {
     Timer(
         Duration(seconds: 5),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => Loginregistration())));
+            builder: (BuildContext context) => Therapistorpatient())));
   }
 
   @override

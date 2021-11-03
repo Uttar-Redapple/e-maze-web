@@ -108,6 +108,14 @@ flutter:
     - assets/images/language.png
     - assets/images/whitepoligon.png
     - assets/images/addpersonwhite.png
+    - assets/images/generalperef.png
+    - assets/images/payment.png
+    - assets/images/reminder.png
+    - assets/images/share.png
+    - assets/images/report.png
+    - assets/images/forward.png
+    - assets/images/logout.png
+    - assets/images/logous.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
