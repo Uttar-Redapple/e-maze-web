@@ -1,4 +1,5 @@
 import 'package:emaze_brain/screen/addnewpatientscreen/Addnewpatient.dart';
+import 'package:emaze_brain/screen/loginnew/Loginregnew.dart';
 import 'package:emaze_brain/screen/loginscreen/Loginregistration.dart';
 import 'package:emaze_brain/screen/loginscreen/Therapistorpatient.dart';
 import 'package:emaze_brain/screen/patientgeneralpreferance/Patientgeneralpreference.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         'patient/generalpreference': (context) =>  Patientgeneralpreference(),
         'therapist/generalpreference': (context) =>  Therapistgeneralpreference(),
         'patient/profile': (context) =>  Patientprofile(),
+        'patient/loginnew': (context) =>  Loginregnew(),
 
       },
       theme: ThemeData(

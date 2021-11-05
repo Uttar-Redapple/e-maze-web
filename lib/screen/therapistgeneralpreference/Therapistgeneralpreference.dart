@@ -541,6 +541,14 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                             bottomRight: Radius.circular(40.sp),
                                                                             topLeft: Radius.circular(40.sp),
                                                                             bottomLeft: Radius.circular(40.sp)),
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                            color: Colors.grey.withOpacity(0.5),
+                                                                            spreadRadius: 5,
+                                                                            blurRadius: 7,
+                                                                            offset: Offset(0, 3), // changes position of shadow
+                                                                          ),
+                                                                        ],
                                                                         gradient:
                                                                         LinearGradient(
 
@@ -591,7 +599,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                        label: Text("Default       ",
+                                                                        label: Text("DEFAULT       ",
                                                                           style: TextStyle(
                                                                               color: Colors.white,
                                                                               fontSize: 16.sp

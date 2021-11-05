@@ -90,8 +90,8 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                           width: 1000.sp,
                           child: ContainedTabBarView(
                             tabs: [
-                              Text('Login'),
-                              Text('Registration'),
+                              Text('LOGIN'),
+                              Text('REGISTRATION'),
                             ],
 
 

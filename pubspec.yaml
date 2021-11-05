@@ -41,6 +41,7 @@ dependencies:
   percent_indicator: ^3.4.0
   responsive_builder: ^0.4.1
   flutter_switch: ^0.3.2
+  flutter_fadein: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

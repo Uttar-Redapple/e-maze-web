@@ -106,10 +106,19 @@ class TherapistprofileState extends State<Therapistprofile>{
                                 width: 192.sp,
 
                                 decoration: BoxDecoration(
-                                    border: Border.all(
+                                    border: new Border.all(
                                       color: Colors.white.withOpacity(
-                                          1.0), // red as border color
+                                          1.0),
+                                      width: 1,
                                     ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.white.withOpacity(0.5),
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: Offset(0, 3), // changes position of shadow
+                                      ),
+                                    ],
                                     borderRadius: new BorderRadius.only(
                                         topLeft: const Radius.circular(
                                             40.0),
@@ -173,6 +182,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                               child: Row(
                                 children: [
                                   Container(
+
                                     height: 49.sp,
                                     width: 49.sp,
                                     decoration: BoxDecoration(
@@ -180,9 +190,16 @@ class TherapistprofileState extends State<Therapistprofile>{
                                       border: new Border.all(
                                         color: Colors.white.withOpacity(
                                             1.0),
-                                        width: 2.5,
+                                        width: 1,
                                       ),
-
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.white.withOpacity(0.5),
+                                          spreadRadius: 5,
+                                          blurRadius: 7,
+                                          offset: Offset(0, 3), // changes position of shadow
+                                        ),
+                                      ],
                                     ),
                                     child: SizedBox(
 
@@ -224,220 +241,223 @@ class TherapistprofileState extends State<Therapistprofile>{
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(10.sp),
-                        height: 296.sp,
-                        width: 252.sp,
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(
+                      Opacity(
+                        opacity: 1.0,
+                        child: Container(
+                          padding: EdgeInsets.all(10.sp),
+                          height: 296.sp,
+                          width: 252.sp,
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
 
 
-                                colors: <Color> [
-                                  Color(0xFF3A3A3A),
-                                  Color(0xFF8B8B8B),
-                                  Color(0xFFDBDCDE),
+                                  colors: <Color> [
+                                    Color(0xFF3A3A3A),
+                                    Color(0xFF8B8B8B),
+                                    Color(0xFFDBDCDE),
 
 
 
 
-                                ],
-                                tileMode: TileMode.repeated
-                            ),
-                            border: Border.all(
-
-                                color: Colors.transparent.withOpacity(1.0)
-                            ),
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(20.sp),
-                                bottomRight: Radius.circular(20.sp),
-                                bottomLeft: Radius.circular(20.sp),
-                                topLeft: Radius.circular(20.sp))
-                          // bottomLeft: Radius.circular(40.sp))
-
-                        ),
-                        child: ContainedTabBarView(
-                          tabs: [
-                            Text(
-                              'Patient',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-
-                                  fontSize: 10.sp
+                                  ],
+                                  tileMode: TileMode.repeated
                               ),
-                            ),
-                            Text(
-                              'You',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
+                              border: Border.all(
 
-                                  fontSize: 10.sp
+                                  color: Color(0xFF3A3A3A)
                               ),
-                            ),
-                          ],
-                          tabBarProperties: TabBarProperties(
-                            width: 172.sp,
-                            height: 22.sp,
-                            background: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.all(Radius.circular(40.0)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.white,
-                                      spreadRadius: 0.5,
-                                      blurRadius: 2,
-                                      offset: Offset(1, -1),
-                                    ),
-                                  ]
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(20.sp),
+                                  bottomRight: Radius.circular(20.sp),
+                                  bottomLeft: Radius.circular(20.sp),
+                                  topLeft: Radius.circular(20.sp))
+                            // bottomLeft: Radius.circular(40.sp))
 
-                              ),
-                            ),
-
-                            indicator: ShapeDecoration(
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
-                                    topLeft: radius,bottomLeft: radius,bottomRight: radius)),
-                                color: Color(0xFFB24761)
-                            ),
-                            indicatorColor: Colors.transparent,
-                            labelColor: Colors.white,
-                            unselectedLabelColor: Colors.grey[400],
                           ),
-                          views: [
-                            Container(
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: 10.sp,
-                                  ),
-                                  Container(
-                                    width: 130.sp,
-                                    height: 130.sp,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          fit: BoxFit.fill,
-                                          image: NetworkImage(
-                                              "https://i.imgur.com/BoN9kdC.png"
-                                          ),
+                          child: ContainedTabBarView(
+                            tabs: [
+                              Text(
+                                'Patient',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
 
-                                        )
-                                    ),
-                                    child:
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        IconButton(
-                                          icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
-                                        )
-                                      ],
-
-                                    ),
-
-                                  ),
-                                  Container(
-                                    height: 5.sp,
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      "New User",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20.sp
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      "Therapist",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 15.sp
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      "online",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 10.sp
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                    fontSize: 10.sp
+                                ),
                               ),
+                              Text(
+                                'You',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+
+                                    fontSize: 10.sp
+                                ),
+                              ),
+                            ],
+                            tabBarProperties: TabBarProperties(
+                              width: 172.sp,
+                              height: 22.sp,
+                              background: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.white,
+                                        spreadRadius: 2.5,
+                                        blurRadius: 2,
+                                        offset: Offset(1, -1),
+                                      ),
+                                    ]
+
+                                ),
+                              ),
+
+                              indicator: ShapeDecoration(
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
+                                      topLeft: radius,bottomLeft: radius,bottomRight: radius)),
+                                  color: Color(0xFFB24761)
+                              ),
+                              indicatorColor: Colors.transparent,
+                              labelColor: Colors.white,
+                              unselectedLabelColor: Colors.grey[400],
                             ),
-                            Container(
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: 10.sp,
-                                  ),
-                                  Container(
-                                    width: 130.sp,
-                                    height: 130.sp,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          fit: BoxFit.fill,
-                                          image: NetworkImage(
-                                              "https://i.imgur.com/BoN9kdC.png"
-                                          ),
-
-                                        )
+                            views: [
+                              Container(
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 10.sp,
                                     ),
-                                    child:   Column(
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        IconButton(
-                                          icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
-                                        )
-                                      ],
+                                    Container(
+                                      width: 130.sp,
+                                      height: 130.sp,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: NetworkImage(
+                                                "https://i.imgur.com/BoN9kdC.png"
+                                            ),
+
+                                          )
+                                      ),
+                                      child:
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          IconButton(
+                                            icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
+                                          )
+                                        ],
+
+                                      ),
 
                                     ),
-                                  ),
-                                  Container(
-                                    height: 5.sp,
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      "New User",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20.sp
+                                    Container(
+                                      height: 5.sp,
+                                    ),
+                                    Container(
+                                      child: Text(
+                                        "New User",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 20.sp
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      "Therapist",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 15.sp
+                                    Container(
+                                      child: Text(
+                                        "Therapist",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 15.sp
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      "Online",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 10.sp
+                                    Container(
+                                      child: Text(
+                                        "online",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 10.sp
+                                        ),
                                       ),
                                     ),
-                                  ),
-
-
-
-                                ],
+                                  ],
+                                ),
                               ),
+                              Container(
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 10.sp,
+                                    ),
+                                    Container(
+                                      width: 130.sp,
+                                      height: 130.sp,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: NetworkImage(
+                                                "https://i.imgur.com/BoN9kdC.png"
+                                            ),
 
-                            )
-                          ],
+                                          )
+                                      ),
+                                      child:   Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          IconButton(
+                                            icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
+                                          )
+                                        ],
+
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 5.sp,
+                                    ),
+                                    Container(
+                                      child: Text(
+                                        "New User",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 20.sp
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Text(
+                                        "Therapist",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 15.sp
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Text(
+                                        "Online",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 10.sp
+                                        ),
+                                      ),
+                                    ),
+
+
+
+                                  ],
+                                ),
+
+                              )
+                            ],
+                          ),
                         ),
                       ),
                       Container(
@@ -451,7 +471,7 @@ class TherapistprofileState extends State<Therapistprofile>{
 
                           padding: EdgeInsets.all(10.sp),
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Color(0xFFF1F1F1),
                               border: Border.all(
 
                                   color: Colors.transparent.withOpacity(1.0)
@@ -670,6 +690,16 @@ class TherapistprofileState extends State<Therapistprofile>{
                                                 bottomRight: Radius.circular(40.sp),
                                                 topLeft: Radius.circular(40.sp),
                                                 bottomLeft: Radius.circular(40.sp)),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey.withOpacity(0.5),
+                                                spreadRadius: 5,
+                                                blurRadius: 7,
+                                                offset: Offset(0, 3), // changes position of shadow
+                                              ),
+                                            ],
+
+
                                             gradient:
                                             LinearGradient(
 
@@ -720,7 +750,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                                     ),*/
 
 
-                                            label: Text("Upload       ",
+                                            label: Text("UPLOAD       ",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 16.sp
@@ -749,8 +779,8 @@ class TherapistprofileState extends State<Therapistprofile>{
                                       begin: Alignment.centerLeft,
                                       end: Alignment.centerRight,
                                       tileMode: TileMode.repeated,
-                                      colors: [ Color(0xFFFFE72E),
-                                        Color(0xFFF08800),
+                                      colors: [ Color(0xFFF08800),
+                                        Color(0xFFFFE72E),
                                       ]),
                                 ),
                                 child: Text(

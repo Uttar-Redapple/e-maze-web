@@ -105,6 +105,14 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                   color: Colors.white.withOpacity(
                                                       1.0), // red as border color
                                                 ),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.white.withOpacity(0.5),
+                                                    spreadRadius: 5,
+                                                    blurRadius: 7,
+                                                    offset: Offset(0, 3), // changes position of shadow
+                                                  ),
+                                                ],
                                                 borderRadius: new BorderRadius.only(
                                                     topLeft: const Radius.circular(
                                                         40.0),
@@ -115,6 +123,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                     bottomLeft: const Radius.circular(
                                                         40.0)
                                                 )
+
                                             ),
                                             child: Column(
                                               children: [
@@ -177,7 +186,14 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                         1.0),
                                                     width: 2.5,
                                                   ),
-
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Colors.white.withOpacity(0.5),
+                                                      spreadRadius: 5,
+                                                      blurRadius: 7,
+                                                      offset: Offset(0, 3), // changes position of shadow
+                                                    ),
+                                                  ],
                                                 ),
                                                 child: SizedBox(
 
@@ -559,9 +575,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                   padding: EdgeInsets.all(20.sp),
                                                   decoration: BoxDecoration(
                                                     color: Colors.white,
-                                                    border: Border.all(
-
-
+                                                    border: new Border.all(
+                                                      color: Colors.white,
+                                                      width: 1,
                                                     ),
                                                     borderRadius: BorderRadius.all(Radius.circular(20)),
                                                     boxShadow: [
@@ -596,7 +612,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerRight,
                                                                 child: Text(
-                                                                  "Edit",
+                                                                  "EDIT",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -610,7 +626,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerLeft,
                                                                 child: Text(
-                                                                  "First name *",
+                                                                  "FIRST NAME *",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -657,7 +673,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerRight,
                                                                 child: Text(
-                                                                  "Edit",
+                                                                  "EDIT",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -671,7 +687,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerLeft,
                                                                 child: Text(
-                                                                  "Last name*",
+                                                                  "LAST NAME *",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -718,7 +734,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerRight,
                                                                 child: Text(
-                                                                  "Edit",
+                                                                  "EDIT",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -732,7 +748,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerLeft,
                                                                 child: Text(
-                                                                  "Email *",
+                                                                  "EMAIL *",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -783,7 +799,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerRight,
                                                                 child: Text(
-                                                                  "Edit",
+                                                                  "EDIT",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -797,7 +813,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerLeft,
                                                                 child: Text(
-                                                                  "Phone number *",
+                                                                  "PHONE NUMBER *",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -848,7 +864,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerRight,
                                                                 child: Text(
-                                                                  "Edit",
+                                                                  "EDIT",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -862,7 +878,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerLeft,
                                                                 child: Text(
-                                                                  "Birth *",
+                                                                  "BIRTH *",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -913,7 +929,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerRight,
                                                                 child: Text(
-                                                                  "Edit",
+                                                                  "EDIT",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -927,7 +943,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerLeft,
                                                                 child: Text(
-                                                                  "Gender *",
+                                                                  "GENDER *",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -978,7 +994,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerRight,
                                                                 child: Text(
-                                                                  "Edit",
+                                                                  "EDIT",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -992,7 +1008,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               Align(
                                                                 alignment: Alignment.centerLeft,
                                                                 child: Text(
-                                                                  "Language *",
+                                                                  "LANGUAGE *",
                                                                   textAlign: TextAlign.center,
                                                                   style: TextStyle(
                                                                     color: Colors.black,
@@ -1018,6 +1034,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                               Expanded(
                                                 flex: 2,
                                                 child: Container(
+
                                                   padding: EdgeInsets.all(20.sp),
                                                   child: Column(
                                                     mainAxisAlignment: MainAxisAlignment.start,

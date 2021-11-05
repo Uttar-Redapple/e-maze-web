@@ -211,8 +211,8 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                   Column(
                                       children:[
                                         Container(
-                                          padding: EdgeInsets.all(10.sp),
-                                          height: 296.sp,
+                                          padding: EdgeInsets.only(top: 10.sp,bottom: 10.sp),
+                                          height: 320.sp,
                                           width: 252.sp,
                                           decoration: BoxDecoration(
                                               gradient: LinearGradient(
@@ -235,7 +235,8 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                               ),
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(20.sp),
-
+                                                   bottomLeft: Radius.circular(20.sp),
+                                                  bottomRight: Radius.circular(20.sp),
                                                   topLeft: Radius.circular(20.sp))
                                             // bottomLeft: Radius.circular(40.sp))
 
@@ -351,6 +352,64 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                                         ),
                                                       ),
                                                     ),
+                                                    Container(
+                                                      height: 10.sp,
+                                                    ),
+                                                    Container(
+                                                      height: 50.sp,
+                                                      width: 252.sp,
+                                                      decoration:  BoxDecoration(
+
+                                                          gradient: LinearGradient(
+                                                              begin: Alignment.centerLeft,
+                                                              end: Alignment.centerRight,
+                                                              colors: <Color> [
+                                                                Color(0xFF8D023B),
+                                                                Color(0xFFFF2F6D)
+
+
+
+
+                                                              ],
+                                                              tileMode: TileMode.repeated
+                                                          )
+                                                      ),
+                                                      child:  Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children: [
+                                                          Stack(
+                                                            alignment: Alignment.center,
+                                                            children: [
+                                                              Align(
+                                                                alignment: Alignment.center,
+                                                                child: GestureDetector(
+                                                                  onTap: () {
+                                                                    Navigator.pushNamed(context, "therapist/addnewpatient");
+                                                                  },
+                                                                  child: Text(
+                                                                    "+ Add a new patient",
+                                                                    textAlign: TextAlign.center,
+                                                                    style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      fontSize: 15.sp,
+                                                                      fontWeight: FontWeight.bold,
+                                                                    ),
+
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Align(
+                                                                  alignment: Alignment.centerLeft,
+                                                                  child: IconButton(
+                                                                    icon: Image.asset('assets/images/addpersonwhite.png'), onPressed: () {  },
+                                                                  )
+                                                              ),
+                                                            ],
+                                                          )
+                                                        ],
+                                                      ) ,
+                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -415,8 +474,64 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                                         ),
                                                       ),
                                                     ),
+                                                    Container(
+                                                      height: 10.sp,
+                                                    ),
+                                                    Container(
+                                                      height: 50.sp,
+                                                      width: 252.sp,
+                                                      decoration:  BoxDecoration(
+
+                                                          gradient: LinearGradient(
+                                                              begin: Alignment.centerLeft,
+                                                              end: Alignment.centerRight,
+                                                              colors: <Color> [
+                                                                Color(0xFF8D023B),
+                                                                Color(0xFFFF2F6D)
 
 
+
+
+                                                              ],
+                                                              tileMode: TileMode.repeated
+                                                          )
+                                                      ),
+                                                      child:  Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children: [
+                                                          Stack(
+                                                            alignment: Alignment.center,
+                                                            children: [
+                                                              Align(
+                                                                alignment: Alignment.center,
+                                                                child: GestureDetector(
+                                                                  onTap: () {
+                                                                    Navigator.pushNamed(context, "therapist/addnewpatient");
+                                                                  },
+                                                                  child: Text(
+                                                                    "+ Add a new patient",
+                                                                    textAlign: TextAlign.center,
+                                                                    style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      fontSize: 15.sp,
+                                                                      fontWeight: FontWeight.bold,
+                                                                    ),
+
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Align(
+                                                                  alignment: Alignment.centerLeft,
+                                                                  child: IconButton(
+                                                                    icon: Image.asset('assets/images/addpersonwhite.png'), onPressed: () {  },
+                                                                  )
+                                                              ),
+                                                            ],
+                                                          )
+                                                        ],
+                                                      ) ,
+                                                    ),
 
                                                   ],
                                                 ),
@@ -425,61 +540,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                             ],
                                           ),
                                         ),
-                                        Container(
-                                          height: 50.sp,
-                                          width: 252.sp,
-                                          decoration:  BoxDecoration(
 
-                                              gradient: LinearGradient(
-                                                  begin: Alignment.centerLeft,
-                                                  end: Alignment.centerRight,
-                                                  colors: <Color> [
-                                                    Color(0xFF8D023B),
-                                                    Color(0xFFFF2F6D)
-
-
-
-
-                                                  ],
-                                                  tileMode: TileMode.repeated
-                                              )
-                                          ),
-                                          child:  Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Stack(
-                                                alignment: Alignment.center,
-                                                children: [
-                                                  Align(
-                                                    alignment: Alignment.center,
-                                                    child: GestureDetector(
-                                                      onTap: () {
-                                                        Navigator.pushNamed(context, "therapist/addnewpatient");
-                                                      },
-                                                      child: Text(
-                                                        "Add a new patient",
-                                                        textAlign: TextAlign.center,
-                                                        style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 15.sp,
-                                                          fontWeight: FontWeight.bold,
-                                                        ),
-
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Align(
-                                                      alignment: Alignment.centerLeft,
-                                                      child: IconButton(
-                                                        icon: Image.asset('assets/images/addpersonwhite.png'), onPressed: () {  },
-                                                      )
-                                                  ),
-                                                ],
-                                              )
-                                            ],
-                                          ) ,
-                                        ),
                                         Container(
                                           height: 10.sp,
                                         ),
@@ -507,8 +568,8 @@ class PatientusermanagementState extends State<Patientusermanagement>{
 
                                                         begin: Alignment.centerLeft,
                                                         end: Alignment.centerRight,
-                                                        colors: [ Color(0xFFFFE72E),
-                                                          Color(0xFFF08800),
+                                                        colors: [ Color(0xFFF08800),
+                                                          Color(0xFFFFE72E),
                                                         ],
                                                         tileMode: TileMode.repeated)
 
@@ -574,7 +635,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                       height: 400.sp,
                                       padding: EdgeInsets.all(10.sp),
                                       decoration: BoxDecoration(
-                                          color: Colors.white,
+                                        color: Color(0xFFF1F1F1),
                                           border: Border.all(
 
                                               color: Colors.transparent.withOpacity(1.0)
@@ -619,13 +680,13 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                        ],
                                        tabBarProperties: TabBarProperties(
                                          width: 2500.sp,
-                                         height: 22.sp,
+                                         height: 30.sp,
                                          background: Container(
                                               color: Colors.transparent,
                                          ),
 
 
-                                         indicatorColor: Colors.transparent,
+                                         indicatorColor: Colors.black,
                                          labelColor: Colors.black,
                                          unselectedLabelColor: Colors.grey[400],
                                        ),
@@ -739,6 +800,15 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                                                    bottomRight: Radius.circular(20.sp),
                                                                    topLeft: Radius.circular(20.sp),
                                                                    bottomLeft: Radius.circular(20.sp)),
+                                                               boxShadow: [
+                                                                 BoxShadow(
+                                                                   color: Colors.grey.withOpacity(0.5),
+                                                                   spreadRadius: 5,
+                                                                   blurRadius: 7,
+                                                                   offset: Offset(0, 3), // changes position of shadow
+                                                                 ),
+                                                               ],
+
                                                                gradient:
                                                                LinearGradient(
 
@@ -751,7 +821,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
 
                                                            ),
                                                            child: ConstrainedBox(
-                                                             constraints: BoxConstraints.tightFor(width: 200.sp, height: 46.sp),
+                                                             constraints: BoxConstraints.tightFor(width: 160.sp, height: 46.sp),
                                                              child: ElevatedButton.icon(
                                                                icon: IconButton(
                                                                  icon: Image.asset('assets/images/edit.png'), onPressed: () {  },
