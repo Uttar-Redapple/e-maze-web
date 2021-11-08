@@ -484,7 +484,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                       child:Container(
                                         padding: EdgeInsets.all(10.sp),
                                         decoration: BoxDecoration(
-                                            color: Colors.white,
+                                            color: Color(0xFFF1F1F1),
                                             border: Border.all(
 
                                                 color: Colors.transparent.withOpacity(1.0)
@@ -678,10 +678,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                         boxShadow: [
                                                                           BoxShadow(
-                                                                            color: Colors.grey.withOpacity(0.5),
-                                                                            spreadRadius: 5,
-                                                                            blurRadius: 7,
-                                                                            offset: Offset(0, 3), // changes position of shadow
+                                                                            color: Colors.white,
+                                                                            spreadRadius: 10,
+                                                                            blurRadius: 5,
+                                                                            offset: Offset(3, 0), // changes position of shadow
                                                                           ),
                                                                         ]
                                                                     ),
@@ -705,10 +705,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                           // fixedSize: Size(426.sp, 149.sp),
                                                                           // minimumSize: MaterialStateProperty.all(Size(width, 50)),
                                                                           backgroundColor:
-                                                                          MaterialStateProperty.all(Colors.white),
+                                                                          MaterialStateProperty.all(Color(0xFFf1f1f1)),
                                                                           // elevation: MaterialStateProperty.all(3),
-                                                                          shadowColor:
-                                                                          MaterialStateProperty.all(Colors.white),
+
+
                                                                         ),
                                                                         /*  style: ElevatedButton.styleFrom(
                                       primary:  Colors.transparent,
@@ -721,9 +721,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                        label: Text("Sound preference",
+                                                                        label: Text("SOUND PREFERENCE",
                                                                           style: TextStyle(
-                                                                              color: Colors.black,
+                                                                              color: Color(0xFF989898),
                                                                               fontSize: 16.sp
 
                                                                           ),
@@ -756,10 +756,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                         boxShadow: [
                                                                           BoxShadow(
-                                                                            color: Colors.grey.withOpacity(0.5),
-                                                                            spreadRadius: 5,
-                                                                            blurRadius: 7,
-                                                                            offset: Offset(0, 3), // changes position of shadow
+                                                                            color: Colors.white,
+                                                                            spreadRadius: 10,
+                                                                            blurRadius: 5,
+                                                                            offset: Offset(3, 0), // changes position of shadow
                                                                           ),
                                                                         ]
                                                                     ),
@@ -783,7 +783,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                           // fixedSize: Size(426.sp, 149.sp),
                                                                           // minimumSize: MaterialStateProperty.all(Size(width, 50)),
                                                                           backgroundColor:
-                                                                          MaterialStateProperty.all(Colors.white),
+                                                                          MaterialStateProperty.all(Color(0xFFf1f1f1)),
                                                                           // elevation: MaterialStateProperty.all(3),
                                                                           shadowColor:
                                                                           MaterialStateProperty.all(Colors.white),
@@ -799,9 +799,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                        label: Text("Visual adjustments",
+                                                                        label: Text("VISUAL ADJUSTMENT",
                                                                           style: TextStyle(
-                                                                              color: Colors.black,
+                                                                              color: Color(0xFF989898),
                                                                               fontSize: 16.sp
 
                                                                           ),
@@ -834,10 +834,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                         boxShadow: [
                                                                           BoxShadow(
-                                                                            color: Colors.grey.withOpacity(0.5),
-                                                                            spreadRadius: 5,
-                                                                            blurRadius: 7,
-                                                                            offset: Offset(0, 3), // changes position of shadow
+                                                                            color: Colors.white,
+                                                                            spreadRadius: 10,
+                                                                            blurRadius: 5,
+                                                                            offset: Offset(3, 0), // changes position of shadow
                                                                           ),
                                                                         ]
                                                                     ),
@@ -861,7 +861,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                           // fixedSize: Size(426.sp, 149.sp),
                                                                           // minimumSize: MaterialStateProperty.all(Size(width, 50)),
                                                                           backgroundColor:
-                                                                          MaterialStateProperty.all(Colors.white),
+                                                                          MaterialStateProperty.all(Color(0xFFf1f1f1)),
                                                                           // elevation: MaterialStateProperty.all(3),
                                                                           shadowColor:
                                                                           MaterialStateProperty.all(Colors.white),
@@ -877,9 +877,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                        label: Text("Language                 ",
+                                                                        label: Text("LANGUAGE                 ",
                                                                           style: TextStyle(
-                                                                              color: Colors.black,
+                                                                              color: Color(0xFF989898),
                                                                               fontSize: 16.sp
 
                                                                           ),
@@ -928,7 +928,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                               boxShadow: [
                                                                                 BoxShadow(
-                                                                                  color: Colors.grey.withOpacity(0.5),
+                                                                                  color: Colors.white,
                                                                                   spreadRadius: 5,
                                                                                   blurRadius: 7,
                                                                                   offset: Offset(0, 3), // changes position of shadow
@@ -955,7 +955,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                                 // fixedSize: Size(426.sp, 149.sp),
                                                                                 // minimumSize: MaterialStateProperty.all(Size(width, 50)),
                                                                                 backgroundColor:
-                                                                                MaterialStateProperty.all(Colors.white),
+                                                                                MaterialStateProperty.all(Color(0xFFf1f1f1)),
                                                                                 // elevation: MaterialStateProperty.all(3),
                                                                                 shadowColor:
                                                                                 MaterialStateProperty.all(Colors.white),
@@ -971,9 +971,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                              label: Text("Erase account",
+                                                                              label: Text("ERASE ACCOUNT",
                                                                                 style: TextStyle(
-                                                                                    color: Colors.black,
+                                                                                     color: Color(0xFF989898),
                                                                                     fontSize: 16.sp
 
                                                                                 ),
@@ -1009,7 +1009,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                               boxShadow: [
                                                                                 BoxShadow(
-                                                                                  color: Colors.grey.withOpacity(0.5),
+                                                                                  color: Colors.white,
                                                                                   spreadRadius: 5,
                                                                                   blurRadius: 7,
                                                                                   offset: Offset(0, 3), // changes position of shadow
@@ -1036,7 +1036,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                                 // fixedSize: Size(426.sp, 149.sp),
                                                                                 // minimumSize: MaterialStateProperty.all(Size(width, 50)),
                                                                                 backgroundColor:
-                                                                                MaterialStateProperty.all(Colors.white),
+                                                                                MaterialStateProperty.all(Color(0xFFf1f1f1)),
                                                                                 // elevation: MaterialStateProperty.all(3),
                                                                                 shadowColor:
                                                                                 MaterialStateProperty.all(Colors.white),
@@ -1054,7 +1054,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                               label: Text("Erase cache",
                                                                                 style: TextStyle(
-                                                                                    color: Colors.black,
+                                                                                    color: Color(0xFF989898),
                                                                                     fontSize: 16.sp
 
                                                                                 ),
@@ -1094,7 +1094,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                               boxShadow: [
                                                                                 BoxShadow(
-                                                                                  color: Colors.grey.withOpacity(0.5),
+                                                                                  color: Colors.white,
                                                                                   spreadRadius: 5,
                                                                                   blurRadius: 7,
                                                                                   offset: Offset(0, 3), // changes position of shadow
@@ -1121,10 +1121,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                                 // fixedSize: Size(426.sp, 149.sp),
                                                                                 // minimumSize: MaterialStateProperty.all(Size(width, 50)),
                                                                                 backgroundColor:
-                                                                                MaterialStateProperty.all(Colors.white),
+                                                                                MaterialStateProperty.all(Color(0xFFf1f1f1)),
                                                                                 // elevation: MaterialStateProperty.all(3),
-                                                                                shadowColor:
-                                                                                MaterialStateProperty.all(Colors.white),
+
                                                                               ),
                                                                               /*  style: ElevatedButton.styleFrom(
                                       primary:  Colors.transparent,
@@ -1137,9 +1136,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                              label: Text("Privacy policy",
+                                                                              label: Text("PRIVACY POLICY",
                                                                                 style: TextStyle(
-                                                                                    color: Colors.black,
+                                                                                    color: Color(0xFF989898),
                                                                                     fontSize: 16.sp
 
                                                                                 ),
@@ -1175,7 +1174,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                               boxShadow: [
                                                                                 BoxShadow(
-                                                                                  color: Colors.grey.withOpacity(0.5),
+                                                                                  color: Colors.white,
                                                                                   spreadRadius: 5,
                                                                                   blurRadius: 7,
                                                                                   offset: Offset(0, 3), // changes position of shadow
@@ -1198,10 +1197,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                                 // fixedSize: Size(426.sp, 149.sp),
                                                                                 // minimumSize: MaterialStateProperty.all(Size(width, 50)),
                                                                                 backgroundColor:
-                                                                                MaterialStateProperty.all(Colors.white),
+                                                                                MaterialStateProperty.all(Color(0xFFf1f1f1)),
                                                                                 // elevation: MaterialStateProperty.all(3),
-                                                                                shadowColor:
-                                                                                MaterialStateProperty.all(Colors.white),
+
                                                                               ),
                                                                               /*  style: ElevatedButton.styleFrom(
                                       primary:  Colors.transparent,
@@ -1214,9 +1212,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                              child: Text("Terms and conditions",
+                                                                              child: Text("TERMS AND CONDITIONS",
                                                                                 style: TextStyle(
-                                                                                    color: Colors.black,
+                                                                                    color: Color(0xFF989898),
                                                                                     fontSize: 16.sp
 
                                                                                 ),
@@ -1255,8 +1253,8 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                     begin: Alignment.centerLeft,
                                                     end: Alignment.centerRight,
                                                     tileMode: TileMode.repeated,
-                                                    colors: [ Color(0xFFFFE72E),
-                                                      Color(0xFFF08800),
+                                                    colors: [ Color(0xFFf15e26 ),
+                                                      Color(0xFFf89f37),
                                                     ]),
                                               ),
                                               child: Text(

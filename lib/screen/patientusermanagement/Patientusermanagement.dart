@@ -568,8 +568,8 @@ class PatientusermanagementState extends State<Patientusermanagement>{
 
                                                         begin: Alignment.centerLeft,
                                                         end: Alignment.centerRight,
-                                                        colors: [ Color(0xFFF08800),
-                                                          Color(0xFFFFE72E),
+                                                        colors: [ Color(0xFFf15e26),
+                                                          Color(0xFFf89f37),
                                                         ],
                                                         tileMode: TileMode.repeated)
 

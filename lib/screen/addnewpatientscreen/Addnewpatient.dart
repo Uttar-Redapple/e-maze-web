@@ -230,7 +230,7 @@ class Addnewpatientstate extends State<Addnewpatient>{
                             height: 10.sp,
                           ),
                           Container(
-                            padding: EdgeInsets.only(left: 70.sp,right: 70.sp),
+
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -243,9 +243,9 @@ class Addnewpatientstate extends State<Addnewpatient>{
                                     children: [
 
                                       Container(
-                                        height: 296.sp,
+                                        padding: EdgeInsets.only(top: 10.sp,bottom: 10.sp),
+                                        height: 320.sp,
                                         width: 252.sp,
-                                        padding: EdgeInsets.all(10.sp),
                                         decoration: BoxDecoration(
                                             gradient: LinearGradient(
 
@@ -266,10 +266,10 @@ class Addnewpatientstate extends State<Addnewpatient>{
                                                 color: Colors.transparent.withOpacity(1.0)
                                             ),
                                             borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(20.sp),
-                                               // bottomRight: Radius.circular(40.sp),
-                                                topLeft: Radius.circular(20.sp))
-                                               // bottomLeft: Radius.circular(40.sp))
+                                                topRight: Radius.circular(40.sp),
+                                                bottomRight: Radius.circular(40.sp),
+                                                topLeft: Radius.circular(40.sp),
+                                                bottomLeft: Radius.circular(40.sp)),
 
                                         ),
 
@@ -384,6 +384,60 @@ class Addnewpatientstate extends State<Addnewpatient>{
                                                       ),
                                                     ),
                                                   ),
+                                                  Container(
+                                                    height: 10.sp,
+                                                  ),
+                                                  Container(
+                                                    height: 50.sp,
+                                                    width: 252.sp,
+                                                    decoration:  BoxDecoration(
+
+                                                        gradient: LinearGradient(
+                                                            begin: Alignment.centerLeft,
+                                                            end: Alignment.centerRight,
+                                                            colors: <Color> [
+                                                              Color(0xFF8D023B),
+                                                              Color(0xFFFF2F6D)
+
+
+
+
+                                                            ],
+                                                            tileMode: TileMode.repeated
+                                                        )
+                                                    ),
+                                                    child:  Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Stack(
+                                                          alignment: Alignment.center,
+                                                          children: [
+                                                            Align(
+                                                              alignment: Alignment.center,
+                                                              child: Text(
+                                                                "Browse users",
+                                                                textAlign: TextAlign.center,
+                                                                style: TextStyle(
+                                                                  color: Colors.white,
+                                                                  fontSize: 15.sp,
+                                                                  fontWeight: FontWeight.bold,
+                                                                ),
+
+                                                              ),
+                                                            ),
+                                                            Align(
+                                                                alignment: Alignment.centerLeft,
+                                                                child: IconButton(
+                                                                  icon: Image.asset('assets/images/search.png'), onPressed: () {  },
+                                                                )
+                                                            ),
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ) ,
+                                                  )
+
                                                 ],
                                               ),
                                             ),
@@ -448,6 +502,59 @@ class Addnewpatientstate extends State<Addnewpatient>{
                                                       ),
                                                     ),
                                                   ),
+                                                  Container(
+                                                    height: 10.sp,
+                                                  ),
+                                                  Container(
+                                                    height: 50.sp,
+                                                    width: 252.sp,
+                                                    decoration:  BoxDecoration(
+
+                                                        gradient: LinearGradient(
+                                                            begin: Alignment.centerLeft,
+                                                            end: Alignment.centerRight,
+                                                            colors: <Color> [
+                                                              Color(0xFF8D023B),
+                                                              Color(0xFFFF2F6D)
+
+
+
+
+                                                            ],
+                                                            tileMode: TileMode.repeated
+                                                        )
+                                                    ),
+                                                    child:  Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Stack(
+                                                          alignment: Alignment.center,
+                                                          children: [
+                                                            Align(
+                                                              alignment: Alignment.center,
+                                                              child: Text(
+                                                                "Browse users",
+                                                                textAlign: TextAlign.center,
+                                                                style: TextStyle(
+                                                                  color: Colors.white,
+                                                                  fontSize: 15.sp,
+                                                                  fontWeight: FontWeight.bold,
+                                                                ),
+
+                                                              ),
+                                                            ),
+                                                            Align(
+                                                                alignment: Alignment.centerLeft,
+                                                                child: IconButton(
+                                                                  icon: Image.asset('assets/images/search.png'), onPressed: () {  },
+                                                                )
+                                                            ),
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ) ,
+                                                  )
 
 
 
@@ -460,56 +567,7 @@ class Addnewpatientstate extends State<Addnewpatient>{
                                         ),
 
                                       ),
-                                      Container(
-                                        height: 50.sp,
-                                        width: 252.sp,
-                                        decoration:  BoxDecoration(
 
-                                            gradient: LinearGradient(
-                                                begin: Alignment.centerLeft,
-                                                end: Alignment.centerRight,
-                                                colors: <Color> [
-                                                  Color(0xFF8D023B),
-                                                  Color(0xFFFF2F6D)
-
-
-
-
-                                                ],
-                                                tileMode: TileMode.repeated
-                                            )
-                                        ),
-                                        child:  Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Stack(
-                                              alignment: Alignment.center,
-                                              children: [
-                                                Align(
-                                                  alignment: Alignment.center,
-                                                  child: Text(
-                                                    "Browse users",
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 15.sp,
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
-
-                                                  ),
-                                                ),
-                                                Align(
-                                                  alignment: Alignment.centerLeft,
-                                                  child: IconButton(
-                                                    icon: Image.asset('assets/images/search.png'), onPressed: () {  },
-                                                  )
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ) ,
-                                      )
                                     ],
                                   ),
                                 ),
@@ -873,8 +931,8 @@ class Addnewpatientstate extends State<Addnewpatient>{
                                               begin: Alignment.centerLeft,
                                               end: Alignment.centerRight,
                                               tileMode: TileMode.repeated,
-                                              colors: [ Color(0xFFFFE72E),
-                                                Color(0xFFF08800),
+                                              colors: [ Color(0xFFf15e26),
+                                                Color(0xFFf89f37),
                                               ]),
                                         ),
                                         child: Text(

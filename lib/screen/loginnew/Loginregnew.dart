@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -14,6 +16,20 @@ class Loginregnew extends StatefulWidget{
 class LoginregnewState extends State<Loginregnew>{
   bool _hasBeenPressedlogin = false;
   bool _hasBeenPressedregister = false;
+  double _width = 600.sp;
+  double _height = 450.sp;
+
+  BorderRadiusGeometry _borderRadius = BorderRadius.circular(40.sp);
+
+  Color _logincolor = Colors.green;
+  Color _regcolor = Colors.white;
+  Color _logintextcolor=Colors.white;
+  Color _regtextcolor=Colors.black;
+  double _regwidth = 570.sp;
+  double _regheight = 370.sp;
+
+  BorderRadiusGeometry _regborderRadius = BorderRadius.circular(40.sp);
+
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController regnameController = TextEditingController();
@@ -84,7 +100,11 @@ class LoginregnewState extends State<Loginregnew>{
                     ),
                   ),
                  Container(
+                   height: 5.sp,
+                 ),
+                 Container(
                    height: 47.sp,
+                   padding: EdgeInsets.all(5.sp),
 
                    decoration: BoxDecoration(
                        color: Colors.white,
@@ -111,16 +131,30 @@ class LoginregnewState extends State<Loginregnew>{
                              //     disabledColor: Colors.red,
                              // disabledTextColor: Colors.black,
                              padding:  EdgeInsets.all(20),
-                             textColor: Colors.white,
+                             textColor: _logintextcolor,
                            //  color: Colors.green,
-                             color: _hasBeenPressedregister ? Colors.white : Colors.green,
+                             color: _logincolor,
                              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.sp)),
                              onPressed: () {
                                setState(() {
+                                // final random = Random();
+                                 _regcolor = Colors.white;
+                                 _logincolor=Colors.green;
+                                  _logintextcolor=Colors.white;
+                                  _regtextcolor=Colors.black;
+                                 // Generate a random width and height.
+                                 _width = 600.sp;
+                                 _height = 450.sp;
+                                  _regwidth = 570.sp;
+                                  _regheight = 370.sp;
+                                 _regborderRadius =
+                                     BorderRadius.circular(50.sp);
+                                 _borderRadius =
+                                     BorderRadius.circular(50.sp);
                                  _hasBeenPressedregister = !_hasBeenPressedregister;
                                });
                              },
-                             child: Text('Login'),
+                             child: Text('LOGIN'),
                            ),
                          ),
                        ),
@@ -133,16 +167,30 @@ class LoginregnewState extends State<Loginregnew>{
                              //     disabledColor: Colors.red,
                              // disabledTextColor: Colors.black,
                              padding:  EdgeInsets.all(20),
-                             textColor: Colors.black,
+                             textColor: _regtextcolor,
+
                             // color: Colors.white,
-                             color: _hasBeenPressedregister ? Colors.green : Colors.white,
+                             color: _regcolor,
                             shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.sp)),
                              onPressed: () {
                                setState(() {
+                                 _logincolor = Colors.white;
+                                 _regcolor= Colors.green;
+                                 _logintextcolor=Colors.black;
+                                 _regtextcolor=Colors.white;
+                                 _width = 500.sp;
+                                 _height = 350.sp;
+                                 _borderRadius =
+                                     BorderRadius.circular(50.sp);
+
+                                 _regwidth = 650.sp;
+                                 _regheight = 450.sp;
+                                 _regborderRadius =
+                                     BorderRadius.circular(50.sp);
                                  _hasBeenPressedlogin = !_hasBeenPressedlogin;
                                });
                              },
-                             child: Text('Registration'),
+                             child: Text('REGISTRATION'),
                            ),
                          ),
                        ),
@@ -165,12 +213,12 @@ class LoginregnewState extends State<Loginregnew>{
                            padding: EdgeInsets.all(40.sp),
                            child: Align(
                              alignment: Alignment.topLeft,
-                             child: Container(
+                             child: AnimatedContainer(
 
 
                                padding: EdgeInsets.all(10.sp),
-                               width: 500.sp,
-                               height: 350.sp,
+                               width: _width,
+                               height: _height,
 
                                decoration: BoxDecoration(
                                    gradient: LinearGradient(
@@ -190,9 +238,10 @@ class LoginregnewState extends State<Loginregnew>{
 
                                        color: Colors.transparent.withOpacity(1.0)
                                    ),
-                                   borderRadius: BorderRadius.all(Radius.circular(40.sp))
+                                 borderRadius: _borderRadius,
 
                                ),
+                                 duration:  Duration(seconds: 1),
                                child: Column(
 
                                  children:<Widget>[
@@ -335,7 +384,7 @@ class LoginregnewState extends State<Loginregnew>{
                                        ),
                                        child: RaisedButton(
                                          onPressed: () {
-                                           Navigator.pushNamed(context, 'therapist/verifycertificates');
+                                           Navigator.pushNamed(context, 'patient/profile');
                                          },
 
                                          color: Color(0xFF29AAE1),
@@ -368,12 +417,12 @@ class LoginregnewState extends State<Loginregnew>{
                            padding: EdgeInsets.all(20.sp),
                            child: Align(
 
-                             child: Container(
+                             child: AnimatedContainer(
 
 
                                padding: EdgeInsets.all(10.sp),
-                               width: 600.sp,
-                               height: 400.sp,
+                               width: _regwidth,
+                               height: _regheight,
 
                                decoration: BoxDecoration(
                                    gradient: LinearGradient(
@@ -393,9 +442,11 @@ class LoginregnewState extends State<Loginregnew>{
 
                                             color: Colors.transparent
                                         ),*/
-                                   borderRadius: BorderRadius.all(Radius.circular(40.sp))
+                                   borderRadius: _regborderRadius
 
                                ),
+                               duration:  Duration(seconds: 1),
+                               curve: Curves.fastOutSlowIn,
                                child: Column(
                                  children: [
                                    Container(
@@ -555,7 +606,7 @@ class LoginregnewState extends State<Loginregnew>{
                                      ),
                                    ),
                                    Container(
-                                     height: 40.sp,
+                                     height: 10.sp,
 
                                    ),
                                    Container(

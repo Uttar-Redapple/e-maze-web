@@ -646,7 +646,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       ),
                                                       Container(
                                                         height: 2.sp,
-                                                        color: Colors.grey,
+                                                        color: Colors.grey.withOpacity(0.5),
                                                       ),
                                                       Container(
                                                         height: 10.sp,
@@ -707,7 +707,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       ),
                                                       Container(
                                                         height: 2.sp,
-                                                        color: Colors.grey,
+                                                        color: Colors.grey.withOpacity(0.5),
                                                       ),
                                                       Container(
                                                         height: 10.sp,
@@ -772,7 +772,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       ),
                                                       Container(
                                                         height: 2.sp,
-                                                        color: Colors.grey,
+                                                        color: Colors.grey.withOpacity(0.5),
                                                       ),
                                                       Container(
                                                         height: 10.sp,
@@ -837,7 +837,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       ),
                                                       Container(
                                                         height: 2.sp,
-                                                        color: Colors.grey,
+                                                        color: Colors.grey.withOpacity(0.5),
                                                       ),
                                                       Container(
                                                         height: 10.sp,
@@ -902,7 +902,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       ),
                                                       Container(
                                                         height: 2.sp,
-                                                        color: Colors.grey,
+                                                        color: Colors.grey.withOpacity(0.5),
                                                       ),
                                                       Container(
                                                         height: 10.sp,
@@ -967,7 +967,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       ),
                                                       Container(
                                                         height: 2.sp,
-                                                        color: Colors.grey,
+                                                        color: Colors.grey.withOpacity(0.5),
                                                       ),
                                                       Container(
                                                         height: 10.sp,
@@ -1118,7 +1118,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
                                                           },
 
-                                                          color: Color(0xFFB24761),
+                                                          color: Color(0xFFFF2D5E),
                                                           child: Text("Change password >",
                                                             style: TextStyle(
                                                                 color: Colors.white,

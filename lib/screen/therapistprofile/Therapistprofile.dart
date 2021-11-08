@@ -507,6 +507,8 @@ class TherapistprofileState extends State<Therapistprofile>{
                                             fillColor: Colors.white70,
                                             labelText: 'User Name',
                                             icon: IconButton(
+
+
                                               icon: Image.asset('assets/images/username.png'), onPressed: () {  },
                                             )
                                         ),
@@ -779,8 +781,8 @@ class TherapistprofileState extends State<Therapistprofile>{
                                       begin: Alignment.centerLeft,
                                       end: Alignment.centerRight,
                                       tileMode: TileMode.repeated,
-                                      colors: [ Color(0xFFF08800),
-                                        Color(0xFFFFE72E),
+                                      colors: [ Color(0xFFf15e26),
+                                        Color(0xFFf89f37),
                                       ]),
                                 ),
                                 child: Text(
