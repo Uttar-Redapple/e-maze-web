@@ -155,7 +155,10 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                             _hasBeenPressedregister = !_hasBeenPressedregister;
                                           });
                                         },
-                                        child: Text('LOGIN'),
+                                        child: Text(
+                                            'LOGIN',
+                                            style:  TextStyle(fontWeight: FontWeight.bold)
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -191,7 +194,10 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                             _hasBeenPressedlogin = !_hasBeenPressedlogin;
                                           });
                                         },
-                                        child: Text('REGISTRATION'),
+                                        child: Text(
+                                            'REGISTER',
+                                            style:  TextStyle(fontWeight: FontWeight.bold)
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -222,7 +228,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                           height: _height,
 
                                           decoration: BoxDecoration(
-                                            gradient: LinearGradient(
+                                            color: Colors.transparent,
+                                           /* gradient: LinearGradient(
                                                 begin: Alignment.centerLeft,
                                                 end: Alignment.centerRight,
                                                 colors: <Color> [
@@ -234,10 +241,10 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                 ],
                                                 tileMode: TileMode.repeated
-                                            ),
+                                            ),*/
                                             border: Border.all(
 
-                                                color: Colors.transparent.withOpacity(1.0)
+                                                color: Color(0xFF55708b)
                                             ),
                                             borderRadius: _borderRadius,
 
@@ -254,7 +261,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                   children: [
                                                     Text(
-                                                      "USER/EMAIL/ID/PHONE",
+                                                      "USER /EMAIL /ID /PHONE",
                                                       textAlign: TextAlign.center,
                                                       style: TextStyle(
                                                           color: Colors.white,
@@ -287,7 +294,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                       controller: nameController,
                                                       decoration: InputDecoration(
                                                         border: UnderlineInputBorder(),
-                                                        labelText: 'User Name',
+                                                        labelText: 'name@example.com',
                                                       ),
                                                     ),
                                                     TextFormField(
@@ -297,7 +304,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                       decoration: InputDecoration(
 
                                                           border: UnderlineInputBorder(),
-                                                          labelText: 'Password',
+                                                          labelText: '*******',
                                                           suffixIcon: GestureDetector(
                                                             onLongPress: () {
                                                               setState(() {
@@ -342,8 +349,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                       ),
                                                     ),
                                                     Container(
-                                                      width: 10.sp,
-                                                      height: 10.sp,
+                                                      width: 2.sp,
+                                                      height: 2.sp,
                                                     ),
                                                     Text(
                                                       "Remember me",
@@ -354,13 +361,9 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                       ),
 
                                                     ),
-                                                    Container(
-                                                      width: 10.sp,
-                                                      height: 10.sp,
-                                                      margin:  EdgeInsets.only(left: 80.sp, right: 80.sp),
-                                                    ),
+                                                    Spacer(),
                                                     Text(
-                                                      "Forgot password",
+                                                      "Forgot password?",
                                                       textAlign: TextAlign.center,
                                                       style: TextStyle(
                                                           color: Colors.white,
@@ -426,7 +429,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                           height: _regheight,
 
                                           decoration: BoxDecoration(
-                                              gradient: LinearGradient(
+                                            color: Colors.transparent,
+                                             /* gradient: LinearGradient(
                                                   begin: Alignment.centerLeft,
                                                   end: Alignment.centerRight,
                                                   colors: <Color> [
@@ -438,11 +442,11 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                   ],
                                                   tileMode: TileMode.repeated
-                                              ),
-                                              /* border: Border.all(
+                                              ),*/
+                                               border: Border.all(
 
-                                            color: Colors.transparent
-                                        ),*/
+                                            color: Color(0xFF55708b)
+                                        ),
                                               borderRadius: _regborderRadius
 
                                           ),
@@ -477,7 +481,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               fillColor: Colors.white70,
                                                               labelText: 'User Name',
                                                               icon: IconButton(
-                                                                icon: Image.asset('assets/images/username.png'), onPressed: () {  },
+                                                                icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
                                                               )
                                                           ),
                                                         ),
@@ -501,7 +505,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                               labelText: 'Email',
                                                               icon: IconButton(
-                                                                icon: Image.asset('assets/images/message.png'), onPressed: () {  },
+                                                                icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
                                                               )
                                                           ),
                                                         ),
@@ -523,7 +527,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               fillColor: Colors.white70,
                                                               labelText: 'Phone number',
                                                               icon: IconButton(
-                                                                icon: Image.asset('assets/images/contact.png'), onPressed: () {  },
+                                                                icon: Image.asset('assets/images/contact-gray.png'), onPressed: () {  },
                                                               )
                                                           ),
                                                         ),
@@ -545,7 +549,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               ),
                                                               labelText: 'Password',
                                                               icon: IconButton(
-                                                                icon: Image.asset('assets/images/lock.png'), onPressed: () {  },
+                                                                icon: Image.asset('assets/images/lock-gray.png'), onPressed: () {  },
                                                               ),
                                                               suffixIcon: GestureDetector(
                                                                 onLongPress: () {

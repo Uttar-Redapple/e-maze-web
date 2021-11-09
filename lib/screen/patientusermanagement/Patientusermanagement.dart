@@ -180,7 +180,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                                 width: 20.sp,
                                               ),
                                               Text(
-                                                "Patients User management",
+                                                "PATIENTS USER MANAGEMENT",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   color: Colors.black,

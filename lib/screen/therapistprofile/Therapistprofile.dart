@@ -69,7 +69,7 @@ class TherapistprofileState extends State<Therapistprofile>{
             child: Column(
               children: [
                 Container(
-                  height: 82.sp,
+                  height: 110.sp,
 
                   decoration: BoxDecoration(
                       color: Color(0xFFF1F1F1),
@@ -102,11 +102,16 @@ class TherapistprofileState extends State<Therapistprofile>{
                             Align(
                               alignment: Alignment.centerRight,
                               child: Container(
-                                padding: EdgeInsets.all(10.sp),
-                                width: 192.sp,
+                                padding: EdgeInsets.all(25.sp),
+                                width: 250.sp,
 
                                 decoration: BoxDecoration(
-                                    border: new Border.all(
+                                    image: DecorationImage(
+                                      image: AssetImage("assets/images/assertss.png"),
+
+                                      fit: BoxFit.cover,
+                                    ),
+                                   /* border: new Border.all(
                                       color: Colors.white.withOpacity(
                                           1.0),
                                       width: 1,
@@ -118,8 +123,8 @@ class TherapistprofileState extends State<Therapistprofile>{
                                         blurRadius: 7,
                                         offset: Offset(0, 3), // changes position of shadow
                                       ),
-                                    ],
-                                    borderRadius: new BorderRadius.only(
+                                    ],*/
+                                    /*borderRadius: new BorderRadius.only(
                                         topLeft: const Radius.circular(
                                             40.0),
                                         topRight: const Radius.circular(
@@ -128,7 +133,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                                             40.0),
                                         bottomLeft: const Radius.circular(
                                             40.0)
-                                    )
+                                    )*/
                                 ),
                                 child: Column(
                                   children: [
@@ -187,6 +192,11 @@ class TherapistprofileState extends State<Therapistprofile>{
                                     width: 49.sp,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage("assets/images/assets.png"),
+
+                                        fit: BoxFit.cover,
+                                      ),
                                       border: new Border.all(
                                         color: Colors.white.withOpacity(
                                             1.0),
@@ -295,8 +305,10 @@ class TherapistprofileState extends State<Therapistprofile>{
                             ],
                             tabBarProperties: TabBarProperties(
                               width: 172.sp,
-                              height: 22.sp,
+                              height: 15.sp,
                               background: Container(
+                                width: 172.sp,
+                                height: 30.sp,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -806,7 +818,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                   height: 35.sp,
                 ),
                 Container(
-                  height: 95.sp,
+                  height: 70.sp,
 
                   decoration:  BoxDecoration(
 
@@ -901,32 +913,42 @@ class TherapistprofileState extends State<Therapistprofile>{
                child: Row(
                  children: [
                    SizedBox(
-                     height: 40.sp,
-                     width: 40.sp,
-                     child: IconButton(
+                     height: 30.sp,
+                     width: 30.sp,
+                     /*child: IconButton(
                        icon: Image.asset('assets/images/profile.png'), onPressed: () {
 
                      },
 
-                     ),
+                     ),*/
                    ),
                    Text(
                      "SETTING",
                      textAlign: TextAlign.center,
                      style: TextStyle(
                          color: Colors.black,
-                         fontSize: 15.sp,
+                         fontSize: 12.sp,
 
 
                      ),
 
+                   ),
+                   SizedBox(
+                     height: 20.sp,
+                     width: 20.sp,
+                     /*child: IconButton(
+                      icon: Image.asset('assets/images/profile.png'), onPressed: () {
+
+                    },
+
+                    ),*/
                    ),
                    Expanded(
                      child: SizedBox(
                        height: 40.sp,
                        width: 40.sp,
                        child: IconButton(
-                         icon: Image.asset('assets/images/logout.png'), onPressed: () {
+                         icon: Image.asset('assets/images/profile.png'), onPressed: () {
 
                        },
 
@@ -961,7 +983,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),
@@ -992,7 +1014,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1022,7 +1044,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1052,7 +1074,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1082,7 +1104,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1116,7 +1138,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),
@@ -1151,7 +1173,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),

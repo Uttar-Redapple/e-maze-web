@@ -468,7 +468,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                             circularStrokeCap: CircularStrokeCap.butt,
                                             backgroundColor: Color(0xFFD4D4D4),
                                             footer: Text(
-                                              "Patient's performance+2%",
+                                              "User's performance+2%",
                                               style:
                                               new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                                             ),
@@ -679,9 +679,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                         boxShadow: [
                                                                           BoxShadow(
                                                                             color: Colors.white,
-                                                                            spreadRadius: 10,
-                                                                            blurRadius: 5,
-                                                                            offset: Offset(3, 0), // changes position of shadow
+                                                                            spreadRadius: 5,
+                                                                            blurRadius: 7,
+                                                                            offset: Offset(0, 3), // changes position of shadow
                                                                           ),
                                                                         ]
                                                                     ),
@@ -757,9 +757,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                         boxShadow: [
                                                                           BoxShadow(
                                                                             color: Colors.white,
-                                                                            spreadRadius: 10,
-                                                                            blurRadius: 5,
-                                                                            offset: Offset(3, 0), // changes position of shadow
+                                                                            spreadRadius: 5,
+                                                                            blurRadius: 7,
+                                                                            offset: Offset(0, 3), // changes position of shadow
                                                                           ),
                                                                         ]
                                                                     ),
@@ -835,9 +835,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                         boxShadow: [
                                                                           BoxShadow(
                                                                             color: Colors.white,
-                                                                            spreadRadius: 10,
-                                                                            blurRadius: 5,
-                                                                            offset: Offset(3, 0), // changes position of shadow
+                                                                            spreadRadius: 5,
+                                                                            blurRadius: 7,
+                                                                            offset: Offset(0, 3), // changes position of shadow
                                                                           ),
                                                                         ]
                                                                     ),
@@ -1052,7 +1052,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                              label: Text("Erase cache",
+                                                                              label: Text("ERASE CACHE",
                                                                                 style: TextStyle(
                                                                                     color: Color(0xFF989898),
                                                                                     fontSize: 16.sp

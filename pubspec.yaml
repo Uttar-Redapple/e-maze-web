@@ -42,6 +42,7 @@ dependencies:
   responsive_builder: ^0.4.1
   flutter_switch: ^0.3.2
   flutter_fadein: ^2.0.0
+  flutter_gradient_colors: ^2.1.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -117,6 +118,13 @@ flutter:
     - assets/images/forward.png
     - assets/images/logout.png
     - assets/images/logous.png
+    - assets/images/assets.png
+    - assets/images/assertss.png
+    - assets/images/contact-gray.png
+    - assets/images/message-gray.png
+    - assets/images/lock-gray.png
+    - assets/images/username-gray.png
+    - assets/images/gp.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -52,7 +52,7 @@ class PatientprofileState extends State<Patientprofile>{
                         child: Column(
                           children: [
                             Container(
-                              height: 82.sp,
+                              height: 110.sp,
 
                               decoration: BoxDecoration(
                                   color: Color(0xFFF1F1F1),
@@ -85,15 +85,28 @@ class PatientprofileState extends State<Patientprofile>{
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Container(
-                                            padding: EdgeInsets.all(10.sp),
-                                            width: 192.sp,
+                                            padding: EdgeInsets.all(25.sp),
+                                            width: 250.sp,
 
                                             decoration: BoxDecoration(
-                                                border: Border.all(
+                                               /* border: Border.all(
                                                   color: Colors.white.withOpacity(
                                                       1.0), // red as border color
+                                                ),*/
+                                                image: DecorationImage(
+                                                  image: AssetImage("assets/images/assertss.png"),
+
+                                                  fit: BoxFit.cover,
                                                 ),
-                                                borderRadius: new BorderRadius.only(
+                                               /* boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.white.withOpacity(0.5),
+                                                    spreadRadius: 5,
+                                                    blurRadius: 7,
+                                                    offset: Offset(0, 3), // changes position of shadow
+                                                  ),
+                                                ],*/
+                                               /* borderRadius: new BorderRadius.only(
                                                     topLeft: const Radius.circular(
                                                         40.0),
                                                     topRight: const Radius.circular(
@@ -102,7 +115,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                         40.0),
                                                     bottomLeft: const Radius.circular(
                                                         40.0)
-                                                )
+                                                )*/
+
                                             ),
                                             child: Column(
                                               children: [
@@ -160,12 +174,11 @@ class PatientprofileState extends State<Patientprofile>{
                                                 width: 49.sp,
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
-                                                  border: new Border.all(
-                                                    color: Colors.white.withOpacity(
-                                                        1.0),
-                                                    width: 2.5,
-                                                  ),
+                                                  image: DecorationImage(
+                                                    image: AssetImage("assets/images/assets.png"),
 
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
                                                 child: SizedBox(
 
@@ -262,8 +275,10 @@ class PatientprofileState extends State<Patientprofile>{
                                             ],
                                             tabBarProperties: TabBarProperties(
                                               width: 172.sp,
-                                              height: 22.sp,
+                                              height: 15.sp,
                                               background: Container(
+                                                width: 172.sp,
+                                                height: 30.sp,
                                                 decoration: BoxDecoration(
                                                     color: Colors.white,
                                                     borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -282,7 +297,7 @@ class PatientprofileState extends State<Patientprofile>{
                                               indicator: ShapeDecoration(
                                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
                                                       topLeft: radius,bottomLeft: radius,bottomRight: radius)),
-                                                  color: Color(0xFF29AAE1)
+                                                color: Color(0xFF29AAE1),
                                               ),
                                               indicatorColor: Colors.transparent,
                                               labelColor: Colors.white,
@@ -300,6 +315,14 @@ class PatientprofileState extends State<Patientprofile>{
                                                       height: 130.sp,
                                                       decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              spreadRadius: 7,
+                                                              color: Colors.white,
+                                                            //  offset: Offset(2, 2),
+                                                              blurRadius: 3,
+                                                            )
+                                                          ],
                                                           image: DecorationImage(
                                                             fit: BoxFit.fill,
                                                             image: NetworkImage(
@@ -366,6 +389,14 @@ class PatientprofileState extends State<Patientprofile>{
                                                       height: 130.sp,
                                                       decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              spreadRadius: 7,
+                                                              color: Colors.white,
+                                                               // offset: Offset(10, 4),
+                                                              blurRadius: 3,
+                                                            )
+                                                          ],
                                                           image: DecorationImage(
                                                             fit: BoxFit.fill,
                                                             image: NetworkImage(
@@ -547,9 +578,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                   padding: EdgeInsets.all(20.sp),
                                                   decoration: BoxDecoration(
                                                     color: Colors.white,
-                                                    border: Border.all(
-
-
+                                                    border: new Border.all(
+                                                      color: Colors.transparent,
+                                                      width: 0,
                                                     ),
                                                     borderRadius: BorderRadius.all(Radius.circular(20)),
                                                     boxShadow: [
@@ -563,180 +594,56 @@ class PatientprofileState extends State<Patientprofile>{
                                                   ),
                                                   child: Column(
                                                     children: [
-                                                      Column(
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                         children: [
-                                                          Stack(
-                                                            alignment: Alignment.center,
-                                                            children: [
-                                                              Align(
-                                                                alignment: Alignment.center,
-                                                                child: Text(
-                                                                  "Lauren",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
 
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment: Alignment.centerRight,
-                                                                child: Text(
-                                                                  "Edit",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
+                                                          Align(
+                                                            alignment: Alignment.centerLeft,
+                                                            child: Text(
+                                                              "FIRST NAME *",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
                                                               ),
 
-                                                              Align(
-                                                                alignment: Alignment.centerLeft,
-                                                                child: Text(
-                                                                  "First name *",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
-                                                              )
-                                                            ],
-                                                          )
-                                                        ],
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-
-                                                      ),
-                                                      Container(
-                                                        height: 2.sp,
-                                                        color: Colors.grey,
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-
-                                                      ),
-                                                      Column(
-                                                        children: [
-                                                          Stack(
-                                                            alignment: Alignment.center,
-                                                            children: [
-                                                              Align(
-                                                                alignment: Alignment.center,
-                                                                child: Text(
-                                                                  "Hrish",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment: Alignment.centerRight,
-                                                                child: Text(
-                                                                  "Edit",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
-                                                              ),
-
-                                                              Align(
-                                                                alignment: Alignment.centerLeft,
-                                                                child: Text(
-                                                                  "Last name*",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
-                                                              )
-                                                            ],
-                                                          )
-                                                        ],
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-
-                                                      ),
-                                                      Container(
-                                                        height: 2.sp,
-                                                        color: Colors.grey,
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-
-                                                      ),
-                                                      Column(
-                                                        children: [
-                                                          Stack(
-                                                            alignment: Alignment.center,
-                                                            children: [
-                                                              Align(
-                                                                alignment: Alignment.center,
-                                                                child: Text(
-                                                                  "lauren@gmail.com",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment: Alignment.centerRight,
-                                                                child: Text(
-                                                                  "Edit",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
-                                                              ),
-
-                                                              Align(
-                                                                alignment: Alignment.centerLeft,
-                                                                child: Text(
-                                                                  "Email *",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
-                                                              )
-                                                            ],
+                                                            ),
                                                           ),
+                                                          Container(
+                                                            width: 80.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.center,
+                                                            child: Text(
+                                                              "Lauren",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
 
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 480.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.centerRight,
+                                                            child: Text(
+                                                              "EDIT",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
 
-
+                                                            ),
+                                                          ),
                                                         ],
-
                                                       ),
                                                       Container(
                                                         height: 10.sp,
@@ -744,64 +651,62 @@ class PatientprofileState extends State<Patientprofile>{
                                                       ),
                                                       Container(
                                                         height: 2.sp,
-                                                        color: Colors.grey,
+                                                        color: Colors.grey.withOpacity(0.5),
                                                       ),
                                                       Container(
                                                         height: 10.sp,
 
                                                       ),
-                                                      Column(
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                         children: [
-                                                          Stack(
-                                                            alignment: Alignment.center,
-                                                            children: [
-                                                              Align(
-                                                                alignment: Alignment.center,
-                                                                child: Text(
-                                                                  "8273456783",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
 
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment: Alignment.centerRight,
-                                                                child: Text(
-                                                                  "Edit",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
+                                                          Align(
+                                                            alignment: Alignment.centerLeft,
+                                                            child: Text(
+                                                              "LAST NAME *",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
                                                               ),
 
-                                                              Align(
-                                                                alignment: Alignment.centerLeft,
-                                                                child: Text(
-                                                                  "Phone number *",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
-                                                              )
-                                                            ],
+                                                            ),
                                                           ),
+                                                          Container(
+                                                            width: 80.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.center,
+                                                            child: Text(
+                                                              "Harish",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
 
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 480.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.centerRight,
+                                                            child: Text(
+                                                              "EDIT",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
 
-
+                                                            ),
+                                                          ),
                                                         ],
-
                                                       ),
                                                       Container(
                                                         height: 10.sp,
@@ -809,64 +714,62 @@ class PatientprofileState extends State<Patientprofile>{
                                                       ),
                                                       Container(
                                                         height: 2.sp,
-                                                        color: Colors.grey,
+                                                        color: Colors.grey.withOpacity(0.5),
                                                       ),
                                                       Container(
                                                         height: 10.sp,
 
                                                       ),
-                                                      Column(
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                         children: [
-                                                          Stack(
-                                                            alignment: Alignment.center,
-                                                            children: [
-                                                              Align(
-                                                                alignment: Alignment.center,
-                                                                child: Text(
-                                                                  "03/01/1991",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
 
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment: Alignment.centerRight,
-                                                                child: Text(
-                                                                  "Edit",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
+                                                          Align(
+                                                            alignment: Alignment.centerLeft,
+                                                            child: Text(
+                                                              "EMAIL *",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
                                                               ),
 
-                                                              Align(
-                                                                alignment: Alignment.centerLeft,
-                                                                child: Text(
-                                                                  "Birth *",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
-                                                              )
-                                                            ],
+                                                            ),
                                                           ),
+                                                          Container(
+                                                            width: 140.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.center,
+                                                            child: Text(
+                                                              "Harish@gmail.com",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
 
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 420.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.centerRight,
+                                                            child: Text(
+                                                              "EDIT",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
 
-
+                                                            ),
+                                                          ),
                                                         ],
-
                                                       ),
                                                       Container(
                                                         height: 10.sp,
@@ -874,64 +777,62 @@ class PatientprofileState extends State<Patientprofile>{
                                                       ),
                                                       Container(
                                                         height: 2.sp,
-                                                        color: Colors.grey,
+                                                        color: Colors.grey.withOpacity(0.5),
                                                       ),
                                                       Container(
                                                         height: 10.sp,
 
                                                       ),
-                                                      Column(
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                         children: [
-                                                          Stack(
-                                                            alignment: Alignment.center,
-                                                            children: [
-                                                              Align(
-                                                                alignment: Alignment.center,
-                                                                child: Text(
-                                                                  "Male",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
 
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment: Alignment.centerRight,
-                                                                child: Text(
-                                                                  "Edit",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
+                                                          Align(
+                                                            alignment: Alignment.centerLeft,
+                                                            child: Text(
+                                                              "PHONE NUMBER *",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
                                                               ),
 
-                                                              Align(
-                                                                alignment: Alignment.centerLeft,
-                                                                child: Text(
-                                                                  "Gender *",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
-                                                              )
-                                                            ],
+                                                            ),
                                                           ),
+                                                          Container(
+                                                            width: 80.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.center,
+                                                            child: Text(
+                                                              "823434345",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
 
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 480.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.centerRight,
+                                                            child: Text(
+                                                              "EDIT",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
 
-
+                                                            ),
+                                                          ),
                                                         ],
-
                                                       ),
                                                       Container(
                                                         height: 10.sp,
@@ -939,64 +840,188 @@ class PatientprofileState extends State<Patientprofile>{
                                                       ),
                                                       Container(
                                                         height: 2.sp,
-                                                        color: Colors.grey,
+                                                        color: Colors.grey.withOpacity(0.5),
                                                       ),
                                                       Container(
                                                         height: 10.sp,
 
                                                       ),
-                                                      Column(
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                         children: [
-                                                          Stack(
-                                                            alignment: Alignment.center,
-                                                            children: [
-                                                              Align(
-                                                                alignment: Alignment.center,
-                                                                child: Text(
-                                                                  "English",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
 
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment: Alignment.centerRight,
-                                                                child: Text(
-                                                                  "Edit",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
+                                                          Align(
+                                                            alignment: Alignment.centerLeft,
+                                                            child: Text(
+                                                              "BIRTH *",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
                                                               ),
 
-                                                              Align(
-                                                                alignment: Alignment.centerLeft,
-                                                                child: Text(
-                                                                  "Language *",
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Colors.black,
-                                                                    fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                ),
-                                                              )
-                                                            ],
+                                                            ),
                                                           ),
+                                                          Container(
+                                                            width: 120.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.center,
+                                                            child: Text(
+                                                              "03/01/1991",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
 
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 440.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.centerRight,
+                                                            child: Text(
+                                                              "EDIT",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
 
-
+                                                            ),
+                                                          ),
                                                         ],
+                                                      ),
+                                                      Container(
+                                                        height: 10.sp,
 
+                                                      ),
+                                                      Container(
+                                                        height: 2.sp,
+                                                        color: Colors.grey.withOpacity(0.5),
+                                                      ),
+                                                      Container(
+                                                        height: 10.sp,
+
+                                                      ),
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+
+                                                          Align(
+                                                            alignment: Alignment.centerLeft,
+                                                            child: Text(
+                                                              "GENDER *",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
+
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 50.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.center,
+                                                            child: Text(
+                                                              "Male",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
+
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 430.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.centerRight,
+                                                            child: Text(
+                                                              "EDIT",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
+
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Container(
+                                                        height: 10.sp,
+
+                                                      ),
+                                                      Container(
+                                                        height: 2.sp,
+                                                        color: Colors.grey.withOpacity(0.5),
+                                                      ),
+                                                      Container(
+                                                        height: 10.sp,
+
+                                                      ),
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+
+                                                          Align(
+                                                            alignment: Alignment.centerLeft,
+                                                            child: Text(
+                                                              "LANGUAGE *",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
+
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 90.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.center,
+                                                            child: Text(
+                                                              "English",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
+
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 470.sp,
+                                                          ),
+                                                          Align(
+                                                            alignment: Alignment.centerRight,
+                                                            child: Text(
+                                                              "EDIT",
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color(0xFF989898 ),
+                                                                fontSize: 15.sp,
+                                                                fontWeight: FontWeight.bold,
+                                                              ),
+
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ],
                                                   ),
@@ -1006,6 +1031,7 @@ class PatientprofileState extends State<Patientprofile>{
                                               Expanded(
                                                 flex: 2,
                                                 child: Container(
+
                                                   padding: EdgeInsets.all(20.sp),
                                                   child: Column(
                                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -1024,12 +1050,12 @@ class PatientprofileState extends State<Patientprofile>{
                                                             ),
                                                           ),
                                                           FlutterSwitch(
-                                                            width: 120.sp,
+                                                            width: 80.sp,
                                                             height: 40.sp,
-                                                            valueFontSize: 15.sp,
-                                                            toggleSize: 40.sp,
+                                                            //valueFontSize: 15.sp,
+                                                            // toggleSize: 40.sp,
                                                             value: status,
-                                                            borderRadius: 30.0,
+                                                            borderRadius: 30.sp,
                                                             padding: 8.sp,
                                                             showOnOff: true,
                                                             onToggle: (val) {
@@ -1084,7 +1110,10 @@ class PatientprofileState extends State<Patientprofile>{
                                                           borderRadius: new BorderRadius.circular(40.sp),
                                                         ),
                                                         child: RaisedButton(
-                                                          onPressed: () {  },
+                                                          onPressed: () {
+                                                           // Navigator.pushNamed(context, 'patient/usermanagement');
+
+                                                          },
 
                                                           color: Color(0xFF29AAE1),
                                                           child: Text("Change password >",
@@ -1158,38 +1187,50 @@ class PatientprofileState extends State<Patientprofile>{
               child: Row(
                 children: [
                   SizedBox(
-                    height: 40.sp,
-                    width: 40.sp,
-                    child: IconButton(
+                    height: 30.sp,
+                    width: 30.sp,
+                    /*child: IconButton(
                       icon: Image.asset('assets/images/profile.png'), onPressed: () {
 
                     },
 
-                    ),
+                    ),*/
                   ),
                   Text(
                     "SETTING",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
 
+                  ),
+                  SizedBox(
+                    height: 20.sp,
+                    width: 20.sp,
+                    /*child: IconButton(
+                      icon: Image.asset('assets/images/profile.png'), onPressed: () {
+
+                    },
+
+                    ),*/
                   ),
                   Expanded(
                     child: SizedBox(
                       height: 40.sp,
                       width: 40.sp,
                       child: IconButton(
-                        icon: Image.asset('assets/images/logout.png'), onPressed: () {
+                        icon: Image.asset('assets/images/profile.png'), onPressed: () {
 
                       },
 
                       ),
                     ),
+
                   ),
+
                 ],
               ),
             )
@@ -1218,7 +1259,7 @@ class PatientprofileState extends State<Patientprofile>{
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),
@@ -1249,7 +1290,7 @@ class PatientprofileState extends State<Patientprofile>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1279,7 +1320,7 @@ class PatientprofileState extends State<Patientprofile>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1309,7 +1350,7 @@ class PatientprofileState extends State<Patientprofile>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1339,7 +1380,7 @@ class PatientprofileState extends State<Patientprofile>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1373,7 +1414,7 @@ class PatientprofileState extends State<Patientprofile>{
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),
@@ -1404,11 +1445,11 @@ class PatientprofileState extends State<Patientprofile>{
                       Navigator.pushNamed(context, '/');
                     },
                     child: Text(
-                      "LOG OUT",
+                      "LOGOUT",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),
