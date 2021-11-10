@@ -258,7 +258,8 @@ class TherapistprofileState extends State<Therapistprofile>{
                           height: 296.sp,
                           width: 252.sp,
                           decoration: BoxDecoration(
-                              gradient: LinearGradient(
+                            color: Colors.transparent,
+                             /* gradient: LinearGradient(
 
 
                                   colors: <Color> [
@@ -271,10 +272,10 @@ class TherapistprofileState extends State<Therapistprofile>{
 
                                   ],
                                   tileMode: TileMode.repeated
-                              ),
+                              ),*/
                               border: Border.all(
 
-                                  color: Color(0xFF3A3A3A)
+                                  color: Color(0xFF4c4e4d)
                               ),
                               borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(20.sp),
@@ -345,6 +346,14 @@ class TherapistprofileState extends State<Therapistprofile>{
                                       height: 130.sp,
                                       decoration: BoxDecoration(
                                           shape: BoxShape.circle,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              spreadRadius: 7,
+                                              color: Colors.white,
+                                              //  offset: Offset(2, 2),
+                                              blurRadius: 3,
+                                            )
+                                          ],
                                           image: DecorationImage(
                                             fit: BoxFit.fill,
                                             image: NetworkImage(
@@ -411,6 +420,14 @@ class TherapistprofileState extends State<Therapistprofile>{
                                       height: 130.sp,
                                       decoration: BoxDecoration(
                                           shape: BoxShape.circle,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              spreadRadius: 7,
+                                              color: Colors.white,
+                                              //  offset: Offset(2, 2),
+                                              blurRadius: 3,
+                                            )
+                                          ],
                                           image: DecorationImage(
                                             fit: BoxFit.fill,
                                             image: NetworkImage(
@@ -484,9 +501,21 @@ class TherapistprofileState extends State<Therapistprofile>{
                           padding: EdgeInsets.all(10.sp),
                           decoration: BoxDecoration(
                               color: Color(0xFFF1F1F1),
+                              boxShadow: [
+                               //background color of box
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  blurRadius: 25.0, // soften the shadow
+                                  spreadRadius: 5.0, //extend the shadow
+                                  offset: Offset(
+                                    15.0, // Move to right 10  horizontally
+                                    15.0, // Move to bottom 10 Vertically
+                                  ),
+                                )
+                              ],
                               border: Border.all(
 
-                                  color: Colors.transparent.withOpacity(1.0)
+                                  color: Colors.white.withOpacity(1.0)
                               ),
                               borderRadius: BorderRadius.all(Radius.circular(20))
                           ),
@@ -521,7 +550,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                                             icon: IconButton(
 
 
-                                              icon: Image.asset('assets/images/username.png'), onPressed: () {  },
+                                              icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
                                             )
                                         ),
                                       ),
@@ -542,7 +571,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                                             fillColor: Colors.white70,
                                             labelText: 'Phone number',
                                             icon: IconButton(
-                                              icon: Image.asset('assets/images/contact.png'), onPressed: () {  },
+                                              icon: Image.asset('assets/images/contact-gray.png'), onPressed: () {  },
                                             )
                                         ),
                                       ),
@@ -569,7 +598,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                                             fillColor: Colors.white70,
                                             labelText: 'Email',
                                             icon: IconButton(
-                                              icon: Image.asset('assets/images/message.png'), onPressed: () {  },
+                                              icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
                                             )
                                         ),
                                       ),
@@ -590,7 +619,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                                             fillColor: Colors.white70,
                                             labelText: 'Specialiazation',
                                             icon: IconButton(
-                                              icon: Image.asset('assets/images/spec.png'), onPressed: () {  },
+                                              icon: Image.asset('assets/images/spec_gray.png'), onPressed: () {  },
                                             )
                                         ),
                                       ),
@@ -617,7 +646,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                                             fillColor: Colors.white70,
                                             labelText: 'Current position"optional',
                                             icon: IconButton(
-                                              icon: Image.asset('assets/images/bag.png'), onPressed: () {  },
+                                              icon: Image.asset('assets/images/bag_gray.png'), onPressed: () {  },
                                             )
                                         ),
                                       ),
@@ -638,7 +667,7 @@ class TherapistprofileState extends State<Therapistprofile>{
                                             fillColor: Colors.white70,
                                             labelText: 'Clinic address',
                                             icon: IconButton(
-                                              icon: Image.asset('assets/images/home.png'), onPressed: () {  },
+                                              icon: Image.asset('assets/images/homes_gray.png'), onPressed: () {  },
                                             )
                                         ),
                                       ),

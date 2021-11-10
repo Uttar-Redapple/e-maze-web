@@ -52,7 +52,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                         child: Column(
                           children: [
                             Container(
-                              height: 82.sp,
+                              height: 110.sp,
 
                               decoration: BoxDecoration(
                                   color: Color(0xFFF1F1F1),
@@ -85,11 +85,16 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Container(
-                                            padding: EdgeInsets.all(10.sp),
-                                            width: 192.sp,
+                                            padding: EdgeInsets.all(25.sp),
+                                            width: 250.sp,
 
                                             decoration: BoxDecoration(
-                                                border: Border.all(
+                                              image: DecorationImage(
+                                                image: AssetImage("assets/images/assertss.png"),
+
+                                                fit: BoxFit.cover,
+                                              ),
+                                               /* border: Border.all(
                                                   color: Colors.white.withOpacity(
                                                       1.0), // red as border color
                                                 ),
@@ -102,7 +107,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                                         40.0),
                                                     bottomLeft: const Radius.circular(
                                                         40.0)
-                                                )
+                                                )*/
                                             ),
                                             child: Column(
                                               children: [
@@ -160,18 +165,23 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                                 width: 49.sp,
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
-                                                  border: new Border.all(
+                                                  image: DecorationImage(
+                                                    image: AssetImage("assets/images/assets.png"),
+
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                 /* border: new Border.all(
                                                     color: Colors.white.withOpacity(
                                                         1.0),
                                                     width: 2.5,
-                                                  ),
+                                                  ),*/
 
                                                 ),
                                                 child: SizedBox(
 
                                                   child: IconButton(
                                                     icon: Image.asset(
-                                                        'assets/images/userprofile.png'),
+                                                        'assets/images/Group111.png'),
                                                     onPressed: () {},
                                                   ),
                                                 ),
@@ -215,7 +225,8 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                           height: 320.sp,
                                           width: 252.sp,
                                           decoration: BoxDecoration(
-                                              gradient: LinearGradient(
+                                            color: Colors.transparent,
+                                             /* gradient: LinearGradient(
 
 
                                                   colors: <Color> [
@@ -228,10 +239,10 @@ class PatientusermanagementState extends State<Patientusermanagement>{
 
                                                   ],
                                                   tileMode: TileMode.repeated
-                                              ),
+                                              ),*/
                                               border: Border.all(
 
-                                                  color: Colors.transparent.withOpacity(1.0)
+                                                  color: Color(0xFF4c4e4d)
                                               ),
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(20.sp),
@@ -262,8 +273,10 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                             ],
                                             tabBarProperties: TabBarProperties(
                                               width: 172.sp,
-                                              height: 22.sp,
+                                              height: 15.sp,
                                               background: Container(
+                                                width: 172.sp,
+                                                height: 30.sp,
                                                 decoration: BoxDecoration(
                                                     color: Colors.white,
                                                     borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -636,9 +649,21 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                       padding: EdgeInsets.all(10.sp),
                                       decoration: BoxDecoration(
                                         color: Color(0xFFF1F1F1),
+                                          boxShadow: [
+                                            //background color of box
+                                            BoxShadow(
+                                              color: Colors.grey.withOpacity(0.5),
+                                              blurRadius: 25.0, // soften the shadow
+                                              spreadRadius: 5.0, //extend the shadow
+                                              offset: Offset(
+                                                15.0, // Move to right 10  horizontally
+                                                15.0, // Move to bottom 10 Vertically
+                                              ),
+                                            )
+                                          ],
                                           border: Border.all(
 
-                                              color: Colors.transparent.withOpacity(1.0)
+                                              color: Colors.white.withOpacity(1.0)
                                           ),
                                           borderRadius: BorderRadius.all(Radius.circular(20))
                                       ),
@@ -922,7 +947,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                               child: Row(
                                 children: [
                                   IconButton(
-                                    icon: Image.asset('assets/images/warining.png'), onPressed: () {  },
+                                    icon: Image.asset('assets/images/tip.png'), onPressed: () {  },
                                   ),
                                   Container(
                                     width: 10.sp,
@@ -985,32 +1010,42 @@ class PatientusermanagementState extends State<Patientusermanagement>{
               child: Row(
                 children: [
                   SizedBox(
-                    height: 40.sp,
-                    width: 40.sp,
-                    child: IconButton(
-                      icon: Image.asset('assets/images/profile.png'), onPressed: () {
+                    height: 30.sp,
+                    width: 30.sp,
+                    /*child: IconButton(
+                       icon: Image.asset('assets/images/profile.png'), onPressed: () {
 
-                    },
+                     },
 
-                    ),
+                     ),*/
                   ),
                   Text(
                     "SETTING",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
 
+                  ),
+                  SizedBox(
+                    height: 20.sp,
+                    width: 20.sp,
+                    /*child: IconButton(
+                      icon: Image.asset('assets/images/profile.png'), onPressed: () {
+
+                    },
+
+                    ),*/
                   ),
                   Expanded(
                     child: SizedBox(
                       height: 40.sp,
                       width: 40.sp,
                       child: IconButton(
-                        icon: Image.asset('assets/images/logout.png'), onPressed: () {
+                        icon: Image.asset('assets/images/profile.png'), onPressed: () {
 
                       },
 
@@ -1045,7 +1080,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),
@@ -1076,7 +1111,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1106,7 +1141,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1136,7 +1171,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1166,7 +1201,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1200,7 +1235,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),
@@ -1235,7 +1270,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),

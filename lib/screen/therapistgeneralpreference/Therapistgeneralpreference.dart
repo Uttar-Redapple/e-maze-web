@@ -50,7 +50,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                         child: Column(
                           children: [
                             Container(
-                              height: 82.sp,
+                              height: 110.sp,
 
                               decoration: BoxDecoration(
                                   color: Color(0xFFF1F1F1),
@@ -83,15 +83,20 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Container(
-                                            padding: EdgeInsets.all(10.sp),
-                                            width: 192.sp,
+                                            padding: EdgeInsets.all(25.sp),
+                                            width: 250.sp,
 
                                             decoration: BoxDecoration(
-                                                border: Border.all(
+                                              image: DecorationImage(
+                                                image: AssetImage("assets/images/assertss.png"),
+
+                                                fit: BoxFit.cover,
+                                              ),
+                                              /* border: Border.all(
                                                   color: Colors.white.withOpacity(
                                                       1.0), // red as border color
-                                                ),
-                                                borderRadius: new BorderRadius.only(
+                                                ),*/
+                                              /*  borderRadius: new BorderRadius.only(
                                                     topLeft: const Radius.circular(
                                                         40.0),
                                                     topRight: const Radius.circular(
@@ -100,7 +105,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                         40.0),
                                                     bottomLeft: const Radius.circular(
                                                         40.0)
-                                                )
+                                                )*/
                                             ),
                                             child: Column(
                                               children: [
@@ -158,10 +163,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                 width: 49.sp,
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
-                                                  border: new Border.all(
-                                                    color: Colors.white.withOpacity(
-                                                        1.0),
-                                                    width: 2.5,
+                                                  image: DecorationImage(
+                                                    image: AssetImage("assets/images/assets.png"),
+
+                                                    fit: BoxFit.cover,
                                                   ),
 
                                                 ),
@@ -169,7 +174,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                   child: IconButton(
                                                     icon: Image.asset(
-                                                        'assets/images/setting.png'),
+                                                        'assets/images/gp.png'),
                                                     onPressed: () {},
                                                   ),
                                                 ),
@@ -213,7 +218,8 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                           height: 296.sp,
                                           width: 252.sp,
                                           decoration: BoxDecoration(
-                                              gradient: LinearGradient(
+                                            color: Colors.transparent,
+                                              /*gradient: LinearGradient(
 
 
                                                   colors: <Color> [
@@ -226,10 +232,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                   ],
                                                   tileMode: TileMode.repeated
-                                              ),
+                                              ),*/
                                               border: Border.all(
 
-                                                  color: Colors.transparent.withOpacity(1.0)
+                                                  color: Color(0xFF4c4e4d)
                                               ),
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(20.sp),
@@ -260,8 +266,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                             ],
                                             tabBarProperties: TabBarProperties(
                                               width: 172.sp,
-                                              height: 22.sp,
+                                              height: 15.sp,
                                               background: Container(
+                                                width: 172.sp,
+                                                height: 30.sp,
                                                 decoration: BoxDecoration(
                                                     color: Colors.white,
                                                     borderRadius: BorderRadius.all(Radius.circular(40.0)),
@@ -278,9 +286,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                               ),
 
                                               indicator: ShapeDecoration(
-                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
-                                                      topLeft: radius,bottomLeft: radius,bottomRight: radius)),
-                                                  color: Color(0xFFFF2D5E)
+                                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
+                                                    topLeft: radius,bottomLeft: radius,bottomRight: radius)),
+                                                color: Color(0xFFB24761),
                                               ),
                                               indicatorColor: Colors.transparent,
                                               labelColor: Colors.white,
@@ -298,6 +306,14 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                       height: 130.sp,
                                                       decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              spreadRadius: 7,
+                                                              color: Colors.white,
+                                                              //  offset: Offset(2, 2),
+                                                              blurRadius: 3,
+                                                            )
+                                                          ],
                                                           image: DecorationImage(
                                                             fit: BoxFit.fill,
                                                             image: NetworkImage(
@@ -364,6 +380,14 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                       height: 130.sp,
                                                       decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              spreadRadius: 7,
+                                                              color: Colors.white,
+                                                              //  offset: Offset(2, 2),
+                                                              blurRadius: 3,
+                                                            )
+                                                          ],
                                                           image: DecorationImage(
                                                             fit: BoxFit.fill,
                                                             image: NetworkImage(
@@ -466,9 +490,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                               ),
                                             ),
                                             circularStrokeCap: CircularStrokeCap.butt,
-                                            backgroundColor: Color(0xFFD4D4D4),
+                                            backgroundColor: Colors.grey.shade50,
                                             footer: Text(
-                                              "User's performance+2%",
+                                              "Patient's performance+2%",
                                               style:
                                               new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                                             ),
@@ -498,7 +522,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                             Row(
                                                 children: [
                                                   Expanded(
-                                                      flex: 5,
+                                                      flex: 6,
                                                       child: Container(
                                                         child: Align(
                                                           alignment: Alignment.centerLeft,
@@ -518,14 +542,14 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                       )
                                                   ),
                                                   Expanded(
-                                                      flex: 5,
+                                                      flex: 4,
                                                       child: Align(
                                                         alignment: Alignment.centerRight,
                                                         child: Container(
                                                           padding: EdgeInsets.all(8.sp),
                                                           child: Row(
                                                             // crossAxisAlignment: CrossAxisAlignment.end,
-                                                           // mainAxisAlignment: MainAxisAlignment.end,
+                                                            // mainAxisAlignment: MainAxisAlignment.end,
                                                             children: [
 
                                                               ButtonBar(
@@ -567,7 +591,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                       constraints: BoxConstraints.tightFor(width: 200, height: 46),
                                                                       child: ElevatedButton.icon(
                                                                         icon: IconButton(
-                                                                          icon: Image.asset('assets/images/refresh.png'), onPressed: () {  },
+                                                                          icon: Image.asset('assets/images/reload.png'), onPressed: () {  },
                                                                         ),
 
                                                                         onPressed: () {
@@ -640,7 +664,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                               child: Container(
                                                 padding: EdgeInsets.all(10.sp),
                                                 child: Text(
-                                                  "Emaze brain 2021-Developed and registered by emazebrain",
+                                                  "eMazeBrain 2021-Developed and registered by emazebrain",
                                                   style: TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 14.sp,
@@ -721,7 +745,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                        label: Text("SOUND PREFERENCE",
+                                                                        label: Text("SOUND PREFERENCE    ",
                                                                           style: TextStyle(
                                                                               color: Color(0xFF989898),
                                                                               fontSize: 16.sp
@@ -799,7 +823,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                        label: Text("VISUAL ADJUSTMENT",
+                                                                        label: Text("VISUAL ADJUSTMENT   ",
                                                                           style: TextStyle(
                                                                               color: Color(0xFF989898),
                                                                               fontSize: 16.sp
@@ -877,7 +901,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                        label: Text("LANGUAGE                 ",
+                                                                        label: Text("LANGUAGE                         ",
                                                                           style: TextStyle(
                                                                               color: Color(0xFF989898),
                                                                               fontSize: 16.sp
@@ -973,7 +997,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                               label: Text("ERASE ACCOUNT",
                                                                                 style: TextStyle(
-                                                                                     color: Color(0xFF989898),
+                                                                                    color: Color(0xFF989898),
                                                                                     fontSize: 16.sp
 
                                                                                 ),
@@ -1052,7 +1076,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     ),*/
 
 
-                                                                              label: Text("ERASE CACHE",
+                                                                              label: Text("ERASE CHACHE",
                                                                                 style: TextStyle(
                                                                                     color: Color(0xFF989898),
                                                                                     fontSize: 16.sp
@@ -1320,32 +1344,42 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
               child: Row(
                 children: [
                   SizedBox(
-                    height: 40.sp,
-                    width: 40.sp,
-                    child: IconButton(
-                      icon: Image.asset('assets/images/profile.png'), onPressed: () {
+                    height: 30.sp,
+                    width: 30.sp,
+                    /*child: IconButton(
+                       icon: Image.asset('assets/images/profile.png'), onPressed: () {
 
-                    },
+                     },
 
-                    ),
+                     ),*/
                   ),
                   Text(
                     "SETTING",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
 
+                  ),
+                  SizedBox(
+                    height: 20.sp,
+                    width: 20.sp,
+                    /*child: IconButton(
+                      icon: Image.asset('assets/images/profile.png'), onPressed: () {
+
+                    },
+
+                    ),*/
                   ),
                   Expanded(
                     child: SizedBox(
                       height: 40.sp,
                       width: 40.sp,
                       child: IconButton(
-                        icon: Image.asset('assets/images/logout.png'), onPressed: () {
+                        icon: Image.asset('assets/images/profile.png'), onPressed: () {
 
                       },
 
@@ -1380,7 +1414,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),
@@ -1411,7 +1445,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1441,7 +1475,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1471,7 +1505,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1501,7 +1535,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 15.sp,
+                      fontSize: 12.sp,
 
 
                     ),
@@ -1535,7 +1569,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),
@@ -1570,7 +1604,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 15.sp,
+                        fontSize: 12.sp,
 
 
                       ),

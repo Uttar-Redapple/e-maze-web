@@ -219,7 +219,8 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                           height: 296.sp,
                                           width: 252.sp,
                                           decoration: BoxDecoration(
-                                              gradient: LinearGradient(
+                                              color: Colors.transparent,
+                                             /* gradient: LinearGradient(
 
 
                                                   colors: <Color> [
@@ -232,10 +233,10 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
 
                                                   ],
                                                   tileMode: TileMode.repeated
-                                              ),
+                                              ),*/
                                               border: Border.all(
 
-                                                  color: Colors.transparent.withOpacity(1.0)
+                                                  color: Color(0xFF4c4e4d)
                                               ),
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(20.sp),
@@ -306,6 +307,14 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                       height: 130.sp,
                                                       decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              spreadRadius: 7,
+                                                              color: Colors.white,
+                                                              //  offset: Offset(2, 2),
+                                                              blurRadius: 3,
+                                                            )
+                                                          ],
                                                           image: DecorationImage(
                                                             fit: BoxFit.fill,
                                                             image: NetworkImage(
@@ -372,6 +381,14 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                       height: 130.sp,
                                                       decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              spreadRadius: 7,
+                                                              color: Colors.white,
+                                                              //  offset: Offset(2, 2),
+                                                              blurRadius: 3,
+                                                            )
+                                                          ],
                                                           image: DecorationImage(
                                                             fit: BoxFit.fill,
                                                             image: NetworkImage(
@@ -575,7 +592,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                       constraints: BoxConstraints.tightFor(width: 200, height: 46),
                                                                       child: ElevatedButton.icon(
                                                                         icon: IconButton(
-                                                                          icon: Image.asset('assets/images/refresh.png'), onPressed: () {  },
+                                                                          icon: Image.asset('assets/images/reload.png'), onPressed: () {  },
                                                                         ),
 
                                                                         onPressed: () {

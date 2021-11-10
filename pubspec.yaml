@@ -125,6 +125,13 @@ flutter:
     - assets/images/lock-gray.png
     - assets/images/username-gray.png
     - assets/images/gp.png
+    - assets/images/spec_gray.png
+    - assets/images/bag_gray.png
+    - assets/images/homes_gray.png
+    - assets/images/tip.png
+    - assets/images/Group11.png
+    - assets/images/reload.png
+    - assets/images/Group111.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

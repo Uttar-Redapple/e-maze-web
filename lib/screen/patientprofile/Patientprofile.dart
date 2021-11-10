@@ -228,7 +228,8 @@ class PatientprofileState extends State<Patientprofile>{
                                           height: 296.sp,
                                           width: 252.sp,
                                           decoration: BoxDecoration(
-                                              gradient: LinearGradient(
+                                              color: Colors.transparent,
+                                              /*gradient: LinearGradient(
 
 
                                                   colors: <Color> [
@@ -241,10 +242,10 @@ class PatientprofileState extends State<Patientprofile>{
 
                                                   ],
                                                   tileMode: TileMode.repeated
-                                              ),
+                                              ),*/
                                               border: Border.all(
 
-                                                  color: Colors.transparent.withOpacity(1.0)
+                                                  color: Color(0xFF4c4e4d)
                                               ),
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(20.sp),
