@@ -509,9 +509,21 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                         padding: EdgeInsets.all(10.sp),
                                         decoration: BoxDecoration(
                                             color: Color(0xFFF1F1F1),
+                                            boxShadow: [
+                                              //background color of box
+                                              BoxShadow(
+                                                color: Colors.grey.withOpacity(0.5),
+                                                blurRadius: 25.0, // soften the shadow
+                                                spreadRadius: 5.0, //extend the shadow
+                                                offset: Offset(
+                                                  15.0, // Move to right 10  horizontally
+                                                  15.0, // Move to bottom 10 Vertically
+                                                ),
+                                              )
+                                            ],
                                             border: Border.all(
 
-                                                color: Colors.transparent.withOpacity(1.0)
+                                                color: Colors.white.withOpacity(1.0)
                                             ),
                                             borderRadius: BorderRadius.all(Radius.circular(20))
                                         ),
