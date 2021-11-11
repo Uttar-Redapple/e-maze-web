@@ -83,8 +83,8 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
                               tileMode: TileMode.repeated,
-                              colors: [ Color(0xFF000002),
-                                Color(0xFF0079AE),
+                              colors: [ Color(0xFF000120),
+                                Color(0xFF0078ad),
                               ]),
                         ),
                         child: Column(

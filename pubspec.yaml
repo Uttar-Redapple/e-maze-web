@@ -132,6 +132,8 @@ flutter:
     - assets/images/Group11.png
     - assets/images/reload.png
     - assets/images/Group111.png
+    - assets/images/switchbox.png
+    - assets/images/tabicon.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

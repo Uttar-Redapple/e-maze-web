@@ -108,50 +108,53 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                         40.0)
                                                 )*/
                                             ),
-                                            child: Column(
-                                              children: [
-                                                Stack(
-                                                  alignment: Alignment.center,
-                                                  children: [
-                                                    Align(
-                                                      alignment: Alignment.center,
-                                                      child: SizedBox(
+                                            child: Container(
+                                              padding: EdgeInsets.only(left: 20.sp,right:20.sp),
+                                              child: Column(
+                                                children: [
+                                                  Stack(
+                                                    alignment: Alignment.center,
+                                                    children: [
+                                                      Align(
+                                                        alignment: Alignment.center,
+                                                        child: SizedBox(
 
-                                                        child: IconButton(
-                                                          icon: Image.asset(
-                                                              'assets/images/notification.png'),
-                                                          onPressed: () {},
+                                                          child: IconButton(
+                                                            icon: Image.asset(
+                                                                'assets/images/notification.png'),
+                                                            onPressed: () {},
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    Align(
-                                                      alignment: Alignment.centerRight,
-                                                      child: SizedBox(
+                                                      Align(
+                                                        alignment: Alignment.centerRight,
+                                                        child: SizedBox(
 
-                                                        child: IconButton(
-                                                          icon: Image.asset(
-                                                              'assets/images/menu.png'),
-                                                          onPressed: () {
-                                                            showPopupMenu();
-                                                          },
+                                                          child: IconButton(
+                                                            icon: Image.asset(
+                                                                'assets/images/menu.png'),
+                                                            onPressed: () {
+                                                              showPopupMenu();
+                                                            },
+                                                          ),
+                                                        ),
+
+                                                      ),
+                                                      Align(
+                                                        alignment: Alignment.centerLeft,
+                                                        child: SizedBox(
+
+                                                          child: IconButton(
+                                                            icon: Image.asset(
+                                                                'assets/images/communate.png'),
+                                                            onPressed: () {},
+                                                          ),
                                                         ),
                                                       ),
-
-                                                    ),
-                                                    Align(
-                                                      alignment: Alignment.centerLeft,
-                                                      child: SizedBox(
-
-                                                        child: IconButton(
-                                                          icon: Image.asset(
-                                                              'assets/images/communate.png'),
-                                                          onPressed: () {},
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -160,8 +163,8 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                           child: Row(
                                             children: [
                                               Container(
-                                                height: 49.sp,
-                                                width: 49.sp,
+                                                height: 60.sp,
+                                                width: 60.sp,
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   image: DecorationImage(
@@ -171,8 +174,10 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                   ),
 
                                                 ),
-                                                child: SizedBox(
-
+                                                child: Container(
+                                                  padding:  EdgeInsets.all(12.sp),
+                                                  height: 18.sp,
+                                                  width: 18.sp,
                                                   child: IconButton(
                                                     icon: Image.asset(
                                                         'assets/images/gp.png'),
@@ -236,7 +241,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                               ),*/
                                               border: Border.all(
 
-                                                  color: Color(0xFF4c4e4d)
+                                                  color: Color(0xFF868686)
                                               ),
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(20.sp),

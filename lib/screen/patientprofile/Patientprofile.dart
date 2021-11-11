@@ -118,50 +118,53 @@ class PatientprofileState extends State<Patientprofile>{
                                                 )*/
 
                                             ),
-                                            child: Column(
-                                              children: [
-                                                Stack(
-                                                  alignment: Alignment.center,
-                                                  children: [
-                                                    Align(
-                                                      alignment: Alignment.center,
-                                                      child: SizedBox(
+                                            child: Container(
+                                              padding: EdgeInsets.only(left: 20.sp,right:20.sp),
+                                              child: Column(
+                                                children: [
+                                                  Stack(
+                                                    alignment: Alignment.center,
+                                                    children: [
+                                                      Align(
+                                                        alignment: Alignment.center,
+                                                        child: SizedBox(
 
-                                                        child: IconButton(
-                                                          icon: Image.asset(
-                                                              'assets/images/notification.png'),
-                                                          onPressed: () {},
+                                                          child: IconButton(
+                                                            icon: Image.asset(
+                                                                'assets/images/notification.png'),
+                                                            onPressed: () {},
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    Align(
-                                                      alignment: Alignment.centerRight,
-                                                      child: SizedBox(
+                                                      Align(
+                                                        alignment: Alignment.centerRight,
+                                                        child: SizedBox(
 
-                                                        child: IconButton(
-                                                          icon: Image.asset(
-                                                              'assets/images/menu.png'),
-                                                          onPressed: () {
-                                                            showPopupMenu();
-                                                          },
+                                                          child: IconButton(
+                                                            icon: Image.asset(
+                                                                'assets/images/menu.png'),
+                                                            onPressed: () {
+                                                              showPopupMenu();
+                                                            },
+                                                          ),
+                                                        ),
+
+                                                      ),
+                                                      Align(
+                                                        alignment: Alignment.centerLeft,
+                                                        child: SizedBox(
+
+                                                          child: IconButton(
+                                                            icon: Image.asset(
+                                                                'assets/images/communate.png'),
+                                                            onPressed: () {},
+                                                          ),
                                                         ),
                                                       ),
-
-                                                    ),
-                                                    Align(
-                                                      alignment: Alignment.centerLeft,
-                                                      child: SizedBox(
-
-                                                        child: IconButton(
-                                                          icon: Image.asset(
-                                                              'assets/images/communate.png'),
-                                                          onPressed: () {},
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -170,8 +173,8 @@ class PatientprofileState extends State<Patientprofile>{
                                           child: Row(
                                             children: [
                                               Container(
-                                                height: 49.sp,
-                                                width: 49.sp,
+                                                height: 60.sp,
+                                                width: 60.sp,
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   image: DecorationImage(
@@ -180,9 +183,12 @@ class PatientprofileState extends State<Patientprofile>{
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
-                                                child: SizedBox(
-
+                                                child: Container(
+                                                  padding:  EdgeInsets.all(12.sp),
+                                                  height: 18.sp,
+                                                  width: 18.sp,
                                                   child: IconButton(
+
                                                     icon: Image.asset(
                                                         'assets/images/profile.png'),
                                                     onPressed: () {},
@@ -245,7 +251,7 @@ class PatientprofileState extends State<Patientprofile>{
                                               ),*/
                                               border: Border.all(
 
-                                                  color: Color(0xFF4c4e4d)
+                                                  color: Color(0xFF868686)
                                               ),
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(20.sp),
@@ -1062,20 +1068,47 @@ class PatientprofileState extends State<Patientprofile>{
                                                               },
                                                             ),
                                                           ),
-                                                          FlutterSwitch(
-                                                            width: 80.sp,
-                                                            height: 40.sp,
-                                                            //valueFontSize: 15.sp,
-                                                            // toggleSize: 40.sp,
-                                                            value: status,
-                                                            borderRadius: 30.sp,
-                                                            padding: 8.sp,
-                                                            showOnOff: true,
-                                                            onToggle: (val) {
-                                                              setState(() {
-                                                                status = val;
-                                                              });
-                                                            },
+                                                          Container(
+                                                            decoration: BoxDecoration(
+
+                                                              image: DecorationImage(
+                                                                image: AssetImage("assets/images/switchbox.png"),
+
+                                                                fit: BoxFit.cover,
+                                                              ),
+
+                                                            ),
+                                                            child: FlutterSwitch(
+                                                              width: 120.sp,
+                                                              height: 40.sp,
+                                                              //valueFontSize: 15.sp,
+                                                              // toggleSize: 40.sp,
+                                                              value: status,
+                                                           /*   activeColor: Colors.transparent,
+                                                              inactiveColor: Colors.transparent,
+                                                              activeText: "On",
+                                                              inactiveText: "Off",
+                                                              inactiveTextColor: Colors.white,
+                                                              activeTextColor: Colors.black,
+                                                              activeToggleColor: Colors.grey,
+                                                              inactiveToggleColor: Colors.transparent,
+                                                              activeToggleBorder:Border.all(
+                                                                color: Colors.transparent,
+                                                                width: 6.0,
+                                                              ),
+                                                              inactiveToggleBorder: Border.all(
+                                                                color: Color(0xFF3C1E70),
+                                                                width: 6.0,
+                                                              ),*/
+                                                              borderRadius: 30.sp,
+                                                              padding: 8.sp,
+                                                              showOnOff: true,
+                                                              onToggle: (val) {
+                                                                setState(() {
+                                                                  status = val;
+                                                                });
+                                                              },
+                                                            ),
                                                           )
                                                         ],
                                                       ),
@@ -1122,18 +1155,34 @@ class PatientprofileState extends State<Patientprofile>{
                                                         shape: new RoundedRectangleBorder(
                                                           borderRadius: new BorderRadius.circular(40.sp),
                                                         ),
-                                                        child: RaisedButton(
-                                                          onPressed: () {
-                                                           // Navigator.pushNamed(context, 'patient/usermanagement');
+                                                        child: Container(
+                                                          decoration:  BoxDecoration(
+                                                            boxShadow: [
+                                                               //background color of box
+                                                              BoxShadow(
+                                                                color: Colors.grey.withOpacity(0.5),
+                                                                blurRadius: 55.0, // soften the shadow
+                                                                spreadRadius: 5.0, //extend the shadow
+                                                                offset: Offset(
+                                                                  15.0, // Move to right 10  horizontally
+                                                                  15.0, // Move to bottom 10 Vertically
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+                                                          child: RaisedButton(
+                                                            onPressed: () {
+                                                             // Navigator.pushNamed(context, 'patient/usermanagement');
 
-                                                          },
+                                                            },
 
-                                                          color: Color(0xFF29AAE1),
-                                                          child: Text("Change password >",
-                                                            style: TextStyle(
-                                                                color: Colors.white,
-                                                                fontSize: 15.sp
+                                                            color: Color(0xFF29AAE1),
+                                                            child: Text("Change password >",
+                                                              style: TextStyle(
+                                                                  color: Colors.white,
+                                                                  fontSize: 15.sp
 
+                                                              ),
                                                             ),
                                                           ),
                                                         ),

@@ -257,7 +257,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                               ),*/
                                               border: Border.all(
 
-                                                  color: Color(0xFF4c4e4d)
+                                                  color: Color(0xFF868686)
                                               ),
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(20.sp),
@@ -504,7 +504,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                      animation: true,
                                                      animationDuration: 1200,
                                                      lineWidth: 15.sp,
-                                                     percent: 0.4,
+                                                     percent: 1.0,
                                                      radius: 165.sp,
                                                      center: Container(
                                                        height: 90.sp,

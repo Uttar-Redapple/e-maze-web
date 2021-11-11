@@ -44,10 +44,21 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   late bool _regpasswordVisible;
   bool value = false;
   bool isChecked = false;
+  bool isEnabled = true;
   // Toggles the password show status
   void _toggle() {
     setState(() {
       _obscureText = !_obscureText;
+    });
+  }
+  enableElevatedButton() {
+    setState(() {
+      isEnabled = true;
+    });
+  }
+  diablebutton() {
+    setState(() {
+      isEnabled = false;
     });
   }
   @override
@@ -82,8 +93,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
                               tileMode: TileMode.repeated,
-                              colors: [ Color(0xFF000002),
-                                Color(0xFF0079AE),
+                              colors: [ Color(0xFF000120),
+                                Color(0xFF0078ad),
                               ]),
                         ),
                         child: Column(
@@ -135,6 +146,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                         textColor: _logintextcolor,
                                         //  color: Colors.green,
                                         color: _logincolor,
+
                                         shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.sp)),
                                         onPressed: () {
                                           setState(() {

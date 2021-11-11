@@ -53,8 +53,8 @@ class _SplashScreenState extends State<Splashscreen> {
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
                 colors: <Color> [
-                  Color(0xFF000002),
-                  Color(0xFF0079AE)
+                  Color(0xFF000120),
+                  Color(0xFF0078ad)
 
 
 

@@ -242,7 +242,7 @@ class PatientusermanagementState extends State<Patientusermanagement>{
                                               ),*/
                                               border: Border.all(
 
-                                                  color: Color(0xFF4c4e4d)
+                                                  color: Color(0xFF868686)
                                               ),
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(20.sp),
