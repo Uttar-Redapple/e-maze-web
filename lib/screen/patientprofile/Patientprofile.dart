@@ -36,7 +36,7 @@ class PatientprofileState extends State<Patientprofile>{
                             .width,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/images/whitepoligon.png"),
+                            image: AssetImage("assets/images/pfondo.png"),
 
                             fit: BoxFit.cover,
                           ),
@@ -288,6 +288,12 @@ class PatientprofileState extends State<Patientprofile>{
                                                 height: 30.sp,
                                                 decoration: BoxDecoration(
                                                     color: Colors.white,
+                                                    image: new DecorationImage(
+                                                      image: new AssetImage("assets/images/tabicon.png"),
+                                                      fit: BoxFit.cover,
+
+
+                                                    ),
                                                     borderRadius: BorderRadius.all(Radius.circular(40.0)),
                                                     boxShadow: [
                                                       BoxShadow(
@@ -318,39 +324,26 @@ class PatientprofileState extends State<Patientprofile>{
                                                       height: 10.sp,
                                                     ),
                                                     Container(
-                                                      width: 130.sp,
                                                       height: 130.sp,
+                                                      width: 130.sp,
                                                       decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        image: DecorationImage(
+                                                          image: AssetImage("assets/images/shadow.png"),
+
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                      child: Container(
+                                                        padding:  EdgeInsets.all(12.sp),
+                                                        height: 18.sp,
+                                                        width: 18.sp,
+                                                        decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              spreadRadius: 7,
-                                                              color: Colors.white,
-                                                            //  offset: Offset(2, 2),
-                                                              blurRadius: 3,
-                                                            )
-                                                          ],
-                                                          image: DecorationImage(
-                                                            fit: BoxFit.fill,
-                                                            image: NetworkImage(
-                                                                "https://i.imgur.com/BoN9kdC.png"
-                                                            ),
+                                                        ),
 
-                                                          )
+                                                        child: Image.network('https://i.imgur.com/BoN9kdC.png')
                                                       ),
-                                                      child:
-                                                      Column(
-                                                        crossAxisAlignment: CrossAxisAlignment.end,
-                                                        mainAxisSize: MainAxisSize.max,
-                                                        mainAxisAlignment: MainAxisAlignment.end,
-                                                        children: [
-                                                          IconButton(
-                                                            icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
-                                                          )
-                                                        ],
-
-                                                      ),
-
                                                     ),
                                                     Container(
                                                       height: 5.sp,
@@ -594,9 +587,14 @@ class PatientprofileState extends State<Patientprofile>{
                                               Expanded(
                                                 flex: 8,
                                                 child: Container(
+                                                  width: 100.sp,
                                                   padding: EdgeInsets.all(20.sp),
                                                   decoration: BoxDecoration(
                                                     color: Colors.white,
+                                                    image: new DecorationImage(
+                                                      image: new AssetImage("assets/images/rectangle.png"),
+                                                      fit: BoxFit.fill,
+                                                    ),
                                                     border: new Border.all(
                                                       color: Colors.transparent,
                                                       width: 0,

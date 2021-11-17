@@ -134,6 +134,11 @@ flutter:
     - assets/images/Group111.png
     - assets/images/switchbox.png
     - assets/images/tabicon.png
+    - assets/images/rectangle.png
+    - assets/images/login.png
+    - assets/images/fondos.png
+    - assets/images/pfondo.png
+    - assets/images/shadow.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

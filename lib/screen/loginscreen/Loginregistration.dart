@@ -74,7 +74,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/images/whitepoligon.png"),
+                            image: AssetImage("assets/images/fondos.png"),
 
                             fit: BoxFit.cover,
                           ),
@@ -137,6 +137,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                         //  color: Colors.green,
                                         color: _logincolor,
                                         shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.sp)),
+
                                         onPressed: () {
                                           setState(() {
                                             // final random = Random();
@@ -230,6 +231,11 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                           decoration: BoxDecoration(
                                             color: Colors.transparent,
+                                            image: DecorationImage(
+                                              image: AssetImage("assets/images/login.png"),
+
+                                              fit: BoxFit.cover,
+                                            ),
                                             /* gradient: LinearGradient(
                                                 begin: Alignment.centerLeft,
                                                 end: Alignment.centerRight,
@@ -431,6 +437,11 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                           decoration: BoxDecoration(
                                               color: Colors.transparent,
+                                              image: DecorationImage(
+                                                image: AssetImage("assets/images/login.png"),
+
+                                                fit: BoxFit.cover,
+                                              ),
                                               /* gradient: LinearGradient(
                                                   begin: Alignment.centerLeft,
                                                   end: Alignment.centerRight,
