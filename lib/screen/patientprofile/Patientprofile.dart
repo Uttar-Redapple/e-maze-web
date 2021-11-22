@@ -263,12 +263,36 @@ class PatientprofileState extends State<Patientprofile>{
                                           ),
                                           child: ContainedTabBarView(
                                             tabs: [
-                                              Text(
-                                                'Patient',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
+                                              Container(
+                                          decoration: BoxDecoration(
+                                           /* boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey.withOpacity(0.5),
+                                                spreadRadius: 15,
+                                                blurRadius: 7,
+                                                offset: Offset(0, 3), // changes position of shadow
+                                              ),
+                                            ],*/
+                                          ),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    /*boxShadow: [
+                                                      BoxShadow(
+                                                        color: Colors.grey.withOpacity(0.5),
+                                                        spreadRadius: 15,
+                                                        blurRadius: 7,
+                                                        offset: Offset(0, 3), // changes position of shadow
+                                                      ),
+                                                    ],*/
+                                                  ),
+                                                  child: Text(
+                                                    'Patient',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
 
-                                                    fontSize: 10.sp
+                                                        fontSize: 10.sp
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                               Text(

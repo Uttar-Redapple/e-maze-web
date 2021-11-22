@@ -12,9 +12,10 @@ import 'package:emaze_brain/screen/therapistgeneralpreference/Therapistgeneralpr
 import 'package:emaze_brain/screen/therapistprofile/Therapistprofile.dart';
 import 'package:emaze_brain/screen/therapistuserprofile/Therapistuserprofile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/all.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

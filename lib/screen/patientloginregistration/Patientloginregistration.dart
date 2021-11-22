@@ -1,3 +1,12 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:emaze_brain/model/get_login.dart';
+import 'package:emaze_brain/model/get_reguser.dart';
+import 'package:emaze_brain/model/response/get_loginresp.dart';
+import 'package:emaze_brain/model/response/get_regresponse.dart';
+import 'package:emaze_brain/provider/api_client_provider.dart';
 import 'package:emaze_brain/screen/gamestartscreen/Gamestartscreen.dart';
 import 'package:emaze_brain/screen/loginscreen/Therapistorpatient.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +14,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
-
+import 'package:http/http.dart' as http;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../main.dart';
+void main() {
+  runApp(ProviderScope(child: MyApp()));
+}
 class Patientloginregistration extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -15,12 +30,24 @@ class Patientloginregistration extends StatefulWidget{
   
 }
 class PatientloginregistrationState extends State<Patientloginregistration> with TickerProviderStateMixin{
+  final _formKey = GlobalKey<FormState>();
+  final _regformKey = GlobalKey<FormState>();
   bool _hasBeenPressedlogin = false;
   bool _hasBeenPressedregister = false;
   double _width = 600.sp;
   double _height = 450.sp;
-
+   bool roundcheckboxselection=false;
+  bool viewVisible = false ;
+  bool viewerrormsgvisible=false;
+  bool viewreg=false;
   BorderRadiusGeometry _borderRadius = BorderRadius.circular(40.sp);
+   bool regusername=false;
+   bool regpwd=false;
+   bool regph=false;
+   bool regemail=false;
+
+  bool username=true;
+  bool pwd=true;
 
   Color _logincolor = Colors.green;
   Color _regcolor = Colors.white;
@@ -45,6 +72,38 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   bool value = false;
   bool isChecked = false;
   bool isEnabled = true;
+
+   bool selectedbox=false;
+
+  String checkvalue="Please";
+
+
+  void showidget(){
+    setState(() {
+      viewreg = true ;
+
+    });
+  }
+
+  void hidewidget(){
+    setState(() {
+      viewreg = false ;
+    });
+  }
+
+  void showerrorWidget(){
+    setState(() {
+      viewerrormsgvisible = true ;
+
+    });
+  }
+
+  void hideerrorWidget(){
+    setState(() {
+      viewerrormsgvisible = false ;
+    });
+  }
+
   // Toggles the password show status
   void _toggle() {
     setState(() {
@@ -54,6 +113,17 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   enableElevatedButton() {
     setState(() {
       isEnabled = true;
+    });
+  }
+  void showWidget(){
+    setState(() {
+      viewVisible = true ;
+    });
+  }
+
+  void hideWidget(){
+    setState(() {
+      viewVisible = false ;
     });
   }
   diablebutton() {
@@ -84,7 +154,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/images/whitepoligon.png"),
+                            image: AssetImage("assets/images/fondos.png"),
 
                             fit: BoxFit.cover,
                           ),
@@ -146,8 +216,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                         textColor: _logintextcolor,
                                         //  color: Colors.green,
                                         color: _logincolor,
-
                                         shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.sp)),
+
                                         onPressed: () {
                                           setState(() {
                                             // final random = Random();
@@ -160,6 +230,12 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                             _height = 450.sp;
                                             _regwidth = 570.sp;
                                             _regheight = 370.sp;
+                                            regpwd=false;
+                                            regph=false;
+                                            regemail=false;
+                                            regusername=false;
+                                            username=true;
+                                            pwd=true;
                                             _regborderRadius =
                                                 BorderRadius.circular(50.sp);
                                             _borderRadius =
@@ -190,6 +266,12 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                         shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.sp)),
                                         onPressed: () {
                                           setState(() {
+                                            regpwd=true;
+                                            regph=true;
+                                            regemail=true;
+                                            regusername=true;
+                                            username=false;
+                                            pwd=false;
                                             _logincolor = Colors.white;
                                             _regcolor= Colors.green;
                                             _logintextcolor=Colors.black;
@@ -241,7 +323,12 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                           decoration: BoxDecoration(
                                             color: Colors.transparent,
-                                           /* gradient: LinearGradient(
+                                            image: DecorationImage(
+                                              image: AssetImage("assets/images/login.png"),
+
+                                              fit: BoxFit.cover,
+                                            ),
+                                            /* gradient: LinearGradient(
                                                 begin: Alignment.centerLeft,
                                                 end: Alignment.centerRight,
                                                 colors: <Color> [
@@ -262,159 +349,247 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                           ),
                                           duration:  Duration(seconds: 1),
-                                          child: Column(
+                                          child: SingleChildScrollView(
+                                            child: Form(
+                                              key: _formKey,
+                                              child: Column(
 
-                                            children:<Widget>[
+                                                children:<Widget>[
 
-                                              Container(
-                                                margin: new EdgeInsets.symmetric(horizontal: 20.sp),
-                                                padding: EdgeInsets.symmetric(vertical: 10.sp,),
-                                                child: Row(
+                                                  Container(
+                                                    margin: new EdgeInsets.symmetric(horizontal: 20.sp),
+                                                    padding: EdgeInsets.symmetric(vertical: 10.sp,),
+                                                    child: Row(
 
-                                                  children: [
-                                                    Text(
-                                                      "USER /EMAIL /ID /PHONE",
-                                                      textAlign: TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 15.sp
-                                                      ),
+                                                      children: [
+                                                        Text(
+                                                          "USER/EMAIL/ID/PHONE",
+                                                          textAlign: TextAlign.center,
+                                                          style: TextStyle(
+                                                              color: Colors.white,
+                                                              fontSize: 15.sp
+                                                          ),
 
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                height: 10.sp,
+                                                  ),
+                                                  Container(
+                                                    height: 10.sp,
 
-                                              ),
-                                              Container(
+                                                  ),
+                                                  Container(
 
-                                                //  height: 140.sp,
-                                                width: 700.sp,
-                                                margin: new EdgeInsets.symmetric(horizontal: 20.sp),
-                                                padding: EdgeInsets.all(20.sp),
-                                                decoration: BoxDecoration(
+                                                    //  height: 140.sp,
+                                                    width: 700.sp,
+                                                    margin: new EdgeInsets.symmetric(horizontal: 20.sp),
+                                                    padding: EdgeInsets.all(20.sp),
+                                                    decoration: BoxDecoration(
 
-                                                    color: Colors.white,
-                                                    border: Border.all(color: Colors.white),
-                                                    borderRadius: BorderRadius.all(Radius.circular(25.sp))
-                                                ),
-                                                child: Column(
-                                                  children: [
-                                                    TextFormField(
-                                                      controller: nameController,
-                                                      decoration: InputDecoration(
-                                                        border: UnderlineInputBorder(),
-                                                        labelText: 'name@example.com',
-                                                      ),
+                                                        color: Colors.white,
+                                                        border: Border.all(color: Colors.white),
+                                                        borderRadius: BorderRadius.all(Radius.circular(25.sp))
                                                     ),
-                                                    TextFormField(
-
-                                                      obscureText: !_passwordVisible,
-                                                      controller: passwordController,
-                                                      decoration: InputDecoration(
-
-                                                          border: UnderlineInputBorder(),
-                                                          labelText: '*******',
-                                                          suffixIcon: GestureDetector(
-                                                            onLongPress: () {
-                                                              setState(() {
-                                                                _passwordVisible = true;
-                                                              });
+                                                    child: Column(
+                                                      children: [
+                                                        TextFormField(
+                                                          enabled: username,
+                                                          controller: nameController,
+                                                          decoration: InputDecoration(
+                                                            border: UnderlineInputBorder(),
+                                                            labelText: 'User Name',
+                                                          ),
+                                                          validator: (value) {
+                                                            if (value == null || value.isEmpty) {
+                                                              return 'Username required';
+                                                            }
+                                                            return null;
+                                                          },
+                                                        ),
+                                                        TextFormField(
+                                                          enabled: pwd,
+                                                          obscureText: !_passwordVisible,
+                                                          controller: passwordController,
+                                                            validator: (pwdvalue) {
+                                                              if (pwdvalue!.isEmpty) {
+                                                                return "Password Required";
+                                                              }
                                                             },
-                                                            onLongPressUp: () {
-                                                              setState(() {
-                                                                _passwordVisible = false;
-                                                              });
-                                                            },
-                                                            child: Icon(
-                                                                _passwordVisible ? Icons.visibility : Icons.visibility_off
+
+                                                            decoration: InputDecoration(
+
+                                                              border: UnderlineInputBorder(),
+                                                              labelText: 'Password',
+                                                              suffixIcon: GestureDetector(
+                                                                onLongPress: () {
+                                                                  setState(() {
+                                                                    _passwordVisible = true;
+                                                                  });
+                                                                },
+                                                                onLongPressUp: () {
+                                                                  setState(() {
+                                                                    _passwordVisible = false;
+                                                                  });
+                                                                },
+                                                                child: Icon(
+                                                                    _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                                ),
+                                                              )
+                                                          ),
+                                                        ),
+
+                                                      ],
+                                                    ),
+
+                                                  ),
+                                                  Container(
+                                                    height: 10.sp,
+
+                                                  ),
+                                                  Container(
+                                                    margin:  EdgeInsets.only(left: 15.sp, right: 15.sp),
+
+                                                    child: Row(
+
+                                                      children: [
+                                                        Container(
+                                                          height: 25.sp,
+                                                          width: 25.sp,
+                                                          child: RoundCheckBox(
+                                                            onTap: (selected) {},
+
+                                                            animationDuration: Duration(
+                                                              milliseconds: 50,
                                                             ),
-                                                          )
-                                                      ),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          width: 2.sp,
+                                                          height: 2.sp,
+                                                        ),
+
+                                                       /* FutureBuilder<Album>(
+                                                            future: futureAlbum,
+                                                            builder: (context, snapshot) {
+                                                              if (snapshot.hasData) {
+                                                                return Text(
+                                                                    snapshot.data!.title,
+                                                                  textAlign: TextAlign.center,
+                                                                  style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      fontSize: 15.sp
+                                                                  ),
+                                                                );
+                                                              } else if (snapshot.hasError) {
+                                                                return Text('${snapshot.error}');
+                                                              }
+                                                              return const CircularProgressIndicator();
+                                                            }
+                                                        ),*/
+
+                                                       Text(
+                                                          "Remember me",
+                                                          textAlign: TextAlign.center,
+                                                          style: TextStyle(
+                                                              color: Colors.white,
+                                                              fontSize: 15.sp
+                                                          ),
+
+                                                        ),
+                                                        Spacer(),
+                                                        Text(
+                                                          "Forgot password?",
+                                                          textAlign: TextAlign.center,
+                                                          style: TextStyle(
+                                                              color: Colors.white,
+                                                              fontSize: 15.sp
+                                                          ),
+
+                                                        ),
+
+                                                      ],
                                                     ),
+                                                  ),
+                                                  Container(
+                                                    height: 40.sp,
 
-                                                  ],
-                                                ),
+                                                  ),
+                                                  Container(
+                                                    child: ButtonTheme(
+                                                      minWidth: 158.sp,
+                                                      height: 56.sp,
+                                                      shape: new RoundedRectangleBorder(
+                                                        borderRadius: new BorderRadius.circular(40.sp),
+                                                      ),
+                                                      child: RaisedButton(
+                                                        onPressed: () async {
+                                                          if (_formKey.currentState!.validate()) {
+                                                            try {
+                                                              GetLoginResponse resp=
+                                                                  await context.read(apiClientProvider).login(
+                                                                  Loginuser( nameController.text, passwordController.text
+                                                                  )
+                                                              );
 
-                                              ),
-                                              Container(
-                                                height: 10.sp,
 
-                                              ),
-                                              Container(
-                                                margin:  EdgeInsets.only(left: 15.sp, right: 15.sp),
+                                                             /* print( User(
+                                                                  "abc@gmail.com",
+                                                                  "123456"
+                                                              ));*/
+                                                              print("Regions: ${resp.data.toJson()}");
+                                                              Navigator.pushNamed(context, 'patient/profile');
+                                                              hideerrorWidget();
+                                                            } catch (e) {
+                                                              print(e);
+                                                              if (e is DioError) {
+                                                                showerrorWidget();
+                                                               /* ScaffoldMessenger.of(context).showSnackBar(
+                                                                  SnackBar(content: Text('Wrong username or password')),
+                                                                );*/
 
-                                                child: Row(
+                                                                //handle DioError here by error type or by error code
 
-                                                  children: [
-                                                    Container(
-                                                      height: 25.sp,
-                                                      width: 25.sp,
-                                                      child: RoundCheckBox(
-                                                        onTap: (selected) {},
+                                                              } else {
 
-                                                        animationDuration: Duration(
-                                                          milliseconds: 50,
+                                                              }
+
+                                                            }
+                                                            // If the form is valid, display a snackbar. In the real world,
+                                                            // you'd often call a server or save the information in a database.
+
+
+                                                          }
+
+                                                        },
+
+                                                        color: Color(0xFF29AAE1),
+                                                        child: Text("Sign In",
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                    Container(
-                                                      width: 2.sp,
-                                                      height: 2.sp,
-                                                    ),
-                                                    Text(
-                                                      "Remember me",
-                                                      textAlign: TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 15.sp
-                                                      ),
 
-                                                    ),
-                                                    Spacer(),
-                                                    Text(
-                                                      "Forgot password?",
-                                                      textAlign: TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 15.sp
-                                                      ),
-
-                                                    ),
-
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                height: 40.sp,
+                                                  ),
+                                               Container(
+                                                 height: 10.sp,
+                                               ),
+                                               Visibility(
+                                                 visible: viewerrormsgvisible,
+                                                 child: Text("Wrong username or passsword",
+                                              style: TextStyle(
+                                                  color: Color(0xFFFF4500),
 
                                               ),
-                                              Container(
-                                                child: ButtonTheme(
-                                                  minWidth: 158.sp,
-                                                  height: 56.sp,
-                                                  shape: new RoundedRectangleBorder(
-                                                    borderRadius: new BorderRadius.circular(40.sp),
-                                                  ),
-                                                  child: RaisedButton(
-                                                    onPressed: () {
-                                                      Navigator.pushNamed(context, 'patient/profile');
-                                                    },
+                                            ),
+                                               ),
 
-                                                    color: Color(0xFF29AAE1),
-                                                    child: Text("Sign In",
-                                                      style: TextStyle(
-                                                        color: Colors.white,
+                                                ],
 
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-
+                                              ),
+                                            ),
                                           ),
 
                                         ),
@@ -441,8 +616,13 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                           height: _regheight,
 
                                           decoration: BoxDecoration(
-                                            color: Colors.transparent,
-                                             /* gradient: LinearGradient(
+                                              color: Colors.transparent,
+                                              image: DecorationImage(
+                                                image: AssetImage("assets/images/login.png"),
+
+                                                fit: BoxFit.cover,
+                                              ),
+                                              /* gradient: LinearGradient(
                                                   begin: Alignment.centerLeft,
                                                   end: Alignment.centerRight,
                                                   colors: <Color> [
@@ -455,200 +635,333 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                   ],
                                                   tileMode: TileMode.repeated
                                               ),*/
-                                               border: Border.all(
+                                              border: Border.all(
 
-                                            color: Color(0xFF55708b)
-                                        ),
+                                                  color: Color(0xFF55708b)
+                                              ),
                                               borderRadius: _regborderRadius
 
                                           ),
                                           duration:  Duration(seconds: 1),
                                           curve: Curves.fastOutSlowIn,
-                                          child: Column(
-                                            children: [
-                                              Container(
-                                                height: 20.sp,
-                                              ),
-                                              Container(
-                                                  margin: new EdgeInsets.symmetric(horizontal: 20.sp),
-                                                  padding: EdgeInsets.all(20.sp),
-                                                  decoration: BoxDecoration(
-
-                                                      color: Colors.white,
-                                                      border: Border.all(color: Colors.white),
-                                                      borderRadius: BorderRadius.all(Radius.circular(25))
+                                          child: SingleChildScrollView(
+                                            child: Form(
+                                              key: _regformKey,
+                                              child: Column(
+                                                children: [
+                                                  Container(
+                                                    height: 20.sp,
                                                   ),
-                                                  child: Column(
-                                                    children: [
-                                                      SizedBox(
-                                                        height: 40.sp,
-                                                        width: 500.sp,
-                                                        child: TextFormField(
-                                                          controller: regnameController,
-                                                          decoration: InputDecoration(
-                                                              border: OutlineInputBorder(
-                                                                borderRadius: BorderRadius.circular(20.sp),
-                                                              ),
-                                                              filled: true,
-                                                              fillColor: Colors.white70,
-                                                              labelText: 'User Name',
-                                                              icon: IconButton(
-                                                                icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
-                                                              )
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-                                                      ),
-                                                      SizedBox(
-                                                        height: 40.sp,
-                                                        width: 500.sp,
-                                                        child: TextFormField(
-                                                          controller: regemailController,
+                                                  Container(
+                                                      margin: new EdgeInsets.symmetric(horizontal: 20.sp),
+                                                      padding: EdgeInsets.all(20.sp),
+                                                      decoration: BoxDecoration(
 
-                                                          decoration: InputDecoration(
-                                                              border: OutlineInputBorder(
-
-                                                                borderRadius: BorderRadius.circular(20.sp),
-                                                              ),
-                                                              filled: true,
-                                                              fillColor: Colors.white70,
-
-                                                              labelText: 'Email',
-                                                              icon: IconButton(
-                                                                icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
-                                                              )
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-                                                      ),
-                                                      SizedBox(
-                                                        height: 40.sp,
-                                                        width: 500.sp,
-                                                        child: TextFormField(
-                                                          controller: regphnoController,
-                                                          decoration: InputDecoration(
-                                                              border: OutlineInputBorder(
-                                                                borderRadius: BorderRadius.circular(20.sp),
-
-                                                              ),
-                                                              filled: true,
-                                                              fillColor: Colors.white70,
-                                                              labelText: 'Phone number',
-                                                              icon: IconButton(
-                                                                icon: Image.asset('assets/images/contact-gray.png'), onPressed: () {  },
-                                                              )
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-                                                      ),
-                                                      SizedBox(
-                                                        height: 40.sp,
-                                                        width: 500.sp,
-                                                        child: TextFormField(
-
-                                                          obscureText: !_regpasswordVisible,
-                                                          controller: regpasswordController,
-                                                          decoration: InputDecoration(
-
-                                                              border: OutlineInputBorder(
-                                                                borderRadius: BorderRadius.circular(20.sp),
-                                                              ),
-                                                              labelText: 'Password',
-                                                              icon: IconButton(
-                                                                icon: Image.asset('assets/images/lock-gray.png'), onPressed: () {  },
-                                                              ),
-                                                              suffixIcon: GestureDetector(
-                                                                onLongPress: () {
-                                                                  setState(() {
-                                                                    _regpasswordVisible = true;
-                                                                  });
-                                                                },
-                                                                onLongPressUp: () {
-                                                                  setState(() {
-                                                                    _regpasswordVisible = false;
-                                                                  });
-                                                                },
-                                                                child: Icon(
-                                                                    _regpasswordVisible ? Icons.visibility : Icons.visibility_off
-                                                                ),
-                                                              )
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  )
-                                              ),
-                                              Container(
-                                                height: 10.sp,
-                                              ),
-                                              Container(
-                                                margin:  EdgeInsets.only(left: 20.sp, right: 20.sp),
-
-                                                child: Row(
-
-                                                  children: [
-                                                    Container(
-                                                      height: 25.sp,
-                                                      width: 25.sp,
-                                                      child: RoundCheckBox(
-                                                        onTap: (selected) {},
-
-                                                        animationDuration: Duration(
-                                                          milliseconds: 50,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: 10.sp,
-                                                      height: 10.sp,
-                                                    ),
-                                                    Text(
-                                                      "I am agree with privacu policy,terms and conditions.",
-                                                      textAlign: TextAlign.center,
-                                                      style: TextStyle(
                                                           color: Colors.white,
-                                                          fontSize: 15.sp
+                                                          border: Border.all(color: Colors.white),
+                                                          borderRadius: BorderRadius.all(Radius.circular(25))
                                                       ),
+                                                      child: Column(
+                                                        children: [
+                                                          SizedBox(
+                                                           // height: 40.sp,
+                                                            width: 500.sp,
+                                                            child: TextFormField(
+                                                              validator: (regvalue) {
+                                                                if (regvalue == null || regvalue.isEmpty) {
+                                                                  return 'Username required';
+                                                                }
+                                                                return null;
+                                                              },
+                                                              enabled:regusername,
+                                                              controller: regnameController,
+                                                              decoration: InputDecoration(
+                                                                  border: OutlineInputBorder(
+                                                                    borderRadius: BorderRadius.circular(20.sp),
+                                                                  ),
+                                                                  filled: true,
+                                                                  fillColor: Colors.white70,
+                                                                  labelText: 'User Name',
+                                                                  icon: IconButton(
+                                                                    icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
+                                                                  )
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: 10.sp,
+                                                          ),
+                                                          SizedBox(
+                                                           // height: 40.sp,
+                                                            width: 500.sp,
+                                                            child: TextFormField(
+                                                              enabled:regemail,
+                                                              controller: regemailController,
+                                                                validator: (regemailvalue) {
+                                                                  final bool isValid = EmailValidator.validate(regemailvalue!);
+                                                                  if (regemailvalue.isEmpty) {
+                                                                    return "Email required";
+                                                                  }
+                                                                  if (!isValid) {
+                                                                    return "Email address invalid";
+                                                                  }
+                                                                },
+
+                                                              decoration: InputDecoration(
+                                                                  border: OutlineInputBorder(
+
+                                                                    borderRadius: BorderRadius.circular(20.sp),
+                                                                  ),
+                                                                  filled: true,
+                                                                  fillColor: Colors.white70,
+
+                                                                  labelText: 'Email',
+                                                                  icon: IconButton(
+                                                                    icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
+                                                                  )
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: 10.sp,
+                                                          ),
+                                                          SizedBox(
+                                                           // height: 40.sp,
+                                                            width: 500.sp,
+                                                            child: TextFormField(
+                                                              enabled:regph,
+                                                              controller: regphnoController,
+                                                              validator: (regphvalue) {
+                                                                if (regphvalue!.isEmpty) {
+                                                                  return "Phone number Required";
+                                                                }
+                                                              },
+                                                              decoration: InputDecoration(
+                                                                  border: OutlineInputBorder(
+                                                                    borderRadius: BorderRadius.circular(20.sp),
+
+                                                                  ),
+                                                                  filled: true,
+                                                                  fillColor: Colors.white70,
+                                                                  labelText: 'Phone number',
+                                                                  icon: IconButton(
+                                                                    icon: Image.asset('assets/images/contact-gray.png'), onPressed: () {  },
+                                                                  )
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: 10.sp,
+                                                          ),
+                                                          SizedBox(
+                                                           // height: 40.sp,
+                                                            width: 500.sp,
+                                                            child: TextFormField(
+                                                              enabled:regpwd,
+                                                              obscureText: !_regpasswordVisible,
+                                                              controller: regpasswordController,
+                                                              validator: (regpwdvalue) {
+                                                                if (regpwdvalue!.isEmpty) {
+                                                                  return "Password Required";
+                                                                }
+                                                              },
+                                                              decoration: InputDecoration(
+
+                                                                  border: OutlineInputBorder(
+                                                                    borderRadius: BorderRadius.circular(20.sp),
+                                                                  ),
+                                                                  labelText: 'Password',
+                                                                  icon: IconButton(
+                                                                    icon: Image.asset('assets/images/lock-gray.png'), onPressed: () {  },
+                                                                  ),
+                                                                  suffixIcon: GestureDetector(
+                                                                    onLongPress: () {
+                                                                      setState(() {
+                                                                        _regpasswordVisible = true;
+                                                                      });
+                                                                    },
+                                                                    onLongPressUp: () {
+                                                                      setState(() {
+                                                                        _regpasswordVisible = false;
+                                                                      });
+                                                                    },
+                                                                    child: Icon(
+                                                                        _regpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                    ),
+                                                                  )
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      )
+                                                  ),
+                                                  Container(
+                                                    height: 10.sp,
+                                                  ),
+                                                  Container(
+                                                    margin:  EdgeInsets.only(left: 20.sp, right: 20.sp),
+
+                                                    child: Row(
+
+                                                      children: [
+                                                        Container(
+                                                          height: 25.sp,
+                                                          width: 25.sp,
+                                                          child: RoundCheckBox(
+                                                            onTap: (selected) {
+                                                              print(selected);
+                                                               selectedbox=selected! ;
+                                                               //hideWidget();
+                                                            },
+
+                                                           // isChecked: roundcheckboxselection,
+                                                            animationDuration: Duration(
+                                                              milliseconds: 50,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          width: 10.sp,
+                                                          height: 10.sp,
+                                                        ),
+                                                        Text(
+                                                          "I am agree with privacy policy,terms and conditions.",
+                                                          textAlign: TextAlign.center,
+                                                          style: TextStyle(
+                                                              color: Colors.white,
+                                                              fontSize: 15.sp
+                                                          ),
+
+                                                        ),
+
+
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Visibility(
+                                                    visible: viewVisible,
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(
+                                                          checkvalue,
+                                                          textAlign: TextAlign.center,
+                                                          style: TextStyle(
+                                                              color:  Color(0xFFFF4500),
+                                                              fontSize: 14.sp
+                                                          ),
+
+                                                        ),
+                                                      ],
 
                                                     ),
-
-
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                height: 10.sp,
-
-                                              ),
-                                              Container(
-                                                child: ButtonTheme(
-                                                  minWidth: 158.sp,
-                                                  height: 56.sp,
-                                                  shape: new RoundedRectangleBorder(
-                                                    borderRadius: new BorderRadius.circular(40.sp),
                                                   ),
-                                                  child: RaisedButton(
-                                                    onPressed: () {  },
+                                                  Container(
+                                                    height: 10.sp,
 
-                                                    color: Color(0xFF29AAE1),
-                                                    child: Text("Sign Up",
+                                                  ),
+                                                  Container(
+                                                    child: ButtonTheme(
+                                                      minWidth: 158.sp,
+                                                      height: 56.sp,
+                                                      shape: new RoundedRectangleBorder(
+                                                        borderRadius: new BorderRadius.circular(40.sp),
+                                                      ),
+                                                      child: RaisedButton(
+
+                                                        onPressed: () async {
+                                                          if (_regformKey.currentState!.validate()) {
+
+                                                            if(selectedbox==true){
+                                                              hideWidget();
+                                                              try {
+                                                                Getreguserresponse resp=
+                                                                await context.read(apiClientProvider).createUser(
+                                                                    Reguser(
+                                                                        regnameController.text, "abcd",regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                    )
+                                                                );
+
+
+                                                                /* print( User(
+                                                                  "abc@gmail.com",
+                                                                  "123456"
+                                                              ));*/
+                                                                print("Regions: ${resp.data.toJson()}");
+                                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                                  SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
+                                                                );
+                                                                hidewidget();
+
+                                                              } catch (e) {
+                                                                print(e);
+                                                                if (e is DioError) {
+                                                                //  showerrorWidget();
+                                                                  showidget();
+                                                                  /*ScaffoldMessenger.of(context).showSnackBar(
+                                                                    SnackBar(content: Text('Email/Phone is already exists')),
+                                                                  );*/
+
+                                                                  //handle DioError here by error type or by error code
+
+                                                                } else {
+
+                                                                }
+
+                                                              }
+                                                            }
+                                                            else if(selectedbox==false){
+                                                              print(selectedbox);
+                                                              showWidget();
+                                                              checkvalue="Please check I am agree with privacy policy,terms and conditions.";
+
+                                                            }
+
+                                                            // If the form is valid, display a snackbar. In the real world,
+                                                            // you'd often call a server or save the information in a database.
+
+
+
+                                                          }
+                                                        },
+
+                                                        color: Color(0xFF29AAE1),
+                                                        child: Text("Sign Up",
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: 10.sp,
+                                                  ),
+                                                  Visibility(
+                                                    visible: viewreg,
+                                                    child: Text("Email/Phone is already exists",
+                                                      style: TextStyle(
+                                                        color:  Color(0xFFFF4500),
+
+                                                      ),
+                                                    ),
+                                                  ),
+                                                 /* Visibility(
+                                                    visible: viewerrormsgvisible,
+                                                    child: Text("Email/Phone is already exists",
                                                       style: TextStyle(
                                                         color: Colors.white,
 
                                                       ),
                                                     ),
-                                                  ),
-                                                ),
-                                              )
+                                                  ),*/
 
-                                            ],
 
+                                                ],
+
+                                              ),
+                                            ),
                                           ),
 
                                         ),
