@@ -77,7 +77,17 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
   String checkvalue="Please";
 
+  void clearregtext(){
+    regnameController.clear();
+    regpasswordController.clear();
+    regemailController.clear();
+    regphnoController.clear();
+  }
+  void clearlogintext(){
+    nameController.clear();
+    passwordController.clear();
 
+  }
   void showidget(){
     setState(() {
       viewreg = true ;
@@ -235,6 +245,9 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                             regemail=false;
                                             regusername=false;
                                             username=true;
+                                            hidewidget();
+                                            hideWidget();
+                                            clearregtext();
                                             pwd=true;
                                             _regborderRadius =
                                                 BorderRadius.circular(50.sp);
@@ -285,6 +298,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                             _regheight = 450.sp;
                                             _regborderRadius =
                                                 BorderRadius.circular(50.sp);
+                                            hideerrorWidget();
+                                            clearlogintext();
                                             _hasBeenPressedlogin = !_hasBeenPressedlogin;
                                           });
                                         },
@@ -410,13 +425,13 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                           enabled: pwd,
                                                           obscureText: !_passwordVisible,
                                                           controller: passwordController,
-                                                            validator: (pwdvalue) {
-                                                              if (pwdvalue!.isEmpty) {
-                                                                return "Password Required";
-                                                              }
-                                                            },
+                                                          validator: (pwdvalue) {
+                                                            if (pwdvalue!.isEmpty) {
+                                                              return "Password Required";
+                                                            }
+                                                          },
 
-                                                            decoration: InputDecoration(
+                                                          decoration: InputDecoration(
 
                                                               border: UnderlineInputBorder(),
                                                               labelText: 'Password',
@@ -468,7 +483,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                           height: 2.sp,
                                                         ),
 
-                                                       /* FutureBuilder<Album>(
+                                                        /* FutureBuilder<Album>(
                                                             future: futureAlbum,
                                                             builder: (context, snapshot) {
                                                               if (snapshot.hasData) {
@@ -487,7 +502,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             }
                                                         ),*/
 
-                                                       Text(
+                                                        Text(
                                                           "Remember me",
                                                           textAlign: TextAlign.center,
                                                           style: TextStyle(
@@ -526,24 +541,27 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                           if (_formKey.currentState!.validate()) {
                                                             try {
                                                               GetLoginResponse resp=
-                                                                  await context.read(apiClientProvider).login(
+                                                              await context.read(apiClientProvider).login(
                                                                   Loginuser( nameController.text, passwordController.text
                                                                   )
                                                               );
 
 
-                                                             /* print( User(
+                                                              /* print( User(
                                                                   "abc@gmail.com",
                                                                   "123456"
                                                               ));*/
                                                               print("Regions: ${resp.data.toJson()}");
                                                               Navigator.pushNamed(context, 'patient/profile');
+                                                              clearlogintext();
                                                               hideerrorWidget();
+
                                                             } catch (e) {
                                                               print(e);
                                                               if (e is DioError) {
                                                                 showerrorWidget();
-                                                               /* ScaffoldMessenger.of(context).showSnackBar(
+                                                                clearlogintext();
+                                                                /* ScaffoldMessenger.of(context).showSnackBar(
                                                                   SnackBar(content: Text('Wrong username or password')),
                                                                 );*/
 
@@ -573,18 +591,18 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                     ),
 
                                                   ),
-                                               Container(
-                                                 height: 10.sp,
-                                               ),
-                                               Visibility(
-                                                 visible: viewerrormsgvisible,
-                                                 child: Text("Wrong username or passsword",
-                                              style: TextStyle(
-                                                  color: Color(0xFFFF4500),
+                                                  Container(
+                                                    height: 10.sp,
+                                                  ),
+                                                  Visibility(
+                                                    visible: viewerrormsgvisible,
+                                                    child: Text("Wrong username or passsword",
+                                                      style: TextStyle(
+                                                        color: Color(0xFFFF4500),
 
-                                              ),
-                                            ),
-                                               ),
+                                                      ),
+                                                    ),
+                                                  ),
 
                                                 ],
 
@@ -664,7 +682,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                       child: Column(
                                                         children: [
                                                           SizedBox(
-                                                           // height: 40.sp,
+                                                            // height: 40.sp,
                                                             width: 500.sp,
                                                             child: TextFormField(
                                                               validator: (regvalue) {
@@ -692,20 +710,20 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             height: 10.sp,
                                                           ),
                                                           SizedBox(
-                                                           // height: 40.sp,
+                                                            // height: 40.sp,
                                                             width: 500.sp,
                                                             child: TextFormField(
                                                               enabled:regemail,
                                                               controller: regemailController,
-                                                                validator: (regemailvalue) {
-                                                                  final bool isValid = EmailValidator.validate(regemailvalue!);
-                                                                  if (regemailvalue.isEmpty) {
-                                                                    return "Email required";
-                                                                  }
-                                                                  if (!isValid) {
-                                                                    return "Email address invalid";
-                                                                  }
-                                                                },
+                                                              validator: (regemailvalue) {
+                                                                final bool isValid = EmailValidator.validate(regemailvalue!);
+                                                                if (regemailvalue.isEmpty) {
+                                                                  return "Email required";
+                                                                }
+                                                                if (!isValid) {
+                                                                  return "Email address invalid";
+                                                                }
+                                                              },
 
                                                               decoration: InputDecoration(
                                                                   border: OutlineInputBorder(
@@ -726,7 +744,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             height: 10.sp,
                                                           ),
                                                           SizedBox(
-                                                           // height: 40.sp,
+                                                            // height: 40.sp,
                                                             width: 500.sp,
                                                             child: TextFormField(
                                                               enabled:regph,
@@ -754,7 +772,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             height: 10.sp,
                                                           ),
                                                           SizedBox(
-                                                           // height: 40.sp,
+                                                            // height: 40.sp,
                                                             width: 500.sp,
                                                             child: TextFormField(
                                                               enabled:regpwd,
@@ -810,11 +828,11 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                           child: RoundCheckBox(
                                                             onTap: (selected) {
                                                               print(selected);
-                                                               selectedbox=selected! ;
-                                                               //hideWidget();
+                                                              selectedbox=selected! ;
+                                                              //hideWidget();
                                                             },
 
-                                                           // isChecked: roundcheckboxselection,
+                                                            // isChecked: roundcheckboxselection,
                                                             animationDuration: Duration(
                                                               milliseconds: 50,
                                                             ),
@@ -891,13 +909,15 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                 ScaffoldMessenger.of(context).showSnackBar(
                                                                   SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
                                                                 );
+                                                                clearregtext();
+                                                                hideerrorWidget();
                                                                 hidewidget();
-
                                                               } catch (e) {
                                                                 print(e);
                                                                 if (e is DioError) {
-                                                                //  showerrorWidget();
+
                                                                   showidget();
+                                                                  clearregtext();
                                                                   /*ScaffoldMessenger.of(context).showSnackBar(
                                                                     SnackBar(content: Text('Email/Phone is already exists')),
                                                                   );*/
@@ -947,7 +967,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                       ),
                                                     ),
                                                   ),
-                                                 /* Visibility(
+                                                  /* Visibility(
                                                     visible: viewerrormsgvisible,
                                                     child: Text("Email/Phone is already exists",
                                                       style: TextStyle(

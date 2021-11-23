@@ -57,6 +57,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
       viewreg = false ;
     });
   }
+
   void hideerrorWidget(){
     setState(() {
       viewerrormsgvisible = false ;
@@ -86,6 +87,18 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
   TextEditingController regpasswordController = TextEditingController();
   TextEditingController regemailController = TextEditingController();
   TextEditingController regphnoController = TextEditingController();
+
+  void clearregtext(){
+    regnameController.clear();
+    regpasswordController.clear();
+    regemailController.clear();
+    regphnoController.clear();
+  }
+  void clearlogintext(){
+    nameController.clear();
+    passwordController.clear();
+
+  }
   bool _obscureText = true;
 
   late String _password;
@@ -217,6 +230,9 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                             regemail=false;
                                             regusername=false;
                                             username=true;
+                                            hidewidget();
+                                            hideWidget();
+                                            clearregtext();
                                             pwd=true;
                                             _regborderRadius =
                                                 BorderRadius.circular(50.sp);
@@ -267,6 +283,8 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                             _regheight = 450.sp;
                                             _regborderRadius =
                                                 BorderRadius.circular(50.sp);
+                                            hideerrorWidget();
+                                            clearlogintext();
                                             _hasBeenPressedlogin = !_hasBeenPressedlogin;
                                           });
                                         },
@@ -520,11 +538,14 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                               ));*/
                                                               print("Regions: ${resp.data.toJson()}");
                                                               Navigator.pushNamed(context, 'therapist/profile');
+                                                              clearlogintext();
                                                               hideerrorWidget();
+
                                                             } catch (e) {
                                                               print(e);
                                                               if (e is DioError) {
                                                                 showerrorWidget();
+                                                                clearlogintext();
                                                                 /* ScaffoldMessenger.of(context).showSnackBar(
                                                                   SnackBar(content: Text('Wrong username or password')),
                                                                 );*/
@@ -873,6 +894,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                 ScaffoldMessenger.of(context).showSnackBar(
                                                                   SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
                                                                 );
+                                                                clearregtext();
                                                                 hideerrorWidget();
                                                                 hidewidget();
                                                               } catch (e) {
@@ -880,6 +902,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                 if (e is DioError) {
 
                                                                   showidget();
+                                                                  clearregtext();
                                                                   /*ScaffoldMessenger.of(context).showSnackBar(
                                                                     SnackBar(content: Text('Email/Phone is already exists')),
                                                                   );*/
