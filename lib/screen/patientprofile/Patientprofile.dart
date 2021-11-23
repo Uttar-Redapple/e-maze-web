@@ -15,6 +15,227 @@ class Patientprofile extends StatefulWidget{
 }
 class PatientprofileState extends State<Patientprofile>{
   bool status = false;
+  bool viewfirstname = false ;
+  bool viewlastname = false ;
+  bool viewemail = false ;
+  bool viewphno = false ;
+  bool viewbirth = false ;
+  bool viewgender = false ;
+  bool viewlanguage = false ;
+
+
+  bool viewfirstnametext = true ;
+  bool viewlastnametext = true ;
+  bool viewemailtext = true ;
+  bool viewphnotext = true ;
+  bool viewbirthtext = true ;
+  bool viewgendertext = true ;
+  bool viewlanguagetext = true ;
+
+
+  void showfirstnametextwidget(){
+    setState(() {
+      viewfirstnametext = true ;
+
+    });
+  }
+
+  void hidefirstnametextwidget(){
+    setState(() {
+      viewfirstnametext = false ;
+    });
+  }
+
+  void showlastnametextwidget(){
+    setState(() {
+      viewlastnametext = true ;
+
+    });
+  }
+
+  void hidelastnametextwidget(){
+    setState(() {
+      viewlastnametext = false ;
+    });
+  }
+
+  void showemailtextwidget(){
+    setState(() {
+      viewemailtext = true ;
+
+    });
+  }
+
+  void hideemailtextwidget(){
+    setState(() {
+      viewemailtext = false ;
+    });
+  }
+
+
+  void showphtextwidget(){
+    setState(() {
+      viewphnotext = true ;
+
+    });
+  }
+
+  void hidephtextwidget(){
+    setState(() {
+      viewphnotext = false ;
+    });
+  }
+
+  void showbirthtextwidget(){
+    setState(() {
+      viewbirthtext = true ;
+
+    });
+  }
+
+  void hidebirthtextwidget(){
+    setState(() {
+      viewbirthtext = false ;
+    });
+  }
+
+  void showgendertextwidget(){
+    setState(() {
+      viewgendertext = true ;
+
+    });
+  }
+
+  void hidegendertextwidget(){
+    setState(() {
+      viewgendertext = false ;
+    });
+  }
+
+  void showlanguagetextwidget(){
+    setState(() {
+      viewlanguagetext = true ;
+
+    });
+  }
+
+  void hidelanguagetextwidget(){
+    setState(() {
+      viewlanguagetext = false ;
+    });
+  }
+
+  TextEditingController firstnameController = TextEditingController();
+  TextEditingController lastnameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phnoController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
+  TextEditingController languageController = TextEditingController();
+  TextEditingController birthController = TextEditingController();
+
+  void clearprofiletext(){
+    firstnameController.clear();
+    lastnameController.clear();
+    emailController.clear();
+    phnoController.clear();
+    genderController.clear();
+    languageController.clear();
+    birthController.clear();
+  }
+  void showfirstnamewidget(){
+    setState(() {
+      viewfirstname = true ;
+
+    });
+  }
+
+  void hidefirstnamewidget(){
+    setState(() {
+      viewfirstname = false ;
+    });
+  }
+
+  void showlastnamewidget(){
+    setState(() {
+      viewlastname = true ;
+
+    });
+  }
+
+  void hidelastnamewidget(){
+    setState(() {
+      viewlastname = false ;
+    });
+  }
+  void showemailwidget(){
+    setState(() {
+      viewemail = true ;
+
+    });
+  }
+
+  void hideemailwidget(){
+    setState(() {
+      viewemail = false ;
+    });
+  }
+
+  void showphwidget(){
+    setState(() {
+      viewphno = true ;
+
+    });
+  }
+
+  void hidephwidget(){
+    setState(() {
+      viewphno = false ;
+    });
+  }
+
+  void showbirthwidget(){
+    setState(() {
+      viewbirth = true ;
+
+    });
+  }
+
+  void hidebirthwidget(){
+    setState(() {
+      viewbirth = false ;
+    });
+  }
+
+  void showgenderwidget(){
+    setState(() {
+      viewgender = true ;
+
+    });
+  }
+
+  void hidegenderwidget(){
+    setState(() {
+      viewgender = false ;
+    });
+  }
+
+  void showlanguagewidget(){
+    setState(() {
+      viewlanguage = true ;
+
+    });
+  }
+
+  void hidelanguagewidget(){
+    setState(() {
+      viewlanguage = false ;
+    });
+  }
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     var radius = Radius.circular(40);
@@ -612,7 +833,22 @@ class PatientprofileState extends State<Patientprofile>{
                                               Expanded(
                                                 flex: 8,
                                                 child: GestureDetector(
-                                                  onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                                                  onTap: () {
+                                                    setState(() {
+                                                      /*showfirstnametextwidget();
+                                                      hidefirstnamewidget();
+                                                      showlanguagetextwidget();
+                                                      hidelastnamewidget();
+                                                      showemailtextwidget();
+                                                      hideemailwidget();
+                                                      showphtextwidget();
+                                                      hidephwidget();
+                                                      showbirthtextwidget();
+                                                      hidebirthwidget();
+                                                      showlanguagetextwidget();
+                                                      hidelanguagewidget();*/
+                                                    });
+                                                  },
                                                   child: Container(
 
                                                     width: 100.sp,
@@ -666,26 +902,35 @@ class PatientprofileState extends State<Patientprofile>{
                                                               alignment: Alignment.center,
                                                               child: Stack(
                                                                 children: [
-                                                                  Text(
-                                                                    "Lauren",
-                                                                    textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
-                                                                      fontWeight: FontWeight.bold,
-                                                                    ),
+                                                                  Visibility(
+                                                                    visible: viewfirstnametext,
+                                                                    child: Text(
+                                                                      "Lauren",
+                                                                      textAlign: TextAlign.center,
+                                                                      style: TextStyle(
+                                                                        color: Color(0xFF989898 ),
+                                                                        fontSize: 15.sp,
+                                                                        fontWeight: FontWeight.bold,
+                                                                      ),
 
+                                                                    ),
                                                                   ),
-                                                                 /* TextField(
+                                                                  Visibility(
+                                                                    visible: viewfirstname,
+                                                                    child: SizedBox(
+                                                                      height: 30.sp,
+                                                                      width: 100.sp,
+                                                                      child: TextField(
+                                                                        controller: firstnameController,
+                                                                        obscureText: true,
+                                                                        decoration: InputDecoration(
+                                                                          border: UnderlineInputBorder(),
 
-                                                                    textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
-                                                                      fontWeight: FontWeight.bold,
+                                                                          hintText: 'Enter Firstname',
+                                                                        ),
+                                                                      ),
                                                                     ),
-
-                                                                  ),*/
+                                                                  ),
                                                                 ],
 
                                                               ),
@@ -697,6 +942,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                               alignment: Alignment.centerRight,
                                                               child: GestureDetector(
                                                                 onTap: () {
+                                                                  hidefirstnametextwidget();
+                                                                  showfirstnamewidget();
                                                                   //Navigator.pushNamed(context, "myRoute");
                                                                 },
                                                                 child: GestureDetector(
@@ -752,14 +999,38 @@ class PatientprofileState extends State<Patientprofile>{
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
-                                                              child: Text(
-                                                                "Harish",
-                                                                textAlign: TextAlign.center,
-                                                                style: TextStyle(
-                                                                  color: Color(0xFF989898 ),
-                                                                  fontSize: 15.sp,
-                                                                  fontWeight: FontWeight.bold,
-                                                                ),
+                                                              child: Stack(
+                                                                children: [
+                                                                  Visibility(
+                                                                    visible: viewlastnametext,
+                                                                    child: Text(
+                                                                      "Harish",
+                                                                      textAlign: TextAlign.center,
+                                                                      style: TextStyle(
+                                                                        color: Color(0xFF989898 ),
+                                                                        fontSize: 15.sp,
+                                                                        fontWeight: FontWeight.bold,
+                                                                      ),
+
+                                                                    ),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: viewlastname,
+                                                                    child: SizedBox(
+                                                                      height: 30.sp,
+                                                                      width: 100.sp,
+                                                                      child: TextField(
+                                                                        controller: lastnameController,
+                                                                        obscureText: true,
+                                                                        decoration: InputDecoration(
+                                                                          border: UnderlineInputBorder(),
+                                                                          labelText: 'Password',
+                                                                          hintText: 'Enter Password',
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
 
                                                               ),
                                                             ),
@@ -820,14 +1091,38 @@ class PatientprofileState extends State<Patientprofile>{
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
-                                                              child: Text(
-                                                                "Harish@gmail.com",
-                                                                textAlign: TextAlign.center,
-                                                                style: TextStyle(
-                                                                  color: Color(0xFF989898 ),
-                                                                  fontSize: 15.sp,
-                                                                  fontWeight: FontWeight.bold,
-                                                                ),
+                                                              child:  Stack(
+                                                                children: [
+                                                                  Visibility(
+                                                                    visible: viewemailtext,
+                                                                    child: Text(
+                                                                      "harish@gmail.com",
+                                                                      textAlign: TextAlign.center,
+                                                                      style: TextStyle(
+                                                                        color: Color(0xFF989898 ),
+                                                                        fontSize: 15.sp,
+                                                                        fontWeight: FontWeight.bold,
+                                                                      ),
+
+                                                                    ),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: viewemail,
+                                                                    child: SizedBox(
+                                                                      height: 30.sp,
+                                                                      width: 100.sp,
+                                                                      child: TextField(
+                                                                        controller: emailController,
+                                                                        obscureText: true,
+                                                                        decoration: InputDecoration(
+                                                                          border: UnderlineInputBorder(),
+                                                                          labelText: 'Password',
+                                                                          hintText: 'Enter Password',
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
 
                                                               ),
                                                             ),
@@ -884,18 +1179,42 @@ class PatientprofileState extends State<Patientprofile>{
                                                               ),
                                                             ),
                                                             Container(
-                                                              width: 80.sp,
+                                                              width: 72.sp,
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
-                                                              child: Text(
-                                                                "823434345",
-                                                                textAlign: TextAlign.center,
-                                                                style: TextStyle(
-                                                                  color: Color(0xFF989898 ),
-                                                                  fontSize: 15.sp,
-                                                                  fontWeight: FontWeight.bold,
-                                                                ),
+                                                              child: Stack(
+                                                                children: [
+                                                                  Visibility(
+                                                                    visible: viewphnotext,
+                                                                    child: Text(
+                                                                      "1234567890",
+                                                                      textAlign: TextAlign.center,
+                                                                      style: TextStyle(
+                                                                        color: Color(0xFF989898 ),
+                                                                        fontSize: 15.sp,
+                                                                        fontWeight: FontWeight.bold,
+                                                                      ),
+
+                                                                    ),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: viewphno,
+                                                                    child: SizedBox(
+                                                                      height: 30.sp,
+                                                                      width: 100.sp,
+                                                                      child: TextField(
+                                                                        controller: phnoController,
+                                                                        obscureText: true,
+                                                                        decoration: InputDecoration(
+                                                                          border: UnderlineInputBorder(),
+
+                                                                          hintText: 'Enter Password',
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
 
                                                               ),
                                                             ),
@@ -956,14 +1275,38 @@ class PatientprofileState extends State<Patientprofile>{
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
-                                                              child: Text(
-                                                                "03/01/1991",
-                                                                textAlign: TextAlign.center,
-                                                                style: TextStyle(
-                                                                  color: Color(0xFF989898 ),
-                                                                  fontSize: 15.sp,
-                                                                  fontWeight: FontWeight.bold,
-                                                                ),
+                                                              child: Stack(
+                                                                children: [
+                                                                  Visibility(
+                                                                    visible: viewbirthtext,
+                                                                    child: Text(
+                                                                      "03/01/1991",
+                                                                      textAlign: TextAlign.center,
+                                                                      style: TextStyle(
+                                                                        color: Color(0xFF989898 ),
+                                                                        fontSize: 15.sp,
+                                                                        fontWeight: FontWeight.bold,
+                                                                      ),
+
+                                                                    ),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: viewbirth,
+                                                                    child: SizedBox(
+                                                                      height: 30.sp,
+                                                                      width: 100.sp,
+                                                                      child: TextField(
+                                                                        controller: birthController,
+                                                                        obscureText: true,
+                                                                        decoration: InputDecoration(
+                                                                          border: UnderlineInputBorder(),
+
+                                                                          hintText: 'Enter Password',
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
 
                                                               ),
                                                             ),
@@ -1024,14 +1367,38 @@ class PatientprofileState extends State<Patientprofile>{
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
-                                                              child: Text(
-                                                                "Male",
-                                                                textAlign: TextAlign.center,
-                                                                style: TextStyle(
-                                                                  color: Color(0xFF989898 ),
-                                                                  fontSize: 15.sp,
-                                                                  fontWeight: FontWeight.bold,
-                                                                ),
+                                                              child:  Stack(
+                                                                children: [
+                                                                  Visibility(
+                                                                    visible: viewgendertext,
+                                                                    child: Text(
+                                                                      "Male",
+                                                                      textAlign: TextAlign.center,
+                                                                      style: TextStyle(
+                                                                        color: Color(0xFF989898 ),
+                                                                        fontSize: 15.sp,
+                                                                        fontWeight: FontWeight.bold,
+                                                                      ),
+
+                                                                    ),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: viewgender,
+                                                                    child: SizedBox(
+                                                                      height: 30.sp,
+                                                                      width: 100.sp,
+                                                                      child: TextField(
+                                                                        controller: genderController,
+                                                                        obscureText: true,
+                                                                        decoration: InputDecoration(
+                                                                          border: UnderlineInputBorder(),
+
+                                                                          hintText: 'Enter Password',
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
 
                                                               ),
                                                             ),
@@ -1092,14 +1459,38 @@ class PatientprofileState extends State<Patientprofile>{
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
-                                                              child: Text(
-                                                                "English",
-                                                                textAlign: TextAlign.center,
-                                                                style: TextStyle(
-                                                                  color: Color(0xFF989898 ),
-                                                                  fontSize: 15.sp,
-                                                                  fontWeight: FontWeight.bold,
-                                                                ),
+                                                              child: Stack(
+                                                                children: [
+                                                                  Visibility(
+                                                                    visible: viewlanguagetext,
+                                                                    child: Text(
+                                                                      "English",
+                                                                      textAlign: TextAlign.center,
+                                                                      style: TextStyle(
+                                                                        color: Color(0xFF989898 ),
+                                                                        fontSize: 15.sp,
+                                                                        fontWeight: FontWeight.bold,
+                                                                      ),
+
+                                                                    ),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible: viewlanguage,
+                                                                    child: SizedBox(
+                                                                      height: 30.sp,
+                                                                      width: 100.sp,
+                                                                      child: TextField(
+                                                                        controller: languageController,
+                                                                        obscureText: true,
+                                                                        decoration: InputDecoration(
+                                                                          border: UnderlineInputBorder(),
+
+                                                                          hintText: 'Enter Password',
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
 
                                                               ),
                                                             ),

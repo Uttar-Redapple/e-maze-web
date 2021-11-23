@@ -7,6 +7,7 @@ part of 'get_reguser.dart';
 // **************************************************************************
 
 Reguser _$ReguserFromJson(Map<String, dynamic> json) => Reguser(
+      json['username'] as String,
       json['first_name'] as String,
       json['last_name'] as String,
       json['email'] as String,
@@ -16,6 +17,7 @@ Reguser _$ReguserFromJson(Map<String, dynamic> json) => Reguser(
     );
 
 Map<String, dynamic> _$ReguserToJson(Reguser instance) => <String, dynamic>{
+      'username':instance.username,
       'first_name': instance.first_name,
       'last_name': instance.last_name,
       'email': instance.email,

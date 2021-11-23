@@ -64,7 +64,7 @@ class TherapistorpatientState extends State<Therapistorpatient> with TickerProvi
           image: DecorationImage(
             image: AssetImage("assets/images/whitepoligon.png"),
 
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
           ),
             gradient: LinearGradient(
                 begin: Alignment.centerLeft,

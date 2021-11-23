@@ -4,6 +4,7 @@ part 'get_reguser.g.dart';
 @JsonSerializable()
 class Reguser{
   Reguser(
+      this.username,
       this.first_name,
       this.last_name,
       this.email,
@@ -12,7 +13,7 @@ class Reguser{
       this.user_type,
 
       );
-
+  final String username;
   final String first_name;
   final String last_name;
   final String email;
