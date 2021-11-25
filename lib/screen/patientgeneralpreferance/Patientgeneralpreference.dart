@@ -253,12 +253,36 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                           ),
                                           child: ContainedTabBarView(
                                             tabs: [
-                                              Text(
-                                                'Patient',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  /* boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey.withOpacity(0.5),
+                                                spreadRadius: 15,
+                                                blurRadius: 7,
+                                                offset: Offset(0, 3), // changes position of shadow
+                                              ),
+                                            ],*/
+                                                ),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    /*boxShadow: [
+                                                      BoxShadow(
+                                                        color: Colors.grey.withOpacity(0.5),
+                                                        spreadRadius: 15,
+                                                        blurRadius: 7,
+                                                        offset: Offset(0, 3), // changes position of shadow
+                                                      ),
+                                                    ],*/
+                                                  ),
+                                                  child: Text(
+                                                    'Patient',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
 
-                                                    fontSize: 10.sp
+                                                        fontSize: 10.sp
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                               Text(
@@ -278,6 +302,12 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                 height: 30.sp,
                                                 decoration: BoxDecoration(
                                                     color: Colors.white,
+                                                    /*image: new DecorationImage(
+                                                      image: new AssetImage("assets/images/tabicon.png"),
+                                                      fit: BoxFit.cover,
+
+
+                                                    ),*/
                                                     borderRadius: BorderRadius.all(Radius.circular(40.0)),
                                                     boxShadow: [
                                                       BoxShadow(
@@ -292,8 +322,8 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                               ),
 
                                               indicator: ShapeDecoration(
-                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
-                                                      topLeft: radius,bottomLeft: radius,bottomRight: radius)),
+                                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
+                                                    topLeft: radius,bottomLeft: radius,bottomRight: radius)),
                                                 color: Color(0xFF29AAE1),
                                               ),
                                               indicatorColor: Colors.transparent,
@@ -308,39 +338,32 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                       height: 10.sp,
                                                     ),
                                                     Container(
-                                                      width: 130.sp,
                                                       height: 130.sp,
+                                                      width: 130.sp,
                                                       decoration: BoxDecoration(
-                                                          shape: BoxShape.circle,
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              spreadRadius: 7,
-                                                              color: Colors.white,
-                                                              //  offset: Offset(2, 2),
-                                                              blurRadius: 3,
-                                                            )
-                                                          ],
-                                                          image: DecorationImage(
-                                                            fit: BoxFit.fill,
-                                                            image: NetworkImage(
-                                                                "https://i.imgur.com/BoN9kdC.png"
-                                                            ),
+                                                        shape: BoxShape.circle,
+                                                        image: DecorationImage(
+                                                          image: AssetImage("assets/images/shadow.png"),
 
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                      child: Container(
+                                                          padding:  EdgeInsets.all(12.sp),
+                                                          height: 18.sp,
+                                                          width: 18.sp,
+                                                          decoration: BoxDecoration(
+                                                            shape: BoxShape.circle,
+                                                          ),
+
+                                                          child: CircleAvatar
+
+                                                            (
+                                                              radius: 20,
+                                                              backgroundImage:
+                                                              NetworkImage('https://i.imgur.com/BoN9kdC.png')
                                                           )
                                                       ),
-                                                      child:
-                                                      Column(
-                                                        crossAxisAlignment: CrossAxisAlignment.end,
-                                                        mainAxisSize: MainAxisSize.max,
-                                                        mainAxisAlignment: MainAxisAlignment.end,
-                                                        children: [
-                                                          IconButton(
-                                                            icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
-                                                          )
-                                                        ],
-
-                                                      ),
-
                                                     ),
                                                     Container(
                                                       height: 5.sp,
@@ -382,36 +405,31 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                       height: 10.sp,
                                                     ),
                                                     Container(
-                                                      width: 130.sp,
                                                       height: 130.sp,
+                                                      width: 130.sp,
                                                       decoration: BoxDecoration(
-                                                          shape: BoxShape.circle,
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              spreadRadius: 7,
-                                                              color: Colors.white,
-                                                              //  offset: Offset(2, 2),
-                                                              blurRadius: 3,
-                                                            )
-                                                          ],
-                                                          image: DecorationImage(
-                                                            fit: BoxFit.fill,
-                                                            image: NetworkImage(
-                                                                "https://i.imgur.com/BoN9kdC.png"
-                                                            ),
+                                                        shape: BoxShape.circle,
+                                                        image: DecorationImage(
+                                                          image: AssetImage("assets/images/shadow.png"),
 
-                                                          )
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
-                                                      child:   Column(
-                                                        crossAxisAlignment: CrossAxisAlignment.end,
-                                                        mainAxisSize: MainAxisSize.max,
-                                                        mainAxisAlignment: MainAxisAlignment.end,
-                                                        children: [
-                                                          IconButton(
-                                                            icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
-                                                          )
-                                                        ],
+                                                      child: Container(
+                                                          padding:  EdgeInsets.all(12.sp),
+                                                          height: 18.sp,
+                                                          width: 18.sp,
+                                                          decoration: BoxDecoration(
+                                                            shape: BoxShape.circle,
+                                                          ),
 
+                                                          child: CircleAvatar
+
+                                                            (
+                                                              radius: 20,
+                                                              backgroundImage:
+                                                              NetworkImage('https://i.imgur.com/BoN9kdC.png')
+                                                          )
                                                       ),
                                                     ),
                                                     Container(
@@ -491,7 +509,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                       fontWeight: FontWeight.bold,
                                                       color: Colors.white,
 
-                                                      fontSize: 20.0),
+                                                      fontSize: 20.sp),
                                                 ),
                                               ),
                                             ),
@@ -500,7 +518,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                             footer: Text(
                                               "Patient's performance+2%",
                                               style:
-                                              new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                                              new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
                                             ),
                                             progressColor: Color(0xFF29AAE1),
                                           ),

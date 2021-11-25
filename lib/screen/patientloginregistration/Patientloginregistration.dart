@@ -10,6 +10,7 @@ import 'package:emaze_brain/provider/api_client_provider.dart';
 import 'package:emaze_brain/screen/gamestartscreen/Gamestartscreen.dart';
 import 'package:emaze_brain/screen/loginscreen/Therapistorpatient.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -32,6 +33,13 @@ class Patientloginregistration extends StatefulWidget{
 class PatientloginregistrationState extends State<Patientloginregistration> with TickerProviderStateMixin{
   final _formKey = GlobalKey<FormState>();
   final _regformKey = GlobalKey<FormState>();
+  late FocusNode _loginusernamefocusnode;
+  late FocusNode _loginpwdfocusnode;
+  late FocusNode _regusernamefocusnode;
+  late final FocusNode _regemailfocusnode;
+  late final FocusNode _regphfocusnode;
+  late FocusNode _regpwdfocusnode;
+
   bool _hasBeenPressedlogin = false;
   bool _hasBeenPressedregister = false;
   double _width = 600.sp;
@@ -73,7 +81,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   bool value = false;
   bool isChecked = false;
   bool isEnabled = true;
-
+  final focus = FocusNode();
    bool selectedbox=false;
 
   String checkvalue="Please";
@@ -161,9 +169,27 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
     super.initState();
     _passwordVisible = false;
     _regpasswordVisible = false;
+   // _loginusernamefocusnode = FocusNode();
+    _loginpwdfocusnode = FocusNode();
+   // _regusernamefocusnode=FocusNode();
+    _regpwdfocusnode=FocusNode();
+    _regemailfocusnode=FocusNode();
+    _regphfocusnode=FocusNode();
 
 
   }
+  @override
+  void dispose() {
+    // Clean up the focus node when the Form is disposed.
+   // _loginusernamefocusnode.dispose();
+    _loginpwdfocusnode.dispose();
+  //  _regusernamefocusnode=FocusNode();
+    _regpwdfocusnode.dispose();
+    _regemailfocusnode.dispose();
+    _regphfocusnode.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var radius = Radius.circular(40);
@@ -179,7 +205,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/images/fondos.png"),
+                            image: AssetImage("assets/images/whitepoligon.png"),
 
                             fit: BoxFit.cover,
                           ),
@@ -233,21 +259,23 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                     Expanded(
                                       flex: 5,
                                       child: Container(
+                                        height: 40.sp,
+                                        decoration: BoxDecoration(
+                                            color: _logincolor,
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(40.0),
+                                              bottomRight: Radius.circular(40.0),
+                                              topLeft: Radius.circular(40.0),
+                                              topRight: Radius.circular(40.0),
 
 
+                                            )
+                                        ),
 
-                                        child: RaisedButton(
-                                          //     disabledColor: Colors.red,
-                                          // disabledTextColor: Colors.black,
-                                          padding:  EdgeInsets.all(20),
-                                          textColor: _logintextcolor,
-                                          //  color: Colors.green,
-                                          color: _logincolor,
-                                          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.sp)),
 
-                                          onPressed: () {
+                                        child:GestureDetector(
+                                          onTap: () {
                                             setState(() {
-                                              // final random = Random();
                                               _regcolor = Colors.white;
                                               _logincolor=Colors.green;
                                               _logintextcolor=Colors.white;
@@ -274,12 +302,17 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                               _hasBeenPressedregister = !_hasBeenPressedregister;
                                             });
                                           },
-                                          child: Text(
-                                              'LOGIN',
-                                              style:  TextStyle(
+                                          child: Center(
+                                            child: Text(
+                                                'LOGIN',
+                                                textAlign: TextAlign.center,
+                                                style:  TextStyle(
+                                                  color: _logintextcolor,
                                                   fontWeight: FontWeight.bold,
 
-                                              )
+
+                                                )
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -287,18 +320,22 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                     Expanded(
                                       flex: 5,
                                       child: Container(
+                                        height: 40.sp,
+                                        decoration: BoxDecoration(
+                                            color: _regcolor,
+                                            borderRadius: BorderRadius.only(
+                                                bottomLeft: Radius.circular(40.0),
+                                                bottomRight: Radius.circular(40.0),
+                                               topLeft: Radius.circular(40.0),
+                                              topRight: Radius.circular(40.0),
 
 
-                                        child: RaisedButton(
-                                          //     disabledColor: Colors.red,
-                                          // disabledTextColor: Colors.black,
-                                          padding:  EdgeInsets.all(20),
-                                          textColor: _regtextcolor,
+                                            )
+                                        ),
 
-                                          // color: Colors.white,
-                                          color: _regcolor,
-                                          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.sp)),
-                                          onPressed: () {
+
+                                        child:GestureDetector(
+                                          onTap: () {
                                             setState(() {
                                               regpwd=true;
                                               regph=true;
@@ -324,12 +361,17 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                               _hasBeenPressedlogin = !_hasBeenPressedlogin;
                                             });
                                           },
-                                          child: Text(
-                                              'REGISTER',
-                                              style:  TextStyle(
+                                          child: Center(
+                                            child: Text(
+                                                'REGISTER',
+                                                textAlign: TextAlign.center,
+                                                style:  TextStyle(
+                                                   color: _regtextcolor,
                                                   fontWeight: FontWeight.bold,
+                                                  
 
-                                              )
+                                                )
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -431,49 +473,84 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                       ),
                                                       child: Column(
                                                         children: [
-                                                          TextFormField(
-                                                            enabled: username,
-                                                            controller: nameController,
-                                                            decoration: InputDecoration(
-                                                              border: UnderlineInputBorder(),
-                                                              labelText: 'User Name',
-                                                            ),
-                                                            validator: (value) {
-                                                              if (value == null || value.isEmpty) {
-                                                                return 'Username required';
+                                                          RawKeyboardListener(
+                                                            focusNode: FocusNode(),
+                                                            onKey: (event) {
+                                                              if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                print("Tab Key pressed");
+                                                                _loginpwdfocusnode.requestFocus();
+                                                               // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
+                                                               // focusNode: _loginpwdfocusnode.requestFocus();
                                                               }
-                                                              return null;
+                                                             /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                                print("ENTER Key pressed");
+                                                                //Do something
+                                                                focusNode: _loginpwdfocusnode.requestFocus();
+                                                              }*/
                                                             },
-                                                          ),
-                                                          TextFormField(
-                                                            enabled: pwd,
-                                                            obscureText: !_passwordVisible,
-                                                            controller: passwordController,
-                                                            validator: (pwdvalue) {
-                                                              if (pwdvalue!.isEmpty) {
-                                                                return "Password Required";
-                                                              }
-                                                            },
-
-                                                            decoration: InputDecoration(
-
+                                                            child: TextFormField(
+                                                              enabled: username,
+                                                              controller: nameController,
+                                                              decoration: InputDecoration(
                                                                 border: UnderlineInputBorder(),
-                                                                labelText: 'Password',
-                                                                suffixIcon: GestureDetector(
-                                                                  onLongPress: () {
-                                                                    setState(() {
-                                                                      _passwordVisible = true;
-                                                                    });
-                                                                  },
-                                                                  onLongPressUp: () {
-                                                                    setState(() {
-                                                                      _passwordVisible = false;
-                                                                    });
-                                                                  },
-                                                                  child: Icon(
-                                                                      _passwordVisible ? Icons.visibility : Icons.visibility_off
-                                                                  ),
-                                                                )
+                                                                labelText: 'User Name',
+
+                                                              ),
+
+
+
+
+
+                                                              validator: (value) {
+                                                                if (value == null || value.isEmpty) {
+                                                                  return 'Username required';
+                                                                }
+                                                                return null;
+                                                              },
+                                                              textInputAction: TextInputAction.next,
+                                                             /* onFieldSubmitted: (v){
+                                                                FocusScope.of(context).requestFocus(focus);
+                                                              },*/
+
+                                                         //   onEditingComplete: () => _loginpwdfocusnode.requestFocus(),
+                                                            ),
+                                                          ),
+                                                          RawKeyboardListener(
+                                                            focusNode: _loginpwdfocusnode,
+                                                            child: TextFormField(
+                                                              enabled: pwd,
+                                                              obscureText: !_passwordVisible,
+                                                              controller: passwordController,
+                                                            //  focusNode: _loginpwdfocusnode,
+
+                                                              validator: (pwdvalue) {
+                                                                if (pwdvalue!.isEmpty) {
+                                                                  return "Password Required";
+                                                                }
+                                                              },
+
+
+                                                              decoration: InputDecoration(
+
+                                                                  border: UnderlineInputBorder(),
+                                                                  labelText: 'Password',
+                                                                  suffixIcon: GestureDetector(
+                                                                    onLongPress: () {
+                                                                      setState(() {
+                                                                        _passwordVisible = true;
+                                                                      });
+                                                                    },
+                                                                    onLongPressUp: () {
+                                                                      setState(() {
+                                                                        _passwordVisible = false;
+                                                                      });
+                                                                    },
+                                                                    child: Icon(
+                                                                        _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                                    ),
+                                                                  )
+                                                              ),
+                                                              textInputAction: TextInputAction.done,
                                                             ),
                                                           ),
 
@@ -713,135 +790,193 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                         ),
                                                         child: Column(
                                                           children: [
-                                                            SizedBox(
+
                                                               // height: 40.sp,
-                                                              width: 500.sp,
-                                                              child: TextFormField(
-                                                                validator: (regvalue) {
-                                                                  if (regvalue == null || regvalue.isEmpty) {
-                                                                    return 'Username required';
+
+                                                              RawKeyboardListener(
+                                                                focusNode: FocusNode(),
+                                                                onKey: (event) {
+                                                                  if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                    print("Tab Key pressed");
+                                                                  //  FocusScope.of(context).unfocus();
+                                                                    _regemailfocusnode.requestFocus();
+
+                                                                   // _regphfocusnode.requestFocus();
+                                                                  //  _regpwdfocusnode.requestFocus();
+                                                                    // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
+                                                                    // focusNode: _loginpwdfocusnode.requestFocus();
                                                                   }
-                                                                  return null;
+                                                                  /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                                print("ENTER Key pressed");
+                                                                //Do something
+                                                                focusNode: _loginpwdfocusnode.requestFocus();
+                                                              }*/
                                                                 },
-                                                                enabled:regusername,
-                                                                controller: regnameController,
-                                                                decoration: InputDecoration(
-                                                                    border: OutlineInputBorder(
-                                                                      borderRadius: BorderRadius.circular(20.sp),
-                                                                    ),
-                                                                    filled: true,
-                                                                    fillColor: Colors.white70,
-                                                                    labelText: 'User Name',
-                                                                    icon: IconButton(
-                                                                      icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
-                                                                    )
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-                                                            ),
-                                                            SizedBox(
-                                                              // height: 40.sp,
-                                                              width: 500.sp,
-                                                              child: TextFormField(
-                                                                enabled:regemail,
-                                                                controller: regemailController,
-                                                                validator: (regemailvalue) {
-                                                                  final bool isValid = EmailValidator.validate(regemailvalue!);
-                                                                  if (regemailvalue.isEmpty) {
-                                                                    return "Email required";
-                                                                  }
-                                                                  if (!isValid) {
-                                                                    return "Email address invalid";
-                                                                  }
-                                                                },
-
-                                                                decoration: InputDecoration(
-                                                                    border: OutlineInputBorder(
-
-                                                                      borderRadius: BorderRadius.circular(20.sp),
-                                                                    ),
-                                                                    filled: true,
-                                                                    fillColor: Colors.white70,
-
-                                                                    labelText: 'Email',
-                                                                    icon: IconButton(
-                                                                      icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
-                                                                    )
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-                                                            ),
-                                                            SizedBox(
-                                                              // height: 40.sp,
-                                                              width: 500.sp,
-                                                              child: TextFormField(
-                                                                enabled:regph,
-                                                                controller: regphnoController,
-                                                                validator: (regphvalue) {
-                                                                  if (regphvalue!.isEmpty) {
-                                                                    return "Phone number Required";
-                                                                  }
-                                                                },
-                                                                decoration: InputDecoration(
-                                                                    border: OutlineInputBorder(
-                                                                      borderRadius: BorderRadius.circular(20.sp),
-
-                                                                    ),
-                                                                    filled: true,
-                                                                    fillColor: Colors.white70,
-                                                                    labelText: 'Phone number',
-                                                                    icon: IconButton(
-                                                                      icon: Image.asset('assets/images/contact-gray.png'), onPressed: () {  },
-                                                                    )
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-                                                            ),
-                                                            SizedBox(
-                                                              // height: 40.sp,
-                                                              width: 500.sp,
-                                                              child: TextFormField(
-                                                                enabled:regpwd,
-                                                                obscureText: !_regpasswordVisible,
-                                                                controller: regpasswordController,
-                                                                validator: (regpwdvalue) {
-                                                                  if (regpwdvalue!.isEmpty) {
-                                                                    return "Password Required";
-                                                                  }
-                                                                },
-                                                                decoration: InputDecoration(
-
-                                                                    border: OutlineInputBorder(
-                                                                      borderRadius: BorderRadius.circular(20.sp),
-                                                                    ),
-                                                                    labelText: 'Password',
-                                                                    icon: IconButton(
-                                                                      icon: Image.asset('assets/images/lock-gray.png'), onPressed: () {  },
-                                                                    ),
-                                                                    suffixIcon: GestureDetector(
-                                                                      onLongPress: () {
-                                                                        setState(() {
-                                                                          _regpasswordVisible = true;
-                                                                        });
-                                                                      },
-                                                                      onLongPressUp: () {
-                                                                        setState(() {
-                                                                          _regpasswordVisible = false;
-                                                                        });
-                                                                      },
-                                                                      child: Icon(
-                                                                          _regpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                child: TextFormField(
+                                                                  validator: (regvalue) {
+                                                                    if (regvalue == null || regvalue.isEmpty) {
+                                                                      return 'Username required';
+                                                                    }
+                                                                    return null;
+                                                                  },
+                                                                  enabled:regusername,
+                                                                  controller: regnameController,
+                                                                  decoration: InputDecoration(
+                                                                      border: OutlineInputBorder(
+                                                                        borderRadius: BorderRadius.circular(20.sp),
                                                                       ),
-                                                                    )
+                                                                    //  filled: true,
+                                                                      fillColor: Colors.white70,
+                                                                      labelText: 'User Name',
+                                                                      icon: IconButton(
+                                                                        icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
+                                                                      )
+                                                                  ),
+                                                                  maxLines: 1,
+                                                                  textInputAction: TextInputAction.next,
                                                                 ),
                                                               ),
+
+                                                            Container(
+                                                              height: 10.sp,
                                                             ),
+
+                                                              // height: 40.sp,
+
+                                                               RawKeyboardListener(
+                                                                focusNode: _regemailfocusnode,
+                                                                onKey: (event) {
+                                                                  if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                    print("Second Tab Key pressed");
+                                                                    _regphfocusnode.requestFocus();
+
+                                                                  }
+
+                                                                },
+                                                                child: TextFormField(
+                                                                  enabled:regemail,
+                                                                  controller: regemailController,
+
+                                                                  validator: (regemailvalue) {
+                                                                    final bool isValid = EmailValidator.validate(regemailvalue!);
+                                                                    if (regemailvalue.isEmpty) {
+                                                                      return "Email required";
+                                                                    }
+                                                                    if (!isValid) {
+                                                                      return "Email address invalid";
+                                                                    }
+                                                                  },
+
+                                                                  decoration: InputDecoration(
+                                                                      border: OutlineInputBorder(
+
+                                                                        borderRadius: BorderRadius.circular(20.sp),
+                                                                      ),
+                                                                    //  filled: true,
+                                                                      fillColor: Colors.white70,
+
+                                                                      labelText: 'Email',
+                                                                      icon: IconButton(
+                                                                        icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
+                                                                      )
+                                                                  ),
+                                                                  textInputAction: TextInputAction.done,
+                                                                ),
+                                                              ),
+
+                                                            Container(
+                                                              height: 10.sp,
+                                                            ),
+
+                                                              // height: 40.sp,
+
+                                                            RawKeyboardListener(
+                                                              focusNode: _regphfocusnode,
+                                                              onKey: (event) {
+                                                                if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                  print("Tab Key pressed");
+                                                                  _regpwdfocusnode.requestFocus();
+                                                                  // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
+                                                                  // focusNode: _loginpwdfocusnode.requestFocus();
+                                                                }
+                                                                /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                                print("ENTER Key pressed");
+                                                                //Do something
+                                                                focusNode: _loginpwdfocusnode.requestFocus();
+                                                              }*/
+                                                              },
+                                                                child: TextFormField(
+                                                                  enabled:regph,
+
+                                                                  controller: regphnoController,
+                                                                  validator: (regphvalue) {
+                                                                    if (regphvalue!.isEmpty) {
+                                                                      return "Phone number Required";
+                                                                    }
+                                                                  },
+                                                                  decoration: InputDecoration(
+                                                                      border: OutlineInputBorder(
+                                                                        borderRadius: BorderRadius.circular(20.sp),
+
+                                                                      ),
+                                                                   //   filled: true,
+                                                                      fillColor: Colors.white70,
+                                                                      labelText: 'Phone number',
+                                                                      icon: IconButton(
+                                                                        icon: Image.asset('assets/images/contact-gray.png'), onPressed: () {  },
+                                                                      )
+                                                                  ),
+                                                                  textInputAction: TextInputAction.next,
+                                                                ),
+                                                              ),
+
+                                                            Container(
+                                                              height: 10.sp,
+                                                            ),
+
+                                                              // height: 40.sp,
+
+                                                            RawKeyboardListener(
+                                                              focusNode: _regpwdfocusnode,
+
+                                                                 child: TextFormField(
+                                                                  enabled:regpwd,
+                                                                  obscureText: !_regpasswordVisible,
+                                                                  controller: regpasswordController,
+                                                                  validator: (regpwdvalue) {
+                                                                    if (regpwdvalue!.isEmpty) {
+                                                                      return "Password Required";
+                                                                    }
+                                                                  },
+                                                                  decoration: InputDecoration(
+
+                                                                      border: OutlineInputBorder(
+                                                                        borderRadius: BorderRadius.circular(20.sp),
+                                                                      ),
+                                                                      labelText: 'Password',
+                                                                      icon: IconButton(
+                                                                        icon: Image.asset('assets/images/lock-gray.png'), onPressed: () {  },
+                                                                      ),
+                                                                      suffixIcon: GestureDetector(
+                                                                        onLongPress: () {
+                                                                          setState(() {
+                                                                            _regpasswordVisible = true;
+                                                                          });
+                                                                        },
+                                                                        onLongPressUp: () {
+                                                                          setState(() {
+                                                                            _regpasswordVisible = false;
+                                                                          });
+                                                                        },
+                                                                        child: Icon(
+                                                                            _regpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                        ),
+                                                                      )
+                                                                  ),
+                                                                   textInputAction: TextInputAction.done,
+                                                              ),
+                                                               ),
+
                                                           ],
                                                         )
                                                     ),

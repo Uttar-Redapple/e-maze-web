@@ -257,7 +257,7 @@ class PatientprofileState extends State<Patientprofile>{
                             .width,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/images/pfondo.png"),
+                            image: AssetImage("assets/images/whitepoligon.png"),
 
                             fit: BoxFit.cover,
                           ),
@@ -740,7 +740,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                       fontWeight: FontWeight.bold,
                                                       color: Colors.white,
 
-                                                      fontSize: 20.0),
+                                                      fontSize: 16.sp),
                                                 ),
                                               ),
                                             ),
@@ -749,7 +749,7 @@ class PatientprofileState extends State<Patientprofile>{
                                             footer: Text(
                                               "Patient's performance+2%",
                                               style:
-                                              new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                                              new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
                                             ),
                                             progressColor: Color(0xFF29AAE1),
                                           ),
@@ -803,7 +803,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                 "Therapist user lauren harsh.User id 123456.",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
-                                                    color: Colors.black,
+                                                    color: Color(0xFF989898 ),
                                                     fontSize: 15.sp
 
                                                 ),
@@ -818,7 +818,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                 "Last login today Mon 10:35:21 a.m.29/10/2021",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
-                                                    color: Colors.black,
+                                                    color: Color(0xFF989898 ),
                                                     fontSize: 15.sp
                                                 ),
 
@@ -835,9 +835,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                 child: GestureDetector(
                                                   onTap: () {
                                                     setState(() {
-                                                      /*showfirstnametextwidget();
+                                                      showfirstnametextwidget();
                                                       hidefirstnamewidget();
-                                                      showlanguagetextwidget();
+                                                      showlastnametextwidget();
                                                       hidelastnamewidget();
                                                       showemailtextwidget();
                                                       hideemailwidget();
@@ -846,7 +846,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                       showbirthtextwidget();
                                                       hidebirthwidget();
                                                       showlanguagetextwidget();
-                                                      hidelanguagewidget();*/
+                                                      hidelanguagewidget();
+                                                      showgendertextwidget();
+                                                      hidegenderwidget();
                                                     });
                                                   },
                                                   child: Container(
@@ -878,10 +880,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                     ),
                                                     child: Column(
                                                       children: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        Stack(
+                                                          alignment: Alignment.center,
                                                           children: [
-
                                                             Align(
                                                               alignment: Alignment.centerLeft,
                                                               child: Text(
@@ -894,9 +895,6 @@ class PatientprofileState extends State<Patientprofile>{
                                                                 ),
 
                                                               ),
-                                                            ),
-                                                            Container(
-                                                              width: 80.sp,
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
@@ -922,7 +920,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       width: 100.sp,
                                                                       child: TextField(
                                                                         controller: firstnameController,
-                                                                        obscureText: true,
+
                                                                         decoration: InputDecoration(
                                                                           border: UnderlineInputBorder(),
 
@@ -935,19 +933,17 @@ class PatientprofileState extends State<Patientprofile>{
 
                                                               ),
                                                             ),
-                                                            Container(
-                                                              width: 480.sp,
-                                                            ),
                                                             Align(
                                                               alignment: Alignment.centerRight,
                                                               child: GestureDetector(
                                                                 onTap: () {
-                                                                  hidefirstnametextwidget();
-                                                                  showfirstnamewidget();
+
                                                                   //Navigator.pushNamed(context, "myRoute");
                                                                 },
                                                                 child: GestureDetector(
                                                                   onTap: () {
+                                                                    hidefirstnametextwidget();
+                                                                    showfirstnamewidget();
                                                                     //Navigator.pushNamed(context, "myRoute");
                                                                   },
                                                                   child: Text(
@@ -977,10 +973,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                           height: 10.sp,
 
                                                         ),
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        Stack(
+                                                          alignment: Alignment.center,
                                                           children: [
-
                                                             Align(
                                                               alignment: Alignment.centerLeft,
                                                               child: Text(
@@ -993,9 +988,6 @@ class PatientprofileState extends State<Patientprofile>{
                                                                 ),
 
                                                               ),
-                                                            ),
-                                                            Container(
-                                                              width: 80.sp,
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
@@ -1021,11 +1013,11 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       width: 100.sp,
                                                                       child: TextField(
                                                                         controller: lastnameController,
-                                                                        obscureText: true,
+
                                                                         decoration: InputDecoration(
                                                                           border: UnderlineInputBorder(),
-                                                                          labelText: 'Password',
-                                                                          hintText: 'Enter Password',
+
+                                                                          hintText: 'Enter Lastname',
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1034,13 +1026,12 @@ class PatientprofileState extends State<Patientprofile>{
 
                                                               ),
                                                             ),
-                                                            Container(
-                                                              width: 480.sp,
-                                                            ),
                                                             Align(
                                                               alignment: Alignment.centerRight,
                                                               child: GestureDetector(
                                                                 onTap: () {
+                                                                  hidelastnametextwidget();
+                                                                  showlastnamewidget();
                                                                   //Navigator.pushNamed(context, "myRoute");
                                                                 },
                                                                 child: Text(
@@ -1069,10 +1060,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                           height: 10.sp,
 
                                                         ),
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        Stack(
+                                                          alignment: Alignment.center,
                                                           children: [
-
                                                             Align(
                                                               alignment: Alignment.centerLeft,
                                                               child: Text(
@@ -1085,9 +1075,6 @@ class PatientprofileState extends State<Patientprofile>{
                                                                 ),
 
                                                               ),
-                                                            ),
-                                                            Container(
-                                                              width: 140.sp,
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
@@ -1113,11 +1100,11 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       width: 100.sp,
                                                                       child: TextField(
                                                                         controller: emailController,
-                                                                        obscureText: true,
+
                                                                         decoration: InputDecoration(
                                                                           border: UnderlineInputBorder(),
-                                                                          labelText: 'Password',
-                                                                          hintText: 'Enter Password',
+
+                                                                          hintText: 'Enter Email',
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1126,13 +1113,12 @@ class PatientprofileState extends State<Patientprofile>{
 
                                                               ),
                                                             ),
-                                                            Container(
-                                                              width: 420.sp,
-                                                            ),
                                                             Align(
                                                               alignment: Alignment.centerRight,
                                                               child: GestureDetector(
                                                                 onTap: () {
+                                                                  hideemailtextwidget();
+                                                                  showemailwidget();
                                                                   //Navigator.pushNamed(context, "myRoute");
                                                                 },
                                                                 child: Text(
@@ -1161,10 +1147,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                           height: 10.sp,
 
                                                         ),
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        Stack(
+                                                          alignment: Alignment.center,
                                                           children: [
-
                                                             Align(
                                                               alignment: Alignment.centerLeft,
                                                               child: Text(
@@ -1177,9 +1162,6 @@ class PatientprofileState extends State<Patientprofile>{
                                                                 ),
 
                                                               ),
-                                                            ),
-                                                            Container(
-                                                              width: 72.sp,
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
@@ -1205,11 +1187,11 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       width: 100.sp,
                                                                       child: TextField(
                                                                         controller: phnoController,
-                                                                        obscureText: true,
+
                                                                         decoration: InputDecoration(
                                                                           border: UnderlineInputBorder(),
 
-                                                                          hintText: 'Enter Password',
+                                                                          hintText: 'Enter phone number',
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1218,13 +1200,12 @@ class PatientprofileState extends State<Patientprofile>{
 
                                                               ),
                                                             ),
-                                                            Container(
-                                                              width: 480.sp,
-                                                            ),
                                                             Align(
                                                               alignment: Alignment.centerRight,
                                                               child: GestureDetector(
                                                                 onTap: () {
+                                                                  hidephtextwidget();
+                                                                  showphwidget();
                                                                   //Navigator.pushNamed(context, "myRoute");
                                                                 },
                                                                 child: Text(
@@ -1253,10 +1234,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                           height: 10.sp,
 
                                                         ),
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        Stack(
+                                                          alignment: Alignment.center,
                                                           children: [
-
                                                             Align(
                                                               alignment: Alignment.centerLeft,
                                                               child: Text(
@@ -1269,9 +1249,6 @@ class PatientprofileState extends State<Patientprofile>{
                                                                 ),
 
                                                               ),
-                                                            ),
-                                                            Container(
-                                                              width: 120.sp,
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
@@ -1297,11 +1274,11 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       width: 100.sp,
                                                                       child: TextField(
                                                                         controller: birthController,
-                                                                        obscureText: true,
+
                                                                         decoration: InputDecoration(
                                                                           border: UnderlineInputBorder(),
 
-                                                                          hintText: 'Enter Password',
+                                                                          hintText: 'Enter birth date',
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1310,13 +1287,12 @@ class PatientprofileState extends State<Patientprofile>{
 
                                                               ),
                                                             ),
-                                                            Container(
-                                                              width: 440.sp,
-                                                            ),
                                                             Align(
                                                               alignment: Alignment.centerRight,
                                                               child: GestureDetector(
                                                                 onTap: () {
+                                                                  hidebirthtextwidget();
+                                                                  showbirthwidget();
                                                                   //Navigator.pushNamed(context, "myRoute");
                                                                 },
                                                                 child: Text(
@@ -1345,10 +1321,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                           height: 10.sp,
 
                                                         ),
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        Stack(
+                                                          alignment: Alignment.center,
                                                           children: [
-
                                                             Align(
                                                               alignment: Alignment.centerLeft,
                                                               child: Text(
@@ -1361,9 +1336,6 @@ class PatientprofileState extends State<Patientprofile>{
                                                                 ),
 
                                                               ),
-                                                            ),
-                                                            Container(
-                                                              width: 50.sp,
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
@@ -1389,11 +1361,11 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       width: 100.sp,
                                                                       child: TextField(
                                                                         controller: genderController,
-                                                                        obscureText: true,
+
                                                                         decoration: InputDecoration(
                                                                           border: UnderlineInputBorder(),
 
-                                                                          hintText: 'Enter Password',
+                                                                          hintText: 'Enter gender',
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1402,13 +1374,12 @@ class PatientprofileState extends State<Patientprofile>{
 
                                                               ),
                                                             ),
-                                                            Container(
-                                                              width: 430.sp,
-                                                            ),
                                                             Align(
                                                               alignment: Alignment.centerRight,
                                                               child: GestureDetector(
                                                                 onTap: () {
+                                                                  hidegendertextwidget();
+                                                                  showgenderwidget();
                                                                   //Navigator.pushNamed(context, "myRoute");
                                                                 },
                                                                 child: Text(
@@ -1437,10 +1408,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                           height: 10.sp,
 
                                                         ),
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        Stack(
+                                                          alignment: Alignment.center,
                                                           children: [
-
                                                             Align(
                                                               alignment: Alignment.centerLeft,
                                                               child: Text(
@@ -1453,9 +1423,6 @@ class PatientprofileState extends State<Patientprofile>{
                                                                 ),
 
                                                               ),
-                                                            ),
-                                                            Container(
-                                                              width: 90.sp,
                                                             ),
                                                             Align(
                                                               alignment: Alignment.center,
@@ -1479,13 +1446,13 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     child: SizedBox(
                                                                       height: 30.sp,
                                                                       width: 100.sp,
-                                                                      child: TextField(
+                                                                      child: TextFormField(
                                                                         controller: languageController,
-                                                                        obscureText: true,
+
                                                                         decoration: InputDecoration(
                                                                           border: UnderlineInputBorder(),
 
-                                                                          hintText: 'Enter Password',
+                                                                          hintText: 'Enter language',
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1494,13 +1461,12 @@ class PatientprofileState extends State<Patientprofile>{
 
                                                               ),
                                                             ),
-                                                            Container(
-                                                              width: 470.sp,
-                                                            ),
                                                             Align(
                                                               alignment: Alignment.centerRight,
                                                               child: GestureDetector(
                                                                 onTap: () {
+                                                                  hidelanguagetextwidget();
+                                                                  showlanguagewidget();
                                                                   //Navigator.pushNamed(context, "myRoute");
                                                                 },
                                                                 child: Text(
