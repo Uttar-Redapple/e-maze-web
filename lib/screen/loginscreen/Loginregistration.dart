@@ -8,6 +8,7 @@ import 'package:dio/dio.dart';
 import 'package:emaze_brain/screen/gamestartscreen/Gamestartscreen.dart';
 import 'package:emaze_brain/screen/loginscreen/Therapistorpatient.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/all.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
@@ -38,7 +39,13 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
   bool selectedbox=false;
   bool viewreg=false;
   String checkvalue="Please";
-
+  late FocusNode _loginusernamefocusnode;
+  late FocusNode _loginpwdfocusnode;
+  late FocusNode _regusernamefocusnode;
+  late final FocusNode _regemailfocusnode;
+  late final FocusNode _regphfocusnode;
+  late FocusNode _regpwdfocusnode;
+  String valuetext="Wrong username/password";
   void showerrorWidget(){
     setState(() {
       viewerrormsgvisible = true ;
@@ -144,8 +151,23 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
     super.initState();
     _passwordVisible = false;
     _regpasswordVisible = false;
+    _loginpwdfocusnode = FocusNode();
+    // _regusernamefocusnode=FocusNode();
+    _regpwdfocusnode=FocusNode();
+    _regemailfocusnode=FocusNode();
+    _regphfocusnode=FocusNode();
 
-
+  }
+  @override
+  void dispose() {
+    // Clean up the focus node when the Form is disposed.
+    // _loginusernamefocusnode.dispose();
+    _loginpwdfocusnode.dispose();
+    //  _regusernamefocusnode=FocusNode();
+    _regpwdfocusnode.dispose();
+    _regemailfocusnode.dispose();
+    _regphfocusnode.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
@@ -156,9 +178,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                 builder: (context, sizingInformation) {
                   if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
                     return Scaffold(
-
                       body: Container(
-
                         padding: EdgeInsets.all(20.sp),
                         height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width,
@@ -168,14 +188,14 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                             fit: BoxFit.cover,
                           ),
-                          gradient:
+                          /* gradient:
                           LinearGradient(
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
                               tileMode: TileMode.repeated,
                               colors: [ Color(0xFF000120),
                                 Color(0xFF0078ad),
-                              ]),
+                              ]),*/
                         ),
                         child: SingleChildScrollView(
                           child: Column(
@@ -218,21 +238,23 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                     Expanded(
                                       flex: 5,
                                       child: Container(
+                                        height: 40.sp,
+                                        decoration: BoxDecoration(
+                                            color: _logincolor,
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(40.0),
+                                              bottomRight: Radius.circular(40.0),
+                                              topLeft: Radius.circular(40.0),
+                                              topRight: Radius.circular(40.0),
 
 
+                                            )
+                                        ),
 
-                                        child: RaisedButton(
-                                          //     disabledColor: Colors.red,
-                                          // disabledTextColor: Colors.black,
-                                          padding:  EdgeInsets.all(20),
-                                          textColor: _logintextcolor,
-                                          //  color: Colors.green,
-                                          color: _logincolor,
-                                          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.sp)),
 
-                                          onPressed: () {
+                                        child:GestureDetector(
+                                          onTap: () {
                                             setState(() {
-                                              // final random = Random();
                                               _regcolor = Colors.white;
                                               _logincolor=Colors.green;
                                               _logintextcolor=Colors.white;
@@ -259,12 +281,17 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                               _hasBeenPressedregister = !_hasBeenPressedregister;
                                             });
                                           },
-                                          child: Text(
-                                              'LOGIN',
-                                              style:  TextStyle(
-                                                fontWeight: FontWeight.bold,
+                                          child: Center(
+                                            child: Text(
+                                                'LOGIN',
+                                                textAlign: TextAlign.center,
+                                                style:  TextStyle(
+                                                  color: _logintextcolor,
+                                                  fontWeight: FontWeight.bold,
 
-                                              )
+
+                                                )
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -272,18 +299,22 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                     Expanded(
                                       flex: 5,
                                       child: Container(
+                                        height: 40.sp,
+                                        decoration: BoxDecoration(
+                                            color: _regcolor,
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(40.0),
+                                              bottomRight: Radius.circular(40.0),
+                                              topLeft: Radius.circular(40.0),
+                                              topRight: Radius.circular(40.0),
 
 
-                                        child: RaisedButton(
-                                          //     disabledColor: Colors.red,
-                                          // disabledTextColor: Colors.black,
-                                          padding:  EdgeInsets.all(20),
-                                          textColor: _regtextcolor,
+                                            )
+                                        ),
 
-                                          // color: Colors.white,
-                                          color: _regcolor,
-                                          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.sp)),
-                                          onPressed: () {
+
+                                        child:GestureDetector(
+                                          onTap: () {
                                             setState(() {
                                               regpwd=true;
                                               regph=true;
@@ -309,12 +340,17 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                               _hasBeenPressedlogin = !_hasBeenPressedlogin;
                                             });
                                           },
-                                          child: Text(
-                                              'REGISTER',
-                                              style:  TextStyle(
-                                                fontWeight: FontWeight.bold,
+                                          child: Center(
+                                            child: Text(
+                                                'REGISTER',
+                                                textAlign: TextAlign.center,
+                                                style:  TextStyle(
+                                                  color: _regtextcolor,
+                                                  fontWeight: FontWeight.bold,
 
-                                              )
+
+                                                )
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -412,53 +448,88 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                           color: Colors.white,
                                                           border: Border.all(color: Colors.white),
-                                                          borderRadius: BorderRadius.all(Radius.circular(25.sp))
+                                                          borderRadius: BorderRadius.all(Radius.circular(10.sp))
                                                       ),
                                                       child: Column(
                                                         children: [
-                                                          TextFormField(
-                                                            enabled: username,
-                                                            controller: nameController,
-                                                            decoration: InputDecoration(
-                                                              border: UnderlineInputBorder(),
-                                                              labelText: 'User Name',
-                                                            ),
-                                                            validator: (value) {
-                                                              if (value == null || value.isEmpty) {
-                                                                return 'Username required';
+                                                          RawKeyboardListener(
+                                                            focusNode: FocusNode(),
+                                                            onKey: (event) {
+                                                              if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                print("Tab Key pressed");
+                                                                _loginpwdfocusnode.requestFocus();
+                                                                // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
+                                                                // focusNode: _loginpwdfocusnode.requestFocus();
                                                               }
-                                                              return null;
+                                                              /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                                print("ENTER Key pressed");
+                                                                //Do something
+                                                                focusNode: _loginpwdfocusnode.requestFocus();
+                                                              }*/
                                                             },
-                                                          ),
-                                                          TextFormField(
-                                                            enabled: pwd,
-                                                            obscureText: !_passwordVisible,
-                                                            controller: passwordController,
-                                                            validator: (pwdvalue) {
-                                                              if (pwdvalue!.isEmpty) {
-                                                                return "Password Required";
-                                                              }
-                                                            },
-
-                                                            decoration: InputDecoration(
-
+                                                            child: TextFormField(
+                                                              enabled: username,
+                                                              controller: nameController,
+                                                              decoration: InputDecoration(
                                                                 border: UnderlineInputBorder(),
-                                                                labelText: 'Password',
-                                                                suffixIcon: GestureDetector(
-                                                                  onLongPress: () {
-                                                                    setState(() {
-                                                                      _passwordVisible = true;
-                                                                    });
-                                                                  },
-                                                                  onLongPressUp: () {
-                                                                    setState(() {
-                                                                      _passwordVisible = false;
-                                                                    });
-                                                                  },
-                                                                  child: Icon(
-                                                                      _passwordVisible ? Icons.visibility : Icons.visibility_off
-                                                                  ),
-                                                                )
+                                                                labelText: 'User Name',
+
+                                                              ),
+
+
+
+
+
+                                                              validator: (value) {
+                                                                if (value == null || value.isEmpty) {
+                                                                  return 'Username required';
+                                                                }
+                                                                return null;
+                                                              },
+                                                              textInputAction: TextInputAction.next,
+                                                              /* onFieldSubmitted: (v){
+                                                                FocusScope.of(context).requestFocus(focus);
+                                                              },*/
+
+                                                              //   onEditingComplete: () => _loginpwdfocusnode.requestFocus(),
+                                                            ),
+                                                          ),
+                                                          RawKeyboardListener(
+                                                            focusNode: _loginpwdfocusnode,
+                                                            child: TextFormField(
+                                                              enabled: pwd,
+                                                              obscureText: !_passwordVisible,
+                                                              controller: passwordController,
+                                                              //  focusNode: _loginpwdfocusnode,
+
+                                                              validator: (pwdvalue) {
+                                                                if (pwdvalue!.isEmpty) {
+                                                                  return "Password Required";
+                                                                }
+                                                              },
+
+
+                                                              decoration: InputDecoration(
+
+                                                                  border: UnderlineInputBorder(),
+                                                                  labelText: 'Password',
+                                                                  suffixIcon: GestureDetector(
+                                                                    onLongPress: () {
+                                                                      setState(() {
+                                                                        _passwordVisible = true;
+                                                                      });
+                                                                    },
+                                                                    onLongPressUp: () {
+                                                                      setState(() {
+                                                                        _passwordVisible = false;
+                                                                      });
+                                                                    },
+                                                                    child: Icon(
+                                                                        _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                                    ),
+                                                                  )
+                                                              ),
+                                                              textInputAction: TextInputAction.done,
                                                             ),
                                                           ),
 
@@ -535,15 +606,50 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                       ),
                                                     ),
                                                     Container(
-                                                      height: 40.sp,
+                                                      height: 63.sp,
 
                                                     ),
                                                     Container(
+                                                      height: 60,
+                                                      decoration: BoxDecoration(
+                                                        /* gradient: LinearGradient(
+                                                            colors: [
+                                                              Color.fromRGBO(255, 143, 158, 1),
+                                                              Color.fromRGBO(255, 188, 143, 1),
+                                                            ],
+                                                            begin: Alignment.centerLeft,
+                                                            end: Alignment.centerRight,
+                                                          ),*/
+                                                          borderRadius: const BorderRadius.all(
+                                                            Radius.circular(25.0),
+                                                          ),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.pink.withOpacity(0.2),
+                                                              spreadRadius: 4,
+                                                              blurRadius: 10,
+                                                              offset: Offset(0, 3),
+                                                            )
+                                                          ]
+                                                      ),
+                                                      /*decoration: BoxDecoration(
+
+
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey.withOpacity(0.5),
+
+                                                              blurRadius: 6,
+                                                              offset: Offset(5, 5),
+                                                            )
+                                                          ]
+                                                      ),*/
                                                       child: ButtonTheme(
-                                                        minWidth: 158.sp,
-                                                        height: 56.sp,
+                                                        minWidth: 182.sp,
+                                                        height: 63.sp,
                                                         shape: new RoundedRectangleBorder(
                                                           borderRadius: new BorderRadius.circular(40.sp),
+
                                                         ),
                                                         child: RaisedButton(
                                                           onPressed: () async {
@@ -560,17 +666,18 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                     "abc@gmail.com",
                                                                     "123456"
                                                                 ));*/
+
                                                                 if(resp.data.user_type==2){
+                                                                  print("usertype: ${resp.data.user_type}");
                                                                   Navigator.pushNamed(context, 'therapist/profile');
                                                                 }
                                                                 else{
                                                                   showerrorWidget();
                                                                 }
-
                                                                 print("Regions: ${resp.data.toJson()}");
 
                                                                 clearlogintext();
-                                                               // hideerrorWidget();
+                                                                // hideerrorWidget();
 
                                                               } catch (e) {
                                                                 print(e);
@@ -612,7 +719,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                     ),
                                                     Visibility(
                                                       visible: viewerrormsgvisible,
-                                                      child: Text("Wrong username or passsword",
+                                                      child: Text(valuetext,
                                                         style: TextStyle(
                                                           color: Color(0xFFFF4500),
 
@@ -652,7 +759,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                             decoration: BoxDecoration(
                                                 color: Colors.transparent,
                                                 image: DecorationImage(
-                                                  image: AssetImage("assets/images/login.png"),
+                                                  image: AssetImage("assets/images/regagain.png"),
 
                                                   fit: BoxFit.cover,
                                                 ),
@@ -693,13 +800,32 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                             color: Colors.white,
                                                             border: Border.all(color: Colors.white),
-                                                            borderRadius: BorderRadius.all(Radius.circular(25))
+                                                            borderRadius: BorderRadius.all(Radius.circular(21))
                                                         ),
                                                         child: Column(
                                                           children: [
-                                                            SizedBox(
-                                                              // height: 40.sp,
-                                                              width: 500.sp,
+
+                                                            // height: 40.sp,
+
+                                                            RawKeyboardListener(
+                                                              focusNode: FocusNode(),
+                                                              onKey: (event) {
+                                                                if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                  print("Tab Key pressed");
+                                                                  //  FocusScope.of(context).unfocus();
+                                                                  _regemailfocusnode.requestFocus();
+
+                                                                  // _regphfocusnode.requestFocus();
+                                                                  //  _regpwdfocusnode.requestFocus();
+                                                                  // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
+                                                                  // focusNode: _loginpwdfocusnode.requestFocus();
+                                                                }
+                                                                /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                                print("ENTER Key pressed");
+                                                                //Do something
+                                                                focusNode: _loginpwdfocusnode.requestFocus();
+                                                              }*/
+                                                              },
                                                               child: TextFormField(
                                                                 validator: (regvalue) {
                                                                   if (regvalue == null || regvalue.isEmpty) {
@@ -711,26 +837,42 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                 controller: regnameController,
                                                                 decoration: InputDecoration(
                                                                     border: OutlineInputBorder(
+
                                                                       borderRadius: BorderRadius.circular(20.sp),
                                                                     ),
-                                                                    filled: true,
+                                                                    //  filled: true,
                                                                     fillColor: Colors.white70,
-                                                                    labelText: 'User Name',
+
+                                                                    labelText: 'Email',
                                                                     icon: IconButton(
-                                                                      icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
+                                                                      icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
                                                                     )
                                                                 ),
+                                                                maxLines: 1,
+                                                                textInputAction: TextInputAction.next,
                                                               ),
                                                             ),
+
                                                             Container(
                                                               height: 10.sp,
                                                             ),
-                                                            SizedBox(
-                                                              // height: 40.sp,
-                                                              width: 500.sp,
+
+                                                            // height: 40.sp,
+
+                                                            RawKeyboardListener(
+                                                              focusNode: _regemailfocusnode,
+                                                              onKey: (event) {
+                                                                if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                  print("Second Tab Key pressed");
+                                                                  _regphfocusnode.requestFocus();
+
+                                                                }
+
+                                                              },
                                                               child: TextFormField(
                                                                 enabled:regemail,
                                                                 controller: regemailController,
+
                                                                 validator: (regemailvalue) {
                                                                   final bool isValid = EmailValidator.validate(regemailvalue!);
                                                                   if (regemailvalue.isEmpty) {
@@ -746,7 +888,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                                       borderRadius: BorderRadius.circular(20.sp),
                                                                     ),
-                                                                    filled: true,
+                                                                    //  filled: true,
                                                                     fillColor: Colors.white70,
 
                                                                     labelText: 'Email',
@@ -754,16 +896,34 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                       icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
                                                                     )
                                                                 ),
+                                                                textInputAction: TextInputAction.done,
                                                               ),
                                                             ),
+
                                                             Container(
                                                               height: 10.sp,
                                                             ),
-                                                            SizedBox(
-                                                              // height: 40.sp,
-                                                              width: 500.sp,
+
+                                                            // height: 40.sp,
+
+                                                            RawKeyboardListener(
+                                                              focusNode: _regphfocusnode,
+                                                              onKey: (event) {
+                                                                if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                  print("Tab Key pressed");
+                                                                  _regpwdfocusnode.requestFocus();
+                                                                  // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
+                                                                  // focusNode: _loginpwdfocusnode.requestFocus();
+                                                                }
+                                                                /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                                print("ENTER Key pressed");
+                                                                //Do something
+                                                                focusNode: _loginpwdfocusnode.requestFocus();
+                                                              }*/
+                                                              },
                                                               child: TextFormField(
                                                                 enabled:regph,
+
                                                                 controller: regphnoController,
                                                                 validator: (regphvalue) {
                                                                   if (regphvalue!.isEmpty) {
@@ -775,21 +935,26 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                       borderRadius: BorderRadius.circular(20.sp),
 
                                                                     ),
-                                                                    filled: true,
+                                                                    //   filled: true,
                                                                     fillColor: Colors.white70,
                                                                     labelText: 'Phone number',
                                                                     icon: IconButton(
                                                                       icon: Image.asset('assets/images/contact-gray.png'), onPressed: () {  },
                                                                     )
                                                                 ),
+                                                                textInputAction: TextInputAction.next,
                                                               ),
                                                             ),
+
                                                             Container(
                                                               height: 10.sp,
                                                             ),
-                                                            SizedBox(
-                                                              // height: 40.sp,
-                                                              width: 500.sp,
+
+                                                            // height: 40.sp,
+
+                                                            RawKeyboardListener(
+                                                              focusNode: _regpwdfocusnode,
+
                                                               child: TextFormField(
                                                                 enabled:regpwd,
                                                                 obscureText: !_regpasswordVisible,
@@ -824,8 +989,10 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                       ),
                                                                     )
                                                                 ),
+                                                                textInputAction: TextInputAction.done,
                                                               ),
                                                             ),
+
                                                           ],
                                                         )
                                                     ),
@@ -896,8 +1063,8 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                     ),
                                                     Container(
                                                       child: ButtonTheme(
-                                                        minWidth: 158.sp,
-                                                        height: 56.sp,
+                                                        minWidth: 182.sp,
+                                                        height: 63.sp,
                                                         shape: new RoundedRectangleBorder(
                                                           borderRadius: new BorderRadius.circular(40.sp),
                                                         ),

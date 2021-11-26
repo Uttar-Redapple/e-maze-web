@@ -205,18 +205,18 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/images/whitepoligon.png"),
+                            image: AssetImage("assets/images/fondos.png"),
 
                             fit: BoxFit.cover,
                           ),
-                          gradient:
+                         /* gradient:
                           LinearGradient(
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
                               tileMode: TileMode.repeated,
                               colors: [ Color(0xFF000120),
                                 Color(0xFF0078ad),
-                              ]),
+                              ]),*/
                         ),
                         child: SingleChildScrollView(
                           child: Column(
@@ -469,7 +469,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                           color: Colors.white,
                                                           border: Border.all(color: Colors.white),
-                                                          borderRadius: BorderRadius.all(Radius.circular(25.sp))
+                                                          borderRadius: BorderRadius.all(Radius.circular(10.sp))
                                                       ),
                                                       child: Column(
                                                         children: [
@@ -627,15 +627,50 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                       ),
                                                     ),
                                                     Container(
-                                                      height: 40.sp,
+                                                      height: 63.sp,
 
                                                     ),
                                                     Container(
+                                                      height: 60,
+                                                      decoration: BoxDecoration(
+                                                         /* gradient: LinearGradient(
+                                                            colors: [
+                                                              Color.fromRGBO(255, 143, 158, 1),
+                                                              Color.fromRGBO(255, 188, 143, 1),
+                                                            ],
+                                                            begin: Alignment.centerLeft,
+                                                            end: Alignment.centerRight,
+                                                          ),*/
+                                                          borderRadius: const BorderRadius.all(
+                                                            Radius.circular(25.0),
+                                                          ),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.pink.withOpacity(0.2),
+                                                              spreadRadius: 4,
+                                                              blurRadius: 10,
+                                                              offset: Offset(0, 3),
+                                                            )
+                                                          ]
+                                                      ),
+                                                      /*decoration: BoxDecoration(
+
+
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey.withOpacity(0.5),
+
+                                                              blurRadius: 6,
+                                                              offset: Offset(5, 5),
+                                                            )
+                                                          ]
+                                                      ),*/
                                                       child: ButtonTheme(
-                                                        minWidth: 158.sp,
-                                                        height: 56.sp,
+                                                        minWidth: 182.sp,
+                                                        height: 63.sp,
                                                         shape: new RoundedRectangleBorder(
                                                           borderRadius: new BorderRadius.circular(40.sp),
+
                                                         ),
                                                         child: RaisedButton(
                                                           onPressed: () async {
@@ -745,7 +780,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                             decoration: BoxDecoration(
                                                 color: Colors.transparent,
                                                 image: DecorationImage(
-                                                  image: AssetImage("assets/images/login.png"),
+                                                  image: AssetImage("assets/images/regagain.png"),
 
                                                   fit: BoxFit.cover,
                                                 ),
@@ -786,7 +821,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                             color: Colors.white,
                                                             border: Border.all(color: Colors.white),
-                                                            borderRadius: BorderRadius.all(Radius.circular(25))
+                                                            borderRadius: BorderRadius.all(Radius.circular(21))
                                                         ),
                                                         child: Column(
                                                           children: [
@@ -823,13 +858,15 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                   controller: regnameController,
                                                                   decoration: InputDecoration(
                                                                       border: OutlineInputBorder(
+
                                                                         borderRadius: BorderRadius.circular(20.sp),
                                                                       ),
-                                                                    //  filled: true,
+                                                                      //  filled: true,
                                                                       fillColor: Colors.white70,
-                                                                      labelText: 'User Name',
+
+                                                                      labelText: 'Email',
                                                                       icon: IconButton(
-                                                                        icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
+                                                                        icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
                                                                       )
                                                                   ),
                                                                   maxLines: 1,
@@ -1047,8 +1084,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                     ),
                                                     Container(
                                                       child: ButtonTheme(
-                                                        minWidth: 158.sp,
-                                                        height: 56.sp,
+                                                        minWidth: 182.sp,
+                                                        height: 63.sp,
                                                         shape: new RoundedRectangleBorder(
                                                           borderRadius: new BorderRadius.circular(40.sp),
                                                         ),

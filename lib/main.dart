@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'eMazeBrain',
-     // debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
