@@ -609,7 +609,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,
-                                                                fontSize: 15.sp
+                                                               // fontSize: 15.sp
                                                             ),
 
                                                           ),
@@ -619,7 +619,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,
-                                                                fontSize: 15.sp
+                                                               // fontSize: 15.sp
                                                             ),
 
                                                           ),
@@ -1043,16 +1043,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               ),
                                                             ),
                                                           ),
-                                                          Container(
+                                                         /* Container(
                                                             width: 4.sp,
                                                             height: 10.sp,
-                                                          ),
+                                                          ),*/
                                                           Text(
                                                             "I'm agree with Privacy policy, terms and conditions.",
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,
-                                                                fontSize: 15.sp
+                                                             //   fontSize: 15.sp
                                                             ),
 
                                                           ),

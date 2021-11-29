@@ -1549,235 +1549,238 @@ class PatientprofileState extends State<Patientprofile>{
                                                     ),
                                                   ),
                                                 ),
-                                                Expanded(
-                                                  flex: 3,
-                                                  child: Container(
+                                                SingleChildScrollView(
+                                                    scrollDirection: Axis.horizontal,
+                                                  child: Expanded(
+                                                    flex: 3,
+                                                    child: Container(
 
-                                                    padding: EdgeInsets.all(20.sp),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            SizedBox(
-                                                              height: 40.sp,
-                                                              width: 40.sp,
-                                                              child: IconButton(
-                                                                icon: Image.asset('assets/images/eye.png'),
-                                                                onPressed: () {
+                                                      padding: EdgeInsets.all(20.sp),
+                                                      child: Column(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              SizedBox(
+                                                                height: 40.sp,
+                                                                width: 40.sp,
+                                                                child: IconButton(
+                                                                  icon: Image.asset('assets/images/eye.png'),
+                                                                  onPressed: () {
 
-                                                                },
+                                                                  },
+                                                                ),
                                                               ),
-                                                            ),
 
 
-                                                            Container(
-                                                              padding: EdgeInsets.only(left: 5.sp,right: 5.sp,top: 5.sp),
-                                                               height: 47.sp,
-                                                               width: 140.sp,
-                                                               decoration: BoxDecoration(
-                                                                 /* boxShadow: [
-                                                              BoxShadow (
-                                                                color: Colors.grey.withOpacity(0.8),
-                                                                // color: Color(0xFF989898),
-                                                                spreadRadius: 2,
-                                                                blurRadius: 5,
-                                                                offset: Offset(7, 0),
-                                                              ),
-                                                          ],*/
+                                                              Container(
+                                                                padding: EdgeInsets.only(left: 5.sp,right: 5.sp,top: 5.sp),
+                                                                 height: 47.sp,
+                                                                 width: 140.sp,
+                                                                 decoration: BoxDecoration(
+                                                                   /* boxShadow: [
+                                                                BoxShadow (
+                                                                  color: Colors.grey.withOpacity(0.8),
+                                                                  // color: Color(0xFF989898),
+                                                                  spreadRadius: 2,
+                                                                  blurRadius: 5,
+                                                                  offset: Offset(7, 0),
+                                                                ),
+                                                            ],*/
 
-                                                                 color: Colors.transparent,
-                                                                 image: new DecorationImage(
-                                                              image: new AssetImage("assets/images/groups.png"),
-                                                              fit: BoxFit.fill,
-                                                          ),
-                                                                 border: new Border.all(
                                                                    color: Colors.transparent,
-                                                                   width: 0,
+                                                                   image: new DecorationImage(
+                                                                image: new AssetImage("assets/images/groups.png"),
+                                                                fit: BoxFit.fill,
+                                                            ),
+                                                                   border: new Border.all(
+                                                                     color: Colors.transparent,
+                                                                     width: 0,
+                                                                   ),
+                                                                   borderRadius: BorderRadius.all(Radius.circular(40)),
+
                                                                  ),
-                                                                 borderRadius: BorderRadius.all(Radius.circular(40)),
-
-                                                               ),
-                                                               child: Row(
-                                                                 children: [
-                                                                 Expanded(
-                                                                   flex: 5,
-                                                                     child: Container(
-                                                                       height: 45.sp,
-                                                                       width: 70.sp,
-                                                                       decoration: BoxDecoration(
-                                                                           color: _offcolor,
-                                                                           borderRadius: BorderRadius.only(
-                                                                             bottomLeft: Radius.circular(40.0),
-                                                                             bottomRight: Radius.circular(40.0),
-                                                                             topLeft: Radius.circular(40.0),
-                                                                             topRight: Radius.circular(40.0),
-
-
-                                                                           )
-                                                                       ),
-                                                                       child: GestureDetector(
-                                                                         onTap: (){
-                                                                           setState(() {
-                                                                             _oncolor=Colors.transparent;
-                                                                             _offcolor=Color(0xFF989898);
-                                                                             offtext="ON";
-                                                                             ontext="Off";
-                                                                             _offcolortextcode=Colors.white;
-                                                                             _oncolortext=Color(0xFF666666);
-
-
-
-                                                                           });
-
-
-                                                                         },
-                                                                         child: Center(
-                                                                           child: Text(
-                                                                               offtext,
-                                                                               textAlign: TextAlign.center,
-                                                                               style:  TextStyle(
-                                                                                 color: _offcolortextcode,
-                                                                                 fontSize: 14.sp,
-                                                                                 fontWeight: FontWeight.bold,
-
-
-                                                                               )
-                                                                           ),
-                                                                         ),
-                                                                       ),
-                                                                     ),
-                                                                 ),
+                                                                 child: Row(
+                                                                   children: [
                                                                    Expanded(
                                                                      flex: 5,
-                                                                     child: Container(
-                                                                       height: 45.sp,
-                                                                       width: 70.sp,
-                                                                       decoration: BoxDecoration(
-                                                                           color: _oncolor,
-                                                                           borderRadius: BorderRadius.only(
-                                                                             bottomLeft: Radius.circular(40.0),
-                                                                             bottomRight: Radius.circular(40.0),
-                                                                             topLeft: Radius.circular(40.0),
-                                                                             topRight: Radius.circular(40.0),
+                                                                       child: Container(
+                                                                         height: 45.sp,
+                                                                         width: 70.sp,
+                                                                         decoration: BoxDecoration(
+                                                                             color: _offcolor,
+                                                                             borderRadius: BorderRadius.only(
+                                                                               bottomLeft: Radius.circular(40.0),
+                                                                               bottomRight: Radius.circular(40.0),
+                                                                               topLeft: Radius.circular(40.0),
+                                                                               topRight: Radius.circular(40.0),
 
 
-                                                                           )
-                                                                       ),
-                                                                       child: GestureDetector(
+                                                                             )
+                                                                         ),
+                                                                         child: GestureDetector(
                                                                            onTap: (){
-                                                                           setState(() {
-                                                                              _oncolor=Color(0xFF989898);
-                                                                              _offcolor=Colors.transparent;
-                                                                              offtext="Off";
-                                                                              ontext="ON";
-                                                                              _offcolortextcode=Color(0xFF666666);
-                                                                              _oncolortext=Colors.white;
-                                                                           });
+                                                                             setState(() {
+                                                                               _oncolor=Colors.transparent;
+                                                                               _offcolor=Color(0xFF989898);
+                                                                               offtext="ON";
+                                                                               ontext="Off";
+                                                                               _offcolortextcode=Colors.white;
+                                                                               _oncolortext=Color(0xFF666666);
 
 
-                                                                         },
-                                                                         child: Center(
-                                                                           child: Text(
-                                                                               ontext,
-                                                                               textAlign: TextAlign.center,
-                                                                               style:  TextStyle(
-                                                                                 color: _oncolortext,
-                                                                                 fontSize: 14.sp,
-                                                                                 fontWeight: FontWeight.bold,
+
+                                                                             });
 
 
-                                                                               )
+                                                                           },
+                                                                           child: Center(
+                                                                             child: Text(
+                                                                                 offtext,
+                                                                                 textAlign: TextAlign.center,
+                                                                                 style:  TextStyle(
+                                                                                   color: _offcolortextcode,
+                                                                                   fontSize: 14.sp,
+                                                                                   fontWeight: FontWeight.bold,
+
+
+                                                                                 )
+                                                                             ),
+                                                                           ),
+                                                                         ),
+                                                                       ),
+                                                                   ),
+                                                                     Expanded(
+                                                                       flex: 5,
+                                                                       child: Container(
+                                                                         height: 45.sp,
+                                                                         width: 70.sp,
+                                                                         decoration: BoxDecoration(
+                                                                             color: _oncolor,
+                                                                             borderRadius: BorderRadius.only(
+                                                                               bottomLeft: Radius.circular(40.0),
+                                                                               bottomRight: Radius.circular(40.0),
+                                                                               topLeft: Radius.circular(40.0),
+                                                                               topRight: Radius.circular(40.0),
+
+
+                                                                             )
+                                                                         ),
+                                                                         child: GestureDetector(
+                                                                             onTap: (){
+                                                                             setState(() {
+                                                                                _oncolor=Color(0xFF989898);
+                                                                                _offcolor=Colors.transparent;
+                                                                                offtext="Off";
+                                                                                ontext="ON";
+                                                                                _offcolortextcode=Color(0xFF666666);
+                                                                                _oncolortext=Colors.white;
+                                                                             });
+
+
+                                                                           },
+                                                                           child: Center(
+                                                                             child: Text(
+                                                                                 ontext,
+                                                                                 textAlign: TextAlign.center,
+                                                                                 style:  TextStyle(
+                                                                                   color: _oncolortext,
+                                                                                   fontSize: 14.sp,
+                                                                                   fontWeight: FontWeight.bold,
+
+
+                                                                                 )
+                                                                             ),
                                                                            ),
                                                                          ),
                                                                        ),
                                                                      ),
-                                                                   ),
-                                                                 ],
+                                                                   ],
+                                                                 ),
                                                                ),
-                                                             ),
 
-                                                          ],
-                                                        ),
-                                                        Container(
-                                                          height: 10.sp,
-                                                        ),
-                                                        Text(
-                                                          "Do you have color blindness",
-                                                          textAlign: TextAlign.left,
-                                                          style: TextStyle(
-                                                              color: Color(0xFF808080),
-                                                              fontSize: 12.sp
+                                                            ],
                                                           ),
-                                                        ),
-                                                        Text(
-                                                          "Activate this option.Learn",
-                                                          textAlign: TextAlign.left,
-                                                          style: TextStyle(
-                                                              color: Color(0xFF808080),
-                                                              fontSize: 12.sp
+                                                          Container(
+                                                            height: 10.sp,
                                                           ),
-                                                        ),
-                                                        Text(
-                                                          "more here",
-                                                          textAlign: TextAlign.left,
-                                                          style: TextStyle(
-                                                              color: Color(0xFF808080),
-                                                              fontSize: 12.sp
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          height: 120.sp,
-                                                        ),
-                                                        SizedBox(
-                                                          height: 40.sp,
-                                                          width: 40.sp,
-                                                          child: IconButton(
-                                                            icon: Image.asset('assets/images/key.png'), onPressed: () {  },
-                                                          ),
-                                                        ),
-                                                        ButtonTheme(
-                                                          minWidth: 190.sp,
-                                                          height: 50.sp,
-                                                          shape: new RoundedRectangleBorder(
-                                                            borderRadius: new BorderRadius.circular(23.sp),
-                                                          ),
-                                                          child: Container(
-                                                            decoration:  BoxDecoration(
-                                                              boxShadow: [
-                                                                 //background color of box
-                                                                BoxShadow(
-                                                                  color: Colors.grey.withOpacity(0.5),
-                                                                  blurRadius: 55.0, // soften the shadow
-                                                                  spreadRadius: 5.0, //extend the shadow
-                                                                  offset: Offset(
-                                                                    15.0, // Move to right 10  horizontally
-                                                                    15.0, // Move to bottom 10 Vertically
-                                                                  ),
-                                                                )
-                                                              ],
+                                                          Text(
+                                                            "Do you have color blindness",
+                                                            textAlign: TextAlign.left,
+                                                            style: TextStyle(
+                                                                color: Color(0xFF808080),
+                                                                fontSize: 12.sp
                                                             ),
-                                                            child: RaisedButton(
-                                                              onPressed: () {
-                                                               // Navigator.pushNamed(context, 'patient/usermanagement');
+                                                          ),
+                                                          Text(
+                                                            "Activate this option.Learn",
+                                                            textAlign: TextAlign.left,
+                                                            style: TextStyle(
+                                                                color: Color(0xFF808080),
+                                                                fontSize: 12.sp
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            "more here",
+                                                            textAlign: TextAlign.left,
+                                                            style: TextStyle(
+                                                                color: Color(0xFF808080),
+                                                                fontSize: 12.sp
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: 120.sp,
+                                                          ),
+                                                          SizedBox(
+                                                            height: 40.sp,
+                                                            width: 40.sp,
+                                                            child: IconButton(
+                                                              icon: Image.asset('assets/images/key.png'), onPressed: () {  },
+                                                            ),
+                                                          ),
+                                                          ButtonTheme(
+                                                            minWidth: 190.sp,
+                                                            height: 50.sp,
+                                                            shape: new RoundedRectangleBorder(
+                                                              borderRadius: new BorderRadius.circular(23.sp),
+                                                            ),
+                                                            child: Container(
+                                                              decoration:  BoxDecoration(
+                                                                boxShadow: [
+                                                                   //background color of box
+                                                                  BoxShadow(
+                                                                    color: Colors.grey.withOpacity(0.5),
+                                                                    blurRadius: 55.0, // soften the shadow
+                                                                    spreadRadius: 5.0, //extend the shadow
+                                                                    offset: Offset(
+                                                                      15.0, // Move to right 10  horizontally
+                                                                      15.0, // Move to bottom 10 Vertically
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                              child: RaisedButton(
+                                                                onPressed: () {
+                                                                 // Navigator.pushNamed(context, 'patient/usermanagement');
 
-                                                              },
+                                                                },
 
-                                                              color: Color(0xFF29AAE1),
-                                                              child: Text("Change Password >",
-                                                                style: TextStyle(
-                                                                    color: Colors.white,
-                                                                    fontSize: 15.sp
+                                                                color: Color(0xFF29AAE1),
+                                                                child: Text("Change Password >",
+                                                                  style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      fontSize: 15.sp
 
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                        ],
+                                                      ),
 
+                                                    ),
                                                   ),
                                                 )
 

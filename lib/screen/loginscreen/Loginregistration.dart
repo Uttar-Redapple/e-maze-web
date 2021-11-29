@@ -587,7 +587,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,
-                                                                fontSize: 15.sp
+
                                                             ),
 
                                                           ),
@@ -597,7 +597,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,
-                                                                fontSize: 15.sp
+
                                                             ),
 
                                                           ),
@@ -1021,16 +1021,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                               ),
                                                             ),
                                                           ),
-                                                          Container(
-                                                            width: 4.sp,
+                                                         /* Container(
+                                                            width: 1.sp,
                                                             height: 10.sp,
-                                                          ),
+                                                          ),*/
                                                           Text(
                                                             "I'm agree with Privacy policy, terms and conditions.",
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,
-                                                                fontSize: 15.sp
+
                                                             ),
 
                                                           ),
