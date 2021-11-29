@@ -57,8 +57,8 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                 decoration: BoxDecoration(
                                     color: Color(0xFFF1F1F1),
                                     borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(25.0),
-                                        bottomRight: Radius.circular(25.0)
+                                        bottomLeft: Radius.circular(21.0),
+                                        bottomRight: Radius.circular(21.0)
 
                                     )
                                 ),
@@ -230,9 +230,9 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
 
 
                                                     colors: <Color> [
-                                                      Color(0xFFD8D8D8).withOpacity(0.4),
-                                                      Color(0xFFEBEBEB).withOpacity(0.4),
-                                                      Color(0xFFEDEDED).withOpacity(0.4),
+                                                      Color(0xFFD8D8D8).withOpacity(0.7),
+                                                      Color(0xFFEBEBEB).withOpacity(0.7),
+                                                      Color(0xFFEDEDED).withOpacity(0.7),
 
 
 
@@ -245,10 +245,10 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                     color: Color(0xFF868686)
                                                 ),
                                                 borderRadius: BorderRadius.only(
-                                                    topRight: Radius.circular(20.sp),
-                                                    bottomRight: Radius.circular(20.sp),
-                                                    bottomLeft: Radius.circular(20.sp),
-                                                    topLeft: Radius.circular(20.sp))
+                                                    topRight: Radius.circular(21.sp),
+                                                    bottomRight: Radius.circular(21.sp),
+                                                    bottomLeft: Radius.circular(21.sp),
+                                                    topLeft: Radius.circular(21.sp))
                                               // bottomLeft: Radius.circular(40.sp))
 
                                             ),
@@ -279,8 +279,9 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                     child: Text(
                                                       'Therapist',
                                                       textAlign: TextAlign.center,
-                                                      style: TextStyle(
 
+                                                      style: TextStyle(
+                                                          fontWeight: FontWeight.bold,
                                                           fontSize: 10.sp
                                                       ),
                                                     ),
@@ -290,17 +291,17 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                   'You',
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
-
+                                                      fontWeight: FontWeight.bold,
                                                       fontSize: 10.sp
                                                   ),
                                                 ),
                                               ],
                                               tabBarProperties: TabBarProperties(
                                                 width: 174.sp,
-                                                height: 12.sp,
+                                                height: 20.sp,
                                                 background: Container(
                                                   width: 174.sp,
-                                                  height: 22.sp,
+                                                  height: 20.sp,
                                                   decoration: BoxDecoration(
                                                       color: Colors.white,
                                                       image: new DecorationImage(
@@ -339,8 +340,8 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 130.sp,
-                                                        width: 130.sp,
+                                                        height: 136.sp,
+                                                        width: 136.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -360,12 +361,28 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                             child: CircleAvatar
 
                                                               (
-                                                                radius: 20,
-                                                                backgroundImage:
-                                                                NetworkImage('https://i.imgur.com/BoN9kdC.png')
+                                                              radius: 20,
+                                                              backgroundImage:
+                                                              NetworkImage('https://i.imgur.com/BoN9kdC.png'),
+                                                              child: Align(
+                                                                alignment: Alignment.bottomRight,
+                                                                child: Column(
+                                                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                                                  mainAxisSize: MainAxisSize.max,
+                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                  children: [
+                                                                    IconButton(
+                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
+                                                                    )
+                                                                  ],
+
+                                                                ),
+                                                              ),
+
                                                             )
                                                         ),
                                                       ),
+
                                                       Container(
                                                         height: 5.sp,
                                                       ),
@@ -406,8 +423,8 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 130.sp,
-                                                        width: 130.sp,
+                                                        height: 136.sp,
+                                                        width: 136.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -427,9 +444,24 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                             child: CircleAvatar
 
                                                               (
-                                                                radius: 20,
-                                                                backgroundImage:
-                                                                NetworkImage('https://i.imgur.com/BoN9kdC.png')
+                                                              radius: 20,
+                                                              backgroundImage:
+                                                              NetworkImage('https://i.imgur.com/BoN9kdC.png'),
+                                                              child: Align(
+                                                                alignment: Alignment.bottomRight,
+                                                                child: Column(
+                                                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                                                  mainAxisSize: MainAxisSize.max,
+                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                  children: [
+                                                                    IconButton(
+                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
+                                                                    )
+                                                                  ],
+
+                                                                ),
+                                                              ),
+
                                                             )
                                                         ),
                                                       ),

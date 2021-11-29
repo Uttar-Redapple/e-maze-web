@@ -494,6 +494,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               decoration: InputDecoration(
                                                                 border: UnderlineInputBorder(),
                                                                 labelText: 'User Name',
+                                                                  hintText: "name@example.com"
 
                                                               ),
 
@@ -864,9 +865,9 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                       //  filled: true,
                                                                       fillColor: Colors.white70,
 
-                                                                      labelText: 'Email',
+                                                                      labelText: 'Full Name',
                                                                       icon: IconButton(
-                                                                        icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
+                                                                        icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
                                                                       )
                                                                   ),
                                                                   maxLines: 1,
@@ -1043,11 +1044,11 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             ),
                                                           ),
                                                           Container(
-                                                            width: 10.sp,
+                                                            width: 4.sp,
                                                             height: 10.sp,
                                                           ),
                                                           Text(
-                                                            "I am agree with privacy policy,terms and conditions.",
+                                                            "I'm agree with Privacy policy, terms and conditions.",
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,

@@ -38,7 +38,7 @@ class PatientprofileState extends State<Patientprofile>{
   Color _oncolortext=Color(0xFF666666);
   Color _offcolortextcode=Colors.white;
   String ontext="ON";
-  String offtext="OFF";
+  String offtext="Off";
   void showfirstnametextwidget(){
     setState(() {
       viewfirstnametext = true ;
@@ -482,9 +482,9 @@ class PatientprofileState extends State<Patientprofile>{
 
 
                                                     colors: <Color> [
-                                                      Color(0xFFD8D8D8).withOpacity(0.4),
-                                                      Color(0xFFEBEBEB).withOpacity(0.4),
-                                                      Color(0xFFEDEDED).withOpacity(0.4),
+                                                      Color(0xFFD8D8D8).withOpacity(0.7),
+                                                      Color(0xFFEBEBEB).withOpacity(0.7),
+                                                      Color(0xFFEDEDED).withOpacity(0.7),
 
 
 
@@ -531,8 +531,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                     child: Text(
                                                       'Therapist',
                                                       textAlign: TextAlign.center,
-                                                      style: TextStyle(
 
+                                                      style: TextStyle(
+                                                          fontWeight: FontWeight.bold,
                                                           fontSize: 10.sp
                                                       ),
                                                     ),
@@ -542,17 +543,17 @@ class PatientprofileState extends State<Patientprofile>{
                                                   'You',
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
-
+                                                      fontWeight: FontWeight.bold,
                                                       fontSize: 10.sp
                                                   ),
                                                 ),
                                               ],
                                               tabBarProperties: TabBarProperties(
                                                 width: 174.sp,
-                                                height: 12.sp,
+                                                height: 20.sp,
                                                 background: Container(
                                                   width: 174.sp,
-                                                  height: 22.sp,
+                                                  height: 20.sp,
                                                   decoration: BoxDecoration(
                                                       color: Colors.white,
                                                       image: new DecorationImage(
@@ -591,8 +592,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 130.sp,
-                                                        width: 130.sp,
+                                                        height: 136.sp,
+                                                        width: 136.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -614,10 +615,26 @@ class PatientprofileState extends State<Patientprofile>{
                                                             (
                                                               radius: 20,
                                                               backgroundImage:
-                                                              NetworkImage('https://i.imgur.com/BoN9kdC.png')
+                                                              NetworkImage('https://i.imgur.com/BoN9kdC.png'),
+                                                              child: Align(
+                                                                alignment: Alignment.bottomRight,
+                                                                child: Column(
+                                                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                                                  mainAxisSize: MainAxisSize.max,
+                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                  children: [
+                                                                    IconButton(
+                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
+                                                                    )
+                                                                  ],
+
+                                                                ),
+                                                              ),
+
                                                           )
                                                         ),
                                                       ),
+
                                                       Container(
                                                         height: 5.sp,
                                                       ),
@@ -658,8 +675,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 130.sp,
-                                                        width: 130.sp,
+                                                        height: 136.sp,
+                                                        width: 136.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -679,9 +696,24 @@ class PatientprofileState extends State<Patientprofile>{
                                                             child: CircleAvatar
 
                                                               (
-                                                                radius: 20,
-                                                                backgroundImage:
-                                                                NetworkImage('https://i.imgur.com/BoN9kdC.png')
+                                                              radius: 20,
+                                                              backgroundImage:
+                                                              NetworkImage('https://i.imgur.com/BoN9kdC.png'),
+                                                              child: Align(
+                                                                alignment: Alignment.bottomRight,
+                                                                child: Column(
+                                                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                                                  mainAxisSize: MainAxisSize.max,
+                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                  children: [
+                                                                    IconButton(
+                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
+                                                                    )
+                                                                  ],
+
+                                                                ),
+                                                              ),
+
                                                             )
                                                         ),
                                                       ),
@@ -771,7 +803,7 @@ class PatientprofileState extends State<Patientprofile>{
                                               footer: Text(
                                                 "Patient's performance+2%",
                                                 style:
-                                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
+                                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
                                               ),
                                               progressColor: Color(0xFF29AAE1),
                                             ),
@@ -969,8 +1001,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     },
                                                                     child: GestureDetector(
                                                                       onTap: () {
-                                                                        hidefirstnametextwidget();
-                                                                        showfirstnamewidget();
+                                                                      //  hidefirstnametextwidget();
+                                                                       // showfirstnamewidget();
                                                                         //Navigator.pushNamed(context, "myRoute");
                                                                       },
                                                                       child: Text(
@@ -1057,8 +1089,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hidelastnametextwidget();
-                                                                      showlastnamewidget();
+                                                                     // hidelastnametextwidget();
+                                                                     // showlastnamewidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1144,8 +1176,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hideemailtextwidget();
-                                                                      showemailwidget();
+                                                                    //  hideemailtextwidget();
+                                                                    //  showemailwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1231,8 +1263,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hidephtextwidget();
-                                                                      showphwidget();
+                                                                     // hidephtextwidget();
+                                                                    //  showphwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1318,8 +1350,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hidebirthtextwidget();
-                                                                      showbirthwidget();
+                                                                    //  hidebirthtextwidget();
+                                                                    //  showbirthwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1405,8 +1437,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hidegendertextwidget();
-                                                                      showgenderwidget();
+                                                                  //    hidegendertextwidget();
+                                                                   //   showgenderwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1492,8 +1524,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hidelanguagetextwidget();
-                                                                      showlanguagewidget();
+                                                                     // hidelanguagetextwidget();
+                                                                     // showlanguagewidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1591,7 +1623,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                              _oncolor=Colors.transparent;
                                                                              _offcolor=Color(0xFF989898);
                                                                              offtext="ON";
-                                                                             ontext="OFF";
+                                                                             ontext="Off";
                                                                              _offcolortextcode=Colors.white;
                                                                              _oncolortext=Color(0xFF666666);
 
@@ -1638,7 +1670,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                            setState(() {
                                                                               _oncolor=Color(0xFF989898);
                                                                               _offcolor=Colors.transparent;
-                                                                              offtext="OFF";
+                                                                              offtext="Off";
                                                                               ontext="ON";
                                                                               _offcolortextcode=Color(0xFF666666);
                                                                               _oncolortext=Colors.white;
@@ -1691,7 +1723,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                           "more here",
                                                           textAlign: TextAlign.left,
                                                           style: TextStyle(
-                                                              color: Colors.black,
+                                                              color: Color(0xFF808080),
                                                               fontSize: 12.sp
                                                           ),
                                                         ),
