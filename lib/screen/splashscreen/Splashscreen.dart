@@ -30,7 +30,7 @@ class _SplashScreenState extends State<Splashscreen> {
     return ScreenUtilInit(
       builder: () =>Material(
         type: MaterialType.transparency,
-          child: new Container(
+          child:  Container(
             constraints: BoxConstraints.expand(),
             child: Center(
               child: Text(
@@ -44,11 +44,11 @@ class _SplashScreenState extends State<Splashscreen> {
               ),
             ),
             decoration: BoxDecoration(
-              image: DecorationImage(
+              /*image: DecorationImage(
                 image: AssetImage("assets/images/whitepoligon.png"),
 
                 fit: BoxFit.cover,
-              ),
+              ),*/
               gradient: LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
