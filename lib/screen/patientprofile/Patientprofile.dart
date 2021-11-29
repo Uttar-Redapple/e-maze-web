@@ -913,7 +913,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                       child: Container(
 
                                                         width: 100.sp,
-                                                        padding: EdgeInsets.all(20.sp),
+                                                        padding: EdgeInsets.all(30.sp),
                                                         decoration: BoxDecoration(
                                                          /* boxShadow: [
                                                             BoxShadow (
@@ -949,7 +949,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                      //fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -966,7 +966,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                           // fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1010,7 +1010,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                         textAlign: TextAlign.center,
                                                                         style: TextStyle(
                                                                           color: Color(0xFF989898 ),
-                                                                          fontSize: 15.sp,
+                                                                         // fontSize: 15.sp,
                                                                           fontWeight: FontWeight.bold,
                                                                         ),
 
@@ -1042,7 +1042,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                    //  fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1059,7 +1059,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                         //   fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1098,7 +1098,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                      //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 
@@ -1129,7 +1129,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                    //  fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1146,7 +1146,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                          //  fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1185,7 +1185,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                      //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 
@@ -1216,7 +1216,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                     // fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1233,7 +1233,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                            //fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1272,7 +1272,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                      //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 
@@ -1303,7 +1303,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                    //  fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1320,7 +1320,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                           // fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1359,7 +1359,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                      //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 
@@ -1390,7 +1390,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                     // fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1407,7 +1407,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                           // fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1446,7 +1446,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                      //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 
@@ -1477,7 +1477,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                     // fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1494,7 +1494,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                           // fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1533,7 +1533,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                      //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 

@@ -482,7 +482,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                           Container(
                                             padding: EdgeInsets.all(10.sp),
                                             height: 296.sp,
-                                            width: 252.sp,
+                                            width: 251.sp,
                                             decoration: BoxDecoration(
 
                                                 gradient: LinearGradient(
@@ -599,8 +599,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 136.sp,
-                                                        width: 136.sp,
+                                                        height: 150.sp,
+                                                        width: 150.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -682,8 +682,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 136.sp,
-                                                        width: 136.sp,
+                                                        height: 150.sp,
+                                                        width: 150.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -920,7 +920,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       child: Container(
 
                                                         width: 100.sp,
-                                                        padding: EdgeInsets.all(20.sp),
+                                                        padding: EdgeInsets.all(30.sp),
                                                         decoration: BoxDecoration(
                                                           /* boxShadow: [
                                                             BoxShadow (
@@ -956,7 +956,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                      //fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -973,7 +973,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                            // fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1008,8 +1008,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     },
                                                                     child: GestureDetector(
                                                                       onTap: () {
-                                                                      //  hidefirstnametextwidget();
-                                                                       // showfirstnamewidget();
+                                                                        //  hidefirstnametextwidget();
+                                                                        // showfirstnamewidget();
                                                                         //Navigator.pushNamed(context, "myRoute");
                                                                       },
                                                                       child: Text(
@@ -1017,7 +1017,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                         textAlign: TextAlign.center,
                                                                         style: TextStyle(
                                                                           color: Color(0xFF989898 ),
-                                                                          fontSize: 15.sp,
+                                                                          // fontSize: 15.sp,
                                                                           fontWeight: FontWeight.bold,
                                                                         ),
 
@@ -1049,7 +1049,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                      //  fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1066,7 +1066,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                            //   fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1096,8 +1096,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                     // hidelastnametextwidget();
-                                                                     // showlastnamewidget();
+                                                                      // hidelastnametextwidget();
+                                                                      // showlastnamewidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1105,7 +1105,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                        //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 
@@ -1136,7 +1136,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                      //  fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1153,7 +1153,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                            //  fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1183,8 +1183,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                     // hideemailtextwidget();
-                                                                     // showemailwidget();
+                                                                      //  hideemailtextwidget();
+                                                                      //  showemailwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1192,7 +1192,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                        //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 
@@ -1223,7 +1223,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                      // fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1240,7 +1240,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                            //fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1270,8 +1270,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                     // hidephtextwidget();
-                                                                    //  showphwidget();
+                                                                      // hidephtextwidget();
+                                                                      //  showphwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1279,7 +1279,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                        //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 
@@ -1310,7 +1310,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                      //  fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1327,7 +1327,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                            // fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1357,8 +1357,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                   //   hidebirthtextwidget();
-                                                                   //   showbirthwidget();
+                                                                      //  hidebirthtextwidget();
+                                                                      //  showbirthwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1366,7 +1366,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                        //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 
@@ -1397,7 +1397,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                      // fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1414,7 +1414,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                            // fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1444,8 +1444,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                     // hidegendertextwidget();
-                                                                    //  showgenderwidget();
+                                                                      //    hidegendertextwidget();
+                                                                      //   showgenderwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1453,7 +1453,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                        //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 
@@ -1484,7 +1484,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       color: Color(0xFF989898 ),
-                                                                      fontSize: 15.sp,
+                                                                      // fontSize: 15.sp,
                                                                       fontWeight: FontWeight.bold,
                                                                     ),
 
@@ -1501,7 +1501,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            fontSize: 15.sp,
+                                                                            // fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1531,8 +1531,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                     // hidelanguagetextwidget();
-                                                                     // showlanguagewidget();
+                                                                      // hidelanguagetextwidget();
+                                                                      // showlanguagewidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1540,7 +1540,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       textAlign: TextAlign.center,
                                                                       style: TextStyle(
                                                                         color: Color(0xFF989898 ),
-                                                                        fontSize: 15.sp,
+                                                                        //  fontSize: 15.sp,
                                                                         fontWeight: FontWeight.bold,
                                                                       ),
 
@@ -1614,17 +1614,26 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       flex: 5,
                                                                       child: Container(
                                                                         height: 45.sp,
-                                                                       // width: 70.sp,
+                                                                        width: 70.sp,
+
                                                                         decoration: BoxDecoration(
-                                                                            color: _offcolor,
-                                                                            borderRadius: BorderRadius.only(
-                                                                              bottomLeft: Radius.circular(40.0),
-                                                                              bottomRight: Radius.circular(40.0),
-                                                                              topLeft: Radius.circular(40.0),
-                                                                              topRight: Radius.circular(40.0),
+                                                                          color: _offcolor,
+                                                                          borderRadius: BorderRadius.only(
+                                                                            bottomLeft: Radius.circular(40.0),
+                                                                            bottomRight: Radius.circular(40.0),
+                                                                            topLeft: Radius.circular(40.0),
+                                                                            topRight: Radius.circular(40.0),
 
 
-                                                                            )
+                                                                          ),
+                                                                          /*  boxShadow: [
+                                                                             BoxShadow(
+                                                                               color: Colors.grey.withOpacity(0.2),
+                                                                               blurRadius: 2.0,
+                                                                               spreadRadius: 0.0,
+                                                                               offset: Offset(2.0, 2.0), // changes position of shadow
+                                                                             ),
+                                                                           ],*/
                                                                         ),
                                                                         child: GestureDetector(
                                                                           onTap: (){
