@@ -340,8 +340,8 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 136.sp,
-                                                        width: 136.sp,
+                                                        height: 150.sp,
+                                                        width: 150.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -423,8 +423,8 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 136.sp,
-                                                        width: 136.sp,
+                                                        height: 150.sp,
+                                                        width: 150.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -551,7 +551,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                               footer: Text(
                                                 "Patient's performance+2%",
                                                 style:
-                                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
+                                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080)),
                                               ),
                                               progressColor: Color(0xFF29AAE1),
                                             ),
