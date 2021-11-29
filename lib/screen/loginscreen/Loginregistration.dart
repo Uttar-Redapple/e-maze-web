@@ -448,7 +448,15 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                           color: Colors.white,
                                                           border: Border.all(color: Colors.white),
-                                                          borderRadius: BorderRadius.all(Radius.circular(10.sp))
+                                                          borderRadius: BorderRadius.all(Radius.circular(10.sp)),
+                                                          boxShadow: [
+                                                          BoxShadow(
+                                                          color: Color(0xFF243B40),
+                                                      blurRadius: 2.0,
+                                                      spreadRadius: 0.0,
+                                                      offset: Offset(2.0, 2.0), // changes position of shadow
+                                                    ),
+                                                  ],
                                                       ),
                                                       child: Column(
                                                         children: [
@@ -800,7 +808,15 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                             color: Colors.white,
                                                             border: Border.all(color: Colors.white),
-                                                            borderRadius: BorderRadius.all(Radius.circular(21))
+                                                            borderRadius: BorderRadius.all(Radius.circular(21)),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Color(0xFF243B40),
+                                                              blurRadius: 2.0,
+                                                              spreadRadius: 0.0,
+                                                              offset: Offset(2.0, 2.0), // changes position of shadow
+                                                            ),
+                                                          ],
                                                         ),
                                                         child: Column(
                                                           children: [

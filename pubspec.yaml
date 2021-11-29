@@ -157,6 +157,7 @@ flutter:
     - assets/images/greyback.png
     - assets/images/groupsnew.png
     - assets/images/blueonline.png
+    - assets/images/abcd.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

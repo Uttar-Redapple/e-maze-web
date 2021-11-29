@@ -475,7 +475,7 @@ class PatientprofileState extends State<Patientprofile>{
                                           Container(
                                             padding: EdgeInsets.all(10.sp),
                                             height: 296.sp,
-                                            width: 252.sp,
+                                            width: 251.sp,
                                             decoration: BoxDecoration(
 
                                                 gradient: LinearGradient(
@@ -592,8 +592,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 136.sp,
-                                                        width: 136.sp,
+                                                        height: 150.sp,
+                                                        width: 150.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -675,8 +675,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 136.sp,
-                                                        width: 136.sp,
+                                                        height: 150.sp,
+                                                        width: 150.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -1608,6 +1608,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                        child: Container(
                                                                          height: 45.sp,
                                                                          width: 70.sp,
+
                                                                          decoration: BoxDecoration(
                                                                              color: _offcolor,
                                                                              borderRadius: BorderRadius.only(
@@ -1617,7 +1618,15 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                topRight: Radius.circular(40.0),
 
 
-                                                                             )
+                                                                             ),
+                                                                         /*  boxShadow: [
+                                                                             BoxShadow(
+                                                                               color: Colors.grey.withOpacity(0.2),
+                                                                               blurRadius: 2.0,
+                                                                               spreadRadius: 0.0,
+                                                                               offset: Offset(2.0, 2.0), // changes position of shadow
+                                                                             ),
+                                                                           ],*/
                                                                          ),
                                                                          child: GestureDetector(
                                                                            onTap: (){
