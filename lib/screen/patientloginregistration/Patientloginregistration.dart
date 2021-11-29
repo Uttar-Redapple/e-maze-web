@@ -469,8 +469,17 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                           color: Colors.white,
                                                           border: Border.all(color: Colors.white),
-                                                          borderRadius: BorderRadius.all(Radius.circular(10.sp))
-                                                      ),
+                                                          borderRadius: BorderRadius.all(Radius.circular(10.sp)),
+                                                          boxShadow: [
+                                                          BoxShadow(
+                                                          color: Color(0xFF243B40),
+                                                      blurRadius: 2.0,
+                                                      spreadRadius: 0.0,
+                                                      offset: Offset(2.0, 2.0), // changes position of shadow
+                                                    ),
+                                                  ],
+
+                                                ),
                                                       child: Column(
                                                         children: [
                                                           RawKeyboardListener(
@@ -494,6 +503,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               decoration: InputDecoration(
                                                                 border: UnderlineInputBorder(),
                                                                 labelText: 'User Name',
+                                                                  hintText: "name@example.com"
 
                                                               ),
 
@@ -608,7 +618,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,
-                                                                fontSize: 15.sp
+                                                               // fontSize: 15.sp
                                                             ),
 
                                                           ),
@@ -618,7 +628,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,
-                                                                fontSize: 15.sp
+                                                               // fontSize: 15.sp
                                                             ),
 
                                                           ),
@@ -821,7 +831,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                             color: Colors.white,
                                                             border: Border.all(color: Colors.white),
-                                                            borderRadius: BorderRadius.all(Radius.circular(21))
+                                                            borderRadius: BorderRadius.all(Radius.circular(21)),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Color(0xFF243B40),
+                                                              blurRadius: 2.0,
+                                                              spreadRadius: 0.0,
+                                                              offset: Offset(2.0, 2.0), // changes position of shadow
+                                                            ),
+                                                          ],
+
                                                         ),
                                                         child: Column(
                                                           children: [
@@ -864,9 +883,9 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                       //  filled: true,
                                                                       fillColor: Colors.white70,
 
-                                                                      labelText: 'Email',
+                                                                      labelText: 'Full Name',
                                                                       icon: IconButton(
-                                                                        icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
+                                                                        icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
                                                                       )
                                                                   ),
                                                                   maxLines: 1,
@@ -1042,16 +1061,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               ),
                                                             ),
                                                           ),
-                                                          Container(
-                                                            width: 10.sp,
+                                                         /* Container(
+                                                            width: 4.sp,
                                                             height: 10.sp,
-                                                          ),
+                                                          ),*/
                                                           Text(
-                                                            "I am agree with privacy policy,terms and conditions.",
+                                                            "I'm agree with Privacy policy, terms and conditions.",
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,
-                                                                fontSize: 15.sp
+                                                             //   fontSize: 15.sp
                                                             ),
 
                                                           ),

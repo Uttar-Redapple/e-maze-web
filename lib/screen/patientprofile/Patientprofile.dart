@@ -38,7 +38,7 @@ class PatientprofileState extends State<Patientprofile>{
   Color _oncolortext=Color(0xFF666666);
   Color _offcolortextcode=Colors.white;
   String ontext="ON";
-  String offtext="OFF";
+  String offtext="Off";
   void showfirstnametextwidget(){
     setState(() {
       viewfirstnametext = true ;
@@ -475,16 +475,16 @@ class PatientprofileState extends State<Patientprofile>{
                                           Container(
                                             padding: EdgeInsets.all(10.sp),
                                             height: 296.sp,
-                                            width: 252.sp,
+                                            width: 251.sp,
                                             decoration: BoxDecoration(
 
                                                 gradient: LinearGradient(
 
 
                                                     colors: <Color> [
-                                                      Color(0xFFD8D8D8).withOpacity(0.4),
-                                                      Color(0xFFEBEBEB).withOpacity(0.4),
-                                                      Color(0xFFEDEDED).withOpacity(0.4),
+                                                      Color(0xFFD8D8D8).withOpacity(0.7),
+                                                      Color(0xFFEBEBEB).withOpacity(0.7),
+                                                      Color(0xFFEDEDED).withOpacity(0.7),
 
 
 
@@ -531,8 +531,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                     child: Text(
                                                       'Therapist',
                                                       textAlign: TextAlign.center,
-                                                      style: TextStyle(
 
+                                                      style: TextStyle(
+                                                          fontWeight: FontWeight.bold,
                                                           fontSize: 10.sp
                                                       ),
                                                     ),
@@ -542,17 +543,17 @@ class PatientprofileState extends State<Patientprofile>{
                                                   'You',
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
-
+                                                      fontWeight: FontWeight.bold,
                                                       fontSize: 10.sp
                                                   ),
                                                 ),
                                               ],
                                               tabBarProperties: TabBarProperties(
                                                 width: 174.sp,
-                                                height: 12.sp,
+                                                height: 20.sp,
                                                 background: Container(
                                                   width: 174.sp,
-                                                  height: 22.sp,
+                                                  height: 20.sp,
                                                   decoration: BoxDecoration(
                                                       color: Colors.white,
                                                       image: new DecorationImage(
@@ -591,8 +592,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 130.sp,
-                                                        width: 130.sp,
+                                                        height: 150.sp,
+                                                        width: 150.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -614,10 +615,26 @@ class PatientprofileState extends State<Patientprofile>{
                                                             (
                                                               radius: 20,
                                                               backgroundImage:
-                                                              NetworkImage('https://i.imgur.com/BoN9kdC.png')
+                                                              NetworkImage('https://i.imgur.com/BoN9kdC.png'),
+                                                              child: Align(
+                                                                alignment: Alignment.bottomRight,
+                                                                child: Column(
+                                                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                                                  mainAxisSize: MainAxisSize.max,
+                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                  children: [
+                                                                    IconButton(
+                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
+                                                                    )
+                                                                  ],
+
+                                                                ),
+                                                              ),
+
                                                           )
                                                         ),
                                                       ),
+
                                                       Container(
                                                         height: 5.sp,
                                                       ),
@@ -658,8 +675,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                         height: 10.sp,
                                                       ),
                                                       Container(
-                                                        height: 130.sp,
-                                                        width: 130.sp,
+                                                        height: 150.sp,
+                                                        width: 150.sp,
                                                         decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
                                                           image: DecorationImage(
@@ -679,9 +696,24 @@ class PatientprofileState extends State<Patientprofile>{
                                                             child: CircleAvatar
 
                                                               (
-                                                                radius: 20,
-                                                                backgroundImage:
-                                                                NetworkImage('https://i.imgur.com/BoN9kdC.png')
+                                                              radius: 20,
+                                                              backgroundImage:
+                                                              NetworkImage('https://i.imgur.com/BoN9kdC.png'),
+                                                              child: Align(
+                                                                alignment: Alignment.bottomRight,
+                                                                child: Column(
+                                                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                                                  mainAxisSize: MainAxisSize.max,
+                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                  children: [
+                                                                    IconButton(
+                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
+                                                                    )
+                                                                  ],
+
+                                                                ),
+                                                              ),
+
                                                             )
                                                         ),
                                                       ),
@@ -771,7 +803,7 @@ class PatientprofileState extends State<Patientprofile>{
                                               footer: Text(
                                                 "Patient's performance+2%",
                                                 style:
-                                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
+                                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
                                               ),
                                               progressColor: Color(0xFF29AAE1),
                                             ),
@@ -969,8 +1001,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     },
                                                                     child: GestureDetector(
                                                                       onTap: () {
-                                                                        hidefirstnametextwidget();
-                                                                        showfirstnamewidget();
+                                                                      //  hidefirstnametextwidget();
+                                                                       // showfirstnamewidget();
                                                                         //Navigator.pushNamed(context, "myRoute");
                                                                       },
                                                                       child: Text(
@@ -1057,8 +1089,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hidelastnametextwidget();
-                                                                      showlastnamewidget();
+                                                                     // hidelastnametextwidget();
+                                                                     // showlastnamewidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1144,8 +1176,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hideemailtextwidget();
-                                                                      showemailwidget();
+                                                                    //  hideemailtextwidget();
+                                                                    //  showemailwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1231,8 +1263,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hidephtextwidget();
-                                                                      showphwidget();
+                                                                     // hidephtextwidget();
+                                                                    //  showphwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1318,8 +1350,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hidebirthtextwidget();
-                                                                      showbirthwidget();
+                                                                    //  hidebirthtextwidget();
+                                                                    //  showbirthwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1405,8 +1437,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hidegendertextwidget();
-                                                                      showgenderwidget();
+                                                                  //    hidegendertextwidget();
+                                                                   //   showgenderwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1492,8 +1524,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      hidelanguagetextwidget();
-                                                                      showlanguagewidget();
+                                                                     // hidelanguagetextwidget();
+                                                                     // showlanguagewidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1517,235 +1549,247 @@ class PatientprofileState extends State<Patientprofile>{
                                                     ),
                                                   ),
                                                 ),
-                                                Expanded(
-                                                  flex: 3,
-                                                  child: Container(
+                                                SingleChildScrollView(
+                                                    scrollDirection: Axis.horizontal,
+                                                  child: Expanded(
+                                                    flex: 3,
+                                                    child: Container(
 
-                                                    padding: EdgeInsets.all(20.sp),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        Row(
-                                                          children: [
-                                                            SizedBox(
-                                                              height: 40.sp,
-                                                              width: 40.sp,
-                                                              child: IconButton(
-                                                                icon: Image.asset('assets/images/eye.png'),
-                                                                onPressed: () {
+                                                      padding: EdgeInsets.all(20.sp),
+                                                      child: Column(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          Row(
+                                                            children: [
+                                                              SizedBox(
+                                                                height: 40.sp,
+                                                                width: 40.sp,
+                                                                child: IconButton(
+                                                                  icon: Image.asset('assets/images/eye.png'),
+                                                                  onPressed: () {
 
-                                                                },
+                                                                  },
+                                                                ),
                                                               ),
-                                                            ),
 
 
-                                                            Container(
-                                                              padding: EdgeInsets.only(left: 5.sp,right: 5.sp,top: 5.sp),
-                                                               height: 47.sp,
-                                                               width: 140.sp,
-                                                               decoration: BoxDecoration(
-                                                                 /* boxShadow: [
-                                                              BoxShadow (
-                                                                color: Colors.grey.withOpacity(0.8),
-                                                                // color: Color(0xFF989898),
-                                                                spreadRadius: 2,
-                                                                blurRadius: 5,
-                                                                offset: Offset(7, 0),
-                                                              ),
-                                                          ],*/
+                                                              Container(
+                                                                padding: EdgeInsets.only(left: 5.sp,right: 5.sp,top: 5.sp),
+                                                                 height: 47.sp,
+                                                                 width: 140.sp,
+                                                                 decoration: BoxDecoration(
+                                                                   /* boxShadow: [
+                                                                BoxShadow (
+                                                                  color: Colors.grey.withOpacity(0.8),
+                                                                  // color: Color(0xFF989898),
+                                                                  spreadRadius: 2,
+                                                                  blurRadius: 5,
+                                                                  offset: Offset(7, 0),
+                                                                ),
+                                                            ],*/
 
-                                                                 color: Colors.transparent,
-                                                                 image: new DecorationImage(
-                                                              image: new AssetImage("assets/images/groups.png"),
-                                                              fit: BoxFit.fill,
-                                                          ),
-                                                                 border: new Border.all(
                                                                    color: Colors.transparent,
-                                                                   width: 0,
+                                                                   image: new DecorationImage(
+                                                                image: new AssetImage("assets/images/groups.png"),
+                                                                fit: BoxFit.fill,
+                                                            ),
+                                                                   border: new Border.all(
+                                                                     color: Colors.transparent,
+                                                                     width: 0,
+                                                                   ),
+                                                                   borderRadius: BorderRadius.all(Radius.circular(40)),
+
                                                                  ),
-                                                                 borderRadius: BorderRadius.all(Radius.circular(40)),
-
-                                                               ),
-                                                               child: Row(
-                                                                 children: [
-                                                                 Expanded(
-                                                                   flex: 5,
-                                                                     child: Container(
-                                                                       height: 45.sp,
-                                                                       width: 70.sp,
-                                                                       decoration: BoxDecoration(
-                                                                           color: _offcolor,
-                                                                           borderRadius: BorderRadius.only(
-                                                                             bottomLeft: Radius.circular(40.0),
-                                                                             bottomRight: Radius.circular(40.0),
-                                                                             topLeft: Radius.circular(40.0),
-                                                                             topRight: Radius.circular(40.0),
-
-
-                                                                           )
-                                                                       ),
-                                                                       child: GestureDetector(
-                                                                         onTap: (){
-                                                                           setState(() {
-                                                                             _oncolor=Colors.transparent;
-                                                                             _offcolor=Color(0xFF989898);
-                                                                             offtext="ON";
-                                                                             ontext="OFF";
-                                                                             _offcolortextcode=Colors.white;
-                                                                             _oncolortext=Color(0xFF666666);
-
-
-
-                                                                           });
-
-
-                                                                         },
-                                                                         child: Center(
-                                                                           child: Text(
-                                                                               offtext,
-                                                                               textAlign: TextAlign.center,
-                                                                               style:  TextStyle(
-                                                                                 color: _offcolortextcode,
-                                                                                 fontSize: 14.sp,
-                                                                                 fontWeight: FontWeight.bold,
-
-
-                                                                               )
-                                                                           ),
-                                                                         ),
-                                                                       ),
-                                                                     ),
-                                                                 ),
+                                                                 child: Row(
+                                                                   children: [
                                                                    Expanded(
                                                                      flex: 5,
-                                                                     child: Container(
-                                                                       height: 45.sp,
-                                                                       width: 70.sp,
-                                                                       decoration: BoxDecoration(
-                                                                           color: _oncolor,
-                                                                           borderRadius: BorderRadius.only(
-                                                                             bottomLeft: Radius.circular(40.0),
-                                                                             bottomRight: Radius.circular(40.0),
-                                                                             topLeft: Radius.circular(40.0),
-                                                                             topRight: Radius.circular(40.0),
+                                                                       child: Container(
+                                                                         height: 45.sp,
+                                                                         width: 70.sp,
+
+                                                                         decoration: BoxDecoration(
+                                                                             color: _offcolor,
+                                                                             borderRadius: BorderRadius.only(
+                                                                               bottomLeft: Radius.circular(40.0),
+                                                                               bottomRight: Radius.circular(40.0),
+                                                                               topLeft: Radius.circular(40.0),
+                                                                               topRight: Radius.circular(40.0),
 
 
-                                                                           )
-                                                                       ),
-                                                                       child: GestureDetector(
+                                                                             ),
+                                                                         /*  boxShadow: [
+                                                                             BoxShadow(
+                                                                               color: Colors.grey.withOpacity(0.2),
+                                                                               blurRadius: 2.0,
+                                                                               spreadRadius: 0.0,
+                                                                               offset: Offset(2.0, 2.0), // changes position of shadow
+                                                                             ),
+                                                                           ],*/
+                                                                         ),
+                                                                         child: GestureDetector(
                                                                            onTap: (){
-                                                                           setState(() {
-                                                                              _oncolor=Color(0xFF989898);
-                                                                              _offcolor=Colors.transparent;
-                                                                              offtext="OFF";
-                                                                              ontext="ON";
-                                                                              _offcolortextcode=Color(0xFF666666);
-                                                                              _oncolortext=Colors.white;
-                                                                           });
+                                                                             setState(() {
+                                                                               _oncolor=Colors.transparent;
+                                                                               _offcolor=Color(0xFF989898);
+                                                                               offtext="ON";
+                                                                               ontext="Off";
+                                                                               _offcolortextcode=Colors.white;
+                                                                               _oncolortext=Color(0xFF666666);
 
 
-                                                                         },
-                                                                         child: Center(
-                                                                           child: Text(
-                                                                               ontext,
-                                                                               textAlign: TextAlign.center,
-                                                                               style:  TextStyle(
-                                                                                 color: _oncolortext,
-                                                                                 fontSize: 14.sp,
-                                                                                 fontWeight: FontWeight.bold,
+
+                                                                             });
 
 
-                                                                               )
+                                                                           },
+                                                                           child: Center(
+                                                                             child: Text(
+                                                                                 offtext,
+                                                                                 textAlign: TextAlign.center,
+                                                                                 style:  TextStyle(
+                                                                                   color: _offcolortextcode,
+                                                                                   fontSize: 14.sp,
+                                                                                   fontWeight: FontWeight.bold,
+
+
+                                                                                 )
+                                                                             ),
+                                                                           ),
+                                                                         ),
+                                                                       ),
+                                                                   ),
+                                                                     Expanded(
+                                                                       flex: 5,
+                                                                       child: Container(
+                                                                         height: 45.sp,
+                                                                         width: 70.sp,
+                                                                         decoration: BoxDecoration(
+                                                                             color: _oncolor,
+                                                                             borderRadius: BorderRadius.only(
+                                                                               bottomLeft: Radius.circular(40.0),
+                                                                               bottomRight: Radius.circular(40.0),
+                                                                               topLeft: Radius.circular(40.0),
+                                                                               topRight: Radius.circular(40.0),
+
+
+                                                                             )
+                                                                         ),
+                                                                         child: GestureDetector(
+                                                                             onTap: (){
+                                                                             setState(() {
+                                                                                _oncolor=Color(0xFF989898);
+                                                                                _offcolor=Colors.transparent;
+                                                                                offtext="Off";
+                                                                                ontext="ON";
+                                                                                _offcolortextcode=Color(0xFF666666);
+                                                                                _oncolortext=Colors.white;
+                                                                             });
+
+
+                                                                           },
+                                                                           child: Center(
+                                                                             child: Text(
+                                                                                 ontext,
+                                                                                 textAlign: TextAlign.center,
+                                                                                 style:  TextStyle(
+                                                                                   color: _oncolortext,
+                                                                                   fontSize: 14.sp,
+                                                                                   fontWeight: FontWeight.bold,
+
+
+                                                                                 )
+                                                                             ),
                                                                            ),
                                                                          ),
                                                                        ),
                                                                      ),
-                                                                   ),
-                                                                 ],
+                                                                   ],
+                                                                 ),
                                                                ),
-                                                             ),
 
-                                                          ],
-                                                        ),
-                                                        Container(
-                                                          height: 10.sp,
-                                                        ),
-                                                        Text(
-                                                          "Do you have color blindness",
-                                                          textAlign: TextAlign.left,
-                                                          style: TextStyle(
-                                                              color: Color(0xFF808080),
-                                                              fontSize: 12.sp
+                                                            ],
                                                           ),
-                                                        ),
-                                                        Text(
-                                                          "Activate this option.Learn",
-                                                          textAlign: TextAlign.left,
-                                                          style: TextStyle(
-                                                              color: Color(0xFF808080),
-                                                              fontSize: 12.sp
+                                                          Container(
+                                                            height: 10.sp,
                                                           ),
-                                                        ),
-                                                        Text(
-                                                          "more here",
-                                                          textAlign: TextAlign.left,
-                                                          style: TextStyle(
-                                                              color: Colors.black,
-                                                              fontSize: 12.sp
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          height: 120.sp,
-                                                        ),
-                                                        SizedBox(
-                                                          height: 40.sp,
-                                                          width: 40.sp,
-                                                          child: IconButton(
-                                                            icon: Image.asset('assets/images/key.png'), onPressed: () {  },
-                                                          ),
-                                                        ),
-                                                        ButtonTheme(
-                                                          minWidth: 190.sp,
-                                                          height: 50.sp,
-                                                          shape: new RoundedRectangleBorder(
-                                                            borderRadius: new BorderRadius.circular(23.sp),
-                                                          ),
-                                                          child: Container(
-                                                            decoration:  BoxDecoration(
-                                                              boxShadow: [
-                                                                 //background color of box
-                                                                BoxShadow(
-                                                                  color: Colors.grey.withOpacity(0.5),
-                                                                  blurRadius: 55.0, // soften the shadow
-                                                                  spreadRadius: 5.0, //extend the shadow
-                                                                  offset: Offset(
-                                                                    15.0, // Move to right 10  horizontally
-                                                                    15.0, // Move to bottom 10 Vertically
-                                                                  ),
-                                                                )
-                                                              ],
+                                                          Text(
+                                                            "Do you have color blindness",
+                                                            textAlign: TextAlign.left,
+                                                            style: TextStyle(
+                                                                color: Color(0xFF808080),
+                                                                fontSize: 12.sp
                                                             ),
-                                                            child: RaisedButton(
-                                                              onPressed: () {
-                                                               // Navigator.pushNamed(context, 'patient/usermanagement');
+                                                          ),
+                                                          Text(
+                                                            "Activate this option.Learn",
+                                                            textAlign: TextAlign.left,
+                                                            style: TextStyle(
+                                                                color: Color(0xFF808080),
+                                                                fontSize: 12.sp
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            "more here",
+                                                            textAlign: TextAlign.left,
+                                                            style: TextStyle(
+                                                                color: Color(0xFF808080),
+                                                                fontSize: 12.sp
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: 120.sp,
+                                                          ),
+                                                          SizedBox(
+                                                            height: 40.sp,
+                                                            width: 40.sp,
+                                                            child: IconButton(
+                                                              icon: Image.asset('assets/images/key.png'), onPressed: () {  },
+                                                            ),
+                                                          ),
+                                                          ButtonTheme(
+                                                            minWidth: 190.sp,
+                                                            height: 50.sp,
+                                                            shape: new RoundedRectangleBorder(
+                                                              borderRadius: new BorderRadius.circular(23.sp),
+                                                            ),
+                                                            child: Container(
+                                                              decoration:  BoxDecoration(
+                                                                boxShadow: [
+                                                                   //background color of box
+                                                                  BoxShadow(
+                                                                    color: Colors.grey.withOpacity(0.5),
+                                                                    blurRadius: 55.0, // soften the shadow
+                                                                    spreadRadius: 5.0, //extend the shadow
+                                                                    offset: Offset(
+                                                                      15.0, // Move to right 10  horizontally
+                                                                      15.0, // Move to bottom 10 Vertically
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                              child: RaisedButton(
+                                                                onPressed: () {
+                                                                 // Navigator.pushNamed(context, 'patient/usermanagement');
 
-                                                              },
+                                                                },
 
-                                                              color: Color(0xFF29AAE1),
-                                                              child: Text("Change Password >",
-                                                                style: TextStyle(
-                                                                    color: Colors.white,
-                                                                    fontSize: 15.sp
+                                                                color: Color(0xFF29AAE1),
+                                                                child: Text("Change Password >",
+                                                                  style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      fontSize: 15.sp
 
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                        ],
+                                                      ),
 
+                                                    ),
                                                   ),
                                                 )
 
