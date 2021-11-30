@@ -423,7 +423,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                         children: [
                                                           Text(
-                                                            "USER/EMAIL/ID/PHONE",
+                                                            "USER / EMAIL / ID / PHONE",
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,
@@ -519,7 +519,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                               decoration: InputDecoration(
 
-                                                                  border: UnderlineInputBorder(),
+                                                                  border: InputBorder.none,
                                                                   labelText: 'Password',
                                                                   suffixIcon: GestureDetector(
                                                                     onLongPress: () {

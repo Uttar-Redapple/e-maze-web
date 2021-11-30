@@ -906,14 +906,14 @@ class PatientprofileState extends State<Patientprofile>{
                                                       });
                                                     },
                                                     child: InnerShadow(
-                                                      blur: 5,
+                                                     // blur: 5,
                                                       color:  Color(0xFFD1D1D1),
-                                                      offset:  Offset(5, 5),
+                                                    //  offset:  Offset(5, 5),
 
                                                       child: Container(
-
-                                                        width: 100.sp,
-                                                        padding: EdgeInsets.all(30.sp),
+                                                        margin: const EdgeInsets.only(bottom: 20.0),
+                                                        //width: 100.sp,
+                                                        padding: EdgeInsets.only(top: 30.sp,bottom: 30.sp,left: 30.sp,right: 30.sp),
                                                         decoration: BoxDecoration(
                                                          /* boxShadow: [
                                                             BoxShadow (
@@ -1549,9 +1549,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                     ),
                                                   ),
                                                 ),
-                                                SingleChildScrollView(
-                                                    scrollDirection: Axis.horizontal,
-                                                  child: Expanded(
+
+                                                   // scrollDirection: Axis.horizontal,
+                                                   Expanded(
                                                     flex: 3,
                                                     child: Container(
 
@@ -1562,152 +1562,158 @@ class PatientprofileState extends State<Patientprofile>{
                                                         children: [
                                                           Row(
                                                             children: [
-                                                              SizedBox(
-                                                                height: 40.sp,
-                                                                width: 40.sp,
-                                                                child: IconButton(
-                                                                  icon: Image.asset('assets/images/eye.png'),
-                                                                  onPressed: () {
+                                                              Expanded(
+                                                                flex: 4,
+                                                                child: SizedBox(
+                                                                  height: 40.sp,
+                                                                  width: 40.sp,
+                                                                  child: IconButton(
+                                                                    icon: Image.asset('assets/images/eye.png'),
+                                                                    onPressed: () {
 
-                                                                  },
+                                                                    },
+                                                                  ),
                                                                 ),
                                                               ),
 
 
-                                                              Container(
-                                                                padding: EdgeInsets.only(left: 5.sp,right: 5.sp,top: 5.sp),
-                                                                 height: 47.sp,
-                                                                 width: 140.sp,
-                                                                 decoration: BoxDecoration(
-                                                                   /* boxShadow: [
-                                                                BoxShadow (
-                                                                  color: Colors.grey.withOpacity(0.8),
-                                                                  // color: Color(0xFF989898),
-                                                                  spreadRadius: 2,
-                                                                  blurRadius: 5,
-                                                                  offset: Offset(7, 0),
-                                                                ),
+                                                              Expanded(
+                                                                  flex: 6,
+                                                                child: Container(
+                                                                  padding: EdgeInsets.only(left: 5.sp,right: 5.sp,top: 5.sp),
+                                                                   height: 47.sp,
+                                                                   width: 100.sp,
+                                                                   decoration: BoxDecoration(
+                                                                     /* boxShadow: [
+                                                                  BoxShadow (
+                                                                    color: Colors.grey.withOpacity(0.8),
+                                                                    // color: Color(0xFF989898),
+                                                                    spreadRadius: 2,
+                                                                    blurRadius: 5,
+                                                                    offset: Offset(7, 0),
+                                                                  ),
                                                             ],*/
 
-                                                                   color: Colors.transparent,
-                                                                   image: new DecorationImage(
-                                                                image: new AssetImage("assets/images/groups.png"),
-                                                                fit: BoxFit.fill,
-                                                            ),
-                                                                   border: new Border.all(
                                                                      color: Colors.transparent,
-                                                                     width: 0,
+                                                                     image: new DecorationImage(
+                                                                  image: new AssetImage("assets/images/groups.png"),
+                                                                  fit: BoxFit.fill,
+                                                            ),
+                                                                     border: new Border.all(
+                                                                       color: Colors.transparent,
+                                                                       width: 0,
+                                                                     ),
+                                                                     borderRadius: BorderRadius.all(Radius.circular(40)),
+
                                                                    ),
-                                                                   borderRadius: BorderRadius.all(Radius.circular(40)),
-
-                                                                 ),
-                                                                 child: Row(
-                                                                   children: [
-                                                                   Expanded(
-                                                                     flex: 5,
-                                                                       child: Container(
-                                                                         height: 45.sp,
-                                                                         width: 70.sp,
-
-                                                                         decoration: BoxDecoration(
-                                                                             color: _offcolor,
-                                                                             borderRadius: BorderRadius.only(
-                                                                               bottomLeft: Radius.circular(40.0),
-                                                                               bottomRight: Radius.circular(40.0),
-                                                                               topLeft: Radius.circular(40.0),
-                                                                               topRight: Radius.circular(40.0),
-
-
-                                                                             ),
-                                                                         /*  boxShadow: [
-                                                                             BoxShadow(
-                                                                               color: Colors.grey.withOpacity(0.2),
-                                                                               blurRadius: 2.0,
-                                                                               spreadRadius: 0.0,
-                                                                               offset: Offset(2.0, 2.0), // changes position of shadow
-                                                                             ),
-                                                                           ],*/
-                                                                         ),
-                                                                         child: GestureDetector(
-                                                                           onTap: (){
-                                                                             setState(() {
-                                                                               _oncolor=Colors.transparent;
-                                                                               _offcolor=Color(0xFF989898);
-                                                                               offtext="ON";
-                                                                               ontext="Off";
-                                                                               _offcolortextcode=Colors.white;
-                                                                               _oncolortext=Color(0xFF666666);
-
-
-
-                                                                             });
-
-
-                                                                           },
-                                                                           child: Center(
-                                                                             child: Text(
-                                                                                 offtext,
-                                                                                 textAlign: TextAlign.center,
-                                                                                 style:  TextStyle(
-                                                                                   color: _offcolortextcode,
-                                                                                   fontSize: 14.sp,
-                                                                                   fontWeight: FontWeight.bold,
-
-
-                                                                                 )
-                                                                             ),
-                                                                           ),
-                                                                         ),
-                                                                       ),
-                                                                   ),
+                                                                   child: Row(
+                                                                     children: [
                                                                      Expanded(
                                                                        flex: 5,
-                                                                       child: Container(
-                                                                         height: 45.sp,
-                                                                         width: 70.sp,
-                                                                         decoration: BoxDecoration(
-                                                                             color: _oncolor,
-                                                                             borderRadius: BorderRadius.only(
-                                                                               bottomLeft: Radius.circular(40.0),
-                                                                               bottomRight: Radius.circular(40.0),
-                                                                               topLeft: Radius.circular(40.0),
-                                                                               topRight: Radius.circular(40.0),
+                                                                         child: Container(
+                                                                           height: 45.sp,
+                                                                           //width: 70.sp,
+
+                                                                           decoration: BoxDecoration(
+                                                                               color: _offcolor,
+                                                                               borderRadius: BorderRadius.only(
+                                                                                 bottomLeft: Radius.circular(40.0),
+                                                                                 bottomRight: Radius.circular(40.0),
+                                                                                 topLeft: Radius.circular(40.0),
+                                                                                 topRight: Radius.circular(40.0),
 
 
-                                                                             )
-                                                                         ),
-                                                                         child: GestureDetector(
+                                                                               ),
+                                                                           /*  boxShadow: [
+                                                                               BoxShadow(
+                                                                                 color: Colors.grey.withOpacity(0.2),
+                                                                                 blurRadius: 2.0,
+                                                                                 spreadRadius: 0.0,
+                                                                                 offset: Offset(2.0, 2.0), // changes position of shadow
+                                                                               ),
+                                                                             ],*/
+                                                                           ),
+                                                                           child: GestureDetector(
                                                                              onTap: (){
-                                                                             setState(() {
-                                                                                _oncolor=Color(0xFF989898);
-                                                                                _offcolor=Colors.transparent;
-                                                                                offtext="Off";
-                                                                                ontext="ON";
-                                                                                _offcolortextcode=Color(0xFF666666);
-                                                                                _oncolortext=Colors.white;
-                                                                             });
+                                                                               setState(() {
+                                                                                 _oncolor=Colors.transparent;
+                                                                                 _offcolor=Color(0xFF989898);
+                                                                                 offtext="ON";
+                                                                                 ontext="Off";
+                                                                                 _offcolortextcode=Colors.white;
+                                                                                 _oncolortext=Color(0xFF666666);
 
 
-                                                                           },
-                                                                           child: Center(
-                                                                             child: Text(
-                                                                                 ontext,
-                                                                                 textAlign: TextAlign.center,
-                                                                                 style:  TextStyle(
-                                                                                   color: _oncolortext,
-                                                                                   fontSize: 14.sp,
-                                                                                   fontWeight: FontWeight.bold,
+
+                                                                               });
 
 
-                                                                                 )
+                                                                             },
+                                                                             child: Center(
+                                                                               child: Text(
+                                                                                   offtext,
+                                                                                   textAlign: TextAlign.center,
+                                                                                   style:  TextStyle(
+                                                                                     color: _offcolortextcode,
+                                                                                     fontSize: 14.sp,
+                                                                                     fontWeight: FontWeight.bold,
+
+
+                                                                                   )
+                                                                               ),
+                                                                             ),
+                                                                           ),
+                                                                         ),
+                                                                     ),
+                                                                       Expanded(
+                                                                         flex: 5,
+                                                                         child: Container(
+                                                                           height: 45.sp,
+                                                                         //  width: 70.sp,
+                                                                           decoration: BoxDecoration(
+                                                                               color: _oncolor,
+                                                                               borderRadius: BorderRadius.only(
+                                                                                 bottomLeft: Radius.circular(40.0),
+                                                                                 bottomRight: Radius.circular(40.0),
+                                                                                 topLeft: Radius.circular(40.0),
+                                                                                 topRight: Radius.circular(40.0),
+
+
+                                                                               )
+                                                                           ),
+                                                                           child: GestureDetector(
+                                                                               onTap: (){
+                                                                               setState(() {
+                                                                                  _oncolor=Color(0xFF989898);
+                                                                                  _offcolor=Colors.transparent;
+                                                                                  offtext="Off";
+                                                                                  ontext="ON";
+                                                                                  _offcolortextcode=Color(0xFF666666);
+                                                                                  _oncolortext=Colors.white;
+                                                                               });
+
+
+                                                                             },
+                                                                             child: Center(
+                                                                               child: Text(
+                                                                                   ontext,
+                                                                                   textAlign: TextAlign.center,
+                                                                                   style:  TextStyle(
+                                                                                     color: _oncolortext,
+                                                                                     fontSize: 14.sp,
+                                                                                     fontWeight: FontWeight.bold,
+
+
+                                                                                   )
+                                                                               ),
                                                                              ),
                                                                            ),
                                                                          ),
                                                                        ),
-                                                                     ),
-                                                                   ],
+                                                                     ],
+                                                                   ),
                                                                  ),
-                                                               ),
+                                                              ),
 
                                                             ],
                                                           ),
@@ -1790,8 +1796,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                       ),
 
                                                     ),
-                                                  ),
-                                                )
+                                                  )
+
 
                                               ],
                                             )

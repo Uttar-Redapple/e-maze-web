@@ -296,9 +296,9 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                               hideregsucesswidget();
                                               pwd=true;
                                               _regborderRadius =
-                                                  BorderRadius.circular(50.sp);
+                                                  BorderRadius.circular(40.sp);
                                               _borderRadius =
-                                                  BorderRadius.circular(50.sp);
+                                                  BorderRadius.circular(40.sp);
                                               _hasBeenPressedregister = !_hasBeenPressedregister;
                                             });
                                           },
@@ -350,12 +350,12 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                               _width = 500.sp;
                                               _height = 350.sp;
                                               _borderRadius =
-                                                  BorderRadius.circular(50.sp);
+                                                  BorderRadius.circular(40.sp);
 
                                               _regwidth = 650.sp;
                                               _regheight = 450.sp;
                                               _regborderRadius =
-                                                  BorderRadius.circular(50.sp);
+                                                  BorderRadius.circular(40.sp);
                                               hideerrorWidget();
                                               clearlogintext();
                                               _hasBeenPressedlogin = !_hasBeenPressedlogin;
@@ -444,7 +444,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                         children: [
                                                           Text(
-                                                            "USER/EMAIL/ID/PHONE",
+                                                            "USER / EMAIL / ID / PHONE",
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
                                                                 color: Colors.white,
@@ -541,8 +541,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
 
                                                               decoration: InputDecoration(
-
-                                                                  border: UnderlineInputBorder(),
+                                                                  border: InputBorder.none,
+                                                                //  border: UnderlineInputBorder(),
                                                                   labelText: 'Password',
                                                                   suffixIcon: GestureDetector(
                                                                     onLongPress: () {
@@ -1061,10 +1061,10 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               ),
                                                             ),
                                                           ),
-                                                         /* Container(
-                                                            width: 4.sp,
-                                                            height: 10.sp,
-                                                          ),*/
+                                                          Container(
+                                                            width: 2.sp,
+
+                                                          ),
                                                           Text(
                                                             "I'm agree with Privacy policy, terms and conditions.",
                                                             textAlign: TextAlign.center,

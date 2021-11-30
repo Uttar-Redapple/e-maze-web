@@ -62,7 +62,7 @@ class TherapistorpatientState extends State<Therapistorpatient> with TickerProvi
       builder: () => Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/whitepoligon.png"),
+            image: AssetImage("assets/images/fondos.png"),
 
             fit: BoxFit.fill,
           ),
@@ -99,7 +99,7 @@ class TherapistorpatientState extends State<Therapistorpatient> with TickerProvi
                   child: Card(
 
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.sp),
+                      borderRadius: BorderRadius.circular(20.sp),
                       side: BorderSide(
                         color: Color(0xFFF1F1F1),
                         width: 1.sp,
@@ -126,10 +126,24 @@ class TherapistorpatientState extends State<Therapistorpatient> with TickerProvi
                                       decoration: BoxDecoration(
 
                                           borderRadius: BorderRadius.only(
-                                              topRight: Radius.circular(40.sp),
-                                              bottomRight: Radius.circular(40.sp),
-                                              topLeft: Radius.circular(40.sp),
-                                              bottomLeft: Radius.circular(40.sp)),
+                                              topRight: Radius.circular(20.sp),
+                                              bottomRight: Radius.circular(20.sp),
+                                              topLeft: Radius.circular(20.sp),
+                                              bottomLeft: Radius.circular(20.sp)),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.white,
+                                              blurRadius: 2,
+                                              spreadRadius: 1,
+                                              offset: Offset(0, -3),
+                                            ),
+                                            BoxShadow(
+                                              color: Colors.grey.shade400,
+                                              blurRadius: 2.0,
+                                              spreadRadius: 0.0,
+                                              offset: Offset(2.0, 2.0), // changes position of shadow
+                                            ),
+                                          ],
                                           gradient:
                                           LinearGradient(
 
@@ -207,10 +221,24 @@ class TherapistorpatientState extends State<Therapistorpatient> with TickerProvi
                                     DecoratedBox(
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.only(
-                                              topRight: Radius.circular(40.sp),
-                                              bottomRight: Radius.circular(40.sp),
-                                              topLeft: Radius.circular(40.sp),
-                                              bottomLeft: Radius.circular(40.sp)),
+                                              topRight: Radius.circular(20.sp),
+                                              bottomRight: Radius.circular(20.sp),
+                                              topLeft: Radius.circular(20.sp),
+                                              bottomLeft: Radius.circular(20.sp)),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.white,
+                                              blurRadius: 2,
+                                              spreadRadius: 1,
+                                              offset: Offset(0, -3),
+                                            ),
+                                            BoxShadow(
+                                              color: Colors.grey.shade400,
+                                              blurRadius: 2.0,
+                                              spreadRadius: 0.0,
+                                              offset: Offset(2.0, 2.0), // changes position of shadow
+                                            ),
+                                          ],
                                           gradient:
                                           LinearGradient(
                                               begin: Alignment.centerLeft,

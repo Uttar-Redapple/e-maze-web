@@ -588,8 +588,9 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             mainAxisAlignment: MainAxisAlignment.start,
                                             children: [
-                                              SingleChildScrollView(
-                                                child: Row(
+
+
+                                                 Row(
                                                     children: [
                                                       Expanded(
                                                           flex: 6,
@@ -611,9 +612,9 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                             ),
                                                           )
                                                       ),
-                                                      SingleChildScrollView(
-                                                          scrollDirection: Axis.horizontal,
-                                                        child: Expanded(
+
+
+                                                         Expanded(
                                                             flex: 4,
                                                             child: Align(
                                                               alignment: Alignment.centerRight,
@@ -624,67 +625,75 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                   // mainAxisAlignment: MainAxisAlignment.end,
                                                                   children: [
 
-                                                                    ButtonBar(
+                                                                    Expanded(
+                                                                      flex: 5,
+                                                                      child: ButtonBar(
 
-                                                                      alignment: MainAxisAlignment.spaceAround,
-                                                                      children: [
-                                                                        DecoratedBox(
+                                                                        alignment: MainAxisAlignment.spaceAround,
+                                                                        children: [
+                                                                          DecoratedBox(
 
-                                                                          decoration: BoxDecoration(
+                                                                            decoration: BoxDecoration(
 
-                                                                              borderRadius: BorderRadius.only(
-                                                                                  topRight: Radius.circular(40.sp),
-                                                                                  bottomRight: Radius.circular(40.sp),
-                                                                                  topLeft: Radius.circular(40.sp),
-                                                                                  bottomLeft: Radius.circular(40.sp)),
-                                                                              boxShadow: [
-                                                                                BoxShadow(
-                                                                                  color: Colors.grey.withOpacity(0.5),
-                                                                                  spreadRadius: 5,
-                                                                                  blurRadius: 7,
-                                                                                  offset: Offset(0, 3), // changes position of shadow
-                                                                                ),
-                                                                              ],
-                                                                              gradient:
-                                                                              LinearGradient(
-
-                                                                                  begin: Alignment.centerLeft,
-                                                                                  end: Alignment.centerRight,
-                                                                                  colors: <Color> [
-                                                                                    Color(0xFF29E166),
-                                                                                    Color(0xFF11AD4A)
-
-
-                                                                                  ],
-                                                                                  tileMode: TileMode.repeated)
-
-                                                                          ),
-                                                                          child: ConstrainedBox(
-                                                                            constraints: BoxConstraints.tightFor(width: 190, height: 47),
-                                                                            child: ElevatedButton.icon(
-                                                                              icon: IconButton(
-                                                                                icon: Image.asset('assets/images/reload.png'), onPressed: () {  },
-                                                                              ),
-
-                                                                              onPressed: () {
-
-                                                                              },
-                                                                              style: ButtonStyle(
-                                                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                                                  RoundedRectangleBorder(
-                                                                                    borderRadius: BorderRadius.circular(20.0),
+                                                                                borderRadius: BorderRadius.only(
+                                                                                    topRight: Radius.circular(40.sp),
+                                                                                    bottomRight: Radius.circular(40.sp),
+                                                                                    topLeft: Radius.circular(40.sp),
+                                                                                    bottomLeft: Radius.circular(40.sp)),
+                                                                                boxShadow: [
+                                                                                  BoxShadow(
+                                                                                    color: Colors.white,
+                                                                                    blurRadius: 2,
+                                                                                    spreadRadius: 1,
+                                                                                    offset: Offset(0, -3),
                                                                                   ),
+                                                                                  BoxShadow(
+                                                                                    color: Colors.grey.shade400,
+                                                                                    blurRadius: 2.0,
+                                                                                    spreadRadius: 0.0,
+                                                                                    offset: Offset(2.0, 2.0), // changes position of shadow
+                                                                                  ),
+                                                                                ],
+                                                                                gradient:
+                                                                                LinearGradient(
+
+                                                                                    begin: Alignment.centerLeft,
+                                                                                    end: Alignment.centerRight,
+                                                                                    colors: <Color> [
+                                                                                      Color(0xFF29E166),
+                                                                                      Color(0xFF11AD4A)
+
+
+                                                                                    ],
+                                                                                    tileMode: TileMode.repeated)
+
+                                                                            ),
+                                                                            child: ConstrainedBox(
+                                                                              constraints: BoxConstraints.tightFor(width: 190, height: 47),
+                                                                              child: ElevatedButton.icon(
+                                                                                icon: IconButton(
+                                                                                  icon: Image.asset('assets/images/reload.png'), onPressed: () {  },
                                                                                 ),
 
-                                                                                // fixedSize: Size(426.sp, 149.sp),
-                                                                                // minimumSize: MaterialStateProperty.all(Size(width, 50)),
-                                                                                backgroundColor:
-                                                                                MaterialStateProperty.all(Colors.transparent),
-                                                                                // elevation: MaterialStateProperty.all(3),
-                                                                                shadowColor:
-                                                                                MaterialStateProperty.all(Colors.transparent),
-                                                                              ),
-                                                                              /*  style: ElevatedButton.styleFrom(
+                                                                                onPressed: () {
+
+                                                                                },
+                                                                                style: ButtonStyle(
+                                                                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                                    RoundedRectangleBorder(
+                                                                                      borderRadius: BorderRadius.circular(20.0),
+                                                                                    ),
+                                                                                  ),
+
+                                                                                  // fixedSize: Size(426.sp, 149.sp),
+                                                                                  // minimumSize: MaterialStateProperty.all(Size(width, 50)),
+                                                                                  backgroundColor:
+                                                                                  MaterialStateProperty.all(Colors.transparent),
+                                                                                  // elevation: MaterialStateProperty.all(3),
+                                                                                  shadowColor:
+                                                                                  MaterialStateProperty.all(Colors.transparent),
+                                                                                ),
+                                                                                /*  style: ElevatedButton.styleFrom(
                                         primary:  Colors.transparent,
 
                                         fixedSize: Size(426.sp, 149.sp),
@@ -695,44 +704,51 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                       ),*/
 
 
-                                                                              label: Text("DEFAULT       ",
-                                                                                style: TextStyle(
-                                                                                    color: Colors.white,
-                                                                                    fontSize: 16.sp
+                                                                                label: Text("DEFAULT       ",
+                                                                                  style: TextStyle(
+                                                                                      color: Colors.white,
+                                                                                     // fontSize: 16.sp
 
+                                                                                  ),
                                                                                 ),
+
                                                                               ),
-
                                                                             ),
-                                                                          ),
-                                                                        )
-                                                                      ],
-
-                                                                    ),
-                                                                    IconButton(
-                                                                      icon: Image.asset(
-                                                                          'assets/images/profile.png'),
-                                                                      onPressed: () {},
-                                                                    ),
-                                                                    RichText(
-                                                                      text: TextSpan(
-                                                                        text: 'Patient Carlos moron\n',
-                                                                        children: [
-                                                                          TextSpan(
-                                                                            text: 'Userid :8882222',
-                                                                          ),
+                                                                          )
                                                                         ],
+
+                                                                      ),
+                                                                    ),
+                                                                    Expanded(
+                                                                      flex: 1,
+                                                                      child: IconButton(
+                                                                        icon: Image.asset(
+                                                                            'assets/images/profile.png'),
+                                                                        onPressed: () {},
+                                                                      ),
+                                                                    ),
+                                                                    Expanded(
+                                                                      flex: 4,
+                                                                      child: RichText(
+                                                                        text: TextSpan(
+                                                                          text: 'Patient Carlos moron\n',
+                                                                          children: [
+                                                                            TextSpan(
+                                                                              text: 'Userid :8882222',
+                                                                            ),
+                                                                          ],
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ],
                                                                 ),
                                                               ),
                                                             )
-                                                        ),
-                                                      ),
+                                                        )
+
                                                     ]
                                                 ),
-                                              ),
+
                                               Align(
                                                 alignment: Alignment.centerRight,
                                                 child: Container(
@@ -778,7 +794,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                   offset: Offset(0, -3),
                                                                 ),
                                                                 BoxShadow(
-                                                                  color: Colors.grey.shade600,
+                                                                  color: Colors.grey.shade400,
                                                                   blurRadius: 2.0,
                                                                   spreadRadius: 0.0,
                                                                   offset: Offset(2.0, 2.0), // changes position of shadow
@@ -857,7 +873,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                     offset: Offset(0, -3),
                                                                   ),
                                                                   BoxShadow(
-                                                                    color: Colors.grey.shade600,
+                                                                    color: Colors.grey.shade400,
                                                                     blurRadius: 2.0,
                                                                     spreadRadius: 0.0,
                                                                     offset: Offset(2.0, 2.0), // changes position of shadow
@@ -939,7 +955,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                     offset: Offset(0, -3),
                                                                   ),
                                                                   BoxShadow(
-                                                                    color: Colors.grey.shade600,
+                                                                    color: Colors.grey.shade400,
                                                                     blurRadius: 2.0,
                                                                     spreadRadius: 0.0,
                                                                     offset: Offset(2.0, 2.0), // changes position of shadow
@@ -1006,15 +1022,18 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                         child: Column(
                                                           children: [
                                                             Row(
+                                                             // crossAxisAlignment: CrossAxisAlignment.stretch,
                                                               children: [
                                                                 Expanded(
                                                                   flex: 5,
                                                                   child: Container(
+
                                                                     child: Align(
-                                                                      alignment: Alignment.topLeft,
+                                                                      alignment: Alignment.center,
                                                                       child: Container(
                                                                         width: 238.sp,
                                                                         height: 80.sp,
+
 
                                                                         decoration: BoxDecoration(
                                                                           color: Colors.white,
@@ -1031,62 +1050,41 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                               offset: Offset(0, -3),
                                                                             ),
                                                                             BoxShadow(
-                                                                              color: Colors.grey.shade600,
+                                                                              color: Colors.grey.shade400,
                                                                               blurRadius: 2.0,
                                                                               spreadRadius: 0.0,
                                                                               offset: Offset(2.0, 2.0), // changes position of shadow
                                                                             ),
                                                                           ],
                                                                         ),
-                                                                        child: ButtonBar(
-
-                                                                          alignment: MainAxisAlignment.spaceAround,
-                                                                          children: [
-                                                                            DecoratedBox(
-
-                                                                              decoration: BoxDecoration(
-
-                                                                                borderRadius: BorderRadius.only(
-                                                                                    topRight: Radius.circular(20.sp),
-                                                                                    bottomRight: Radius.circular(20.sp),
-                                                                                    topLeft: Radius.circular(20.sp),
-                                                                                    bottomLeft: Radius.circular(20.sp)),
-
-                                                                                /* boxShadow: [
-                                                                                    BoxShadow(
-                                                                                      color: Colors.white,
-                                                                                      spreadRadius: 5,
-                                                                                      blurRadius: 7,
-                                                                                      offset: Offset(0, 3), // changes position of shadow
-                                                                                    ),
-                                                                                  ]*/
+                                                                       child: Container(
+                                                                         padding: EdgeInsets.all(3.sp),
+                                                                          child: ConstrainedBox(
+                                                                            constraints: BoxConstraints.tightFor(width: 238.sp, height: 80.sp),
+                                                                            child: ElevatedButton.icon(
+                                                                              icon: IconButton(
+                                                                                icon: Image.asset('assets/images/messages.png'), onPressed: () {  },
                                                                               ),
-                                                                              child: ConstrainedBox(
-                                                                                constraints: BoxConstraints.tightFor(width: 238, height: 80),
-                                                                                child: ElevatedButton.icon(
-                                                                                  icon: IconButton(
-                                                                                    icon: Image.asset('assets/images/messages.png'), onPressed: () {  },
+
+                                                                              onPressed: () {
+
+                                                                              },
+                                                                              style: ButtonStyle(
+                                                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                                  RoundedRectangleBorder(
+                                                                                    borderRadius: BorderRadius.circular(20.0),
                                                                                   ),
+                                                                                ),
 
-                                                                                  onPressed: () {
-
-                                                                                  },
-                                                                                  style: ButtonStyle(
-                                                                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                                                      RoundedRectangleBorder(
-                                                                                        borderRadius: BorderRadius.circular(20.0),
-                                                                                      ),
-                                                                                    ),
-
-                                                                                    // fixedSize: Size(426.sp, 149.sp),
-                                                                                    // minimumSize: MaterialStateProperty.all(Size(width, 50)),
-                                                                                    backgroundColor:
-                                                                                    MaterialStateProperty.all(Color(0xFFf1f1f1)),
-                                                                                    // elevation: MaterialStateProperty.all(3),
-                                                                                    shadowColor:
-                                                                                    MaterialStateProperty.all(Colors.white),
-                                                                                  ),
-                                                                                  /*  style: ElevatedButton.styleFrom(
+                                                                                // fixedSize: Size(426.sp, 149.sp),
+                                                                                // minimumSize: MaterialStateProperty.all(Size(width, 50)),
+                                                                                backgroundColor:
+                                                                                MaterialStateProperty.all(Color(0xFFf1f1f1)),
+                                                                                // elevation: MaterialStateProperty.all(3),
+                                                                                shadowColor:
+                                                                                MaterialStateProperty.all(Colors.white),
+                                                                              ),
+                                                                              /*  style: ElevatedButton.styleFrom(
                                         primary:  Colors.transparent,
 
                                         fixedSize: Size(426.sp, 149.sp),
@@ -1097,20 +1095,17 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                       ),*/
 
 
-                                                                                  label: Text("ERASE ACCOUNT",
-                                                                                    style: TextStyle(
-                                                                                      color: Color(0xFF989898),
-                                                                                      // fontSize: 16.sp
-
-                                                                                    ),
-                                                                                  ),
+                                                                              label: Text("ERASE ACCOUNT     ",
+                                                                                style: TextStyle(
+                                                                                  color: Color(0xFF989898),
+                                                                                  // fontSize: 16.sp
 
                                                                                 ),
                                                                               ),
-                                                                            )
-                                                                          ],
 
-                                                                        ),
+                                                                            ),
+                                                                          ),
+                                                                       ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1118,11 +1113,13 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                 Expanded(
                                                                   flex: 5,
                                                                   child: Container(
+
                                                                     child: Align(
-                                                                      alignment: Alignment.topLeft,
+                                                                      alignment: Alignment.center,
                                                                       child: Container(
                                                                         width: 238.sp,
                                                                         height: 80.sp,
+
 
                                                                         decoration: BoxDecoration(
                                                                           color: Colors.white,
@@ -1139,62 +1136,41 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                               offset: Offset(0, -3),
                                                                             ),
                                                                             BoxShadow(
-                                                                              color: Colors.grey.shade600,
+                                                                              color: Colors.grey.shade400,
                                                                               blurRadius: 2.0,
                                                                               spreadRadius: 0.0,
                                                                               offset: Offset(2.0, 2.0), // changes position of shadow
                                                                             ),
                                                                           ],
                                                                         ),
-                                                                        child: ButtonBar(
-
-                                                                          alignment: MainAxisAlignment.spaceAround,
-                                                                          children: [
-                                                                            DecoratedBox(
-
-                                                                              decoration: BoxDecoration(
-
-                                                                                  borderRadius: BorderRadius.only(
-                                                                                      topRight: Radius.circular(20.sp),
-                                                                                      bottomRight: Radius.circular(20.sp),
-                                                                                      topLeft: Radius.circular(20.sp),
-                                                                                      bottomLeft: Radius.circular(20.sp)),
-
-                                                                                 /* boxShadow: [
-                                                                                    BoxShadow(
-                                                                                      color: Colors.white,
-                                                                                      spreadRadius: 5,
-                                                                                      blurRadius: 7,
-                                                                                      offset: Offset(0, 3), // changes position of shadow
-                                                                                    ),
-                                                                                  ]*/
+                                                                        child: Container(
+                                                                          padding: EdgeInsets.all(3.sp),
+                                                                          child: ConstrainedBox(
+                                                                            constraints: BoxConstraints.tightFor(width: 238.sp, height: 80.sp),
+                                                                            child: ElevatedButton.icon(
+                                                                              icon: IconButton(
+                                                                                icon: Image.asset('assets/images/delete.png'), onPressed: () {  },
                                                                               ),
-                                                                              child: ConstrainedBox(
-                                                                                constraints: BoxConstraints.tightFor(width: 238, height: 80),
-                                                                                child: ElevatedButton.icon(
-                                                                                  icon: IconButton(
-                                                                                    icon: Image.asset('assets/images/delete.png'), onPressed: () {  },
+
+                                                                              onPressed: () {
+
+                                                                              },
+                                                                              style: ButtonStyle(
+                                                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                                  RoundedRectangleBorder(
+                                                                                    borderRadius: BorderRadius.circular(20.0),
                                                                                   ),
+                                                                                ),
 
-                                                                                  onPressed: () {
-
-                                                                                  },
-                                                                                  style: ButtonStyle(
-                                                                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                                                      RoundedRectangleBorder(
-                                                                                        borderRadius: BorderRadius.circular(20.0),
-                                                                                      ),
-                                                                                    ),
-
-                                                                                    // fixedSize: Size(426.sp, 149.sp),
-                                                                                    // minimumSize: MaterialStateProperty.all(Size(width, 50)),
-                                                                                    backgroundColor:
-                                                                                    MaterialStateProperty.all(Color(0xFFf1f1f1)),
-                                                                                    // elevation: MaterialStateProperty.all(3),
-                                                                                    shadowColor:
-                                                                                    MaterialStateProperty.all(Colors.white),
-                                                                                  ),
-                                                                                  /*  style: ElevatedButton.styleFrom(
+                                                                                // fixedSize: Size(426.sp, 149.sp),
+                                                                                // minimumSize: MaterialStateProperty.all(Size(width, 50)),
+                                                                                backgroundColor:
+                                                                                MaterialStateProperty.all(Color(0xFFf1f1f1)),
+                                                                                // elevation: MaterialStateProperty.all(3),
+                                                                                shadowColor:
+                                                                                MaterialStateProperty.all(Colors.white),
+                                                                              ),
+                                                                              /*  style: ElevatedButton.styleFrom(
                                         primary:  Colors.transparent,
 
                                         fixedSize: Size(426.sp, 149.sp),
@@ -1205,19 +1181,16 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                       ),*/
 
 
-                                                                                  label: Text("ERASE CHACHE",
-                                                                                    style: TextStyle(
-                                                                                        color: Color(0xFF989898),
-                                                                                       // fontSize: 16.sp
-
-                                                                                    ),
-                                                                                  ),
+                                                                              label: Text("ERASE CHACHE",
+                                                                                style: TextStyle(
+                                                                                  color: Color(0xFF989898),
+                                                                                  // fontSize: 16.sp
 
                                                                                 ),
                                                                               ),
-                                                                            )
-                                                                          ],
 
+                                                                            ),
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1233,117 +1206,14 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                 Expanded(
                                                                   flex: 5,
                                                                   child: Container(
+
                                                                     child: Align(
-                                                                      alignment: Alignment.topLeft,
+                                                                      alignment: Alignment.center,
                                                                       child: Container(
-                                                                          width: 238.sp,
-                                                                          height: 80.sp,
-                                                                          decoration: BoxDecoration(
-                                                                          color: Colors.white,
-                                                                          borderRadius: BorderRadius.only(
-                                                                              topRight: Radius.circular(20.sp),
-                                                                              bottomRight: Radius.circular(20.sp),
-                                                                              bottomLeft: Radius.circular(20.sp),
-                                                                              topLeft: Radius.circular(20.sp)),
-                                                                          boxShadow: [
-                                                                            BoxShadow(
-                                                                              color: Colors.white,
-                                                                              blurRadius: 2,
-                                                                              spreadRadius: 1,
-                                                                              offset: Offset(0, -3),
-                                                                            ),
-                                                                            BoxShadow(
-                                                                              color: Colors.grey.shade600,
-                                                                              blurRadius: 2.0,
-                                                                              spreadRadius: 0.0,
-                                                                              offset: Offset(2.0, 2.0), // changes position of shadow
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                        child: ButtonBar(
-
-                                                                          alignment: MainAxisAlignment.spaceAround,
-                                                                          children: [
-                                                                            DecoratedBox(
-
-                                                                              decoration: BoxDecoration(
-
-                                                                                  borderRadius: BorderRadius.only(
-                                                                                      topRight: Radius.circular(20.sp),
-                                                                                      bottomRight: Radius.circular(20.sp),
-                                                                                      topLeft: Radius.circular(20.sp),
-                                                                                      bottomLeft: Radius.circular(20.sp)),
-
-                                                                                  boxShadow: [
-                                                                                    BoxShadow(
-                                                                                      color: Colors.white,
-                                                                                      spreadRadius: 5,
-                                                                                      blurRadius: 7,
-                                                                                      offset: Offset(0, 3), // changes position of shadow
-                                                                                    ),
-                                                                                  ]
-                                                                              ),
-                                                                              child: ConstrainedBox(
-                                                                                constraints: BoxConstraints.tightFor(width: 238, height: 74),
-                                                                                child: ElevatedButton.icon(
-                                                                                  icon: IconButton(
-                                                                                    icon: Image.asset('assets/images/verify.png'), onPressed: () {  },
-                                                                                  ),
-
-                                                                                  onPressed: () {
-
-                                                                                  },
-                                                                                  style: ButtonStyle(
-                                                                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                                                      RoundedRectangleBorder(
-                                                                                        borderRadius: BorderRadius.circular(20.0),
-                                                                                      ),
-                                                                                    ),
-
-                                                                                    // fixedSize: Size(426.sp, 149.sp),
-                                                                                    // minimumSize: MaterialStateProperty.all(Size(width, 50)),
-                                                                                    backgroundColor:
-                                                                                    MaterialStateProperty.all(Color(0xFFf1f1f1)),
-                                                                                    // elevation: MaterialStateProperty.all(3),
-
-                                                                                  ),
-                                                                                  /*  style: ElevatedButton.styleFrom(
-                                        primary:  Colors.transparent,
-
-                                        fixedSize: Size(426.sp, 149.sp),
-
-
-
-
-                                      ),*/
-
-
-                                                                                  label: Text("PRIVACY POLICY",
-                                                                                    style: TextStyle(
-                                                                                        color: Color(0xFF989898),
-                                                                                      //  fontSize: 16.sp
-
-                                                                                    ),
-                                                                                  ),
-
-                                                                                ),
-                                                                              ),
-                                                                            )
-                                                                          ],
-
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                Expanded(
-                                                                  flex: 5,
-                                                                  child: Container(
-                                                                    child: Align(
-                                                                      alignment: Alignment.topLeft,
-                                                                      child: Container(
-                                                                          width: 238.sp,
+                                                                        width: 238.sp,
                                                                         height: 80.sp,
+
+
                                                                         decoration: BoxDecoration(
                                                                           color: Colors.white,
                                                                           borderRadius: BorderRadius.only(
@@ -1359,57 +1229,41 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                               offset: Offset(0, -3),
                                                                             ),
                                                                             BoxShadow(
-                                                                              color: Colors.grey.shade600,
+                                                                              color: Colors.grey.shade400,
                                                                               blurRadius: 2.0,
                                                                               spreadRadius: 0.0,
                                                                               offset: Offset(2.0, 2.0), // changes position of shadow
                                                                             ),
                                                                           ],
                                                                         ),
-                                                                        child: ButtonBar(
-
-                                                                          alignment: MainAxisAlignment.spaceAround,
-                                                                          children: [
-                                                                            DecoratedBox(
-
-                                                                              decoration: BoxDecoration(
-
-                                                                                  borderRadius: BorderRadius.only(
-                                                                                      topRight: Radius.circular(20.sp),
-                                                                                      bottomRight: Radius.circular(20.sp),
-                                                                                      topLeft: Radius.circular(20.sp),
-                                                                                      bottomLeft: Radius.circular(20.sp)),
-
-                                                                                  boxShadow: [
-                                                                                    BoxShadow(
-                                                                                      color: Colors.white,
-                                                                                      spreadRadius: 5,
-                                                                                      blurRadius: 7,
-                                                                                      offset: Offset(0, 3), // changes position of shadow
-                                                                                    ),
-                                                                                  ]
+                                                                        child: Container(
+                                                                          padding: EdgeInsets.all(3.sp),
+                                                                          child: ConstrainedBox(
+                                                                            constraints: BoxConstraints.tightFor(width: 238.sp, height: 80.sp),
+                                                                            child: ElevatedButton.icon(
+                                                                              icon: IconButton(
+                                                                                icon: Image.asset('assets/images/verify.png'), onPressed: () {  },
                                                                               ),
-                                                                              child: ConstrainedBox(
-                                                                                constraints: BoxConstraints.tightFor(width: 238, height: 74),
-                                                                                child: ElevatedButton(
 
+                                                                              onPressed: () {
 
-                                                                                  onPressed: () {  },
-                                                                                  style: ButtonStyle(
-                                                                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                                                      RoundedRectangleBorder(
-                                                                                        borderRadius: BorderRadius.circular(20.0),
-                                                                                      ),
-                                                                                    ),
-
-                                                                                    // fixedSize: Size(426.sp, 149.sp),
-                                                                                    // minimumSize: MaterialStateProperty.all(Size(width, 50)),
-                                                                                    backgroundColor:
-                                                                                    MaterialStateProperty.all(Color(0xFFf1f1f1)),
-                                                                                    // elevation: MaterialStateProperty.all(3),
-
+                                                                              },
+                                                                              style: ButtonStyle(
+                                                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                                  RoundedRectangleBorder(
+                                                                                    borderRadius: BorderRadius.circular(20.0),
                                                                                   ),
-                                                                                  /*  style: ElevatedButton.styleFrom(
+                                                                                ),
+
+                                                                                // fixedSize: Size(426.sp, 149.sp),
+                                                                                // minimumSize: MaterialStateProperty.all(Size(width, 50)),
+                                                                                backgroundColor:
+                                                                                MaterialStateProperty.all(Color(0xFFf1f1f1)),
+                                                                                // elevation: MaterialStateProperty.all(3),
+                                                                                shadowColor:
+                                                                                MaterialStateProperty.all(Colors.white),
+                                                                              ),
+                                                                              /*  style: ElevatedButton.styleFrom(
                                         primary:  Colors.transparent,
 
                                         fixedSize: Size(426.sp, 149.sp),
@@ -1420,19 +1274,97 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                       ),*/
 
 
-                                                                                  child: Text("TERMS AND CONDITIONS",
-                                                                                    style: TextStyle(
-                                                                                        color: Color(0xFF989898),
-                                                                                       // fontSize: 16.sp
-
-                                                                                    ),
-                                                                                  ),
+                                                                              label: Text("PRIVACY POLICY",
+                                                                                style: TextStyle(
+                                                                                  color: Color(0xFF989898),
+                                                                                  // fontSize: 16.sp
 
                                                                                 ),
                                                                               ),
-                                                                            )
-                                                                          ],
 
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                  flex: 5,
+                                                                  child: Container(
+
+                                                                    child: Align(
+                                                                      alignment: Alignment.center,
+                                                                      child: Container(
+                                                                        width: 238.sp,
+                                                                        height: 80.sp,
+
+
+                                                                        decoration: BoxDecoration(
+                                                                          color: Colors.white,
+                                                                          borderRadius: BorderRadius.only(
+                                                                              topRight: Radius.circular(20.sp),
+                                                                              bottomRight: Radius.circular(20.sp),
+                                                                              bottomLeft: Radius.circular(20.sp),
+                                                                              topLeft: Radius.circular(20.sp)),
+                                                                          boxShadow: [
+                                                                            BoxShadow(
+                                                                              color: Colors.white,
+                                                                              blurRadius: 2,
+                                                                              spreadRadius: 1,
+                                                                              offset: Offset(0, -3),
+                                                                            ),
+                                                                            BoxShadow(
+                                                                              color: Colors.grey.shade400,
+                                                                              blurRadius: 2.0,
+                                                                              spreadRadius: 0.0,
+                                                                              offset: Offset(2.0, 2.0), // changes position of shadow
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        child: Container(
+                                                                          padding: EdgeInsets.all(3.sp),
+                                                                          child: ConstrainedBox(
+                                                                            constraints: BoxConstraints.tightFor(width: 238, height: 74),
+                                                                            child: ElevatedButton(
+
+
+                                                                              onPressed: () {  },
+                                                                              style: ButtonStyle(
+                                                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                                  RoundedRectangleBorder(
+                                                                                    borderRadius: BorderRadius.circular(20.0),
+                                                                                  ),
+                                                                                ),
+
+                                                                                // fixedSize: Size(426.sp, 149.sp),
+                                                                                // minimumSize: MaterialStateProperty.all(Size(width, 50)),
+                                                                                backgroundColor:
+                                                                                MaterialStateProperty.all(Color(0xFFf1f1f1)),
+                                                                                // elevation: MaterialStateProperty.all(3),
+
+                                                                              ),
+                                                                              /*  style: ElevatedButton.styleFrom(
+                                        primary:  Colors.transparent,
+
+                                        fixedSize: Size(426.sp, 149.sp),
+
+
+
+
+                                      ),*/
+
+
+                                                                              child: Text("TERMS AND CONDITIONS",
+                                                                                style: TextStyle(
+                                                                                  color: Color(0xFF989898),
+                                                                                  // fontSize: 16.sp
+
+                                                                                ),
+                                                                              ),
+
+                                                                            ),
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),

@@ -585,7 +585,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                 indicator: ShapeDecoration(
                                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
                                                       topLeft: radius,bottomLeft: radius,bottomRight: radius)),
-                                                  color: Color(0xFFB24761),
+                                                  color: Color(0xFFFF2D5E),
                                                 ),
                                                 indicatorColor: Colors.transparent,
                                                 labelColor: Colors.white,
@@ -631,7 +631,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   mainAxisAlignment: MainAxisAlignment.end,
                                                                   children: [
                                                                     IconButton(
-                                                                      icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
+                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
                                                                     )
                                                                   ],
 
@@ -913,14 +913,14 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       });
                                                     },
                                                     child: InnerShadow(
-                                                      blur: 5,
+                                                      // blur: 5,
                                                       color:  Color(0xFFD1D1D1),
-                                                      offset:  Offset(5, 5),
+                                                      //  offset:  Offset(5, 5),
 
                                                       child: Container(
-
-                                                        width: 100.sp,
-                                                        padding: EdgeInsets.all(30.sp),
+                                                        margin: const EdgeInsets.only(bottom: 20.0),
+                                                       // width: 100.sp,
+                                                        padding: EdgeInsets.only(top: 30.sp,bottom: 30.sp,left: 30.sp,right: 30.sp),
                                                         decoration: BoxDecoration(
                                                           /* boxShadow: [
                                                             BoxShadow (
@@ -1556,20 +1556,22 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                     ),
                                                   ),
                                                 ),
-                                                SingleChildScrollView(
-                                                  scrollDirection: Axis.horizontal,
-                                                  child: Expanded(
-                                                    flex: 3,
-                                                    child: Container(
 
-                                                      padding: EdgeInsets.all(20.sp),
-                                                      child: Column(
-                                                        mainAxisAlignment: MainAxisAlignment.start,
-                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                        children: [
-                                                          Row(
-                                                            children: [
-                                                              SizedBox(
+                                                // scrollDirection: Axis.horizontal,
+                                                Expanded(
+                                                  flex: 3,
+                                                  child: Container(
+
+                                                    padding: EdgeInsets.all(20.sp),
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Row(
+                                                          children: [
+                                                            Expanded(
+                                                              flex: 3,
+                                                              child: SizedBox(
                                                                 height: 40.sp,
                                                                 width: 40.sp,
                                                                 child: IconButton(
@@ -1579,21 +1581,24 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   },
                                                                 ),
                                                               ),
+                                                            ),
 
 
-                                                              Container(
+                                                            Expanded(
+                                                              flex: 7,
+                                                              child: Container(
                                                                 padding: EdgeInsets.only(left: 5.sp,right: 5.sp,top: 5.sp),
                                                                 height: 47.sp,
-                                                                width: 140.sp,
+                                                                width: 100.sp,
                                                                 decoration: BoxDecoration(
                                                                   /* boxShadow: [
-                                                                BoxShadow (
-                                                                  color: Colors.grey.withOpacity(0.8),
-                                                                  // color: Color(0xFF989898),
-                                                                  spreadRadius: 2,
-                                                                  blurRadius: 5,
-                                                                  offset: Offset(7, 0),
-                                                                ),
+                                                                  BoxShadow (
+                                                                    color: Colors.grey.withOpacity(0.8),
+                                                                    // color: Color(0xFF989898),
+                                                                    spreadRadius: 2,
+                                                                    blurRadius: 5,
+                                                                    offset: Offset(7, 0),
+                                                                  ),
                                                             ],*/
 
                                                                   color: Colors.transparent,
@@ -1614,7 +1619,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       flex: 5,
                                                                       child: Container(
                                                                         height: 45.sp,
-                                                                        width: 70.sp,
+                                                                        //width: 70.sp,
 
                                                                         decoration: BoxDecoration(
                                                                           color: _offcolor,
@@ -1627,13 +1632,13 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
                                                                           ),
                                                                           /*  boxShadow: [
-                                                                             BoxShadow(
-                                                                               color: Colors.grey.withOpacity(0.2),
-                                                                               blurRadius: 2.0,
-                                                                               spreadRadius: 0.0,
-                                                                               offset: Offset(2.0, 2.0), // changes position of shadow
-                                                                             ),
-                                                                           ],*/
+                                                                               BoxShadow(
+                                                                                 color: Colors.grey.withOpacity(0.2),
+                                                                                 blurRadius: 2.0,
+                                                                                 spreadRadius: 0.0,
+                                                                                 offset: Offset(2.0, 2.0), // changes position of shadow
+                                                                               ),
+                                                                             ],*/
                                                                         ),
                                                                         child: GestureDetector(
                                                                           onTap: (){
@@ -1671,7 +1676,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       flex: 5,
                                                                       child: Container(
                                                                         height: 45.sp,
-                                                                        width: 70.sp,
+                                                                        //  width: 70.sp,
                                                                         decoration: BoxDecoration(
                                                                             color: _oncolor,
                                                                             borderRadius: BorderRadius.only(
@@ -1715,90 +1720,91 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   ],
                                                                 ),
                                                               ),
+                                                            ),
 
-                                                            ],
+                                                          ],
+                                                        ),
+                                                        Container(
+                                                          height: 10.sp,
+                                                        ),
+                                                        Text(
+                                                          "Do you have color blindness",
+                                                          textAlign: TextAlign.left,
+                                                          style: TextStyle(
+                                                              color: Color(0xFF808080),
+                                                              fontSize: 12.sp
                                                           ),
-                                                          Container(
-                                                            height: 10.sp,
+                                                        ),
+                                                        Text(
+                                                          "Activate this option.Learn",
+                                                          textAlign: TextAlign.left,
+                                                          style: TextStyle(
+                                                              color: Color(0xFF808080),
+                                                              fontSize: 12.sp
                                                           ),
-                                                          Text(
-                                                            "Do you have color blindness",
-                                                            textAlign: TextAlign.left,
-                                                            style: TextStyle(
-                                                                color: Color(0xFF808080),
-                                                                fontSize: 12.sp
-                                                            ),
+                                                        ),
+                                                        Text(
+                                                          "more here",
+                                                          textAlign: TextAlign.left,
+                                                          style: TextStyle(
+                                                              color: Color(0xFF808080),
+                                                              fontSize: 12.sp
                                                           ),
-                                                          Text(
-                                                            "Activate this option.Learn",
-                                                            textAlign: TextAlign.left,
-                                                            style: TextStyle(
-                                                                color: Color(0xFF808080),
-                                                                fontSize: 12.sp
-                                                            ),
+                                                        ),
+                                                        Container(
+                                                          height: 120.sp,
+                                                        ),
+                                                        SizedBox(
+                                                          height: 40.sp,
+                                                          width: 40.sp,
+                                                          child: IconButton(
+                                                            icon: Image.asset('assets/images/key.png'), onPressed: () {  },
                                                           ),
-                                                          Text(
-                                                            "more here",
-                                                            textAlign: TextAlign.left,
-                                                            style: TextStyle(
-                                                                color: Color(0xFF808080),
-                                                                fontSize: 12.sp
-                                                            ),
+                                                        ),
+                                                        ButtonTheme(
+                                                          minWidth: 190.sp,
+                                                          height: 50.sp,
+                                                          shape: new RoundedRectangleBorder(
+                                                            borderRadius: new BorderRadius.circular(23.sp),
                                                           ),
-                                                          Container(
-                                                            height: 120.sp,
-                                                          ),
-                                                          SizedBox(
-                                                            height: 40.sp,
-                                                            width: 40.sp,
-                                                            child: IconButton(
-                                                              icon: Image.asset('assets/images/key.png'), onPressed: () {  },
-                                                            ),
-                                                          ),
-                                                          ButtonTheme(
-                                                            minWidth: 190.sp,
-                                                            height: 50.sp,
-                                                            shape: new RoundedRectangleBorder(
-                                                              borderRadius: new BorderRadius.circular(23.sp),
-                                                            ),
-                                                            child: Container(
-                                                              decoration:  BoxDecoration(
-                                                                boxShadow: [
-                                                                  //background color of box
-                                                                  BoxShadow(
-                                                                    color: Colors.grey.withOpacity(0.5),
-                                                                    blurRadius: 55.0, // soften the shadow
-                                                                    spreadRadius: 5.0, //extend the shadow
-                                                                    offset: Offset(
-                                                                      15.0, // Move to right 10  horizontally
-                                                                      15.0, // Move to bottom 10 Vertically
-                                                                    ),
-                                                                  )
-                                                                ],
-                                                              ),
-                                                              child: RaisedButton(
-                                                                onPressed: () {
-                                                                  // Navigator.pushNamed(context, 'patient/usermanagement');
-
-                                                                },
-
-                                                                color: Color(0xFFFF2D5E),
-                                                                child: Text("Change Password >",
-                                                                  style: TextStyle(
-                                                                      color: Colors.white,
-                                                                      fontSize: 15.sp
-
+                                                          child: Container(
+                                                            decoration:  BoxDecoration(
+                                                              boxShadow: [
+                                                                //background color of box
+                                                                BoxShadow(
+                                                                  color: Colors.grey.withOpacity(0.5),
+                                                                  blurRadius: 55.0, // soften the shadow
+                                                                  spreadRadius: 5.0, //extend the shadow
+                                                                  offset: Offset(
+                                                                    15.0, // Move to right 10  horizontally
+                                                                    15.0, // Move to bottom 10 Vertically
                                                                   ),
+                                                                )
+                                                              ],
+                                                            ),
+                                                            child: RaisedButton(
+                                                              onPressed: () {
+                                                                // Navigator.pushNamed(context, 'patient/usermanagement');
+
+                                                              },
+
+                                                              color: Color(0xFFFF2D5E),
+                                                              child: Text("Change Password >",
+                                                                style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    fontSize: 15.sp
+
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ],
-                                                      ),
-
+                                                        ),
+                                                      ],
                                                     ),
+
                                                   ),
                                                 )
+
 
                                               ],
                                             )

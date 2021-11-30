@@ -44,11 +44,11 @@ class _SplashScreenState extends State<Splashscreen> {
               ),
             ),
             decoration: BoxDecoration(
-              /*image: DecorationImage(
-                image: AssetImage("assets/images/whitepoligon.png"),
+              image: DecorationImage(
+                image: AssetImage("assets/images/fondos.png"),
 
                 fit: BoxFit.cover,
-              ),*/
+              ),
               gradient: LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
