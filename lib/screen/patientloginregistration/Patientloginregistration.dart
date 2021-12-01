@@ -9,6 +9,7 @@ import 'package:emaze_brain/model/response/get_regresponse.dart';
 import 'package:emaze_brain/provider/api_client_provider.dart';
 import 'package:emaze_brain/screen/gamestartscreen/Gamestartscreen.dart';
 import 'package:emaze_brain/screen/loginscreen/Therapistorpatient.dart';
+import 'package:emaze_brain/screen/util/InnerShadow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,7 +66,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   double _regwidth = 570.sp;
   double _regheight = 370.sp;
 
-  BorderRadiusGeometry _regborderRadius = BorderRadius.circular(40.sp);
+  BorderRadiusGeometry _regborderRadius = BorderRadius.circular(20.sp);
 
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -178,6 +179,62 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
 
   }
+  bool viewvalidusername = false ;
+  bool validemail = false ;
+  bool validph = false ;
+  bool validpwd = false ;
+  void showvalidusername(){
+    setState(() {
+      viewvalidusername = true ;
+
+    });
+  }
+
+  void hidevalidusername(){
+    setState(() {
+      viewvalidusername = false ;
+    });
+  }
+
+
+  void showvalidemail(){
+    setState(() {
+      validemail = true ;
+
+    });
+  }
+
+  void hidevalidemail(){
+    setState(() {
+      validemail = false ;
+    });
+  }
+
+
+  void showvalidph(){
+    setState(() {
+      validph = true ;
+
+    });
+  }
+
+  void hidevalidph(){
+    setState(() {
+      validph = false ;
+    });
+  }
+  void showvalidpwd(){
+    setState(() {
+      validpwd = true ;
+
+    });
+  }
+
+  void hidevalidpwd(){
+    setState(() {
+      validpwd = false ;
+    });
+  }
   @override
   void dispose() {
     // Clean up the focus node when the Form is disposed.
@@ -209,7 +266,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                             fit: BoxFit.cover,
                           ),
-                         /* gradient:
+                          /* gradient:
                           LinearGradient(
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
@@ -236,44 +293,32 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                               Container(
                                 height: 5.sp,
                               ),
-                              Container(
+                              InnerShadow(
+                                blur: 5,
+                                color: Colors.grey,
+                                child: Container(
 
-                                padding: EdgeInsets.all(5.sp),
+                                  padding: EdgeInsets.all(5.sp),
 
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
 
-                                    borderRadius: BorderRadius.all(Radius.circular(40.sp)),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.white,
-                                        spreadRadius: 0.5,
-                                        blurRadius: 2,
-                                        offset: Offset(1, -1),
-                                      ),
-                                    ]
-
-                                ),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      flex: 5,
-                                      child: Container(
-                                        height: 40.sp,
-                                        decoration: BoxDecoration(
-                                            color: _logincolor,
-                                            borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(40.0),
-                                              bottomRight: Radius.circular(40.0),
-                                              topLeft: Radius.circular(40.0),
-                                              topRight: Radius.circular(40.0),
-
-
-                                            )
+                                      borderRadius: BorderRadius.all(Radius.circular(40.sp)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.white,
+                                          spreadRadius: 0.5,
+                                          blurRadius: 2,
+                                          offset: Offset(1, -1),
                                         ),
+                                      ]
 
-
-                                        child:GestureDetector(
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 5,
+                                        child: GestureDetector(
                                           onTap: () {
                                             setState(() {
                                               _regcolor = Colors.white;
@@ -294,6 +339,10 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                               hideWidget();
                                               clearregtext();
                                               hideregsucesswidget();
+                                              hidevalidpwd();
+                                              hidevalidph();
+                                              hidevalidemail();
+                                              hidevalidusername();
                                               pwd=true;
                                               _regborderRadius =
                                                   BorderRadius.circular(40.sp);
@@ -302,39 +351,73 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                               _hasBeenPressedregister = !_hasBeenPressedregister;
                                             });
                                           },
-                                          child: Center(
-                                            child: Text(
-                                                'LOGIN',
-                                                textAlign: TextAlign.center,
-                                                style:  TextStyle(
-                                                  color: _logintextcolor,
-                                                  fontWeight: FontWeight.bold,
+                                          child: Container(
+                                            height: 40.sp,
+                                            decoration: BoxDecoration(
+                                                color: _logincolor,
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft: Radius.circular(40.0),
+                                                  bottomRight: Radius.circular(40.0),
+                                                  topLeft: Radius.circular(40.0),
+                                                  topRight: Radius.circular(40.0),
 
 
                                                 )
                                             ),
+
+
+                                            child:GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  _regcolor = Colors.white;
+                                                  _logincolor=Colors.green;
+                                                  _logintextcolor=Colors.white;
+                                                  _regtextcolor=Colors.black;
+                                                  // Generate a random width and height.
+                                                  _width = 600.sp;
+                                                  _height = 450.sp;
+                                                  _regwidth = 570.sp;
+                                                  _regheight = 370.sp;
+                                                  regpwd=false;
+                                                  regph=false;
+                                                  regemail=false;
+                                                  regusername=false;
+                                                  username=true;
+                                                  hidewidget();
+                                                  hideWidget();
+                                                  clearregtext();
+                                                  hideregsucesswidget();
+                                                  hidevalidpwd();
+                                                  hidevalidph();
+                                                  hidevalidemail();
+                                                  hidevalidusername();
+                                                  pwd=true;
+                                                  _regborderRadius =
+                                                      BorderRadius.circular(40.sp);
+                                                  _borderRadius =
+                                                      BorderRadius.circular(40.sp);
+                                                  _hasBeenPressedregister = !_hasBeenPressedregister;
+                                                });
+                                              },
+                                              child: Center(
+                                                child: Text(
+                                                    'LOGIN',
+                                                    textAlign: TextAlign.center,
+                                                    style:  TextStyle(
+                                                      color: _logintextcolor,
+                                                      fontWeight: FontWeight.bold,
+
+
+                                                    )
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Expanded(
-                                      flex: 5,
-                                      child: Container(
-                                        height: 40.sp,
-                                        decoration: BoxDecoration(
-                                            color: _regcolor,
-                                            borderRadius: BorderRadius.only(
-                                                bottomLeft: Radius.circular(40.0),
-                                                bottomRight: Radius.circular(40.0),
-                                               topLeft: Radius.circular(40.0),
-                                              topRight: Radius.circular(40.0),
-
-
-                                            )
-                                        ),
-
-
-                                        child:GestureDetector(
+                                      Expanded(
+                                        flex: 5,
+                                        child: GestureDetector(
                                           onTap: () {
                                             setState(() {
                                               regpwd=true;
@@ -361,22 +444,66 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                               _hasBeenPressedlogin = !_hasBeenPressedlogin;
                                             });
                                           },
-                                          child: Center(
-                                            child: Text(
-                                                'REGISTER',
-                                                textAlign: TextAlign.center,
-                                                style:  TextStyle(
-                                                   color: _regtextcolor,
-                                                  fontWeight: FontWeight.bold,
-                                                  
+                                          child: Container(
+                                            height: 40.sp,
+                                            decoration: BoxDecoration(
+                                                color: _regcolor,
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft: Radius.circular(40.0),
+                                                  bottomRight: Radius.circular(40.0),
+                                                  topLeft: Radius.circular(40.0),
+                                                  topRight: Radius.circular(40.0),
+
 
                                                 )
+                                            ),
+
+
+                                            child:GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  regpwd=true;
+                                                  regph=true;
+                                                  regemail=true;
+                                                  regusername=true;
+                                                  username=false;
+                                                  pwd=false;
+                                                  _logincolor = Colors.white;
+                                                  _regcolor= Colors.green;
+                                                  _logintextcolor=Colors.black;
+                                                  _regtextcolor=Colors.white;
+                                                  _width = 500.sp;
+                                                  _height = 350.sp;
+                                                  _borderRadius =
+                                                      BorderRadius.circular(40.sp);
+
+                                                  _regwidth = 650.sp;
+                                                  _regheight = 450.sp;
+                                                  _regborderRadius =
+                                                      BorderRadius.circular(40.sp);
+                                                  hideerrorWidget();
+                                                  clearlogintext();
+                                                  _hasBeenPressedlogin = !_hasBeenPressedlogin;
+                                                });
+                                              },
+                                              child: Center(
+                                                child: Text(
+                                                    'REGISTER',
+                                                    textAlign: TextAlign.center,
+                                                    style:  TextStyle(
+                                                      color: _regtextcolor,
+                                                      fontWeight: FontWeight.bold,
+
+
+                                                    )
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                               Container(
@@ -467,19 +594,19 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                       padding: EdgeInsets.all(20.sp),
                                                       decoration: BoxDecoration(
 
-                                                          color: Colors.white,
-                                                          border: Border.all(color: Colors.white),
-                                                          borderRadius: BorderRadius.all(Radius.circular(10.sp)),
-                                                          boxShadow: [
+                                                        color: Colors.white,
+                                                        border: Border.all(color: Colors.white),
+                                                        borderRadius: BorderRadius.all(Radius.circular(10.sp)),
+                                                        boxShadow: [
                                                           BoxShadow(
-                                                          color: Color(0xFF243B40),
-                                                      blurRadius: 2.0,
-                                                      spreadRadius: 0.0,
-                                                      offset: Offset(2.0, 2.0), // changes position of shadow
-                                                    ),
-                                                  ],
+                                                            color: Color(0xFF243B40),
+                                                            blurRadius: 2.0,
+                                                            spreadRadius: 0.0,
+                                                            offset: Offset(2.0, 2.0), // changes position of shadow
+                                                          ),
+                                                        ],
 
-                                                ),
+                                                      ),
                                                       child: Column(
                                                         children: [
                                                           RawKeyboardListener(
@@ -488,10 +615,10 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               if ((event.logicalKey == LogicalKeyboardKey.tab)){
                                                                 print("Tab Key pressed");
                                                                 _loginpwdfocusnode.requestFocus();
-                                                               // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
-                                                               // focusNode: _loginpwdfocusnode.requestFocus();
+                                                                // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
+                                                                // focusNode: _loginpwdfocusnode.requestFocus();
                                                               }
-                                                             /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                              /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
                                                                 print("ENTER Key pressed");
                                                                 //Do something
                                                                 focusNode: _loginpwdfocusnode.requestFocus();
@@ -501,8 +628,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               enabled: username,
                                                               controller: nameController,
                                                               decoration: InputDecoration(
-                                                                border: UnderlineInputBorder(),
-                                                                labelText: 'User Name',
+                                                                  border: UnderlineInputBorder(),
+                                                                  labelText: 'User Name',
                                                                   hintText: "name@example.com"
 
                                                               ),
@@ -518,11 +645,11 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                 return null;
                                                               },
                                                               textInputAction: TextInputAction.next,
-                                                             /* onFieldSubmitted: (v){
+                                                              /* onFieldSubmitted: (v){
                                                                 FocusScope.of(context).requestFocus(focus);
                                                               },*/
 
-                                                         //   onEditingComplete: () => _loginpwdfocusnode.requestFocus(),
+                                                              //   onEditingComplete: () => _loginpwdfocusnode.requestFocus(),
                                                             ),
                                                           ),
                                                           RawKeyboardListener(
@@ -531,7 +658,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               enabled: pwd,
                                                               obscureText: !_passwordVisible,
                                                               controller: passwordController,
-                                                            //  focusNode: _loginpwdfocusnode,
+                                                              //  focusNode: _loginpwdfocusnode,
 
                                                               validator: (pwdvalue) {
                                                                 if (pwdvalue!.isEmpty) {
@@ -542,7 +669,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                               decoration: InputDecoration(
                                                                   border: InputBorder.none,
-                                                                //  border: UnderlineInputBorder(),
+                                                                  //  border: UnderlineInputBorder(),
                                                                   labelText: 'Password',
                                                                   suffixIcon: GestureDetector(
                                                                     onLongPress: () {
@@ -617,8 +744,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             "Remember me",
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
-                                                                color: Colors.white,
-                                                               // fontSize: 15.sp
+                                                              color: Colors.white,
+                                                              // fontSize: 15.sp
                                                             ),
 
                                                           ),
@@ -627,8 +754,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             "Forgot password?",
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
-                                                                color: Colors.white,
-                                                               // fontSize: 15.sp
+                                                              color: Colors.white,
+                                                              // fontSize: 15.sp
                                                             ),
 
                                                           ),
@@ -643,7 +770,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                     Container(
                                                       height: 60,
                                                       decoration: BoxDecoration(
-                                                         /* gradient: LinearGradient(
+                                                        /* gradient: LinearGradient(
                                                             colors: [
                                                               Color.fromRGBO(255, 143, 158, 1),
                                                               Color.fromRGBO(255, 188, 143, 1),
@@ -708,7 +835,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                 print("Regions: ${resp.data.toJson()}");
 
                                                                 clearlogintext();
-                                                               // hideerrorWidget();
+                                                                // hideerrorWidget();
 
                                                               } catch (e) {
                                                                 print(e);
@@ -820,6 +947,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                               child: Form(
                                                 key: _regformKey,
                                                 child: Column(
+
                                                   children: [
                                                     Container(
                                                       height: 20.sp,
@@ -829,210 +957,374 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                         padding: EdgeInsets.all(20.sp),
                                                         decoration: BoxDecoration(
 
-                                                            color: Colors.white,
-                                                            border: Border.all(color: Colors.white),
-                                                            borderRadius: BorderRadius.all(Radius.circular(21)),
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              color: Color(0xFF243B40),
-                                                              blurRadius: 2.0,
-                                                              spreadRadius: 0.0,
-                                                              offset: Offset(2.0, 2.0), // changes position of shadow
-                                                            ),
-                                                          ],
+                                                          color: Colors.white,
+                                                          border: Border.all(color: Colors.white),
+                                                          borderRadius: BorderRadius.all(Radius.circular(21)),
+
 
                                                         ),
                                                         child: Column(
                                                           children: [
-
-                                                              // height: 40.sp,
-
-                                                              RawKeyboardListener(
-                                                                focusNode: FocusNode(),
-                                                                onKey: (event) {
-                                                                  if ((event.logicalKey == LogicalKeyboardKey.tab)){
-                                                                    print("Tab Key pressed");
-                                                                  //  FocusScope.of(context).unfocus();
-                                                                    _regemailfocusnode.requestFocus();
-
-                                                                   // _regphfocusnode.requestFocus();
-                                                                  //  _regpwdfocusnode.requestFocus();
-                                                                    // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
-                                                                    // focusNode: _loginpwdfocusnode.requestFocus();
-                                                                  }
-                                                                  /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
-                                                                print("ENTER Key pressed");
-                                                                //Do something
-                                                                focusNode: _loginpwdfocusnode.requestFocus();
-                                                              }*/
-                                                                },
-                                                                child: TextFormField(
-                                                                  validator: (regvalue) {
-                                                                    if (regvalue == null || regvalue.isEmpty) {
-                                                                      return 'Username required';
-                                                                    }
-                                                                    return null;
-                                                                  },
-                                                                  enabled:regusername,
-                                                                  controller: regnameController,
-                                                                  decoration: InputDecoration(
-                                                                      border: OutlineInputBorder(
-
-                                                                        borderRadius: BorderRadius.circular(20.sp),
-                                                                      ),
-                                                                      //  filled: true,
-                                                                      fillColor: Colors.white70,
-
-                                                                      labelText: 'Full Name',
-                                                                      icon: IconButton(
+                                                            Row(
+                                                              children: [
+                                                                Expanded(
+                                                                    flex: 1,
+                                                                    child: Container(
+                                                                      child: IconButton(
                                                                         icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
-                                                                      )
-                                                                  ),
-                                                                  maxLines: 1,
-                                                                  textInputAction: TextInputAction.next,
-                                                                ),
-                                                              ),
-
-                                                            Container(
-                                                              height: 10.sp,
-                                                            ),
-
-                                                              // height: 40.sp,
-
-                                                               RawKeyboardListener(
-                                                                focusNode: _regemailfocusnode,
-                                                                onKey: (event) {
-                                                                  if ((event.logicalKey == LogicalKeyboardKey.tab)){
-                                                                    print("Second Tab Key pressed");
-                                                                    _regphfocusnode.requestFocus();
-
-                                                                  }
-
-                                                                },
-                                                                child: TextFormField(
-                                                                  enabled:regemail,
-                                                                  controller: regemailController,
-
-                                                                  validator: (regemailvalue) {
-                                                                    final bool isValid = EmailValidator.validate(regemailvalue!);
-                                                                    if (regemailvalue.isEmpty) {
-                                                                      return "Email required";
-                                                                    }
-                                                                    if (!isValid) {
-                                                                      return "Email address invalid";
-                                                                    }
-                                                                  },
-
-                                                                  decoration: InputDecoration(
-                                                                      border: OutlineInputBorder(
-
-                                                                        borderRadius: BorderRadius.circular(20.sp),
                                                                       ),
-                                                                    //  filled: true,
-                                                                      fillColor: Colors.white70,
-
-                                                                      labelText: 'Email',
-                                                                      icon: IconButton(
-                                                                        icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
-                                                                      )
-                                                                  ),
-                                                                  textInputAction: TextInputAction.done,
+                                                                    )
                                                                 ),
-                                                              ),
+                                                                Expanded(
+                                                                  flex: 9,
+                                                                  child: RawKeyboardListener(
+                                                                    focusNode: FocusNode(),
+                                                                    onKey: (event) {
+                                                                      if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                        print("Tab Key pressed");
+                                                                        //  FocusScope.of(context).unfocus();
+                                                                        _regemailfocusnode.requestFocus();
 
-                                                            Container(
-                                                              height: 10.sp,
-                                                            ),
-
-                                                              // height: 40.sp,
-
-                                                            RawKeyboardListener(
-                                                              focusNode: _regphfocusnode,
-                                                              onKey: (event) {
-                                                                if ((event.logicalKey == LogicalKeyboardKey.tab)){
-                                                                  print("Tab Key pressed");
-                                                                  _regpwdfocusnode.requestFocus();
-                                                                  // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
-                                                                  // focusNode: _loginpwdfocusnode.requestFocus();
-                                                                }
-                                                                /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                                        // _regphfocusnode.requestFocus();
+                                                                        //  _regpwdfocusnode.requestFocus();
+                                                                        // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
+                                                                        // focusNode: _loginpwdfocusnode.requestFocus();
+                                                                      }
+                                                                      /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
                                                                 print("ENTER Key pressed");
                                                                 //Do something
                                                                 focusNode: _loginpwdfocusnode.requestFocus();
                                                               }*/
-                                                              },
-                                                                child: TextFormField(
-                                                                  enabled:regph,
-
-                                                                  controller: regphnoController,
-                                                                  validator: (regphvalue) {
-                                                                    if (regphvalue!.isEmpty) {
-                                                                      return "Phone number Required";
-                                                                    }
-                                                                  },
-                                                                  decoration: InputDecoration(
-                                                                      border: OutlineInputBorder(
-                                                                        borderRadius: BorderRadius.circular(20.sp),
-
+                                                                    },
+                                                                    child: Container(
+                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
+                                                                      decoration: ShapeDecoration(
+                                                                        gradient: LinearGradient(
+                                                                          colors: [Color(0xFFdfdfdf), Color(0xFFf1f1f1)],
+                                                                          begin: FractionalOffset.topCenter,
+                                                                          end: FractionalOffset.bottomCenter,
+                                                                          stops: [0.0, 0.2],
+                                                                          tileMode: TileMode.clamp,
+                                                                        ),
+                                                                        shape: RoundedRectangleBorder(
+                                                                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                                                                        ),
                                                                       ),
-                                                                   //   filled: true,
-                                                                      fillColor: Colors.white70,
-                                                                      labelText: 'Phone number',
-                                                                      icon: IconButton(
-                                                                        icon: Image.asset('assets/images/contact-gray.png'), onPressed: () {  },
-                                                                      )
-                                                                  ),
-                                                                  textInputAction: TextInputAction.next,
-                                                                ),
-                                                              ),
+                                                                      child: TextFormField(
+                                                                        validator: (regvalue) {
+                                                                          if (regvalue == null || regvalue.isEmpty) {
 
+                                                                            showvalidusername();
+                                                                          }
+                                                                          else{
+                                                                            hidevalidusername();
+                                                                          }
+
+                                                                          //    hidevalidusername();
+                                                                        },
+                                                                        enabled:regusername,
+                                                                        controller: regnameController,
+                                                                        decoration: InputDecoration(
+                                                                          border: InputBorder.none,
+                                                                          //  filled: true,
+                                                                          fillColor: Colors.white70,
+
+                                                                          hintText: 'Full Name',
+
+                                                                        ),
+                                                                        maxLines: 1,
+                                                                        textInputAction: TextInputAction.next,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+
+
+                                                              ],
+
+                                                            ),
                                                             Container(
                                                               height: 10.sp,
                                                             ),
+                                                            Visibility(
+                                                              visible: viewvalidusername,
+                                                              child: Container(
+                                                                child: Text(
+                                                                  "Full name required.",
+                                                                  style: TextStyle(
+                                                                    color: Colors.red,
 
-                                                              // height: 40.sp,
+                                                                  ),
 
-                                                            RawKeyboardListener(
-                                                              focusNode: _regpwdfocusnode,
-
-                                                                 child: TextFormField(
-                                                                  enabled:regpwd,
-                                                                  obscureText: !_regpasswordVisible,
-                                                                  controller: regpasswordController,
-                                                                  validator: (regpwdvalue) {
-                                                                    if (regpwdvalue!.isEmpty) {
-                                                                      return "Password Required";
-                                                                    }
-                                                                  },
-                                                                  decoration: InputDecoration(
-
-                                                                      border: OutlineInputBorder(
-                                                                        borderRadius: BorderRadius.circular(20.sp),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                Expanded(
+                                                                    flex: 1,
+                                                                    child: Container(
+                                                                      child: IconButton(
+                                                                        icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
                                                                       ),
-                                                                      labelText: 'Password',
-                                                                      icon: IconButton(
+                                                                    )
+                                                                ),
+                                                                Expanded(
+                                                                  flex: 9,
+                                                                  child: RawKeyboardListener(
+                                                                    focusNode: _regemailfocusnode,
+                                                                    onKey: (event) {
+                                                                      if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                        print("Tab Key pressed");
+                                                                        //  FocusScope.of(context).unfocus();
+                                                                        _regphfocusnode.requestFocus();
+
+                                                                        // _regphfocusnode.requestFocus();
+                                                                        //  _regpwdfocusnode.requestFocus();
+                                                                        // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
+                                                                        // focusNode: _loginpwdfocusnode.requestFocus();
+                                                                      }
+                                                                      /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                                print("ENTER Key pressed");
+                                                                //Do something
+                                                                focusNode: _loginpwdfocusnode.requestFocus();
+                                                              }*/
+                                                                    },
+                                                                    child: Container(
+                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
+                                                                      decoration: ShapeDecoration(
+                                                                        gradient: LinearGradient(
+                                                                          colors: [Color(0xFFdfdfdf), Color(0xFFf1f1f1)],
+                                                                          begin: FractionalOffset.topCenter,
+                                                                          end: FractionalOffset.bottomCenter,
+                                                                          stops: [0.0, 0.2],
+                                                                          tileMode: TileMode.clamp,
+                                                                        ),
+                                                                        shape: RoundedRectangleBorder(
+                                                                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                                                                        ),
+                                                                      ),
+                                                                      child: TextFormField(
+                                                                        enabled:regemail,
+                                                                        controller: regemailController,
+
+                                                                        validator: (regemailvalue) {
+                                                                          final bool isValid = EmailValidator.validate(regemailvalue!);
+                                                                          if (regemailvalue.isEmpty) {
+                                                                            showvalidemail();
+                                                                          }
+                                                                          if (!isValid) {
+                                                                            showvalidemail();
+                                                                            // return "Email address invalid";
+                                                                          }
+                                                                          else{
+                                                                            hidevalidemail();
+                                                                          }
+                                                                        },
+
+                                                                        decoration: InputDecoration(
+                                                                          border: InputBorder.none,
+                                                                          //  filled: true,
+                                                                          fillColor: Colors.white70,
+
+                                                                          hintText: 'Email',
+
+                                                                        ),
+                                                                        textInputAction: TextInputAction.done,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
+                                                            Container(
+                                                              height: 10.sp,
+                                                            ),
+                                                            Visibility(
+                                                              visible: validemail,
+                                                              child: Container(
+                                                                child: Text(
+                                                                  "Email required or please enter valid email.",
+                                                                  style: TextStyle(
+                                                                    color: Colors.red,
+
+                                                                  ),
+
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                Expanded(
+                                                                    flex: 1,
+                                                                    child: Container(
+                                                                      child: IconButton(
+                                                                        icon: Image.asset('assets/images/contact-gray.png'), onPressed: () {  },
+                                                                      ),
+                                                                    )
+                                                                ),
+                                                                Expanded(
+                                                                  flex: 9,
+                                                                  child: RawKeyboardListener(
+                                                                    focusNode: _regphfocusnode,
+                                                                    onKey: (event) {
+                                                                      if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                        print("Tab Key pressed");
+                                                                        //  FocusScope.of(context).unfocus();
+                                                                        _regpwdfocusnode.requestFocus();
+
+                                                                        // _regphfocusnode.requestFocus();
+                                                                        //  _regpwdfocusnode.requestFocus();
+                                                                        // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
+                                                                        // focusNode: _loginpwdfocusnode.requestFocus();
+                                                                      }
+                                                                      /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                                print("ENTER Key pressed");
+                                                                //Do something
+                                                                focusNode: _loginpwdfocusnode.requestFocus();
+                                                              }*/
+                                                                    },
+                                                                    child: Container(
+                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
+                                                                      decoration: ShapeDecoration(
+                                                                        gradient: LinearGradient(
+                                                                          colors: [Color(0xFFdfdfdf), Color(0xFFf1f1f1)],
+                                                                          begin: FractionalOffset.topCenter,
+                                                                          end: FractionalOffset.bottomCenter,
+                                                                          stops: [0.0, 0.2],
+                                                                          tileMode: TileMode.clamp,
+                                                                        ),
+                                                                        shape: RoundedRectangleBorder(
+                                                                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                                                                        ),
+                                                                      ),
+                                                                      child: TextFormField(
+                                                                        enabled:regph,
+                                                                        controller: regphnoController,
+
+                                                                        validator: (regphvalue) {
+                                                                          if (regphvalue!.isEmpty) {
+
+                                                                            showvalidph();
+                                                                          }
+                                                                          else{
+                                                                            hidevalidph();
+                                                                          }
+                                                                        },
+
+                                                                        decoration: InputDecoration(
+                                                                          border: InputBorder.none,
+                                                                          //  filled: true,
+                                                                          fillColor: Colors.white70,
+
+                                                                          hintText: 'Phone number',
+
+                                                                        ),
+                                                                        textInputAction: TextInputAction.done,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
+                                                            Container(
+                                                              height: 10.sp,
+                                                            ),
+                                                            Visibility(
+                                                              visible: validph,
+                                                              child: Container(
+                                                                child: Text(
+                                                                  "Phone number required.",
+                                                                  style: TextStyle(
+                                                                    color: Colors.red,
+
+                                                                  ),
+
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                Expanded(
+                                                                    flex: 1,
+                                                                    child: Container(
+                                                                      child: IconButton(
                                                                         icon: Image.asset('assets/images/lock-gray.png'), onPressed: () {  },
                                                                       ),
-                                                                      suffixIcon: GestureDetector(
-                                                                        onLongPress: () {
-                                                                          setState(() {
-                                                                            _regpasswordVisible = true;
-                                                                          });
-                                                                        },
-                                                                        onLongPressUp: () {
-                                                                          setState(() {
-                                                                            _regpasswordVisible = false;
-                                                                          });
-                                                                        },
-                                                                        child: Icon(
-                                                                            _regpasswordVisible ? Icons.visibility : Icons.visibility_off
-                                                                        ),
-                                                                      )
-                                                                  ),
-                                                                   textInputAction: TextInputAction.done,
-                                                              ),
-                                                               ),
+                                                                    )
+                                                                ),
+                                                                Expanded(
+                                                                  flex: 9,
+                                                                  child: RawKeyboardListener(
+                                                                    focusNode: _regpwdfocusnode,
 
+                                                                    child: Container(
+                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
+                                                                      decoration: ShapeDecoration(
+                                                                        gradient: LinearGradient(
+                                                                          colors: [Color(0xFFdfdfdf), Color(0xFFf1f1f1)],
+                                                                          begin: FractionalOffset.topCenter,
+                                                                          end: FractionalOffset.bottomCenter,
+                                                                          stops: [0.0, 0.2],
+                                                                          tileMode: TileMode.clamp,
+                                                                        ),
+                                                                        shape: RoundedRectangleBorder(
+                                                                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                                                                        ),
+                                                                      ),
+                                                                      child: TextFormField(
+                                                                        enabled:regpwd,
+                                                                        obscureText: !_regpasswordVisible,
+                                                                        controller: regpasswordController,
+                                                                        validator: (regpwdvalue) {
+                                                                          if (regpwdvalue!.isEmpty) {
+                                                                            showvalidpwd();
+                                                                          }
+                                                                          else{
+                                                                            hidevalidpwd();
+                                                                          }
+                                                                        },
+                                                                        decoration: InputDecoration(
+
+                                                                            border: InputBorder.none,
+                                                                            hintText: 'Password',
+
+                                                                            suffixIcon: GestureDetector(
+                                                                              onLongPress: () {
+                                                                                setState(() {
+                                                                                  _regpasswordVisible = true;
+                                                                                });
+                                                                              },
+                                                                              onLongPressUp: () {
+                                                                                setState(() {
+                                                                                  _regpasswordVisible = false;
+                                                                                });
+                                                                              },
+                                                                              child: Icon(
+                                                                                  _regpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                              ),
+                                                                            )
+                                                                        ),
+                                                                        textInputAction: TextInputAction.done,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
+                                                            Visibility(
+                                                              visible: validpwd,
+                                                              child: Container(
+                                                                child: Text(
+                                                                  "Password required.",
+                                                                  style: TextStyle(
+                                                                    color: Colors.red,
+
+                                                                  ),
+
+                                                                ),
+                                                              ),
+                                                            ),
                                                           ],
                                                         )
                                                     ),
@@ -1069,8 +1361,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             "I'm agree with Privacy policy, terms and conditions.",
                                                             textAlign: TextAlign.center,
                                                             style: TextStyle(
-                                                                color: Colors.white,
-                                                             //   fontSize: 15.sp
+                                                              color: Colors.white,
+                                                              //   fontSize: 15.sp
                                                             ),
 
                                                           ),
@@ -1192,7 +1484,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                         ),
                                                       ),
                                                     ),
-                                                     Visibility(
+                                                    Visibility(
                                                       visible: viewregsucess,
                                                       child: Text("Your registration is successfull.Please login with your creadentials.",
                                                         style: TextStyle(
