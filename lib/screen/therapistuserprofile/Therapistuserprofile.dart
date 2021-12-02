@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:emaze_brain/screen/data_viz/data_viz.dart';
 import 'package:emaze_brain/screen/patientprofile/Patientprofile.dart';
 import 'package:emaze_brain/screen/patientusermanagement/Patientusermanagement.dart';
 import 'package:emaze_brain/screen/util/InnerShadow.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class Therapistuserprofile extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -49,6 +51,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   Color _offcolortextcode=Colors.white;
   String ontext="ON";
   String offtext="Off";
+
+  String? token;
   void showfirstnametextwidget(){
     setState(() {
       viewfirstnametext = true ;
@@ -252,6 +256,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   Widget build(BuildContext context) {
     // TODO: implement build
     var radius = Radius.circular(40);
+    gettoken();
     return ScreenUtilInit(
         builder: () =>
             ResponsiveBuilder(
@@ -631,7 +636,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   mainAxisAlignment: MainAxisAlignment.end,
                                                                   children: [
                                                                     IconButton(
-                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
+                                                                      icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
                                                                     )
                                                                   ],
 
@@ -768,8 +773,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                             height: 10.sp,
                                           ),
                                           Container(
-                                            height: 258.sp,
+                                            //height: 258.sp,
                                             width: 244.sp,
+                                            padding: EdgeInsets.all(20.sp),
 
                                             decoration: BoxDecoration(
                                                 color: Colors.white,
@@ -779,40 +785,18 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                     bottomLeft: Radius.circular(20.sp),
                                                     topLeft: Radius.circular(20.sp))
                                             ),
-                                            child: CircularPercentIndicator(
-                                              radius: 180.sp,
-                                              animation: true,
-                                              animationDuration: 1200,
-                                              lineWidth: 15.0,
-                                              percent: 0.4,
-                                              center: Container(
-                                                height: 90.sp,
-                                                width: 90.sp,
-                                                decoration:  BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Colors.blue, // inner circle color
+                                            child: Column(
+                                              children: [
+                                                DataViz(),
+                                                Text(
+                                                  "Patient's performance+2%",
+                                                  style:
+                                                  new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
                                                 ),
-                                                child: Center(
-                                                  child: Text(
-                                                    "40%",
-                                                    textAlign: TextAlign.center,
-                                                    style:
-                                                    new TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        color: Colors.white,
-
-                                                        fontSize: 16.sp),
-                                                  ),
-                                                ),
-                                              ),
-                                              circularStrokeCap: CircularStrokeCap.butt,
-                                              backgroundColor: Color(0xFFD4D4D4),
-                                              footer: Text(
-                                                "Patient's performance+2%",
-                                                style:
-                                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
-                                              ),
-                                              progressColor: Color(0xFF29AAE1),
+                                                Container(
+                                                  height: 10.sp,
+                                                )
+                                              ],
                                             ),
                                           ),
                                         ]
@@ -2193,6 +2177,12 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
 
 
+  }
+
+  void gettoken()  async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    token=prefs.getString("doctorauthtoken");
+    print(token);
   }
 
 }

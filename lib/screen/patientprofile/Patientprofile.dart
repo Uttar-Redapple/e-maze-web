@@ -1,12 +1,15 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:emaze_brain/screen/data_viz/data_viz.dart';
 import 'package:emaze_brain/screen/util/InnerShadow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class Patientprofile extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -39,6 +42,8 @@ class PatientprofileState extends State<Patientprofile>{
   Color _offcolortextcode=Colors.white;
   String ontext="ON";
   String offtext="Off";
+
+  String? token;
   void showfirstnametextwidget(){
     setState(() {
       viewfirstnametext = true ;
@@ -245,6 +250,7 @@ class PatientprofileState extends State<Patientprofile>{
   @override
   Widget build(BuildContext context) {
     var radius = Radius.circular(40);
+    gettoken();
     return ScreenUtilInit(
         builder: () =>
             ResponsiveBuilder(
@@ -761,8 +767,10 @@ class PatientprofileState extends State<Patientprofile>{
                                             height: 10.sp,
                                           ),
                                           Container(
-                                            height: 258.sp,
+                                            //height: 258.sp,
                                             width: 244.sp,
+                                            padding: EdgeInsets.all(20.sp),
+
 
                                             decoration: BoxDecoration(
                                                 color: Colors.white,
@@ -772,40 +780,19 @@ class PatientprofileState extends State<Patientprofile>{
                                                     bottomLeft: Radius.circular(20.sp),
                                                     topLeft: Radius.circular(20.sp))
                                             ),
-                                            child: CircularPercentIndicator(
-                                              radius: 180.sp,
-                                              animation: true,
-                                              animationDuration: 1200,
-                                              lineWidth: 15.0,
-                                              percent: 0.4,
-                                              center: Container(
-                                                height: 90.sp,
-                                                width: 90.sp,
-                                                decoration:  BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Colors.blue, // inner circle color
-                                                ),
-                                                child: Center(
-                                                  child: Text(
-                                                    "40%",
-                                                    textAlign: TextAlign.center,
-                                                    style:
-                                                    new TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        color: Colors.white,
+                                            child: Column(
+                                                children: [
+                                                  DataViz(),
 
-                                                        fontSize: 16.sp),
+                                                  Text(
+                                                    "Patient's performance+2%",
+                                                    style:
+                                                    new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
                                                   ),
-                                                ),
-                                              ),
-                                              circularStrokeCap: CircularStrokeCap.butt,
-                                              backgroundColor: Color(0xFFD4D4D4),
-                                              footer: Text(
-                                                "Patient's performance+2%",
-                                                style:
-                                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
-                                              ),
-                                              progressColor: Color(0xFF29AAE1),
+                                                  Container(
+                                                      height: 10.sp,
+                                                  )
+                                                ],
                                             ),
                                           ),
                                         ]
@@ -2188,6 +2175,12 @@ class PatientprofileState extends State<Patientprofile>{
 
 
 
+  }
+
+  void gettoken()  async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+     token=prefs.getString("authtoken");
+     print(token);
   }
 
 }

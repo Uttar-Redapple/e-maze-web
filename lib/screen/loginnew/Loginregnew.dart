@@ -10,6 +10,7 @@ import 'package:emaze_brain/screen/util/InnerShadow.dart';
 import 'package:emaze_brain/screen/util/Innershadowfortextinputfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_riverpod/src/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -976,8 +977,15 @@ class LoginregnewState extends State<Loginregnew>{
                                                                 focusNode: _loginpwdfocusnode.requestFocus();
                                                               }*/
                                                                     },
-                                                                    child: Container(
-                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
+                                                                    child: Neumorphic(
+                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                      style: NeumorphicStyle(
+                                                                        depth: NeumorphicTheme.embossDepth(context),
+                                                                        boxShape: NeumorphicBoxShape.stadium(),
+                                                                        color: Colors.white
+                                                                      ),
+                                                                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                      /*padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
                                                                       decoration: ShapeDecoration(
                                                                         gradient: LinearGradient(
                                                                           colors: [Color(0xFFdfdfdf), Color(0xFFf1f1f1)],
@@ -989,7 +997,7 @@ class LoginregnewState extends State<Loginregnew>{
                                                                         shape: RoundedRectangleBorder(
                                                                           borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                                         ),
-                                                                      ),
+                                                                      ),*/
                                                                       child: TextFormField(
                                                                         validator: (regvalue) {
                                                                           if (regvalue == null || regvalue.isEmpty) {
@@ -1070,20 +1078,14 @@ class LoginregnewState extends State<Loginregnew>{
                                                                 focusNode: _loginpwdfocusnode.requestFocus();
                                                               }*/
                                                                     },
-                                                                    child: Container(
-                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
-                                                                      decoration: ShapeDecoration(
-                                                                        gradient: LinearGradient(
-                                                                          colors: [Color(0xFFdfdfdf), Color(0xFFf1f1f1)],
-                                                                          begin: FractionalOffset.topCenter,
-                                                                          end: FractionalOffset.bottomCenter,
-                                                                          stops: [0.0, 0.2],
-                                                                          tileMode: TileMode.clamp,
-                                                                        ),
-                                                                        shape: RoundedRectangleBorder(
-                                                                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                                                                        ),
+                                                                    child: Neumorphic(
+                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                      style: NeumorphicStyle(
+                                                                          depth: NeumorphicTheme.embossDepth(context),
+                                                                          boxShape: NeumorphicBoxShape.stadium(),
+                                                                          color: Colors.white
                                                                       ),
+                                                                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                                                                       child: TextFormField(
                                                                         enabled:regemail,
                                                                         controller: regemailController,
@@ -1164,20 +1166,14 @@ class LoginregnewState extends State<Loginregnew>{
                                                                 focusNode: _loginpwdfocusnode.requestFocus();
                                                               }*/
                                                                     },
-                                                                    child: Container(
-                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
-                                                                      decoration: ShapeDecoration(
-                                                                        gradient: LinearGradient(
-                                                                          colors: [Color(0xFFdfdfdf), Color(0xFFf1f1f1)],
-                                                                          begin: FractionalOffset.topCenter,
-                                                                          end: FractionalOffset.bottomCenter,
-                                                                          stops: [0.0, 0.2],
-                                                                          tileMode: TileMode.clamp,
-                                                                        ),
-                                                                        shape: RoundedRectangleBorder(
-                                                                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                                                                        ),
+                                                                    child: Neumorphic(
+                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                      style: NeumorphicStyle(
+                                                                          depth: NeumorphicTheme.embossDepth(context),
+                                                                          boxShape: NeumorphicBoxShape.stadium(),
+                                                                          color: Colors.white
                                                                       ),
+                                                                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                                                                       child: TextFormField(
                                                                         enabled:regph,
                                                                         controller: regphnoController,
@@ -1238,20 +1234,14 @@ class LoginregnewState extends State<Loginregnew>{
                                                                   child: RawKeyboardListener(
                                                                     focusNode: _regpwdfocusnode,
 
-                                                                    child: Container(
-                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
-                                                                      decoration: ShapeDecoration(
-                                                                        gradient: LinearGradient(
-                                                                          colors: [Color(0xFFdfdfdf), Color(0xFFf1f1f1)],
-                                                                          begin: FractionalOffset.topCenter,
-                                                                          end: FractionalOffset.bottomCenter,
-                                                                          stops: [0.0, 0.2],
-                                                                          tileMode: TileMode.clamp,
-                                                                        ),
-                                                                        shape: RoundedRectangleBorder(
-                                                                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                                                                        ),
+                                                                    child: Neumorphic(
+                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                      style: NeumorphicStyle(
+                                                                          depth: NeumorphicTheme.embossDepth(context),
+                                                                          boxShape: NeumorphicBoxShape.stadium(),
+                                                                          color: Colors.white
                                                                       ),
+                                                                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                                                                       child: TextFormField(
                                                                         enabled:regpwd,
                                                                         obscureText: !_regpasswordVisible,

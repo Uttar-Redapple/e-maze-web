@@ -1,4 +1,5 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:emaze_brain/screen/data_viz/data_viz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -371,7 +372,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                   mainAxisAlignment: MainAxisAlignment.end,
                                                                   children: [
                                                                     IconButton(
-                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
+                                                                      icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
                                                                     )
                                                                   ],
 
@@ -454,7 +455,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                   mainAxisAlignment: MainAxisAlignment.end,
                                                                   children: [
                                                                     IconButton(
-                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
+                                                                      icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
                                                                     )
                                                                   ],
 
@@ -508,9 +509,9 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                             height: 10.sp,
                                           ),
                                           Container(
-                                            height: 258.sp,
+                                           // height: 258.sp,
                                             width: 244.sp,
-
+                                            padding: EdgeInsets.all(20.sp),
                                             decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.only(
@@ -519,40 +520,19 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                     bottomLeft: Radius.circular(20.sp),
                                                     topLeft: Radius.circular(20.sp))
                                             ),
-                                            child: CircularPercentIndicator(
-                                              radius: 180.sp,
-                                              animation: true,
-                                              animationDuration: 1200,
-                                              lineWidth: 15.0,
-                                              percent: 0.4,
-                                              center: Container(
-                                                height: 90.sp,
-                                                width: 90.sp,
-                                                decoration:  BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Colors.blue, // inner circle color
-                                                ),
-                                                child: Center(
-                                                  child: Text(
-                                                    "40%",
-                                                    textAlign: TextAlign.center,
-                                                    style:
-                                                    new TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        color: Colors.white,
+                                            child: Column(
+                                              children: [
+                                                DataViz(),
 
-                                                        fontSize: 20.sp),
-                                                  ),
+                                                Text(
+                                                  "Patient's performance+2%",
+                                                  style:
+                                                  new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
                                                 ),
-                                              ),
-                                              circularStrokeCap: CircularStrokeCap.butt,
-                                              backgroundColor: Colors.grey.shade50,
-                                              footer: Text(
-                                                "Patient's performance+2%",
-                                                style:
-                                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080)),
-                                              ),
-                                              progressColor: Color(0xFF29AAE1),
+                                                Container(
+                                                  height: 10.sp,
+                                                )
+                                              ],
                                             ),
                                           ),
                                         ]
@@ -766,7 +746,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                 mainAxisAlignment: MainAxisAlignment.end,
                                                 children: [
                                                   Expanded(
-                                                      flex: 4,
+                                                      flex: 2,
                                                       child: Container(
                                                         child: Column(
 
@@ -774,7 +754,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                             Container(
                                                               //  color: Colors.white,
-                                                              width: 272,
+                                                             // width: 272,
                                                               height: 60,
                                                               // padding: EdgeInsets.only(top: 5.sp,left: 5.sp),
                                                               decoration: BoxDecoration(
@@ -853,7 +833,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                             ),
 
                                                             Container(
-                                                              width: 272,
+                                                            //  width: 272,
                                                               height: 60,
                                                               // padding: EdgeInsets.only(top: 5.sp,left: 5.sp),
                                                               decoration: BoxDecoration(
@@ -930,7 +910,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                               height: 10.sp,
                                                             ),
                                                             Container(
-                                                              width: 272,
+                                                            //  width: 272,
                                                               height: 60,
                                                               //  padding: EdgeInsets.only(top: 5.sp,left: 5.sp),
                                                               decoration: BoxDecoration(
@@ -1016,7 +996,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                   ),
 
                                                   Expanded(
-                                                      flex: 6,
+                                                      flex: 7,
                                                       child: Container(
                                                         child: Column(
                                                           children: [
