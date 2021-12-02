@@ -1,0 +1,79 @@
+
+import 'package:emaze_brain/screen/data_viz/progress_ring.dart';
+import 'package:emaze_brain/screen/util/constants.dart';
+import 'package:flutter/material.dart';
+
+import 'circle/neuomorphic_circle.dart';
+
+
+class DataViz extends StatelessWidget {
+  final bevel = 10.0;
+  final blurOffset = Offset(20.0 / 2, 20.0 / 2);
+
+  Color shadowColor = Colors.grey.shade400;
+  Color backgroundColor = Constants.backgroundColor;
+  Color backgroundColorcircle = Constants.backgroundColorcircle;
+  Color highlightColor = Colors.grey.shade400;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: AspectRatio(
+          aspectRatio: 1,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              NeuomorphicCircle(
+                shadowColor: shadowColor,
+                backgroundColor: backgroundColor,
+                highlightColor: highlightColor,
+                innerShadow: true,
+                outerShadow: false,
+                child: SizedBox.expand(
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.black,
+                          shape: BoxShape.circle
+
+                      ),
+                    )
+                  ),
+                ),
+              ),
+              LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Container(
+                      width: constraints.maxWidth * 0.3,
+                      height: constraints.maxWidth * 0.3,
+                      child: NeuomorphicCircle(
+                        innerShadow: false,
+                        outerShadow: true,
+                        highlightColor: highlightColor,
+                        shadowColor: shadowColor,
+                        backgroundColor: backgroundColorcircle,
+                        child: SizedBox.expand(
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "40%",
+                                style: TextStyle(
+                                    color: Colors.white60,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+              ),
+              ProgressRing(progress: 0.6)
+            ],
+          )),
+    );
+  }
+}

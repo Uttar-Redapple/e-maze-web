@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:emaze_brain/screen/data_viz/data_viz.dart';
 import 'package:emaze_brain/screen/patientprofile/Patientprofile.dart';
 import 'package:emaze_brain/screen/patientusermanagement/Patientusermanagement.dart';
 import 'package:emaze_brain/screen/util/InnerShadow.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class Therapistuserprofile extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -49,6 +51,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   Color _offcolortextcode=Colors.white;
   String ontext="ON";
   String offtext="Off";
+
+  String? token;
   void showfirstnametextwidget(){
     setState(() {
       viewfirstnametext = true ;
@@ -252,6 +256,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   Widget build(BuildContext context) {
     // TODO: implement build
     var radius = Radius.circular(40);
+    gettoken();
     return ScreenUtilInit(
         builder: () =>
             ResponsiveBuilder(
@@ -631,7 +636,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   mainAxisAlignment: MainAxisAlignment.end,
                                                                   children: [
                                                                     IconButton(
-                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
+                                                                      icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
                                                                     )
                                                                   ],
 
@@ -768,8 +773,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                             height: 10.sp,
                                           ),
                                           Container(
-                                            height: 258.sp,
+                                            //height: 258.sp,
                                             width: 244.sp,
+                                            padding: EdgeInsets.all(20.sp),
 
                                             decoration: BoxDecoration(
                                                 color: Colors.white,
@@ -779,40 +785,18 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                     bottomLeft: Radius.circular(20.sp),
                                                     topLeft: Radius.circular(20.sp))
                                             ),
-                                            child: CircularPercentIndicator(
-                                              radius: 180.sp,
-                                              animation: true,
-                                              animationDuration: 1200,
-                                              lineWidth: 15.0,
-                                              percent: 0.4,
-                                              center: Container(
-                                                height: 90.sp,
-                                                width: 90.sp,
-                                                decoration:  BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Colors.blue, // inner circle color
+                                            child: Column(
+                                              children: [
+                                                DataViz(),
+                                                Text(
+                                                  "Patient's performance+2%",
+                                                  style:
+                                                  new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
                                                 ),
-                                                child: Center(
-                                                  child: Text(
-                                                    "40%",
-                                                    textAlign: TextAlign.center,
-                                                    style:
-                                                    new TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        color: Colors.white,
-
-                                                        fontSize: 16.sp),
-                                                  ),
-                                                ),
-                                              ),
-                                              circularStrokeCap: CircularStrokeCap.butt,
-                                              backgroundColor: Color(0xFFD4D4D4),
-                                              footer: Text(
-                                                "Patient's performance+2%",
-                                                style:
-                                                new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
-                                              ),
-                                              progressColor: Color(0xFF29AAE1),
+                                                Container(
+                                                  height: 10.sp,
+                                                )
+                                              ],
                                             ),
                                           ),
                                         ]
@@ -1617,68 +1601,28 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   children: [
                                                                     Expanded(
                                                                       flex: 5,
-                                                                      child: Container(
-                                                                        height: 45.sp,
-                                                                        //width: 70.sp,
-
-                                                                        decoration: BoxDecoration(
-                                                                          color: _offcolor,
-                                                                          borderRadius: BorderRadius.only(
-                                                                            bottomLeft: Radius.circular(40.0),
-                                                                            bottomRight: Radius.circular(40.0),
-                                                                            topLeft: Radius.circular(40.0),
-                                                                            topRight: Radius.circular(40.0),
-
-
-                                                                          ),
-                                                                          /*  boxShadow: [
-                                                                               BoxShadow(
-                                                                                 color: Colors.grey.withOpacity(0.2),
-                                                                                 blurRadius: 2.0,
-                                                                                 spreadRadius: 0.0,
-                                                                                 offset: Offset(2.0, 2.0), // changes position of shadow
-                                                                               ),
-                                                                             ],*/
-                                                                        ),
-                                                                        child: GestureDetector(
-                                                                          onTap: (){
-                                                                            setState(() {
-                                                                              _oncolor=Colors.transparent;
-                                                                              _offcolor=Color(0xFF989898);
-                                                                              offtext="ON";
-                                                                              ontext="Off";
-                                                                              _offcolortextcode=Colors.white;
-                                                                              _oncolortext=Color(0xFF666666);
+                                                                      child: GestureDetector(
+                                                                        onTap: (){
+                                                                          setState(() {
+                                                                            _oncolor=Colors.transparent;
+                                                                            _offcolor=Color(0xFF989898);
+                                                                            offtext="ON";
+                                                                            ontext="Off";
+                                                                            _offcolortextcode=Colors.white;
+                                                                            _oncolortext=Color(0xFF666666);
 
 
 
-                                                                            });
+                                                                          });
 
 
-                                                                          },
-                                                                          child: Center(
-                                                                            child: Text(
-                                                                                offtext,
-                                                                                textAlign: TextAlign.center,
-                                                                                style:  TextStyle(
-                                                                                  color: _offcolortextcode,
-                                                                                  fontSize: 14.sp,
-                                                                                  fontWeight: FontWeight.bold,
+                                                                        },
+                                                                        child: Container(
+                                                                          height: 45.sp,
+                                                                          //width: 70.sp,
 
-
-                                                                                )
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    Expanded(
-                                                                      flex: 5,
-                                                                      child: Container(
-                                                                        height: 45.sp,
-                                                                        //  width: 70.sp,
-                                                                        decoration: BoxDecoration(
-                                                                            color: _oncolor,
+                                                                          decoration: BoxDecoration(
+                                                                            color: _offcolor,
                                                                             borderRadius: BorderRadius.only(
                                                                               bottomLeft: Radius.circular(40.0),
                                                                               bottomRight: Radius.circular(40.0),
@@ -1686,32 +1630,103 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                               topRight: Radius.circular(40.0),
 
 
-                                                                            )
+                                                                            ),
+                                                                            /*  boxShadow: [
+                                                                                 BoxShadow(
+                                                                                   color: Colors.grey.withOpacity(0.2),
+                                                                                   blurRadius: 2.0,
+                                                                                   spreadRadius: 0.0,
+                                                                                   offset: Offset(2.0, 2.0), // changes position of shadow
+                                                                                 ),
+                                                                               ],*/
+                                                                          ),
+                                                                          child: GestureDetector(
+                                                                            onTap: (){
+                                                                              setState(() {
+                                                                                _oncolor=Colors.transparent;
+                                                                                _offcolor=Color(0xFF989898);
+                                                                                offtext="ON";
+                                                                                ontext="Off";
+                                                                                _offcolortextcode=Colors.white;
+                                                                                _oncolortext=Color(0xFF666666);
+
+
+
+                                                                              });
+
+
+                                                                            },
+                                                                            child: Center(
+                                                                              child: Text(
+                                                                                  offtext,
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style:  TextStyle(
+                                                                                    color: _offcolortextcode,
+                                                                                    fontSize: 14.sp,
+                                                                                    fontWeight: FontWeight.bold,
+
+
+                                                                                  )
+                                                                              ),
+                                                                            ),
+                                                                          ),
                                                                         ),
-                                                                        child: GestureDetector(
-                                                                          onTap: (){
-                                                                            setState(() {
-                                                                              _oncolor=Color(0xFF989898);
-                                                                              _offcolor=Colors.transparent;
-                                                                              offtext="Off";
-                                                                              ontext="ON";
-                                                                              _offcolortextcode=Color(0xFF666666);
-                                                                              _oncolortext=Colors.white;
-                                                                            });
+                                                                      ),
+                                                                    ),
+                                                                    Expanded(
+                                                                      flex: 5,
+                                                                      child: GestureDetector(
+                                                                        onTap: (){
+                                                                          setState(() {
+                                                                            _oncolor=Color(0xFF989898);
+                                                                            _offcolor=Colors.transparent;
+                                                                            offtext="Off";
+                                                                            ontext="ON";
+                                                                            _offcolortextcode=Color(0xFF666666);
+                                                                            _oncolortext=Colors.white;
+                                                                          });
 
 
-                                                                          },
-                                                                          child: Center(
-                                                                            child: Text(
-                                                                                ontext,
-                                                                                textAlign: TextAlign.center,
-                                                                                style:  TextStyle(
-                                                                                  color: _oncolortext,
-                                                                                  fontSize: 14.sp,
-                                                                                  fontWeight: FontWeight.bold,
+                                                                        },
+                                                                        child: Container(
+                                                                          height: 45.sp,
+                                                                          //  width: 70.sp,
+                                                                          decoration: BoxDecoration(
+                                                                              color: _oncolor,
+                                                                              borderRadius: BorderRadius.only(
+                                                                                bottomLeft: Radius.circular(40.0),
+                                                                                bottomRight: Radius.circular(40.0),
+                                                                                topLeft: Radius.circular(40.0),
+                                                                                topRight: Radius.circular(40.0),
 
 
-                                                                                )
+                                                                              )
+                                                                          ),
+                                                                          child: GestureDetector(
+                                                                            onTap: (){
+                                                                              setState(() {
+                                                                                _oncolor=Color(0xFF989898);
+                                                                                _offcolor=Colors.transparent;
+                                                                                offtext="Off";
+                                                                                ontext="ON";
+                                                                                _offcolortextcode=Color(0xFF666666);
+                                                                                _oncolortext=Colors.white;
+                                                                              });
+
+
+                                                                            },
+                                                                            child: Center(
+                                                                              child: Text(
+                                                                                  ontext,
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style:  TextStyle(
+                                                                                    color: _oncolortext,
+                                                                                    fontSize: 14.sp,
+                                                                                    fontWeight: FontWeight.bold,
+
+
+                                                                                  )
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ),
@@ -1761,44 +1776,62 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                             icon: Image.asset('assets/images/key.png'), onPressed: () {  },
                                                           ),
                                                         ),
-                                                        ButtonTheme(
-                                                          minWidth: 190.sp,
-                                                          height: 50.sp,
-                                                          shape: new RoundedRectangleBorder(
-                                                            borderRadius: new BorderRadius.circular(23.sp),
+                                                        DecoratedBox(
+                                                          decoration: BoxDecoration(
+
+                                                            borderRadius: BorderRadius.only(
+                                                                topRight: Radius.circular(40.sp),
+                                                                bottomRight: Radius.circular(40.sp),
+                                                                topLeft: Radius.circular(40.sp),
+                                                                bottomLeft: Radius.circular(40.sp)),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                color: Colors.white,
+                                                                blurRadius: 2,
+                                                                spreadRadius: 1,
+                                                                offset: Offset(0, -3),
+                                                              ),
+                                                              BoxShadow(
+                                                                color: Colors.grey.shade400,
+                                                                blurRadius: 2.0,
+                                                                spreadRadius: 0.0,
+                                                                offset: Offset(2.0, 2.0), // changes position of shadow
+                                                              ),
+                                                            ],
                                                           ),
                                                           child: Container(
-                                                            decoration:  BoxDecoration(
-                                                              boxShadow: [
-                                                                //background color of box
-                                                                BoxShadow(
-                                                                  color: Colors.grey.withOpacity(0.5),
-                                                                  blurRadius: 55.0, // soften the shadow
-                                                                  spreadRadius: 5.0, //extend the shadow
-                                                                  offset: Offset(
-                                                                    15.0, // Move to right 10  horizontally
-                                                                    15.0, // Move to bottom 10 Vertically
+                                                            height: 50.sp,
+                                                            width:190.sp,
+                                                            child: ElevatedButton(
+
+                                                              style: ButtonStyle(
+                                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                  RoundedRectangleBorder(
+                                                                    borderRadius: BorderRadius.circular(40.0),
                                                                   ),
-                                                                )
-                                                              ],
-                                                            ),
-                                                            child: RaisedButton(
+                                                                ),
+
+                                                                // fixedSize: Size(426.sp, 149.sp),
+                                                                // minimumSize: MaterialStateProperty.all(Size(width, 50)),
+                                                                backgroundColor:
+                                                                MaterialStateProperty.all(Color(0xFFFF2D5E),),
+                                                                // elevation: MaterialStateProperty.all(3),
+                                                                shadowColor:
+                                                                MaterialStateProperty.all( Color(0xFFFF2D5E),),
+                                                              ),
                                                               onPressed: () {
-                                                                // Navigator.pushNamed(context, 'patient/usermanagement');
 
                                                               },
-
-                                                              color: Color(0xFFFF2D5E),
                                                               child: Text("Change Password >",
                                                                 style: TextStyle(
-                                                                    color: Colors.white,
-                                                                    fontSize: 15.sp
+                                                                  color: Colors.white,
+
 
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
+                                                        )
                                                       ],
                                                     ),
 
@@ -2144,6 +2177,12 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
 
 
+  }
+
+  void gettoken()  async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    token=prefs.getString("doctorauthtoken");
+    print(token);
   }
 
 }
