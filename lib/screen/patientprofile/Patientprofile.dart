@@ -1,3 +1,14 @@
+import 'dart:convert';
+import 'package:emaze_brain/model/response/Getdata.dart';
+import 'package:emaze_brain/model/response/Getdata.dart';
+import 'package:emaze_brain/model/response/Getdata.dart';
+import 'package:emaze_brain/model/response/Getdata.dart';
+import 'package:emaze_brain/model/response/Getdata.dart';
+import 'package:emaze_brain/model/response/Getdata.dart';
+import 'package:emaze_brain/model/response/Getdata.dart';
+import 'package:emaze_brain/model/response/getresp.dart';
+
+import 'package:http/http.dart' as http;
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:emaze_brain/screen/data_viz/data_viz.dart';
 import 'package:emaze_brain/screen/util/InnerShadow.dart';
@@ -19,6 +30,7 @@ class Patientprofile extends StatefulWidget{
 
 }
 class PatientprofileState extends State<Patientprofile>{
+  Future<Getresp>? _futureAlbum;
   bool status = false;
   bool viewfirstname = false ;
   bool viewlastname = false ;
@@ -44,6 +56,8 @@ class PatientprofileState extends State<Patientprofile>{
   String offtext="Off";
 
   String? token;
+
+  int? p_id;
   void showfirstnametextwidget(){
     setState(() {
       viewfirstnametext = true ;
@@ -251,6 +265,7 @@ class PatientprofileState extends State<Patientprofile>{
   Widget build(BuildContext context) {
     var radius = Radius.circular(40);
     gettoken();
+    _futureAlbum= getuserdetails();
     return ScreenUtilInit(
         builder: () =>
             ResponsiveBuilder(
@@ -840,16 +855,7 @@ class PatientprofileState extends State<Patientprofile>{
                                             Align(
                                               alignment: Alignment.centerLeft,
                                               child: Container(
-                                                child: Text(
-                                                  "Therapist user lauren harsh.User id 123456.",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      color: Color(0xFF989898 ),
-                                                      fontSize: 15.sp
-
-                                                  ),
-
-                                                ),
+                                                child: buildFutureBuilderuserid(),
                                               ),
                                             ),
                                             Align(
@@ -892,17 +898,23 @@ class PatientprofileState extends State<Patientprofile>{
                                                         hidegenderwidget();
                                                       });
                                                     },
-                                                    child: InnerShadow(
-                                                     // blur: 5,
-                                                      color:  Color(0xFFD1D1D1),
-                                                    //  offset:  Offset(5, 5),
 
-                                                      child: Container(
-                                                        margin: const EdgeInsets.only(bottom: 20.0),
+
+
+                                                      child: Neumorphic(
+                                                      //  margin: const EdgeInsets.only(bottom: 20.0),
+                                                        style: NeumorphicStyle(
+                                                            shape: NeumorphicShape.concave,
+                                                          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
+                                                          depth: NeumorphicTheme.embossDepth(context),
+                                                         // depth: 8,
+                                                          color: Colors.white,
+
+                                                        ),
                                                         //width: 100.sp,
                                                         padding: EdgeInsets.only(top: 30.sp,bottom: 30.sp,left: 30.sp,right: 30.sp),
-                                                        decoration: BoxDecoration(
-                                                         /* boxShadow: [
+                                                        /*decoration: BoxDecoration(
+                                                         *//* boxShadow: [
                                                             BoxShadow (
                                                               color: Colors.grey.withOpacity(0.8),
                                                               // color: Color(0xFF989898),
@@ -910,21 +922,23 @@ class PatientprofileState extends State<Patientprofile>{
                                                               blurRadius: 5,
                                                               offset: Offset(7, 0),
                                                             ),
-                                                          ],*/
+                                                          ],*//*
 
                                                           color: Color(0xFFF1F1F1),
-                                                          /*image: new DecorationImage(
+                                                          *//*image: new DecorationImage(
                                                             image: new AssetImage("assets/images/rectangle.png"),
                                                             fit: BoxFit.fill,
-                                                          ),*/
-                                                         /* border: new Border.all(
+                                                          ),*//*
+                                                         *//* border: new Border.all(
                                                             color: Color(0xFFe2e2e2),
                                                             width: 0,
-                                                          ),*/
+                                                          ),*//*
                                                           borderRadius: BorderRadius.all(Radius.circular(20)),
 
-                                                        ),
+                                                        ),*/
                                                         child: Column(
+                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          crossAxisAlignment: CrossAxisAlignment.center,
                                                           children: [
                                                             Stack(
                                                               alignment: Alignment.center,
@@ -948,29 +962,23 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     children: [
                                                                       Visibility(
                                                                         visible: viewfirstnametext,
-                                                                        child: Text(
-                                                                          "Lauren",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                           // fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
-
-                                                                        ),
+                                                                        child: buildFutureBuilder(),
                                                                       ),
                                                                       Visibility(
                                                                         visible: viewfirstname,
-                                                                        child: SizedBox(
-                                                                          height: 30.sp,
-                                                                          width: 100.sp,
-                                                                          child: TextField(
-                                                                            controller: firstnameController,
+                                                                        child: Center(
+                                                                            
+                                                                          child: SizedBox(
+                                                                          //  height: 30.sp,
+                                                                            width: 100.sp,
+                                                                            child: TextFormField(
+                                                                              controller: firstnameController,
 
-                                                                            decoration: InputDecoration(
-                                                                              border: UnderlineInputBorder(),
+                                                                              decoration: InputDecoration(
+                                                                                border: InputBorder.none,
 
-                                                                              hintText: 'Enter Firstname',
+                                                                                hintText: 'Enter Firstname',
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ),
@@ -988,8 +996,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     },
                                                                     child: GestureDetector(
                                                                       onTap: () {
-                                                                      //  hidefirstnametextwidget();
-                                                                       // showfirstnamewidget();
+                                                                        hidefirstnametextwidget();
+                                                                        showfirstnamewidget();
                                                                         //Navigator.pushNamed(context, "myRoute");
                                                                       },
                                                                       child: Text(
@@ -1041,16 +1049,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     children: [
                                                                       Visibility(
                                                                         visible: viewlastnametext,
-                                                                        child: Text(
-                                                                          "Harish",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                         //   fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
 
-                                                                        ),
+                                                                        child: buildFutureBuilderlastname(),
                                                                       ),
                                                                       Visibility(
                                                                         visible: viewlastname,
@@ -1076,8 +1076,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                     // hidelastnametextwidget();
-                                                                     // showlastnamewidget();
+                                                                      hidelastnametextwidget();
+                                                                      showlastnamewidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1128,16 +1128,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     children: [
                                                                       Visibility(
                                                                         visible: viewemailtext,
-                                                                        child: Text(
-                                                                          "harish@gmail.com",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                          //  fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
-
-                                                                        ),
+                                                                        child: buildFutureBuilderemail(),
                                                                       ),
                                                                       Visibility(
                                                                         visible: viewemail,
@@ -1163,8 +1154,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                    //  hideemailtextwidget();
-                                                                    //  showemailwidget();
+                                                                      hideemailtextwidget();
+                                                                      showemailwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1215,16 +1206,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                     children: [
                                                                       Visibility(
                                                                         visible: viewphnotext,
-                                                                        child: Text(
-                                                                          "1234567890",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            //fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
-
-                                                                        ),
+                                                                        child: buildFutureBuilderph(),
                                                                       ),
                                                                       Visibility(
                                                                         visible: viewphno,
@@ -1250,8 +1232,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                     // hidephtextwidget();
-                                                                    //  showphwidget();
+                                                                      hidephtextwidget();
+                                                                      showphwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1337,8 +1319,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                    //  hidebirthtextwidget();
-                                                                    //  showbirthwidget();
+                                                                      hidebirthtextwidget();
+                                                                      showbirthwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1424,8 +1406,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                  //    hidegendertextwidget();
-                                                                   //   showgenderwidget();
+                                                                      hidegendertextwidget();
+                                                                      showgenderwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1511,8 +1493,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                     // hidelanguagetextwidget();
-                                                                     // showlanguagewidget();
+                                                                      hidelanguagetextwidget();
+                                                                      showlanguagewidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1533,7 +1515,6 @@ class PatientprofileState extends State<Patientprofile>{
                                                         ),
 
                                                       ),
-                                                    ),
                                                   ),
                                                 ),
 
@@ -2180,7 +2161,203 @@ class PatientprofileState extends State<Patientprofile>{
   void gettoken()  async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
      token=prefs.getString("authtoken");
+     p_id=prefs.getInt("p_id");
      print(token);
+    print(p_id);
+  }
+  /*Future<http.Response> Getdata(int p_id) async {
+    var headers = {
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RpZCI6IlB4S01fMGFweSIsImlhdCI6MTYzODQyNjI2MSwiZXhwIjoxNjM4NDMzNDYxLCJzdWIiOiJ0b2tlbiIsImlzcyI6InBsYXRmb3JtIiwiZGF0YSI6eyJ1c2VyX2lkIjozLCJmaXJzdF9uYW1lIjoiYXJrYWRpcCIsImxhc3RfbmFtZSI6Imdob3NhbCIsImVtYWlsIjoiYXJrYWRpcGdob3NhbEBnbWFpbC5jb20iLCJwaG9uZSI6Ijg2OTc4MjI0OTMiLCJ1c2VybmFtZSI6IiIsInVzZXJfdHlwZSI6MX19.bR7CMztnTblPMNXZozK2P2wAch2Jk-mfaaim7bWmmHo',
+      'Content-Type': 'application/json'
+    };
+    var request = http.Request('POST', Uri.parse('https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/user/details'));
+    request.body = json.encode({
+      "user_id": "1"
+    });
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    }
+    else {
+      print(response.reasonPhrase);
+    }
+  }*/
+
+
+
+  Future<Getresp> getuserdetails() async {
+    final response = await http.post(
+      Uri.parse('https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/user/details'),
+      headers: <String, String>{
+       "Access-Control-Allow-Origin": "*",
+        'Authorization': 'Bearer '+token!,
+        'Content-Type': 'application/json'
+      },
+      body: jsonEncode(<String, int>{
+        'user_id': p_id!,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print(jsonDecode(response.body));
+
+      return Getresp.fromJson(jsonDecode(response.body));
+
+
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to create album.');
+    }
+  }
+  FutureBuilder<Getresp> buildFutureBuilder() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              snapshot.data!.data.usrFirstName,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderlastname() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              snapshot.data!.data.usrLastName,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderemail() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              snapshot.data!.data.usrEmail,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderph() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              snapshot.data!.data.usrPhone,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderusername() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              snapshot.data!.data.usrUserName,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderuserid() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              "Patient"+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
   }
 
 }

@@ -831,6 +831,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                   Navigator.pushNamed(context, 'patient/profile');
                                                                   SharedPreferences pref = await SharedPreferences.getInstance();
                                                                   pref.setString('authtoken', resp.data.token);
+                                                                  pref.setInt('p_id', resp.data.user_id);
                                                                 }
                                                                 else{
                                                                   showerrorWidget();

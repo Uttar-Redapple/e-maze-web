@@ -8,7 +8,6 @@ part of 'get_loginresponse.dart';
 
 Loginresponse _$LoginresponseFromJson(Map<String, dynamic> json) =>
     Loginresponse(
-
       json['user_id'] as int,
       json['first_name'] as String,
       json['last_name'] as String,
@@ -21,7 +20,6 @@ Loginresponse _$LoginresponseFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$LoginresponseToJson(Loginresponse instance) =>
     <String, dynamic>{
-
       'user_id': instance.user_id,
       'first_name': instance.first_name,
       'last_name': instance.last_name,

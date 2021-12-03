@@ -8,7 +8,6 @@ part of 'get_regresp.dart';
 
 Reguserresponse _$ReguserresponseFromJson(Map<String, dynamic> json) =>
     Reguserresponse(
-
       json['first_name'] as String,
       json['last_name'] as String,
       json['email'] as String,
@@ -18,7 +17,6 @@ Reguserresponse _$ReguserresponseFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ReguserresponseToJson(Reguserresponse instance) =>
     <String, dynamic>{
-
       'first_name': instance.first_name,
       'last_name': instance.last_name,
       'email': instance.email,

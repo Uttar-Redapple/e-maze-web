@@ -1,3 +1,4 @@
+/*
 
 
 import 'package:json_annotation/json_annotation.dart';
@@ -11,4 +12,4 @@ class Getuserdetailsresponse{
   final Userresponse data;
   factory Getuserdetailsresponse.fromJson(Map<String, dynamic> json) =>
       _$GetuserdetailsresponseFromJson(json);
-}
+}*/
