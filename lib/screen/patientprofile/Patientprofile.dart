@@ -7,6 +7,8 @@ import 'package:emaze_brain/model/response/Getdata.dart';
 import 'package:emaze_brain/model/response/Getdata.dart';
 import 'package:emaze_brain/model/response/Getdata.dart';
 import 'package:emaze_brain/model/response/getresp.dart';
+import 'package:emaze_brain/model/response/updateprofileresponse.dart';
+import 'package:emaze_brain/screen/util/constants.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
@@ -896,6 +898,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                         hidelanguagewidget();
                                                         showgendertextwidget();
                                                         hidegenderwidget();
+                                                        updatedetails(firstnameController.text,lastnameController.text,birthController.text,genderController.text,languageController.text);
+                                                        print(firstnameController.text);
                                                       });
                                                     },
 
@@ -2190,7 +2194,7 @@ class PatientprofileState extends State<Patientprofile>{
 
   Future<Getresp> getuserdetails() async {
     final response = await http.post(
-      Uri.parse('https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/user/details'),
+      Uri.parse(Constants.baseurl+'user/details'),
       headers: <String, String>{
        "Access-Control-Allow-Origin": "*",
         'Authorization': 'Bearer '+token!,
@@ -2358,6 +2362,40 @@ class PatientprofileState extends State<Patientprofile>{
         return const CircularProgressIndicator();
       },
     );
+  }
+
+  Future<Updateprofileresponse>  updatedetails(String fname, String lname, String birth, String gender, String language) async {
+     print(fname);
+    final response = await http.post(
+      Uri.parse(Constants.baseurl+'user/update'),
+      headers: <String, String>{
+        "Access-Control-Allow-Origin": "*",
+        'Authorization': 'Bearer '+token!,
+        'Content-Type': 'application/json'
+      },
+      body: jsonEncode(<String, String>{
+        'usr_first_name': fname,
+        'usr_last_name': lname,
+        'usr_birth_date': birth,
+        'usr_gender': gender,
+        'usr_language': language
+      }),
+
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print(jsonDecode(response.body));
+
+      return Updateprofileresponse.fromJson(jsonDecode(response.body));
+
+
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to update user.');
+    }
   }
 
 }
