@@ -29,7 +29,7 @@ class Userresponse{
   final int usr_type;
   final int usr_status;
 
-  factory Userresponse.fromJson(Map<String, dynamic> json) => _$UserresponseFromJson(json);
-  Map<String, dynamic> toJson() => _$UserresponseToJson(this);
+  /*factory Userresponse.fromJson(Map<String, dynamic> json) => _$UserresponseFromJson(json);
+  Map<String, dynamic> toJson() => _$UserresponseToJson(this);*/
 
 }

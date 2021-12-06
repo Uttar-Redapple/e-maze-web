@@ -21,7 +21,7 @@ const key =
 
 abstract class APIClient{
   factory APIClient(Dio dio, {String baseUrl}) = _APIClient;
-  Token token = Token();
+  //Token token = Token();
   @FormUrlEncoded()
   @POST("user/login")
   @http.Headers(<String, dynamic>{
@@ -39,10 +39,10 @@ abstract class APIClient{
   Future<Getreguserresponse> createUser(@Body() Reguser reguser);
 
 
-  @POST("user/details")
+  /*@POST("user/details")
   @http.Headers(<String, dynamic>{
     HttpHeaders.authorizationHeader: key,
   })
-  Future<Getuserdetailsresponse> getUser(@Body() Getuser getuser);
+  Future<Getuserdetailsresponse> getUser(@Body() Getuser getuser);*/
 
 }
