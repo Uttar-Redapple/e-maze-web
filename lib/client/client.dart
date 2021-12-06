@@ -16,8 +16,8 @@ import 'package:retrofit/http.dart';
 import 'package:retrofit/http.dart' as http;
 part 'client.g.dart';
 
-@RestApi(baseUrl: "https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/")
-
+//@RestApi(baseUrl: "https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/")
+@RestApi(baseUrl: "http://192.168.1.230:3000/emazebrain-5cf9b/us-central1/app/")
 abstract class APIClient{
   factory APIClient(Dio dio, {String baseUrl}) = _APIClient;
 

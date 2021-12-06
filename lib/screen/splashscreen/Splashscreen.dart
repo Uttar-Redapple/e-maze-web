@@ -33,14 +33,14 @@ class _SplashScreenState extends State<Splashscreen> {
           child:  Container(
             constraints: BoxConstraints.expand(),
             child: Center(
-              child: Text(
-                "eMazeBrain",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 35.sp
+              child: SizedBox(
+                height: 200.sp,
+                width: 200.sp,
+                child: Image(image: AssetImage(
+                    'assets/images/emazelogothird.png'
                 ),
 
+                ),
               ),
             ),
             decoration: BoxDecoration(

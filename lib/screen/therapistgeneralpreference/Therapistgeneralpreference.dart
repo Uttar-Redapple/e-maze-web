@@ -221,7 +221,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                     Column(
                                         children:[
                                           Container(
-                                            padding: EdgeInsets.all(10.sp),
+                                            padding: EdgeInsets.only(top: 30.sp,bottom: 5.sp,left: 10.sp,right: 10.sp),
                                             height: 296.sp,
                                             width: 252.sp,
                                             decoration: BoxDecoration(
@@ -277,7 +277,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                       ],*/
                                                     ),
                                                     child: Text(
-                                                      'Patient',
+                                                      'Therapist',
                                                       textAlign: TextAlign.center,
 
                                                       style: TextStyle(
@@ -455,7 +455,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                   mainAxisAlignment: MainAxisAlignment.end,
                                                                   children: [
                                                                     IconButton(
-                                                                      icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
+                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
                                                                     )
                                                                   ],
 
@@ -509,7 +509,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                             height: 10.sp,
                                           ),
                                           Container(
-                                           // height: 258.sp,
+                                            //height: 258.sp,
                                             width: 244.sp,
                                             padding: EdgeInsets.all(20.sp),
                                             decoration: BoxDecoration(
@@ -574,18 +574,18 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                     Expanded(
                                                         flex: 6,
                                                         child: Container(
+                                                          padding: EdgeInsets.only(left: 20.sp,right: 20.sp),
                                                           child: Align(
                                                             alignment: Alignment.centerLeft,
                                                             child: Container(
-                                                              child:  Text(
-                                                                "eMazeBrain",
-                                                                textAlign: TextAlign.center,
-                                                                style: TextStyle(
-                                                                  color: Colors.black,
-                                                                  fontSize: 35.sp,
-                                                                  fontWeight: FontWeight.bold,
+                                                              child:  Container(
+                                                                //  height: 200.sp,
+                                                                width: 200.sp,
+                                                                child: Image(image: AssetImage(
+                                                                    'assets/images/emazelogofirst.png'
                                                                 ),
 
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
@@ -753,35 +753,39 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                           children: [
 
                                                             Container(
-                                                              //  color: Colors.white,
-                                                             // width: 272,
-                                                              height: 60,
-                                                              // padding: EdgeInsets.only(top: 5.sp,left: 5.sp),
+                                                              //width: 272,
+                                                              height: 40,
+                                                              //  padding: EdgeInsets.only(top: 5.sp,left: 5.sp),
                                                               decoration: BoxDecoration(
                                                                 color:Color(0xFFF5F5F5),
+                                                                border: Border.all(
+                                                                    color: Colors.white,
+                                                                    width: 0.sp
+                                                                ),
                                                                 borderRadius: BorderRadius.only(
                                                                     topRight: Radius.circular(23.sp),
                                                                     bottomRight: Radius.circular(23.sp),
                                                                     topLeft: Radius.circular(23.sp),
                                                                     bottomLeft: Radius.circular(23.sp)),
 
+
                                                                 boxShadow: [
                                                                   BoxShadow(
                                                                     color: Colors.white,
                                                                     blurRadius: 2,
-                                                                    spreadRadius: 1,
+                                                                    spreadRadius: 2,
                                                                     offset: Offset(0, -3),
                                                                   ),
                                                                   BoxShadow(
                                                                     color: Colors.grey.shade400,
-                                                                    blurRadius: 2.0,
-                                                                    spreadRadius: 0.0,
+                                                                    blurRadius: 3.0,
+                                                                    spreadRadius: 2.0,
                                                                     offset: Offset(2.0, 2.0), // changes position of shadow
                                                                   ),
                                                                 ],
                                                               ),
-                                                              child: ConstrainedBox(
-                                                                constraints: BoxConstraints.tightFor(width: 272, height: 47),
+                                                              child:  ConstrainedBox(
+                                                                constraints: BoxConstraints.tightFor(width: 272, height: 40),
                                                                 child: ElevatedButton.icon(
                                                                   icon: IconButton(
                                                                     icon: Image.asset('assets/images/headphone.png'), onPressed: () {  },
@@ -802,8 +806,8 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                     backgroundColor:
                                                                     MaterialStateProperty.all(Color(0xFFf1f1f1)),
                                                                     // elevation: MaterialStateProperty.all(3),
-
-
+                                                                    shadowColor:
+                                                                    MaterialStateProperty.all(Colors.white),
                                                                   ),
                                                                   /*  style: ElevatedButton.styleFrom(
                                         primary:  Colors.transparent,
@@ -818,49 +822,53 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                   label: Text("SOUND PREFERENCE    ",
                                                                     style: TextStyle(
-                                                                        color: Color(0xFF989898),
-                                                                        fontSize: 16.sp
+                                                                      color: Color(0xFF989898),
+                                                                      // fontSize: 16.sp
 
                                                                     ),
                                                                   ),
 
                                                                 ),
                                                               ),
-
                                                             ),
                                                             Container(
-                                                              height: 10.sp,
+                                                              height: 20.sp,
                                                             ),
 
                                                             Container(
-                                                            //  width: 272,
-                                                              height: 60,
-                                                              // padding: EdgeInsets.only(top: 5.sp,left: 5.sp),
+                                                              //width: 272,
+                                                              height: 40,
+                                                              //  padding: EdgeInsets.only(top: 5.sp,left: 5.sp),
                                                               decoration: BoxDecoration(
                                                                 color:Color(0xFFF5F5F5),
+                                                                border: Border.all(
+                                                                    color: Colors.white,
+                                                                    width: 0.sp
+                                                                ),
                                                                 borderRadius: BorderRadius.only(
                                                                     topRight: Radius.circular(23.sp),
                                                                     bottomRight: Radius.circular(23.sp),
                                                                     topLeft: Radius.circular(23.sp),
                                                                     bottomLeft: Radius.circular(23.sp)),
 
+
                                                                 boxShadow: [
                                                                   BoxShadow(
                                                                     color: Colors.white,
                                                                     blurRadius: 2,
-                                                                    spreadRadius: 1,
+                                                                    spreadRadius: 2,
                                                                     offset: Offset(0, -3),
                                                                   ),
                                                                   BoxShadow(
                                                                     color: Colors.grey.shade400,
-                                                                    blurRadius: 2.0,
-                                                                    spreadRadius: 0.0,
+                                                                    blurRadius: 3.0,
+                                                                    spreadRadius: 2.0,
                                                                     offset: Offset(2.0, 2.0), // changes position of shadow
                                                                   ),
                                                                 ],
                                                               ),
                                                               child:  ConstrainedBox(
-                                                                constraints: BoxConstraints.tightFor(width: 272, height: 47),
+                                                                constraints: BoxConstraints.tightFor(width: 272, height: 40),
                                                                 child: ElevatedButton.icon(
                                                                   icon: IconButton(
                                                                     icon: Image.asset('assets/images/sett.png'), onPressed: () {  },
@@ -897,8 +905,8 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                   label: Text("VISUAL ADJUSTMENT   ",
                                                                     style: TextStyle(
-                                                                        color: Color(0xFF989898),
-                                                                        fontSize: 16.sp
+                                                                      color: Color(0xFF989898),
+                                                                      // fontSize: 16.sp
 
                                                                     ),
                                                                   ),
@@ -907,11 +915,11 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                               ),
                                                             ),
                                                             Container(
-                                                              height: 10.sp,
+                                                              height: 20.sp,
                                                             ),
                                                             Container(
-                                                            //  width: 272,
-                                                              height: 60,
+                                                              //width: 272,
+                                                              height: 40,
                                                               //  padding: EdgeInsets.only(top: 5.sp,left: 5.sp),
                                                               decoration: BoxDecoration(
                                                                 color:Color(0xFFF5F5F5),
@@ -930,19 +938,19 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                   BoxShadow(
                                                                     color: Colors.white,
                                                                     blurRadius: 2,
-                                                                    spreadRadius: 1,
+                                                                    spreadRadius: 2,
                                                                     offset: Offset(0, -3),
                                                                   ),
                                                                   BoxShadow(
                                                                     color: Colors.grey.shade400,
-                                                                    blurRadius: 2.0,
-                                                                    spreadRadius: 0.0,
+                                                                    blurRadius: 3.0,
+                                                                    spreadRadius: 2.0,
                                                                     offset: Offset(2.0, 2.0), // changes position of shadow
                                                                   ),
                                                                 ],
                                                               ),
                                                               child:  ConstrainedBox(
-                                                                constraints: BoxConstraints.tightFor(width: 272, height: 47),
+                                                                constraints: BoxConstraints.tightFor(width: 272, height: 40),
                                                                 child: ElevatedButton.icon(
                                                                   icon: IconButton(
                                                                     icon: Image.asset('assets/images/language.png'), onPressed: () {  },
@@ -979,8 +987,8 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
                                                                   label: Text("LANGUAGE                         ",
                                                                     style: TextStyle(
-                                                                        color: Color(0xFF989898),
-                                                                        fontSize: 16.sp
+                                                                      color: Color(0xFF989898),
+                                                                      // fontSize: 16.sp
 
                                                                     ),
                                                                   ),
@@ -1008,10 +1016,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                   child: Container(
 
                                                                     child: Align(
-                                                                      alignment: Alignment.center,
+                                                                      alignment: Alignment.centerRight,
                                                                       child: Container(
                                                                         width: 238.sp,
-                                                                        height: 80.sp,
+                                                                        height: 65.sp,
 
 
                                                                         decoration: BoxDecoration(
@@ -1094,10 +1102,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                   child: Container(
 
                                                                     child: Align(
-                                                                      alignment: Alignment.center,
+                                                                      alignment: Alignment.centerRight,
                                                                       child: Container(
                                                                         width: 238.sp,
-                                                                        height: 80.sp,
+                                                                        height: 65.sp,
 
 
                                                                         decoration: BoxDecoration(
@@ -1187,10 +1195,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                   child: Container(
 
                                                                     child: Align(
-                                                                      alignment: Alignment.center,
+                                                                      alignment: Alignment.centerRight,
                                                                       child: Container(
                                                                         width: 238.sp,
-                                                                        height: 80.sp,
+                                                                        height: 65.sp,
 
 
                                                                         decoration: BoxDecoration(
@@ -1273,10 +1281,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                   child: Container(
 
                                                                     child: Align(
-                                                                      alignment: Alignment.center,
+                                                                      alignment: Alignment.centerRight,
                                                                       child: Container(
                                                                         width: 238.sp,
-                                                                        height: 80.sp,
+                                                                        height: 65.sp,
 
 
                                                                         decoration: BoxDecoration(

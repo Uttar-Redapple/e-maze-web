@@ -698,7 +698,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                             ),
                                                           ),
                                                           Container(
-                                                            width: 2.sp,
+                                                            width: 4.sp,
                                                             height: 2.sp,
                                                           ),
 
@@ -981,6 +981,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                               }*/
                                                                     },
                                                                     child: Neumorphic(
+
                                                                       margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
 
                                                                       style: NeumorphicStyle(
@@ -989,7 +990,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                         color: Colors.white,
 
                                                                       ),
-                                                                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                    //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                                                                       /*padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
                                                                       decoration: ShapeDecoration(
                                                                         gradient: LinearGradient(
@@ -1003,30 +1004,34 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                           borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                                         ),
                                                                       ),*/
-                                                                      child: TextFormField(
-                                                                        validator: (regvalue) {
-                                                                          if (regvalue == null || regvalue.isEmpty) {
+                                                                      child: Container(
+                                                                        height: 45.sp,
+                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                        child: TextFormField(
+                                                                          validator: (regvalue) {
+                                                                            if (regvalue == null || regvalue.isEmpty) {
 
-                                                                            showvalidusername();
-                                                                          }
-                                                                          else{
-                                                                            hidevalidusername();
-                                                                          }
+                                                                              showvalidusername();
+                                                                            }
+                                                                            else{
+                                                                              hidevalidusername();
+                                                                            }
 
-                                                                          //    hidevalidusername();
-                                                                        },
-                                                                        enabled:regusername,
-                                                                        controller: regnameController,
-                                                                        decoration: InputDecoration(
-                                                                          border: InputBorder.none,
-                                                                          //  filled: true,
-                                                                          fillColor: Colors.white70,
+                                                                            //    hidevalidusername();
+                                                                          },
+                                                                          enabled:regusername,
+                                                                          controller: regnameController,
+                                                                          decoration: InputDecoration(
+                                                                            border: InputBorder.none,
+                                                                            //  filled: true,
+                                                                            fillColor: Colors.white70,
 
-                                                                          hintText: 'Full Name',
+                                                                            hintText: 'Full Name',
 
+                                                                          ),
+                                                                          maxLines: 1,
+                                                                          textInputAction: TextInputAction.next,
                                                                         ),
-                                                                        maxLines: 1,
-                                                                        textInputAction: TextInputAction.next,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1090,34 +1095,38 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                           boxShape: NeumorphicBoxShape.stadium(),
                                                                           color: Colors.white
                                                                       ),
-                                                                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                      child: TextFormField(
-                                                                        enabled:regemail,
-                                                                        controller: regemailController,
+                                                                    //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                      child: Container(
+                                                                        height: 45.sp,
+                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                        child: TextFormField(
+                                                                          enabled:regemail,
+                                                                          controller: regemailController,
 
-                                                                        validator: (regemailvalue) {
-                                                                          final bool isValid = EmailValidator.validate(regemailvalue!);
-                                                                          if (regemailvalue.isEmpty) {
-                                                                            showvalidemail();
-                                                                          }
-                                                                          if (!isValid) {
-                                                                            showvalidemail();
-                                                                            // return "Email address invalid";
-                                                                          }
-                                                                          else{
-                                                                            hidevalidemail();
-                                                                          }
-                                                                        },
+                                                                          validator: (regemailvalue) {
+                                                                            final bool isValid = EmailValidator.validate(regemailvalue!);
+                                                                            if (regemailvalue.isEmpty) {
+                                                                              showvalidemail();
+                                                                            }
+                                                                            if (!isValid) {
+                                                                              showvalidemail();
+                                                                              // return "Email address invalid";
+                                                                            }
+                                                                            else{
+                                                                              hidevalidemail();
+                                                                            }
+                                                                          },
 
-                                                                        decoration: InputDecoration(
-                                                                          border: InputBorder.none,
-                                                                          //  filled: true,
-                                                                          fillColor: Colors.white70,
+                                                                          decoration: InputDecoration(
+                                                                            border: InputBorder.none,
+                                                                            //  filled: true,
+                                                                            fillColor: Colors.white70,
 
-                                                                          hintText: 'Email',
+                                                                            hintText: 'Email',
 
+                                                                          ),
+                                                                          textInputAction: TextInputAction.done,
                                                                         ),
-                                                                        textInputAction: TextInputAction.done,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1178,30 +1187,34 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                           boxShape: NeumorphicBoxShape.stadium(),
                                                                           color: Colors.white
                                                                       ),
-                                                                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                      child: TextFormField(
-                                                                        enabled:regph,
-                                                                        controller: regphnoController,
+                                                                    //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                      child: Container(
+                                                                        height: 45.sp,
+                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                        child: TextFormField(
+                                                                          enabled:regph,
+                                                                          controller: regphnoController,
 
-                                                                        validator: (regphvalue) {
-                                                                          if (regphvalue!.isEmpty) {
+                                                                          validator: (regphvalue) {
+                                                                            if (regphvalue!.isEmpty) {
 
-                                                                            showvalidph();
-                                                                          }
-                                                                          else{
-                                                                            hidevalidph();
-                                                                          }
-                                                                        },
+                                                                              showvalidph();
+                                                                            }
+                                                                            else{
+                                                                              hidevalidph();
+                                                                            }
+                                                                          },
 
-                                                                        decoration: InputDecoration(
-                                                                          border: InputBorder.none,
-                                                                          //  filled: true,
-                                                                          fillColor: Colors.white70,
+                                                                          decoration: InputDecoration(
+                                                                            border: InputBorder.none,
+                                                                            //  filled: true,
+                                                                            fillColor: Colors.white70,
 
-                                                                          hintText: 'Phone number',
+                                                                            hintText: 'Phone number',
 
+                                                                          ),
+                                                                          textInputAction: TextInputAction.done,
                                                                         ),
-                                                                        textInputAction: TextInputAction.done,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1246,41 +1259,45 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                           boxShape: NeumorphicBoxShape.stadium(),
                                                                           color: Colors.white
                                                                       ),
-                                                                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                      child: TextFormField(
-                                                                        enabled:regpwd,
-                                                                        obscureText: !_regpasswordVisible,
-                                                                        controller: regpasswordController,
-                                                                        validator: (regpwdvalue) {
-                                                                          if (regpwdvalue!.isEmpty) {
-                                                                            showvalidpwd();
-                                                                          }
-                                                                          else{
-                                                                            hidevalidpwd();
-                                                                          }
-                                                                        },
-                                                                        decoration: InputDecoration(
+                                                                    //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                      child: Container(
+                                                                        height: 45.sp,
+                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                        child: TextFormField(
+                                                                          enabled:regpwd,
+                                                                          obscureText: !_regpasswordVisible,
+                                                                          controller: regpasswordController,
+                                                                          validator: (regpwdvalue) {
+                                                                            if (regpwdvalue!.isEmpty) {
+                                                                              showvalidpwd();
+                                                                            }
+                                                                            else{
+                                                                              hidevalidpwd();
+                                                                            }
+                                                                          },
+                                                                          decoration: InputDecoration(
 
-                                                                            border: InputBorder.none,
-                                                                            hintText: 'Password',
+                                                                              border: InputBorder.none,
+                                                                              hintText: 'Password',
 
-                                                                            suffixIcon: GestureDetector(
-                                                                              onLongPress: () {
-                                                                                setState(() {
-                                                                                  _regpasswordVisible = true;
-                                                                                });
-                                                                              },
-                                                                              onLongPressUp: () {
-                                                                                setState(() {
-                                                                                  _regpasswordVisible = false;
-                                                                                });
-                                                                              },
-                                                                              child: Icon(
-                                                                                  _regpasswordVisible ? Icons.visibility : Icons.visibility_off
-                                                                              ),
-                                                                            )
+                                                                              suffixIcon: GestureDetector(
+                                                                                onLongPress: () {
+                                                                                  setState(() {
+                                                                                    _regpasswordVisible = true;
+                                                                                  });
+                                                                                },
+                                                                                onLongPressUp: () {
+                                                                                  setState(() {
+                                                                                    _regpasswordVisible = false;
+                                                                                  });
+                                                                                },
+                                                                                child: Icon(
+                                                                                    _regpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                                ),
+                                                                              )
+                                                                          ),
+                                                                          textInputAction: TextInputAction.done,
                                                                         ),
-                                                                        textInputAction: TextInputAction.done,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1332,14 +1349,34 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                             width: 2.sp,
 
                                                           ),
-                                                          Text(
-                                                            "I'm agree with Privacy policy, terms and conditions.",
-                                                            textAlign: TextAlign.center,
-                                                            style: TextStyle(
-                                                              color: Colors.white,
-                                                              //   fontSize: 15.sp
-                                                            ),
+                                                          Text.rich(
+                                                            TextSpan(
+                                                              text: "I'm agree with",
 
+                                                              style: TextStyle(
+                                                                color: Colors.white,
+                                                                //   fontSize: 15.sp
+                                                              ),
+                                                              children: <TextSpan>[
+                                                                TextSpan(
+                                                                    text: 'Privacy policy ',
+                                                                    style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      decoration: TextDecoration.underline,
+                                                                      decorationColor: Colors.white,
+                                                                      decorationThickness: 2,
+                                                                    )),
+                                                                TextSpan(
+                                                                    text: 'terms and conditions',
+                                                                    style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      decoration: TextDecoration.underline,
+                                                                      decorationColor: Colors.white,
+                                                                      decorationThickness: 2,
+                                                                    )),
+                                                                // can add more TextSpans here...
+                                                              ],
+                                                            ),
                                                           ),
 
 

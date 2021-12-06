@@ -495,7 +495,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                     Column(
                                         children:[
                                           Container(
-                                            padding: EdgeInsets.all(10.sp),
+                                            padding: EdgeInsets.only(top: 30.sp,bottom: 5.sp,left: 10.sp,right: 10.sp),
                                             height: 296.sp,
                                             width: 251.sp,
                                             decoration: BoxDecoration(
@@ -905,8 +905,12 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                         showgendertextwidget();
                                                         hidegenderwidget();
                                                         updatedetails();
+                                                        print(firstnameController.text);
                                                       });
                                                     },
+
+
+
                                                     child: Neumorphic(
                                                       //  margin: const EdgeInsets.only(bottom: 20.0),
                                                       style: NeumorphicStyle(
@@ -914,11 +918,11 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                         boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
                                                         depth: NeumorphicTheme.embossDepth(context),
                                                         // depth: 8,
-                                                        color: Colors.white,
+                                                        color:Color(0xFFF1F1F1),
 
                                                       ),
                                                       //width: 100.sp,
-                                                      padding: EdgeInsets.only(top: 30.sp,bottom: 30.sp,left: 30.sp,right: 30.sp),
+                                                      padding: EdgeInsets.only(top: 20.sp,bottom: 20.sp,left: 30.sp,right: 30.sp),
                                                       /*decoration: BoxDecoration(
                                                          *//* boxShadow: [
                                                             BoxShadow (
@@ -944,72 +948,238 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                         ),*/
                                                       child: Form(
                                                         key: _formKey,
-                                                        child: Column(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                                        child: Table(
+                                                          border: TableBorder(
+                                                              horizontalInside: BorderSide(
+                                                                  width: 1,  color: Colors.grey.withOpacity(0.5), style: BorderStyle.solid)),
                                                           children: [
-                                                            Stack(
-                                                              alignment: Alignment.center,
-                                                              children: [
-                                                                Align(
-                                                                  alignment: Alignment.centerLeft,
-                                                                  child: Text(
-                                                                    "FIRST NAME *",
-                                                                    textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF989898 ),
-                                                                      //fontSize: 15.sp,
-                                                                      fontWeight: FontWeight.bold,
-                                                                    ),
+                                                            TableRow(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerLeft,
+                                                                      child: Text(
+                                                                        "FIRST NAME *",
+                                                                        textAlign: TextAlign.center,
+                                                                        style: TextStyle(
+                                                                          color: Color(0xFF989898 ),
+                                                                          //fontSize: 15.sp,
+                                                                          fontWeight: FontWeight.bold,
+                                                                        ),
 
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.center,
-                                                                  child: Stack(
-                                                                    children: [
-                                                                      Visibility(
-                                                                        visible: viewfirstnametext,
-                                                                        child: buildFutureBuilder(),
                                                                       ),
-                                                                      Visibility(
-                                                                        visible: viewfirstname,
-                                                                        child: Center(
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewfirstnametext,
+                                                                      child: buildFutureBuilder(),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewfirstname,
+                                                                      child: Center(
 
-                                                                          child: SizedBox(
-                                                                            //  height: 30.sp,
-                                                                            width: 200.sp,
-                                                                            child: TextFormField(
-                                                                              controller: firstnameController,
+                                                                        child: SizedBox(
+                                                                          //  height: 30.sp,
+                                                                          //  width: 200.sp,
+                                                                          child: TextFormField(
+                                                                            controller: firstnameController,
 
-                                                                              decoration: InputDecoration(
-                                                                                border: InputBorder.none,
+                                                                            decoration: InputDecoration(
+                                                                              border: InputBorder.none,
 
-                                                                                hintText: 'Enter Firstname',
-                                                                              ),
+                                                                              hintText: 'Enter Firstname',
                                                                             ),
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ],
-
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.centerRight,
-                                                                  child: GestureDetector(
-                                                                    onTap: () {
-
-                                                                      //Navigator.pushNamed(context, "myRoute");
-                                                                    },
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
                                                                     child: GestureDetector(
                                                                       onTap: () {
-                                                                        hidefirstnametextwidget();
-                                                                        showfirstnamewidget();
+
                                                                         //Navigator.pushNamed(context, "myRoute");
                                                                       },
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerRight,
+                                                                        child: GestureDetector(
+                                                                          onTap: () {
+                                                                            hidefirstnametextwidget();
+                                                                            showfirstnamewidget();
+                                                                            //Navigator.pushNamed(context, "myRoute");
+                                                                          },
+                                                                          child: Text(
+                                                                            "EDIT",
+                                                                            textAlign: TextAlign.center,
+                                                                            style: TextStyle(
+                                                                              color: Color(0xFF989898 ),
+                                                                              // fontSize: 15.sp,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ]
+                                                            ),
+
+                                                            TableRow(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerLeft,
                                                                       child: Text(
-                                                                        "EDIT",
+                                                                        "LAST NAME *",
+                                                                        textAlign: TextAlign.center,
+                                                                        style: TextStyle(
+                                                                          color: Color(0xFF989898 ),
+                                                                          //  fontSize: 15.sp,
+                                                                          fontWeight: FontWeight.bold,
+                                                                        ),
+
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewlastnametext,
+
+                                                                      child: buildFutureBuilderlastname(),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewlastname,
+                                                                      child: SizedBox(
+                                                                        height: 30.sp,
+                                                                        width: 100.sp,
+                                                                        child: TextField(
+                                                                          controller: lastnameController,
+
+                                                                          decoration: InputDecoration(
+                                                                            border: UnderlineInputBorder(),
+
+                                                                            hintText: 'Enter Lastname',
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: GestureDetector(
+                                                                        onTap: () {
+                                                                          hidelastnametextwidget();
+                                                                          showlastnamewidget();
+                                                                          //Navigator.pushNamed(context, "myRoute");
+                                                                        },
+                                                                        child: Text(
+                                                                          "EDIT",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            //  fontSize: 15.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
+
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ]
+                                                            ),
+                                                            TableRow(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerLeft,
+                                                                      child: Text(
+                                                                        "EMAIL *",
+                                                                        textAlign: TextAlign.center,
+                                                                        style: TextStyle(
+                                                                          color: Color(0xFF989898 ),
+                                                                          //  fontSize: 15.sp,
+                                                                          fontWeight: FontWeight.bold,
+                                                                        ),
+
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewemailtext,
+                                                                      child: buildFutureBuilderemail(),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewemail,
+                                                                      child: SizedBox(
+                                                                        height: 30.sp,
+                                                                        width: 100.sp,
+                                                                        child: TextField(
+                                                                          controller: emailController,
+
+                                                                          decoration: InputDecoration(
+                                                                            border: UnderlineInputBorder(),
+
+                                                                            hintText: 'Enter Email',
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: GestureDetector(
+                                                                        onTap: () {
+                                                                         // hideemailtextwidget();
+                                                                        //  showemailwidget();
+                                                                          //Navigator.pushNamed(context, "myRoute");
+                                                                        },
+                                                                        child: Text(
+                                                                          "EDIT",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            //  fontSize: 15.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
+
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ]
+
+                                                            ),
+                                                            TableRow(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerLeft,
+                                                                      child: Text(
+                                                                        "PHONE NUMBER *",
                                                                         textAlign: TextAlign.center,
                                                                         style: TextStyle(
                                                                           color: Color(0xFF989898 ),
@@ -1020,505 +1190,293 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-
-                                                            ),
-                                                            Container(
-                                                              height: 2.sp,
-                                                              color: Colors.grey.withOpacity(0.5),
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-
-                                                            ),
-                                                            Stack(
-                                                              alignment: Alignment.center,
-                                                              children: [
-                                                                Align(
-                                                                  alignment: Alignment.centerLeft,
-                                                                  child: Text(
-                                                                    "LAST NAME *",
-                                                                    textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF989898 ),
-                                                                      //  fontSize: 15.sp,
-                                                                      fontWeight: FontWeight.bold,
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewphnotext,
+                                                                      child: buildFutureBuilderph(),
                                                                     ),
-
                                                                   ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.center,
-                                                                  child: Stack(
-                                                                    children: [
-                                                                      Visibility(
-                                                                        visible: viewlastnametext,
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewphno,
+                                                                      child: SizedBox(
+                                                                        height: 30.sp,
+                                                                        width: 100.sp,
+                                                                        child: TextField(
+                                                                          controller: phnoController,
 
-                                                                        child: buildFutureBuilderlastname(),
-                                                                      ),
-                                                                      Visibility(
-                                                                        visible: viewlastname,
-                                                                        child: SizedBox(
-                                                                          height: 30.sp,
-                                                                          width: 100.sp,
-                                                                          child: TextField(
-                                                                            controller: lastnameController,
+                                                                          decoration: InputDecoration(
+                                                                            border: UnderlineInputBorder(),
 
-                                                                            decoration: InputDecoration(
-                                                                              border: UnderlineInputBorder(),
-
-                                                                              hintText: 'Enter Lastname',
-                                                                            ),
+                                                                            hintText: 'Enter phone number',
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ],
-
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.centerRight,
-                                                                  child: GestureDetector(
-                                                                    onTap: () {
-                                                                      hidelastnametextwidget();
-                                                                      showlastnamewidget();
-                                                                      //Navigator.pushNamed(context, "myRoute");
-                                                                    },
-                                                                    child: Text(
-                                                                      "EDIT",
-                                                                      textAlign: TextAlign.center,
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF989898 ),
-                                                                        //  fontSize: 15.sp,
-                                                                        fontWeight: FontWeight.bold,
-                                                                      ),
-
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-
-                                                            ),
-                                                            Container(
-                                                              height: 2.sp,
-                                                              color: Colors.grey.withOpacity(0.5),
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-
-                                                            ),
-                                                            Stack(
-                                                              alignment: Alignment.center,
-                                                              children: [
-                                                                Align(
-                                                                  alignment: Alignment.centerLeft,
-                                                                  child: Text(
-                                                                    "EMAIL *",
-                                                                    textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF989898 ),
-                                                                      //  fontSize: 15.sp,
-                                                                      fontWeight: FontWeight.bold,
-                                                                    ),
-
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.center,
-                                                                  child:  Stack(
-                                                                    children: [
-                                                                      Visibility(
-                                                                        visible: viewemailtext,
-                                                                        child: buildFutureBuilderemail(),
-                                                                      ),
-                                                                      Visibility(
-                                                                        visible: viewemail,
-                                                                        child: SizedBox(
-                                                                          height: 30.sp,
-                                                                          width: 100.sp,
-                                                                          child: TextField(
-                                                                            controller: emailController,
-
-                                                                            decoration: InputDecoration(
-                                                                              border: UnderlineInputBorder(),
-
-                                                                              hintText: 'Enter Email',
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.centerRight,
-                                                                  child: GestureDetector(
-                                                                    onTap: () {
-                                                                      hideemailtextwidget();
-                                                                      showemailwidget();
-                                                                      //Navigator.pushNamed(context, "myRoute");
-                                                                    },
-                                                                    child: Text(
-                                                                      "EDIT",
-                                                                      textAlign: TextAlign.center,
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF989898 ),
-                                                                        //  fontSize: 15.sp,
-                                                                        fontWeight: FontWeight.bold,
-                                                                      ),
-
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-
-                                                            ),
-                                                            Container(
-                                                              height: 2.sp,
-                                                              color: Colors.grey.withOpacity(0.5),
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-
-                                                            ),
-                                                            Stack(
-                                                              alignment: Alignment.center,
-                                                              children: [
-                                                                Align(
-                                                                  alignment: Alignment.centerLeft,
-                                                                  child: Text(
-                                                                    "PHONE NUMBER *",
-                                                                    textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF989898 ),
-                                                                      // fontSize: 15.sp,
-                                                                      fontWeight: FontWeight.bold,
-                                                                    ),
-
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.center,
-                                                                  child: Stack(
-                                                                    children: [
-                                                                      Visibility(
-                                                                        visible: viewphnotext,
-                                                                        child: buildFutureBuilderph(),
-                                                                      ),
-                                                                      Visibility(
-                                                                        visible: viewphno,
-                                                                        child: SizedBox(
-                                                                          height: 30.sp,
-                                                                          width: 100.sp,
-                                                                          child: TextField(
-                                                                            controller: phnoController,
-
-                                                                            decoration: InputDecoration(
-                                                                              border: UnderlineInputBorder(),
-
-                                                                              hintText: 'Enter phone number',
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.centerRight,
-                                                                  child: GestureDetector(
-                                                                    onTap: () {
-                                                                      hidephtextwidget();
-                                                                      showphwidget();
-                                                                      //Navigator.pushNamed(context, "myRoute");
-                                                                    },
-                                                                    child: Text(
-                                                                      "EDIT",
-                                                                      textAlign: TextAlign.center,
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF989898 ),
-                                                                        //  fontSize: 15.sp,
-                                                                        fontWeight: FontWeight.bold,
-                                                                      ),
-
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-
-                                                            ),
-                                                            Container(
-                                                              height: 2.sp,
-                                                              color: Colors.grey.withOpacity(0.5),
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-
-                                                            ),
-                                                            Stack(
-                                                              alignment: Alignment.center,
-                                                              children: [
-                                                                Align(
-                                                                  alignment: Alignment.centerLeft,
-                                                                  child: Text(
-                                                                    "BIRTH *",
-                                                                    textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF989898 ),
-                                                                      //  fontSize: 15.sp,
-                                                                      fontWeight: FontWeight.bold,
-                                                                    ),
-
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.center,
-                                                                  child: Stack(
-                                                                    children: [
-                                                                      Visibility(
-                                                                        visible: viewbirthtext,
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: GestureDetector(
+                                                                        onTap: () {
+                                                                       //   hidephtextwidget();
+                                                                       //   showphwidget();
+                                                                          //Navigator.pushNamed(context, "myRoute");
+                                                                        },
                                                                         child: Text(
-                                                                          "03/01/1991",
+                                                                          "EDIT",
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            // fontSize: 15.sp,
+                                                                            //  fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
                                                                         ),
                                                                       ),
-                                                                      Visibility(
-                                                                        visible: viewbirth,
-                                                                        child: SizedBox(
-                                                                          height: 30.sp,
-                                                                          width: 100.sp,
-                                                                          child: TextField(
-                                                                            controller: birthController,
+                                                                    ),
+                                                                  ),
+                                                                ]
+                                                            ),
+                                                            TableRow(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerLeft,
+                                                                      child: Text(
+                                                                        "BIRTH *",
+                                                                        textAlign: TextAlign.center,
+                                                                        style: TextStyle(
+                                                                          color: Color(0xFF989898 ),
+                                                                          //  fontSize: 15.sp,
+                                                                          fontWeight: FontWeight.bold,
+                                                                        ),
 
-                                                                            decoration: InputDecoration(
-                                                                              border: UnderlineInputBorder(),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewbirthtext,
+                                                                      child: Text(
+                                                                        "03/01/1991",
+                                                                        textAlign: TextAlign.center,
+                                                                        style: TextStyle(
+                                                                          color: Color(0xFF989898 ),
+                                                                          // fontSize: 15.sp,
+                                                                          fontWeight: FontWeight.bold,
+                                                                        ),
 
-                                                                              hintText: 'Enter birth date',
-                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewbirth,
+                                                                      child: SizedBox(
+                                                                        height: 30.sp,
+                                                                        width: 100.sp,
+                                                                        child: TextField(
+                                                                          controller: birthController,
+
+                                                                          decoration: InputDecoration(
+                                                                            border: UnderlineInputBorder(),
+
+                                                                            hintText: 'Enter birth date',
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ],
-
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.centerRight,
-                                                                  child: GestureDetector(
-                                                                    onTap: () {
-                                                                      hidebirthtextwidget();
-                                                                      showbirthwidget();
-                                                                      //Navigator.pushNamed(context, "myRoute");
-                                                                    },
-                                                                    child: Text(
-                                                                      "EDIT",
-                                                                      textAlign: TextAlign.center,
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF989898 ),
-                                                                        //  fontSize: 15.sp,
-                                                                        fontWeight: FontWeight.bold,
-                                                                      ),
-
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
 
-                                                            ),
-                                                            Container(
-                                                              height: 2.sp,
-                                                              color: Colors.grey.withOpacity(0.5),
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-
-                                                            ),
-                                                            Stack(
-                                                              alignment: Alignment.center,
-                                                              children: [
-                                                                Align(
-                                                                  alignment: Alignment.centerLeft,
-                                                                  child: Text(
-                                                                    "GENDER *",
-                                                                    textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF989898 ),
-                                                                      // fontSize: 15.sp,
-                                                                      fontWeight: FontWeight.bold,
-                                                                    ),
-
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.center,
-                                                                  child:  Stack(
-                                                                    children: [
-                                                                      Visibility(
-                                                                        visible: viewgendertext,
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: GestureDetector(
+                                                                        onTap: () {
+                                                                          hidebirthtextwidget();
+                                                                          showbirthwidget();
+                                                                          //Navigator.pushNamed(context, "myRoute");
+                                                                        },
                                                                         child: Text(
-                                                                          "Male",
+                                                                          "EDIT",
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            // fontSize: 15.sp,
+                                                                            //  fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
                                                                         ),
                                                                       ),
-                                                                      Visibility(
-                                                                        visible: viewgender,
-                                                                        child: SizedBox(
-                                                                          height: 30.sp,
-                                                                          width: 100.sp,
-                                                                          child: TextField(
-                                                                            controller: genderController,
+                                                                    ),
+                                                                  ),
+                                                                ]
+                                                            ),
+                                                            TableRow(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerLeft,
+                                                                      child: Text(
+                                                                        "GENDER *",
+                                                                        textAlign: TextAlign.center,
+                                                                        style: TextStyle(
+                                                                          color: Color(0xFF989898 ),
+                                                                          // fontSize: 15.sp,
+                                                                          fontWeight: FontWeight.bold,
+                                                                        ),
 
-                                                                            decoration: InputDecoration(
-                                                                              border: UnderlineInputBorder(),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewgendertext,
+                                                                      child: Text(
+                                                                        "Male",
+                                                                        textAlign: TextAlign.center,
+                                                                        style: TextStyle(
+                                                                          color: Color(0xFF989898 ),
+                                                                          // fontSize: 15.sp,
+                                                                          fontWeight: FontWeight.bold,
+                                                                        ),
 
-                                                                              hintText: 'Enter gender',
-                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewgender,
+                                                                      child: SizedBox(
+                                                                        height: 30.sp,
+                                                                        width: 100.sp,
+                                                                        child: TextField(
+                                                                          controller: genderController,
+
+                                                                          decoration: InputDecoration(
+                                                                            border: UnderlineInputBorder(),
+
+                                                                            hintText: 'Enter gender',
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ],
-
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.centerRight,
-                                                                  child: GestureDetector(
-                                                                    onTap: () {
-                                                                      hidegendertextwidget();
-                                                                      showgenderwidget();
-                                                                      //Navigator.pushNamed(context, "myRoute");
-                                                                    },
-                                                                    child: Text(
-                                                                      "EDIT",
-                                                                      textAlign: TextAlign.center,
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF989898 ),
-                                                                        //  fontSize: 15.sp,
-                                                                        fontWeight: FontWeight.bold,
-                                                                      ),
-
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-
-                                                            ),
-                                                            Container(
-                                                              height: 2.sp,
-                                                              color: Colors.grey.withOpacity(0.5),
-                                                            ),
-                                                            Container(
-                                                              height: 10.sp,
-
-                                                            ),
-                                                            Stack(
-                                                              alignment: Alignment.center,
-                                                              children: [
-                                                                Align(
-                                                                  alignment: Alignment.centerLeft,
-                                                                  child: Text(
-                                                                    "LANGUAGE *",
-                                                                    textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF989898 ),
-                                                                      // fontSize: 15.sp,
-                                                                      fontWeight: FontWeight.bold,
-                                                                    ),
-
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.center,
-                                                                  child: Stack(
-                                                                    children: [
-                                                                      Visibility(
-                                                                        visible: viewlanguagetext,
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: GestureDetector(
+                                                                        onTap: () {
+                                                                          hidegendertextwidget();
+                                                                          showgenderwidget();
+                                                                          //Navigator.pushNamed(context, "myRoute");
+                                                                        },
                                                                         child: Text(
-                                                                          "English",
+                                                                          "EDIT",
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            // fontSize: 15.sp,
+                                                                            //  fontSize: 15.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
                                                                         ),
                                                                       ),
-                                                                      Visibility(
-                                                                        visible: viewlanguage,
-                                                                        child: SizedBox(
-                                                                          height: 30.sp,
-                                                                          width: 100.sp,
-                                                                          child: TextFormField(
-                                                                            controller: languageController,
+                                                                    ),
+                                                                  ),
 
-                                                                            decoration: InputDecoration(
-                                                                              border: UnderlineInputBorder(),
+                                                                ]
+                                                            ),
+                                                            TableRow(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerLeft,
+                                                                      child: Text(
+                                                                        "LANGUAGE *",
+                                                                        textAlign: TextAlign.center,
+                                                                        style: TextStyle(
+                                                                          color: Color(0xFF989898 ),
+                                                                          // fontSize: 15.sp,
+                                                                          fontWeight: FontWeight.bold,
+                                                                        ),
 
-                                                                              hintText: 'Enter language',
-                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewlanguagetext,
+                                                                      child: Text(
+                                                                        "English",
+                                                                        textAlign: TextAlign.center,
+                                                                        style: TextStyle(
+                                                                          color: Color(0xFF989898 ),
+                                                                          // fontSize: 15.sp,
+                                                                          fontWeight: FontWeight.bold,
+                                                                        ),
+
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Visibility(
+                                                                      visible: viewlanguage,
+                                                                      child: SizedBox(
+                                                                        height: 30.sp,
+                                                                        width: 100.sp,
+                                                                        child: TextFormField(
+                                                                          controller: languageController,
+
+                                                                          decoration: InputDecoration(
+                                                                            border: UnderlineInputBorder(),
+
+                                                                            hintText: 'Enter language',
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ],
-
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment: Alignment.centerRight,
-                                                                  child: GestureDetector(
-                                                                    onTap: () {
-                                                                      hidelanguagetextwidget();
-                                                                      showlanguagewidget();
-                                                                      //Navigator.pushNamed(context, "myRoute");
-                                                                    },
-                                                                    child: Text(
-                                                                      "EDIT",
-                                                                      textAlign: TextAlign.center,
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF989898 ),
-                                                                        //  fontSize: 15.sp,
-                                                                        fontWeight: FontWeight.bold,
-                                                                      ),
-
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
+                                                                  Padding(
+                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    child: Align(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: GestureDetector(
+                                                                        onTap: () {
+                                                                          hidelanguagetextwidget();
+                                                                          showlanguagewidget();
+                                                                          //Navigator.pushNamed(context, "myRoute");
+                                                                        },
+                                                                        child: Text(
+                                                                          "EDIT",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            //  fontSize: 15.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
+
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ]
+                                                            )
                                                           ],
                                                         ),
                                                       ),
