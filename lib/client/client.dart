@@ -15,13 +15,12 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 import 'package:retrofit/http.dart' as http;
 part 'client.g.dart';
-const key =
-    '';
+
 @RestApi(baseUrl: "https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/")
 
 abstract class APIClient{
   factory APIClient(Dio dio, {String baseUrl}) = _APIClient;
-  //Token token = Token();
+
   @FormUrlEncoded()
   @POST("user/login")
   @http.Headers(<String, dynamic>{
@@ -38,11 +37,13 @@ abstract class APIClient{
 
   Future<Getreguserresponse> createUser(@Body() Reguser reguser);
 
+/*
 
-  /*@POST("user/details")
+  @POST("user/details")
   @http.Headers(<String, dynamic>{
     HttpHeaders.authorizationHeader: key,
   })
-  Future<Getuserdetailsresponse> getUser(@Body() Getuser getuser);*/
+  Future<Getuserdetailsresponse> getUser(@Body() Getuser getuser);
+*/
 
 }

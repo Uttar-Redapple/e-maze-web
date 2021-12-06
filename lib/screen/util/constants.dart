@@ -12,4 +12,5 @@ class Constants {
   static final gradientStart = Color(0xFF29AAE1);
   static final gradientMiddle = Color(0xFF29AAE1);
   static final gradientEnd = Color(0xFF29AAE1);
+  static final baseurl="https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/";
 }

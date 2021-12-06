@@ -1,3 +1,4 @@
+/*
 
 import 'package:json_annotation/json_annotation.dart';
 
@@ -32,4 +33,4 @@ class Userresponse{
   /*factory Userresponse.fromJson(Map<String, dynamic> json) => _$UserresponseFromJson(json);
   Map<String, dynamic> toJson() => _$UserresponseToJson(this);*/
 
-}
+}*/

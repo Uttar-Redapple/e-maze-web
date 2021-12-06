@@ -1,11 +1,16 @@
 import 'dart:async';
-
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:emaze_brain/model/response/getresp.dart';
+import 'package:emaze_brain/model/response/updateprofileresponse.dart';
 import 'package:emaze_brain/screen/data_viz/data_viz.dart';
 import 'package:emaze_brain/screen/patientprofile/Patientprofile.dart';
 import 'package:emaze_brain/screen/patientusermanagement/Patientusermanagement.dart';
 import 'package:emaze_brain/screen/util/InnerShadow.dart';
+import 'package:emaze_brain/screen/util/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -29,6 +34,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
             builder: (BuildContext context) => Patientprofile())));
   }*/
   bool status = false;
+  Future<Getresp>? _futureAlbum;
+  final _formKey = GlobalKey<FormState>();
   bool viewfirstname = false ;
   bool viewlastname = false ;
   bool viewemail = false ;
@@ -53,6 +60,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   String offtext="Off";
 
   String? token;
+
+  int? p_id;
   void showfirstnametextwidget(){
     setState(() {
       viewfirstnametext = true ;
@@ -257,6 +266,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     // TODO: implement build
     var radius = Radius.circular(40);
     gettoken();
+    _futureAlbum= getuserdetails();
     return ScreenUtilInit(
         builder: () =>
             ResponsiveBuilder(
@@ -894,19 +904,23 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                         hidelanguagewidget();
                                                         showgendertextwidget();
                                                         hidegenderwidget();
+                                                        updatedetails();
                                                       });
                                                     },
-                                                    child: InnerShadow(
-                                                      // blur: 5,
-                                                      color:  Color(0xFFD1D1D1),
-                                                      //  offset:  Offset(5, 5),
+                                                    child: Neumorphic(
+                                                      //  margin: const EdgeInsets.only(bottom: 20.0),
+                                                      style: NeumorphicStyle(
+                                                        shape: NeumorphicShape.concave,
+                                                        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
+                                                        depth: NeumorphicTheme.embossDepth(context),
+                                                        // depth: 8,
+                                                        color: Colors.white,
 
-                                                      child: Container(
-                                                        margin: const EdgeInsets.only(bottom: 20.0),
-                                                       // width: 100.sp,
-                                                        padding: EdgeInsets.only(top: 30.sp,bottom: 30.sp,left: 30.sp,right: 30.sp),
-                                                        decoration: BoxDecoration(
-                                                          /* boxShadow: [
+                                                      ),
+                                                      //width: 100.sp,
+                                                      padding: EdgeInsets.only(top: 30.sp,bottom: 30.sp,left: 30.sp,right: 30.sp),
+                                                      /*decoration: BoxDecoration(
+                                                         *//* boxShadow: [
                                                             BoxShadow (
                                                               color: Colors.grey.withOpacity(0.8),
                                                               // color: Color(0xFF989898),
@@ -914,21 +928,25 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               blurRadius: 5,
                                                               offset: Offset(7, 0),
                                                             ),
-                                                          ],*/
+                                                          ],*//*
 
                                                           color: Color(0xFFF1F1F1),
-                                                          /*image: new DecorationImage(
+                                                          *//*image: new DecorationImage(
                                                             image: new AssetImage("assets/images/rectangle.png"),
                                                             fit: BoxFit.fill,
-                                                          ),*/
-                                                          border: new Border.all(
+                                                          ),*//*
+                                                         *//* border: new Border.all(
                                                             color: Color(0xFFe2e2e2),
                                                             width: 0,
-                                                          ),
+                                                          ),*//*
                                                           borderRadius: BorderRadius.all(Radius.circular(20)),
 
-                                                        ),
+                                                        ),*/
+                                                      child: Form(
+                                                        key: _formKey,
                                                         child: Column(
+                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          crossAxisAlignment: CrossAxisAlignment.center,
                                                           children: [
                                                             Stack(
                                                               alignment: Alignment.center,
@@ -952,29 +970,23 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     children: [
                                                                       Visibility(
                                                                         visible: viewfirstnametext,
-                                                                        child: Text(
-                                                                          "Lauren",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            // fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
-
-                                                                        ),
+                                                                        child: buildFutureBuilder(),
                                                                       ),
                                                                       Visibility(
                                                                         visible: viewfirstname,
-                                                                        child: SizedBox(
-                                                                          height: 30.sp,
-                                                                          width: 100.sp,
-                                                                          child: TextField(
-                                                                            controller: firstnameController,
+                                                                        child: Center(
 
-                                                                            decoration: InputDecoration(
-                                                                              border: UnderlineInputBorder(),
+                                                                          child: SizedBox(
+                                                                            //  height: 30.sp,
+                                                                            width: 200.sp,
+                                                                            child: TextFormField(
+                                                                              controller: firstnameController,
 
-                                                                              hintText: 'Enter Firstname',
+                                                                              decoration: InputDecoration(
+                                                                                border: InputBorder.none,
+
+                                                                                hintText: 'Enter Firstname',
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ),
@@ -992,8 +1004,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     },
                                                                     child: GestureDetector(
                                                                       onTap: () {
-                                                                        //  hidefirstnametextwidget();
-                                                                        // showfirstnamewidget();
+                                                                        hidefirstnametextwidget();
+                                                                        showfirstnamewidget();
                                                                         //Navigator.pushNamed(context, "myRoute");
                                                                       },
                                                                       child: Text(
@@ -1045,16 +1057,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     children: [
                                                                       Visibility(
                                                                         visible: viewlastnametext,
-                                                                        child: Text(
-                                                                          "Harish",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            //   fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
 
-                                                                        ),
+                                                                        child: buildFutureBuilderlastname(),
                                                                       ),
                                                                       Visibility(
                                                                         visible: viewlastname,
@@ -1080,8 +1084,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      // hidelastnametextwidget();
-                                                                      // showlastnamewidget();
+                                                                      hidelastnametextwidget();
+                                                                      showlastnamewidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1132,16 +1136,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     children: [
                                                                       Visibility(
                                                                         visible: viewemailtext,
-                                                                        child: Text(
-                                                                          "harish@gmail.com",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
-
-                                                                        ),
+                                                                        child: buildFutureBuilderemail(),
                                                                       ),
                                                                       Visibility(
                                                                         visible: viewemail,
@@ -1167,8 +1162,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      //  hideemailtextwidget();
-                                                                      //  showemailwidget();
+                                                                      hideemailtextwidget();
+                                                                      showemailwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1219,16 +1214,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     children: [
                                                                       Visibility(
                                                                         visible: viewphnotext,
-                                                                        child: Text(
-                                                                          "1234567890",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            //fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
-
-                                                                        ),
+                                                                        child: buildFutureBuilderph(),
                                                                       ),
                                                                       Visibility(
                                                                         visible: viewphno,
@@ -1254,8 +1240,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      // hidephtextwidget();
-                                                                      //  showphwidget();
+                                                                      hidephtextwidget();
+                                                                      showphwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1341,8 +1327,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      //  hidebirthtextwidget();
-                                                                      //  showbirthwidget();
+                                                                      hidebirthtextwidget();
+                                                                      showbirthwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1428,8 +1414,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      //    hidegendertextwidget();
-                                                                      //   showgenderwidget();
+                                                                      hidegendertextwidget();
+                                                                      showgenderwidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1515,8 +1501,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   alignment: Alignment.centerRight,
                                                                   child: GestureDetector(
                                                                     onTap: () {
-                                                                      // hidelanguagetextwidget();
-                                                                      // showlanguagewidget();
+                                                                      hidelanguagetextwidget();
+                                                                      showlanguagewidget();
                                                                       //Navigator.pushNamed(context, "myRoute");
                                                                     },
                                                                     child: Text(
@@ -1535,8 +1521,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                             ),
                                                           ],
                                                         ),
-
                                                       ),
+
                                                     ),
                                                   ),
                                                 ),
@@ -2182,7 +2168,214 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   void gettoken()  async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     token=prefs.getString("doctorauthtoken");
+    p_id=prefs.getInt("doc_id");
     print(token);
+  }
+  Future<Getresp> getuserdetails() async {
+    final response = await http.post(
+      Uri.parse(Constants.baseurl+'user/details'),
+      headers: <String, String>{
+        "Access-Control-Allow-Origin": "*",
+        'Authorization': 'Bearer '+token!,
+        'Content-Type': 'application/json'
+      },
+      body: jsonEncode(<String, int>{
+        'user_id': p_id!,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print(jsonDecode(response.body));
+
+      return Getresp.fromJson(jsonDecode(response.body));
+
+
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to create album.');
+    }
+  }
+  FutureBuilder<Getresp> buildFutureBuilder() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              snapshot.data!.data.usrFirstName,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderlastname() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              snapshot.data!.data.usrLastName,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderemail() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              snapshot.data!.data.usrEmail,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderph() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              snapshot.data!.data.usrPhone,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderusername() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              snapshot.data!.data.usrUserName,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderuserid() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return
+            Text(
+              "Patient"+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xFF989898 ),
+                // fontSize: 15.sp,
+                fontWeight: FontWeight.bold,
+              ),
+
+            );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error.toString()}');
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+
+  Future<Updateprofileresponse>  updatedetails() async {
+    //print(fname);
+    final response = await http.post(
+      Uri.parse(Constants.baseurl+'user/update'),
+      headers: <String, String>{
+        "Access-Control-Allow-Origin": "*",
+        'Authorization': 'Bearer '+token!,
+        'Content-Type': 'application/json'
+      },
+      body: jsonEncode(<String, String>{
+        'usr_first_name': firstnameController.text,
+        'usr_last_name': lastnameController.text,
+        'usr_birth_date': "09/01/1991",
+        'usr_gender': genderController.text,
+        'usr_language': languageController.text
+      }
+      ),
+
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print(jsonDecode(response.body));
+
+      return Updateprofileresponse.fromJson(jsonDecode(response.body));
+
+
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to update user.');
+    }
   }
 
 }

@@ -810,6 +810,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                   print("usertype: ${resp.data.user_type}");
                                                                   SharedPreferences pref = await SharedPreferences.getInstance();
                                                                   pref.setString('doctorauthtoken', resp.data.token);
+                                                                  pref.setInt('doc_id', resp.data.user_id);
                                                                   Navigator.pushNamed(context, 'therapist/profile');
                                                                 }
                                                                 else{

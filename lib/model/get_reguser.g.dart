@@ -17,7 +17,7 @@ Reguser _$ReguserFromJson(Map<String, dynamic> json) => Reguser(
     );
 
 Map<String, dynamic> _$ReguserToJson(Reguser instance) => <String, dynamic>{
-      'username':instance.username,
+      'username': instance.username,
       'first_name': instance.first_name,
       'last_name': instance.last_name,
       'email': instance.email,
