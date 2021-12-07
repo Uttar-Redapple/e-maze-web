@@ -24,7 +24,7 @@ class TherapistorpatientState extends State<Therapistorpatient> with TickerProvi
     _controller.fadeIn();
 
     //when this route starts, it will execute this code
-    Future.delayed(const Duration(seconds: 3), () { //asynchronous delay
+    Future.delayed(const Duration(seconds: 1), () { //asynchronous delay
       if (this.mounted) { //checks if widget is still active and not disposed
         setState(() {
           WidgetsBinding.instance!.addPostFrameCallback((_) {

@@ -8,7 +8,7 @@ part of 'client.dart';
 
 class _APIClient implements APIClient {
   _APIClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'http://192.168.1.230:3000/emazebrain-5cf9b/us-central1/app/';
+    baseUrl ??= 'https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/';
   }
 
   final Dio _dio;

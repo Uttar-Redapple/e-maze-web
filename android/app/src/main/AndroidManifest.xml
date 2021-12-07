@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.redapple.emaze_brain">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="emaze_brain"
         android:icon="@mipmap/ic_launcher">

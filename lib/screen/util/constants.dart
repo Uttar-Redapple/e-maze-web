@@ -12,6 +12,7 @@ class Constants {
   static final gradientStart = Color(0xFF29AAE1);
   static final gradientMiddle = Color(0xFF29AAE1);
   static final gradientEnd = Color(0xFF29AAE1);
-  //static final baseurl="https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/";
-  static final baseurl="http://192.168.1.230:3000/emazebrain-5cf9b/us-central1/app/";
+  static final baseurl="https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/";
+ // static final baseurl="http://192.168.1.230:3000/emazebrain-5cf9b/us-central1/app/";
+  static final terms="sadasdasdasd";
 }

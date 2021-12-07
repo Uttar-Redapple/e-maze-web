@@ -916,8 +916,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       style: NeumorphicStyle(
                                                         shape: NeumorphicShape.concave,
                                                         boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
-                                                        depth: NeumorphicTheme.embossDepth(context),
-                                                        // depth: 8,
+                                                      //  depth: NeumorphicTheme.embossDepth(context),
+
+                                                        depth: -8,
                                                         color:Color(0xFFF1F1F1),
 
                                                       ),
@@ -971,11 +972,14 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewfirstnametext,
-                                                                      child: buildFutureBuilder(),
+                                                                  Align(
+                                                                    alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewfirstnametext,
+                                                                        child: buildFutureBuilder(),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                   Padding(
@@ -1050,12 +1054,15 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewlastnametext,
+                                                                  Align(
+                                                                    alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewlastnametext,
 
-                                                                      child: buildFutureBuilderlastname(),
+                                                                        child: buildFutureBuilderlastname(),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                   Padding(
@@ -1120,11 +1127,14 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewemailtext,
-                                                                      child: buildFutureBuilderemail(),
+                                                                  Align(
+                                                                    alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewemailtext,
+                                                                        child: buildFutureBuilderemail(),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                   Padding(
@@ -1152,8 +1162,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       alignment: Alignment.centerRight,
                                                                       child: GestureDetector(
                                                                         onTap: () {
-                                                                         // hideemailtextwidget();
-                                                                        //  showemailwidget();
+                                                                          //  hideemailtextwidget();
+                                                                          // showemailwidget();
                                                                           //Navigator.pushNamed(context, "myRoute");
                                                                         },
                                                                         child: Text(
@@ -1190,11 +1200,14 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewphnotext,
-                                                                      child: buildFutureBuilderph(),
+                                                                  Align(
+                                                                    alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewphnotext,
+                                                                        child: buildFutureBuilderph(),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                   Padding(
@@ -1222,8 +1235,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       alignment: Alignment.centerRight,
                                                                       child: GestureDetector(
                                                                         onTap: () {
-                                                                       //   hidephtextwidget();
-                                                                       //   showphwidget();
+                                                                          // hidephtextwidget();
+                                                                          // showphwidget();
                                                                           //Navigator.pushNamed(context, "myRoute");
                                                                         },
                                                                         child: Text(
@@ -1259,19 +1272,22 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewbirthtext,
-                                                                      child: Text(
-                                                                        "03/01/1991",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
+                                                                  Align(
+                                                                    alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewbirthtext,
+                                                                        child: Text(
+                                                                          "03/01/1991",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            // fontSize: 15.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
 
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1338,19 +1354,22 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewgendertext,
-                                                                      child: Text(
-                                                                        "Male",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
+                                                                  Align(
+                                                                    alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewgendertext,
+                                                                        child: Text(
+                                                                          "Male",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            // fontSize: 15.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
 
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1417,19 +1436,22 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewlanguagetext,
-                                                                      child: Text(
-                                                                        "English",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
+                                                                  Align(
+                                                                    alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewlanguagetext,
+                                                                        child: Text(
+                                                                          "English",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            // fontSize: 15.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
 
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),

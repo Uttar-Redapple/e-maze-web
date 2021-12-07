@@ -912,7 +912,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                         style: NeumorphicStyle(
                                                             shape: NeumorphicShape.concave,
                                                           boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
-                                                          depth: NeumorphicTheme.embossDepth(context),
+                                                          depth: -8,
+                                                         // lightSource: LightSource.top,
                                                          // depth: 8,
                                                           color:Color(0xFFF1F1F1),
 
@@ -967,11 +968,14 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewfirstnametext,
-                                                                      child: buildFutureBuilder(),
+                                                                  Align(
+                                                                    alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewfirstnametext,
+                                                                        child: buildFutureBuilder(),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                   Padding(
@@ -1046,12 +1050,15 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewlastnametext,
+                                                                  Align(
+                                                                    alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewlastnametext,
 
-                                                                      child: buildFutureBuilderlastname(),
+                                                                        child: buildFutureBuilderlastname(),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                   Padding(
@@ -1116,11 +1123,14 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewemailtext,
-                                                                      child: buildFutureBuilderemail(),
+                                                                  Align(
+                                                                    alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewemailtext,
+                                                                        child: buildFutureBuilderemail(),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                   Padding(
@@ -1186,11 +1196,14 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewphnotext,
-                                                                      child: buildFutureBuilderph(),
+                                                                  Align(
+                                                                    alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewphnotext,
+                                                                        child: buildFutureBuilderph(),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                   Padding(
@@ -1255,19 +1268,22 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewbirthtext,
-                                                                      child: Text(
-                                                                        "03/01/1991",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
+                                                                  Align(
+                                                                      alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewbirthtext,
+                                                                        child: Text(
+                                                                          "03/01/1991",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            // fontSize: 15.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
 
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1334,19 +1350,22 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewgendertext,
-                                                                      child: Text(
-                                                                        "Male",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
+                                                                  Align(
+                                                                  alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewgendertext,
+                                                                        child: Text(
+                                                                          "Male",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            // fontSize: 15.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
 
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1413,19 +1432,22 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewlanguagetext,
-                                                                      child: Text(
-                                                                        "English",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
+                                                                  Align(
+                                                                      alignment: Alignment.centerLeft,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                      child: Visibility(
+                                                                        visible: viewlanguagetext,
+                                                                        child: Text(
+                                                                          "English",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            // fontSize: 15.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
 
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -2158,7 +2180,7 @@ class PatientprofileState extends State<Patientprofile>{
     final response = await http.post(
       Uri.parse(Constants.baseurl+'user/details'),
       headers: <String, String>{
-       "Access-Control-Allow-Origin": "*",
+      // "Access-Control-Allow-Origin": "*",
         'Authorization': 'Bearer '+token!,
         'Content-Type': 'application/json'
       },
@@ -2331,7 +2353,7 @@ class PatientprofileState extends State<Patientprofile>{
     final response = await http.post(
       Uri.parse(Constants.baseurl+'user/update'),
       headers: <String, String>{
-        "Access-Control-Allow-Origin": "*",
+      //  "Access-Control-Allow-Origin": "*",
         'Authorization': 'Bearer '+token!,
         'Content-Type': 'application/json'
       },
