@@ -29,6 +29,10 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       usrPhone: json['usr_phone'] as String,
       usrType: json['usr_type'] as int,
       usrStatus: json['usr_status'] as int,
+      usr_birth_date: json['usr_birth_date'] as String,
+      usr_gender: json['usr_gender'] as String,
+      usr_language: json['usr_language'] as String,
+      usr_profile_image: json['usr_profile_image'] as String,
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
@@ -42,4 +46,8 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'usr_phone': instance.usrPhone,
       'usr_type': instance.usrType,
       'usr_status': instance.usrStatus,
+      'usr_birth_date':instance.usr_birth_date,
+      'usr_gender':instance.usr_gender,
+      'usr_language':instance.usr_language,
+      'usr_profile_image':instance.usr_profile_image,
     };

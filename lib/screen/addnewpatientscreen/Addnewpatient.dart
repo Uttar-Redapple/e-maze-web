@@ -52,7 +52,8 @@ class Addnewpatientstate extends State<Addnewpatient>{
                           LinearGradient(
 
                               tileMode: TileMode.repeated,
-                              colors: [  Color(0xFF3A3A3A),
+                              colors: [
+                                Color(0xFF3A3A3A),
                                 Color(0xFF8B8B8B),
                                 Color(0xFFDBDCDE),
                               ]),

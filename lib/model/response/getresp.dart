@@ -40,8 +40,23 @@ class Data {
   int usrType;
   @JsonKey(name: 'usr_status')
   int usrStatus;
+  @JsonKey(name: 'usr_birth_date')
+  String usr_birth_date;
+  @JsonKey(name: 'usr_gender')
+  String usr_gender;
+  @JsonKey(name: 'usr_language')
+  String usr_language;
 
-  Data({required this.id, required this.usrSourceType, required this.usrSourceKey, required this.usrFirstName, required this.usrLastName, required this.usrUserName, required this.usrEmail, required this.usrPhone, required this.usrType, required this.usrStatus});
+  @JsonKey(name: 'usr_profile_image')
+  String usr_profile_image;
+
+
+
+
+
+
+
+  Data({required this.id, required this.usrSourceType, required this.usrSourceKey, required this.usrFirstName, required this.usrLastName, required this.usrUserName, required this.usrEmail, required this.usrPhone, required this.usrType, required this.usrStatus,required this.usr_birth_date,required this.usr_gender,required this.usr_language,required this.usr_profile_image});
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 

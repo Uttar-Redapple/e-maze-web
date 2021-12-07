@@ -9,6 +9,7 @@ import 'package:emaze_brain/model/response/Getdata.dart';
 import 'package:emaze_brain/model/response/getresp.dart';
 import 'package:emaze_brain/model/response/updateprofileresponse.dart';
 import 'package:emaze_brain/screen/util/constants.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
@@ -1274,16 +1275,29 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       padding: EdgeInsets.symmetric(vertical: 10.0),
                                                                       child: Visibility(
                                                                         visible: viewbirthtext,
-                                                                        child: Text(
-                                                                          "03/01/1991",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            // fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
+                                                                        child:   FutureBuilder<Getresp>(
+                                                                          future: _futureAlbum,
+                                                                          builder: (context, snapshot) {
+                                                                            if (snapshot.hasData) {
+                                                                              return
+                                                                                Text(
+                                                                                  snapshot.data!.data.usr_birth_date,
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: TextStyle(
+                                                                                    color: Color(0xFF989898 ),
+                                                                                    // fontSize: 15.sp,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                  ),
 
-                                                                        ),
+                                                                                );
+                                                                            } else if (snapshot.hasError) {
+                                                                              return Text('${snapshot.error}');
+                                                                            }
+
+                                                                            // By default, show a loading spinner.
+                                                                            return const CircularProgressIndicator();
+                                                                          },
+                                                                        )
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1356,15 +1370,28 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       padding: EdgeInsets.symmetric(vertical: 10.0),
                                                                       child: Visibility(
                                                                         visible: viewgendertext,
-                                                                        child: Text(
-                                                                          "Male",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            // fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
+                                                                        child: FutureBuilder<Getresp>(
+                                                                          future: _futureAlbum,
+                                                                          builder: (context, snapshot) {
+                                                                            if (snapshot.hasData) {
+                                                                              return
+                                                                                Text(
+                                                                                  snapshot.data!.data.usr_gender,
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: TextStyle(
+                                                                                    color: Color(0xFF989898 ),
+                                                                                    // fontSize: 15.sp,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                  ),
 
+                                                                                );
+                                                                            } else if (snapshot.hasError) {
+                                                                              return Text('${snapshot.error}');
+                                                                            }
+
+                                                                            // By default, show a loading spinner.
+                                                                            return const CircularProgressIndicator();
+                                                                          },
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1438,16 +1465,29 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       padding: EdgeInsets.symmetric(vertical: 10.0),
                                                                       child: Visibility(
                                                                         visible: viewlanguagetext,
-                                                                        child: Text(
-                                                                          "English",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            // fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
+                                                                        child: FutureBuilder<Getresp>(
+                                                                          future: _futureAlbum,
+                                                                          builder: (context, snapshot) {
+                                                                            if (snapshot.hasData) {
+                                                                              return
+                                                                                Text(
+                                                                                  snapshot.data!.data.usr_language,
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: TextStyle(
+                                                                                    color: Color(0xFF989898 ),
+                                                                                    // fontSize: 15.sp,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                  ),
 
-                                                                        ),
+                                                                                );
+                                                                            } else if (snapshot.hasError) {
+                                                                              return Text('${snapshot.error}');
+                                                                            }
+
+                                                                            // By default, show a loading spinner.
+                                                                            return const CircularProgressIndicator();
+                                                                          },
+                                                                        )
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1946,6 +1986,282 @@ class PatientprofileState extends State<Patientprofile>{
             )
         ),
         PopupMenuItem<String>(
+            child:   Container(
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 40.sp,
+                    width: 40.sp,
+                    child: IconButton(
+                      icon: Image.asset('assets/images/key.png'), onPressed: () {
+
+                    },
+
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                      builder: (context){
+                        return Dialog(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                          elevation: 16,
+                         
+                                child: Container(
+                                  width: 400.sp,
+                                  height: 400.sp,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: <Color> [
+                                Color(0xFF3A3A3A),
+                                Color(0xFF8B8B8B),
+                                Color(0xFFDBDCDE),
+
+
+
+
+
+                              ],
+                              tileMode: TileMode.repeated
+                          ),
+                        ),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        Center(
+                                          child: SizedBox(
+                                            height: 100.sp,
+                                            width: 200.sp,
+                                            child: Image(image: AssetImage(
+                                                'assets/images/emazelogofirst.png'
+                                            ),
+
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Container(
+                                          height: 54.sp,
+                                          width: 500.sp,
+                                          decoration: BoxDecoration(
+                                            color: Colors.transparent
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              "Change password",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Color(0xFFffffff),
+                                                //  fontSize: 35.sp,
+                                                fontFamily:  '',
+                                                fontWeight: FontWeight.bold,
+                                              ),
+
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Neumorphic(
+                                          margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                          style: NeumorphicStyle(
+                                              depth: NeumorphicTheme.embossDepth(context),
+                                              boxShape: NeumorphicBoxShape.stadium(),
+                                              color: Colors.white
+                                          ),
+                                          //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                          child: Container(
+                                            height: 45.sp,
+                                            padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                            child: TextFormField(
+                                              // enabled:regemail,
+                                             // controller: forgotemailController,
+
+
+
+                                              decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                //  filled: true,
+                                                fillColor: Colors.white70,
+
+                                                hintText: 'Old password',
+
+                                              ),
+                                              textInputAction: TextInputAction.done,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Visibility(
+                                          visible: false,
+                                          child: Container(
+                                            child: Text(
+                                              "Email required or please enter valid email.",
+                                              style: TextStyle(
+                                                color: Colors.red,
+
+                                              ),
+
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Neumorphic(
+                                          margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                          style: NeumorphicStyle(
+                                              depth: NeumorphicTheme.embossDepth(context),
+                                              boxShape: NeumorphicBoxShape.stadium(),
+                                              color: Colors.white
+                                          ),
+                                          //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                          child: Container(
+                                            height: 45.sp,
+                                            padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                            child: TextFormField(
+                                              // enabled:regemail,
+                                              // controller: forgotemailController,
+
+
+
+                                              decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                //  filled: true,
+                                                fillColor: Colors.white70,
+
+                                                hintText: 'New password',
+
+                                              ),
+                                              textInputAction: TextInputAction.done,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Visibility(
+                                          visible: false,
+                                          child: Container(
+                                            child: Text(
+                                              "Email required or please enter valid email.",
+                                              style: TextStyle(
+                                                color: Colors.red,
+
+                                              ),
+
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Neumorphic(
+                                          margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                          style: NeumorphicStyle(
+                                              depth: NeumorphicTheme.embossDepth(context),
+                                              boxShape: NeumorphicBoxShape.stadium(),
+                                              color: Colors.white
+                                          ),
+                                          //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                          child: Container(
+                                            height: 45.sp,
+                                            padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                            child: TextFormField(
+                                              // enabled:regemail,
+                                              // controller: forgotemailController,
+
+
+
+                                              decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                //  filled: true,
+                                                fillColor: Colors.white70,
+
+                                                hintText: 'Confirm password',
+
+                                              ),
+                                              textInputAction: TextInputAction.done,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Visibility(
+                                          visible: false,
+                                          child: Container(
+                                            child: Text(
+                                              "Email required or please enter valid email.",
+                                              style: TextStyle(
+                                                color: Colors.red,
+
+                                              ),
+
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.all(10.sp),
+                                          child: ButtonTheme(
+                                            minWidth: 182.sp,
+                                            height: 63.sp,
+                                            shape: new RoundedRectangleBorder(
+                                              borderRadius: new BorderRadius.circular(40.sp),
+                                            ),
+                                            child: RaisedButton(
+
+                                              onPressed: () async {
+
+                                              },
+
+                                              color: Color(0xFF29AAE1),
+                                              child: Text("Submit",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                          
+                        );
+                      }
+                      );
+                    //  Navigator.pushNamed(context, 'patient/profile');
+                    },
+                    child: Text(
+                      "CHANGE PASSWORD",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12.sp,
+
+
+                      ),
+
+                    ),
+                  ),
+
+                ],
+              ),
+            )
+        ),
+        PopupMenuItem<String>(
             child:  Container(
               child: Row(
                 children: [
@@ -2360,9 +2676,10 @@ class PatientprofileState extends State<Patientprofile>{
       body: jsonEncode(<String, String>{
         'usr_first_name': firstnameController.text,
         'usr_last_name': lastnameController.text,
-        'usr_birth_date': "09/01/1991",
+        'usr_birth_date': birthController.text,
         'usr_gender': genderController.text,
         'usr_language': languageController.text
+
       }
       ),
 
