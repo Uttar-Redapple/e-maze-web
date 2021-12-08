@@ -109,6 +109,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   TextEditingController regpasswordController = TextEditingController();
   TextEditingController regemailController = TextEditingController();
   TextEditingController regphnoController = TextEditingController();
+  TextEditingController forgotemailController = TextEditingController();
   bool _obscureText = true;
 
   late String _password;
@@ -872,14 +873,188 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                             ),
                                                             Spacer(),
-                                                            Text(
-                                                              "Forgot password?",
-                                                              textAlign: TextAlign.center,
-                                                              style: TextStyle(
-                                                                color: Colors.white,
-                                                                // fontSize: 15.sp
-                                                              ),
+                                                            GestureDetector(
+                                                              onTap: (){
+                                                                showDialog(
+                                                                  context: context,
+                                                                builder: (context){
+                                                                  return Dialog(
+                                                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                    elevation: 16,
+                                                                    child: SingleChildScrollView(
+                                                                      child: Container(
+                                                                        width: 400.sp,
+                                                                        height: 400.sp,
+                                                                        decoration: BoxDecoration(
+                                                                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                          gradient: LinearGradient(
+                                                                              begin: Alignment.topLeft,
+                                                                              end: Alignment.bottomRight,
+                                                                              colors: <Color> [
+                                                                                Color(0xFF2b2b49),
+                                                                                Color(0xFF0d2561),
+                                                                                Color(0xFF005890),
+                                                                                Color(0xFF0071a6),
 
+
+
+
+
+                                                                              ],
+                                                                              tileMode: TileMode.repeated
+                                                                          ),
+                                                                        ),
+                                                                        child: Column(
+                                                                          children: [
+                                                                            Center(
+                                                                              child: SizedBox(
+                                                                                height: 100.sp,
+                                                                                width: 200.sp,
+                                                                                child: Image(image: AssetImage(
+                                                                                    'assets/images/emazelogofirst.png'
+                                                                                ),
+
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Container(
+                                                                              height: 10.sp,
+                                                                            ),
+                                                                            Container(
+                                                                              height: 54.sp,
+                                                                              width: 500.sp,
+                                                                              decoration: BoxDecoration(
+                                                                               // borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                                gradient: LinearGradient(
+                                                                                    begin: Alignment.centerLeft,
+                                                                                    end: Alignment.centerRight,
+                                                                                    colors: <Color> [
+                                                                                      Color(0xFF005088),
+                                                                                      Color(0xFF29AAE1),
+
+
+
+
+
+
+                                                                                    ],
+                                                                                    tileMode: TileMode.repeated
+                                                                                ),
+                                                                              ),
+                                                                              child: Center(
+                                                                                child: Text(
+                                                                                  "Forgot password",
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: TextStyle(
+                                                                                    color: Color(0xFFffffff),
+                                                                                  //  fontSize: 35.sp,
+                                                                                    fontFamily:  '',
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                  ),
+
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Container(
+                                                                               height: 10.sp,
+                                                                            ),
+                                                                            Neumorphic(
+                                                                              margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                              style: NeumorphicStyle(
+                                                                                  depth: NeumorphicTheme.embossDepth(context),
+                                                                                  boxShape: NeumorphicBoxShape.stadium(),
+                                                                                  color: Colors.white
+                                                                              ),
+                                                                              //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                              child: Container(
+                                                                                height: 45.sp,
+                                                                                padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                child: TextFormField(
+                                                                                 // enabled:regemail,
+                                                                                  controller: forgotemailController,
+
+                                                                                  validator: (regemailvalue) {
+                                                                                    final bool isValid = EmailValidator.validate(regemailvalue!);
+                                                                                    if (regemailvalue.isEmpty) {
+                                                                                      showvalidemail();
+                                                                                    }
+                                                                                    if (!isValid) {
+                                                                                      showvalidemail();
+                                                                                      // return "Email address invalid";
+                                                                                    }
+                                                                                    else{
+                                                                                      hidevalidemail();
+                                                                                    }
+                                                                                  },
+
+                                                                                  decoration: InputDecoration(
+                                                                                    border: InputBorder.none,
+                                                                                    //  filled: true,
+                                                                                    fillColor: Colors.white70,
+
+                                                                                    hintText: 'Email',
+
+                                                                                  ),
+                                                                                  textInputAction: TextInputAction.done,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Container(
+                                                                              height: 10.sp,
+                                                                            ),
+                                                                            Visibility(
+                                                                              visible: validemail,
+                                                                              child: Container(
+                                                                                child: Text(
+                                                                                  "Email required or please enter valid email.",
+                                                                                  style: TextStyle(
+                                                                                    color: Colors.red,
+
+                                                                                  ),
+
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Container(
+                                                                              child: ButtonTheme(
+                                                                                minWidth: 182.sp,
+                                                                                height: 63.sp,
+                                                                                shape: new RoundedRectangleBorder(
+                                                                                  borderRadius: new BorderRadius.circular(40.sp),
+                                                                                ),
+                                                                                child: RaisedButton(
+
+                                                                                  onPressed: () async {
+
+                                                                                  },
+
+                                                                                  color: Color(0xFF29AAE1),
+                                                                                  child: Text("Submit",
+                                                                                    style: TextStyle(
+                                                                                      color: Colors.white,
+
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                }
+                                                                );
+                                                              },
+                                                              child: Text(
+                                                                "Forgot password?",
+                                                                textAlign: TextAlign.center,
+                                                                style: TextStyle(
+                                                                  color: Colors.white,
+                                                                  // fontSize: 15.sp
+                                                                ),
+
+                                                              ),
                                                             ),
 
                                                           ],
@@ -1364,13 +1539,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                             controller: regphnoController,
 
                                                                             validator: (regphvalue) {
-                                                                              if (regphvalue!.isEmpty) {
-
-                                                                                showvalidph();
-                                                                              }
-                                                                              else{
-                                                                                hidevalidph();
-                                                                              }
+                                                                              validateMobile(regphvalue);
                                                                             },
 
                                                                             decoration: InputDecoration(
@@ -2096,5 +2265,15 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
             )
     );
   }
+
+  void validateMobile(String? regphvalue) {
+    if (regphvalue!.length!= 13){
+      showvalidph();
+    }
+    else{
+      hidevalidph();
+    }
+  }
+
 
 }
