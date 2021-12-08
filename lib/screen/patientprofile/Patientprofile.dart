@@ -262,7 +262,9 @@ class PatientprofileState extends State<Patientprofile>{
 
   @override
   void initState() {
-
+    super.initState();
+    gettoken();
+    _futureAlbum= getuserdetails();
   }
 
 
@@ -806,7 +808,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                   DataViz(),
 
                                                   Text(
-                                                    "Patient's performance+2%",
+                                                    "Patients' Performance +2%",
                                                     style:
                                                     new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
                                                   ),
