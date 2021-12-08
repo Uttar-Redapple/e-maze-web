@@ -68,6 +68,8 @@ class PatientprofileState extends State<Patientprofile>{
   late bool _newpasswordVisible;
   late bool _confirmpasswordVisible;
   var userfname;
+
+  late DateFormat formatters;
   void showfirstnametextwidget(){
     setState(() {
       viewfirstnametext = true ;
@@ -282,7 +284,7 @@ class PatientprofileState extends State<Patientprofile>{
     String formattedDate = formatter.format(now);
     print(formattedDate); //
     formatteddatetime=formattedDate;
-
+     formatters = new DateFormat('yyyy-MM-dd hh:mm:ss');
     gettoken();
     _futureAlbum= getuserdetails();
 
@@ -1492,6 +1494,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                               if (snapshot.hasData) {
                                                                 return
                                                                   Text(
+
                                                                     snapshot.data!.data.usr_birth_date,
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
