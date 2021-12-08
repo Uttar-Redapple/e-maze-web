@@ -46,8 +46,8 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'usr_phone': instance.usrPhone,
       'usr_type': instance.usrType,
       'usr_status': instance.usrStatus,
-      'usr_birth_date':instance.usr_birth_date,
-      'usr_gender':instance.usr_gender,
-      'usr_language':instance.usr_language,
-      'usr_profile_image':instance.usr_profile_image,
+      'usr_birth_date': instance.usr_birth_date,
+      'usr_gender': instance.usr_gender,
+      'usr_language': instance.usr_language,
+      'usr_profile_image': instance.usr_profile_image,
     };

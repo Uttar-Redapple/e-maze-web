@@ -527,7 +527,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                 DataViz(),
 
                                                 Text(
-                                                  "Patient's performance+2%",
+                                                  "Patients' Performance +2%",
                                                   style:
                                                   new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
                                                 ),

@@ -6,6 +6,7 @@ import 'package:emaze_brain/model/response/Getdata.dart';
 import 'package:emaze_brain/model/response/Getdata.dart';
 import 'package:emaze_brain/model/response/Getdata.dart';
 import 'package:emaze_brain/model/response/Getdata.dart';
+import 'package:emaze_brain/model/response/getchangepwdresponse.dart';
 import 'package:emaze_brain/model/response/getresp.dart';
 import 'package:emaze_brain/model/response/updateprofileresponse.dart';
 import 'package:emaze_brain/screen/util/constants.dart';
@@ -20,6 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -62,6 +64,10 @@ class PatientprofileState extends State<Patientprofile>{
   String? token;
 
   int? p_id;
+  late bool _passwordVisible;
+  late bool _newpasswordVisible;
+  late bool _confirmpasswordVisible;
+  var userfname;
   void showfirstnametextwidget(){
     setState(() {
       viewfirstnametext = true ;
@@ -161,6 +167,9 @@ class PatientprofileState extends State<Patientprofile>{
   final TextEditingController genderController =new TextEditingController();
   final  TextEditingController languageController = new TextEditingController();
   final TextEditingController birthController = new TextEditingController();
+  final TextEditingController newpwdController = new TextEditingController();
+  final TextEditingController OldpwdController = new TextEditingController();
+  final TextEditingController confirmpwdController = new TextEditingController();
 
   void clearprofiletext(){
     firstnameController.clear();
@@ -171,6 +180,7 @@ class PatientprofileState extends State<Patientprofile>{
     languageController.clear();
     birthController.clear();
   }
+  late String formatteddatetime;
   void showfirstnamewidget(){
     setState(() {
       viewfirstname = true ;
@@ -264,17 +274,211 @@ class PatientprofileState extends State<Patientprofile>{
   @override
   void initState() {
     super.initState();
+    _passwordVisible = false;
+    _confirmpasswordVisible=false;
+    _newpasswordVisible=false;
+    var now = new DateTime.now();
+    var formatter = new DateFormat('yyyy-MM-dd hh:mm:ss');
+    String formattedDate = formatter.format(now);
+    print(formattedDate); //
+    formatteddatetime=formattedDate;
+
     gettoken();
     _futureAlbum= getuserdetails();
+
+    /*gettoken();
+    _futureAlbum= getuserdetails();*/
   }
 
+  FutureBuilder<Getresp> buildFutureBuilder() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
+        }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                snapshot.data!.data.usrFirstName,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
 
+              );
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error.toString()}');
+          }
+        }
+
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderlastname() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
+        }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                snapshot.data!.data.usrLastName,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+
+              );
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error.toString()}');
+          }
+
+        }
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderemail() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
+        }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                snapshot.data!.data.usrEmail,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+
+              );
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error.toString()}');
+          }
+        }
+
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderph() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
+        }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                snapshot.data!.data.usrPhone,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+
+              );
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error.toString()}');
+          }
+        }
+
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderusername() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
+        }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                snapshot.data!.data.usrUserName,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+
+              );
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error.toString()}');
+          }
+        }
+
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
+  FutureBuilder<Getresp> buildFutureBuilderuserid() {
+    return FutureBuilder<Getresp>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
+        }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                "Patient"+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+
+              );
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error.toString()}');
+          }
+        }
+
+
+        return const CircularProgressIndicator();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     var radius = Radius.circular(40);
     gettoken();
     _futureAlbum= getuserdetails();
+
+   /* gettoken();
+    _futureAlbum= getuserdetails();*/
     return ScreenUtilInit(
         builder: () =>
             ResponsiveBuilder(
@@ -871,7 +1075,7 @@ class PatientprofileState extends State<Patientprofile>{
                                               alignment: Alignment.centerLeft,
                                               child: Container(
                                                 child: Text(
-                                                  "Last login today Mon 10:35:21 a.m.29/10/2021",
+                                                  "Last login "+formatteddatetime,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       color: Color(0xFF989898 ),
@@ -978,6 +1182,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       child: Visibility(
                                                                         visible: viewfirstnametext,
                                                                         child: buildFutureBuilder(),
+
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1280,21 +1485,27 @@ class PatientprofileState extends State<Patientprofile>{
                                                                         child:   FutureBuilder<Getresp>(
                                                                           future: _futureAlbum,
                                                                           builder: (context, snapshot) {
-                                                                            if (snapshot.hasData) {
-                                                                              return
-                                                                                Text(
-                                                                                  snapshot.data!.data.usr_birth_date,
-                                                                                  textAlign: TextAlign.center,
-                                                                                  style: TextStyle(
-                                                                                    color: Color(0xFF989898 ),
-                                                                                    // fontSize: 15.sp,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
+                                                               if( snapshot.connectionState == ConnectionState.waiting){
+                                                                  return  Center(child: Text('Please wait its loading...'));
+                                                                        }
+                                                              else{
+                                                              if (snapshot.hasData) {
+                                                                return
+                                                                  Text(
+                                                                    snapshot.data!.data.usr_birth_date,
+                                                                    textAlign: TextAlign.center,
+                                                                    style: TextStyle(
+                                                                      color: Color(0xFF989898 ),
+                                                                      // fontSize: 15.sp,
+                                                                      fontWeight: FontWeight.bold,
+                                                                    ),
 
-                                                                                );
-                                                                            } else if (snapshot.hasError) {
-                                                                              return Text('${snapshot.error}');
-                                                                            }
+                                                                  );
+                                                              } else if (snapshot.hasError) {
+                                                                return Text('${snapshot.error}');
+                                                              }
+                                                            }
+
 
                                                                             // By default, show a loading spinner.
                                                                             return const CircularProgressIndicator();
@@ -1827,7 +2038,309 @@ class PatientprofileState extends State<Patientprofile>{
                                                                       MaterialStateProperty.all( Color(0xFF29AAE1),),
                                                                     ),
                                                                      onPressed: () {
+                                                                       showDialog(
+                                                                           context: context,
+                                                                           builder: (context){
+                                                                             return Dialog(
+                                                                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                               elevation: 16,
 
+                                                                               child: Container(
+                                                                                 // padding: EdgeInsets.all(5.sp),
+                                                                                 width: 400.sp,
+                                                                                 height: 400.sp,
+                                                                                 decoration: BoxDecoration(
+                                                                                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                                   gradient: LinearGradient(
+                                                                                       begin: Alignment.topLeft,
+                                                                                       end: Alignment.bottomRight,
+                                                                                       colors: <Color> [
+                                                                                         Color(0xFF3A3A3A),
+                                                                                         Color(0xFF8B8B8B),
+                                                                                         Color(0xFFDBDCDE),
+
+
+
+
+
+                                                                                       ],
+                                                                                       tileMode: TileMode.repeated
+                                                                                   ),
+                                                                                 ),
+                                                                                 child: SingleChildScrollView(
+                                                                                   child: Column(
+                                                                                     children: [
+                                                                                       Center(
+                                                                                         child: SizedBox(
+                                                                                           height: 65.sp,
+                                                                                           width: 200.sp,
+                                                                                           child: Image(image: AssetImage(
+                                                                                               'assets/images/emazelogofirst.png'
+                                                                                           ),
+
+                                                                                           ),
+                                                                                         ),
+                                                                                       ),
+                                                                                       /*  Container(
+                                          height: 10.sp,
+                                        ),*/
+                                                                                       Container(
+                                                                                         height: 54.sp,
+                                                                                         width: 500.sp,
+                                                                                         decoration: BoxDecoration(
+                                                                                           //  color: Colors.transparent
+                                                                                           gradient: LinearGradient(
+                                                                                               begin: Alignment.centerLeft,
+                                                                                               end: Alignment.centerRight,
+                                                                                               colors: <Color> [
+                                                                                                 Color(0xFFB2BEB5),
+                                                                                                 Color(0xFFE5E4E2),
+
+
+
+
+
+
+                                                                                               ],
+                                                                                               tileMode: TileMode.repeated
+                                                                                           ),
+                                                                                         ),
+                                                                                         child: Center(
+                                                                                           child: Text(
+                                                                                             "CHANGE PASSWORD",
+                                                                                             textAlign: TextAlign.center,
+                                                                                             style: TextStyle(
+                                                                                               color: Color(0xFFffffff),
+                                                                                               //  fontSize: 35.sp,
+                                                                                               fontFamily:  '',
+                                                                                               fontWeight: FontWeight.bold,
+                                                                                             ),
+
+                                                                                           ),
+                                                                                         ),
+                                                                                       ),
+                                                                                       Container(
+                                                                                         height: 10.sp,
+                                                                                       ),
+                                                                                       Neumorphic(
+                                                                                         margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                         style: NeumorphicStyle(
+                                                                                             depth: NeumorphicTheme.embossDepth(context),
+                                                                                             boxShape: NeumorphicBoxShape.stadium(),
+                                                                                             color: Colors.white
+                                                                                         ),
+                                                                                         //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                         child: Container(
+                                                                                           height: 45.sp,
+                                                                                           padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                           child: TextFormField(
+                                                                                             // enabled:regemail,
+                                                                                              controller: OldpwdController,
+                                                                                             obscureText: !_passwordVisible,
+
+
+                                                                                             decoration: InputDecoration(
+                                                                                               border: InputBorder.none,
+                                                                                               //  filled: true,
+                                                                                               fillColor: Colors.white70,
+
+                                                                                               hintText: 'Old password',
+                                                                                                 suffixIcon: GestureDetector(
+                                                                                                   onLongPress: () {
+                                                                                                     setState(() {
+                                                                                                       _passwordVisible = true;
+                                                                                                     });
+                                                                                                   },
+                                                                                                   onLongPressUp: () {
+                                                                                                     setState(() {
+                                                                                                       _passwordVisible = false;
+                                                                                                     });
+                                                                                                   },
+                                                                                                   child: Icon(
+                                                                                                       _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                                                                   ),
+                                                                                                 )
+
+                                                                                             ),
+                                                                                             textInputAction: TextInputAction.done,
+                                                                                           ),
+                                                                                         ),
+                                                                                       ),
+                                                                                       Container(
+                                                                                         height: 10.sp,
+                                                                                       ),
+                                                                                       Visibility(
+                                                                                         visible: false,
+                                                                                         child: Container(
+                                                                                           child: Text(
+                                                                                             "Email required or please enter valid email.",
+                                                                                             style: TextStyle(
+                                                                                               color: Colors.red,
+
+                                                                                             ),
+
+                                                                                           ),
+                                                                                         ),
+                                                                                       ),
+                                                                                       Container(
+                                                                                         height: 10.sp,
+                                                                                       ),
+                                                                                       Neumorphic(
+                                                                                         margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                         style: NeumorphicStyle(
+                                                                                             depth: NeumorphicTheme.embossDepth(context),
+                                                                                             boxShape: NeumorphicBoxShape.stadium(),
+                                                                                             color: Colors.white
+                                                                                         ),
+                                                                                         //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                         child: Container(
+                                                                                           height: 45.sp,
+                                                                                           padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                           child: TextFormField(
+                                                                                             // enabled:regemail,
+                                                                                              controller: newpwdController,
+                                                                                             obscureText: !_newpasswordVisible,
+
+
+                                                                                             decoration: InputDecoration(
+                                                                                                 border: InputBorder.none,
+                                                                                                 //  filled: true,
+                                                                                                 fillColor: Colors.white70,
+
+                                                                                                 hintText: 'New password',
+                                                                                                 suffixIcon: GestureDetector(
+                                                                                                   onLongPress: () {
+                                                                                                     setState(() {
+                                                                                                       _newpasswordVisible = true;
+                                                                                                     });
+                                                                                                   },
+                                                                                                   onLongPressUp: () {
+                                                                                                     setState(() {
+                                                                                                       _newpasswordVisible = false;
+                                                                                                     });
+                                                                                                   },
+                                                                                                   child: Icon(
+                                                                                                       _newpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                                                   ),
+                                                                                                 )
+
+                                                                                             ),
+
+                                                                                           ),
+                                                                                         ),
+                                                                                       ),
+                                                                                       Container(
+                                                                                         height: 10.sp,
+                                                                                       ),
+                                                                                       Visibility(
+                                                                                         visible: false,
+                                                                                         child: Container(
+                                                                                           child: Text(
+                                                                                             "Email required or please enter valid email.",
+                                                                                             style: TextStyle(
+                                                                                               color: Colors.red,
+
+                                                                                             ),
+
+                                                                                           ),
+                                                                                         ),
+                                                                                       ),
+                                                                                       Container(
+                                                                                         height: 10.sp,
+                                                                                       ),
+                                                                                       Neumorphic(
+                                                                                         margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                         style: NeumorphicStyle(
+                                                                                             depth: NeumorphicTheme.embossDepth(context),
+                                                                                             boxShape: NeumorphicBoxShape.stadium(),
+                                                                                             color: Colors.white
+                                                                                         ),
+                                                                                         //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                         child: Container(
+                                                                                           height: 45.sp,
+                                                                                           padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                           child: TextFormField(
+                                                                                             // enabled:regemail,
+                                                                                              controller: confirmpwdController,
+
+                                                                                             obscureText: !_confirmpasswordVisible,
+
+
+                                                                                             decoration: InputDecoration(
+                                                                                                 border: InputBorder.none,
+                                                                                                 //  filled: true,
+                                                                                                 fillColor: Colors.white70,
+
+                                                                                                 hintText: 'Confirm password',
+                                                                                                 suffixIcon: GestureDetector(
+                                                                                                   onLongPress: () {
+                                                                                                     setState(() {
+                                                                                                       _confirmpasswordVisible = true;
+                                                                                                     });
+                                                                                                   },
+                                                                                                   onLongPressUp: () {
+                                                                                                     setState(() {
+                                                                                                       _confirmpasswordVisible = false;
+                                                                                                     });
+                                                                                                   },
+                                                                                                   child: Icon(
+                                                                                                       _confirmpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                                                   ),
+                                                                                                 )
+
+                                                                                             ),
+
+                                                                                           ),
+                                                                                         ),
+                                                                                       ),
+                                                                                       Container(
+                                                                                         height: 10.sp,
+                                                                                       ),
+                                                                                       Visibility(
+                                                                                         visible: false,
+                                                                                         child: Container(
+                                                                                           child: Text(
+                                                                                             "Email required or please enter valid email.",
+                                                                                             style: TextStyle(
+                                                                                               color: Colors.red,
+
+                                                                                             ),
+
+                                                                                           ),
+                                                                                         ),
+                                                                                       ),
+                                                                                       Container(
+                                                                                         padding: EdgeInsets.all(10.sp),
+                                                                                         child: ButtonTheme(
+                                                                                           minWidth: 182.sp,
+                                                                                           height: 55.sp,
+                                                                                           shape: new RoundedRectangleBorder(
+                                                                                             borderRadius: new BorderRadius.circular(40.sp),
+                                                                                           ),
+                                                                                           child: RaisedButton(
+
+                                                                                             onPressed: ()  {
+                                                                                               changepwd();
+                                                                                             },
+
+                                                                                             color: Color(0xFF29AAE1),
+                                                                                             child: Text("Submit",
+                                                                                               style: TextStyle(
+                                                                                                 color: Colors.white,
+
+                                                                                               ),
+                                                                                             ),
+                                                                                           ),
+                                                                                         ),
+                                                                                       ),
+                                                                                     ],
+                                                                                   ),
+                                                                                 ),
+                                                                               ),
+
+                                                                             );
+                                                                           }
+                                                                       );
                                                                      },
                                                                      child: Text("Change Password >",
                                                                        style: TextStyle(
@@ -1970,16 +2483,19 @@ class PatientprofileState extends State<Patientprofile>{
                     onTap: () {
                       Navigator.pushNamed(context, 'patient/profile');
                     },
-                    child: Text(
-                      "PROFILE",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12.sp,
+                    child: Container(
+                      
+                      child: Text(
+                        "PROFILE",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12.sp,
 
+
+                        ),
 
                       ),
-
                     ),
                   ),
 
@@ -2011,6 +2527,7 @@ class PatientprofileState extends State<Patientprofile>{
                           elevation: 16,
                          
                                 child: Container(
+                                  // padding: EdgeInsets.all(5.sp),
                                   width: 400.sp,
                                   height: 400.sp,
                         decoration: BoxDecoration(
@@ -2036,7 +2553,7 @@ class PatientprofileState extends State<Patientprofile>{
                                       children: [
                                         Center(
                                           child: SizedBox(
-                                            height: 100.sp,
+                                            height: 65.sp,
                                             width: 200.sp,
                                             child: Image(image: AssetImage(
                                                 'assets/images/emazelogofirst.png'
@@ -2045,18 +2562,33 @@ class PatientprofileState extends State<Patientprofile>{
                                             ),
                                           ),
                                         ),
-                                        Container(
+                                      /*  Container(
                                           height: 10.sp,
-                                        ),
+                                        ),*/
                                         Container(
                                           height: 54.sp,
                                           width: 500.sp,
                                           decoration: BoxDecoration(
-                                            color: Colors.transparent
+                                          //  color: Colors.transparent
+                                            gradient: LinearGradient(
+                                                begin: Alignment.centerLeft,
+                                                end: Alignment.centerRight,
+                                                colors: <Color> [
+                                                  Color(0xFFB2BEB5),
+                                                  Color(0xFFE5E4E2),
+
+
+
+
+
+
+                                                ],
+                                                tileMode: TileMode.repeated
+                                            ),
                                           ),
                                           child: Center(
                                             child: Text(
-                                              "Change password",
+                                              "CHANGE PASSWORD",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 color: Color(0xFFffffff),
@@ -2085,7 +2617,7 @@ class PatientprofileState extends State<Patientprofile>{
                                             child: TextFormField(
                                               // enabled:regemail,
                                              // controller: forgotemailController,
-
+                                              obscureText: !_passwordVisible,
 
 
                                               decoration: InputDecoration(
@@ -2094,6 +2626,21 @@ class PatientprofileState extends State<Patientprofile>{
                                                 fillColor: Colors.white70,
 
                                                 hintText: 'Old password',
+                                                  suffixIcon: GestureDetector(
+                                                    onLongPress: () {
+                                                      setState(() {
+                                                        _passwordVisible = true;
+                                                      });
+                                                    },
+                                                    onLongPressUp: () {
+                                                      setState(() {
+                                                        _passwordVisible = false;
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                        _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                    ),
+                                                  )
 
                                               ),
                                               textInputAction: TextInputAction.done,
@@ -2133,7 +2680,7 @@ class PatientprofileState extends State<Patientprofile>{
                                             child: TextFormField(
                                               // enabled:regemail,
                                               // controller: forgotemailController,
-
+                                              obscureText: !_newpasswordVisible,
 
 
                                               decoration: InputDecoration(
@@ -2142,6 +2689,21 @@ class PatientprofileState extends State<Patientprofile>{
                                                 fillColor: Colors.white70,
 
                                                 hintText: 'New password',
+                                                  suffixIcon: GestureDetector(
+                                                    onLongPress: () {
+                                                      setState(() {
+                                                        _newpasswordVisible = true;
+                                                      });
+                                                    },
+                                                    onLongPressUp: () {
+                                                      setState(() {
+                                                        _newpasswordVisible = false;
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                        _newpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                    ),
+                                                  )
 
                                               ),
                                               textInputAction: TextInputAction.done,
@@ -2181,7 +2743,7 @@ class PatientprofileState extends State<Patientprofile>{
                                             child: TextFormField(
                                               // enabled:regemail,
                                               // controller: forgotemailController,
-
+                                              obscureText: !_confirmpasswordVisible,
 
 
                                               decoration: InputDecoration(
@@ -2190,6 +2752,21 @@ class PatientprofileState extends State<Patientprofile>{
                                                 fillColor: Colors.white70,
 
                                                 hintText: 'Confirm password',
+                                                  suffixIcon: GestureDetector(
+                                                    onLongPress: () {
+                                                      setState(() {
+                                                        _confirmpasswordVisible = true;
+                                                      });
+                                                    },
+                                                    onLongPressUp: () {
+                                                      setState(() {
+                                                        _confirmpasswordVisible = false;
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                        _confirmpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                    ),
+                                                  )
 
                                               ),
                                               textInputAction: TextInputAction.done,
@@ -2216,7 +2793,7 @@ class PatientprofileState extends State<Patientprofile>{
                                           padding: EdgeInsets.all(10.sp),
                                           child: ButtonTheme(
                                             minWidth: 182.sp,
-                                            height: 63.sp,
+                                            height: 55.sp,
                                             shape: new RoundedRectangleBorder(
                                               borderRadius: new BorderRadius.circular(40.sp),
                                             ),
@@ -2436,16 +3013,18 @@ class PatientprofileState extends State<Patientprofile>{
                     onTap: () {
                       Navigator.pushNamed(context, '/');
                     },
-                    child: Text(
-                      "LOGOUT",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12.sp,
+                    child: Container(
+                      child: Text(
+                        "LOGOUT",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12.sp,
 
+
+                        ),
 
                       ),
-
                     ),
                   ),
 
@@ -2468,7 +3047,8 @@ class PatientprofileState extends State<Patientprofile>{
     SharedPreferences prefs = await SharedPreferences.getInstance();
      token=prefs.getString("authtoken");
      p_id=prefs.getInt("p_id");
-     print(token);
+    debugPrint("patrinttoken: ${token}");
+    debugPrint("patriid: ${p_id}");
     print(p_id);
   }
   /*Future<http.Response> Getdata(int p_id) async {
@@ -2511,7 +3091,9 @@ class PatientprofileState extends State<Patientprofile>{
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       print(jsonDecode(response.body));
-
+      Map<String, dynamic> data = json.decode(response.body);
+      print(data["data"]["usr_first_name"]);
+       userfname=data["data"]["usr_first_name"];
       return Getresp.fromJson(jsonDecode(response.body));
 
 
@@ -2521,150 +3103,7 @@ class PatientprofileState extends State<Patientprofile>{
       throw Exception('Failed to create album.');
     }
   }
-  FutureBuilder<Getresp> buildFutureBuilder() {
-    return FutureBuilder<Getresp>(
-      future: _futureAlbum,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              snapshot.data!.data.usrFirstName,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
-              ),
 
-            );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
-        }
-
-        return const CircularProgressIndicator();
-      },
-    );
-  }
-  FutureBuilder<Getresp> buildFutureBuilderlastname() {
-    return FutureBuilder<Getresp>(
-      future: _futureAlbum,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              snapshot.data!.data.usrLastName,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
-              ),
-
-            );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
-        }
-
-        return const CircularProgressIndicator();
-      },
-    );
-  }
-  FutureBuilder<Getresp> buildFutureBuilderemail() {
-    return FutureBuilder<Getresp>(
-      future: _futureAlbum,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              snapshot.data!.data.usrEmail,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
-              ),
-
-            );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
-        }
-
-        return const CircularProgressIndicator();
-      },
-    );
-  }
-  FutureBuilder<Getresp> buildFutureBuilderph() {
-    return FutureBuilder<Getresp>(
-      future: _futureAlbum,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              snapshot.data!.data.usrPhone,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
-              ),
-
-            );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
-        }
-
-        return const CircularProgressIndicator();
-      },
-    );
-  }
-  FutureBuilder<Getresp> buildFutureBuilderusername() {
-    return FutureBuilder<Getresp>(
-      future: _futureAlbum,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              snapshot.data!.data.usrUserName,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
-              ),
-
-            );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
-        }
-
-        return const CircularProgressIndicator();
-      },
-    );
-  }
-  FutureBuilder<Getresp> buildFutureBuilderuserid() {
-    return FutureBuilder<Getresp>(
-      future: _futureAlbum,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              "Patient"+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
-              ),
-
-            );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
-        }
-
-        return const CircularProgressIndicator();
-      },
-    );
-  }
 
   Future<Updateprofileresponse>  updatedetails() async {
      //print(fname);
@@ -2699,6 +3138,39 @@ class PatientprofileState extends State<Patientprofile>{
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
       throw Exception('Failed to update user.');
+    }
+  }
+
+  Future<Getchangepwdresponse>  changepwd() async {
+    //print(fname);
+    final response = await http.post(
+      Uri.parse('https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/user/change-password'),
+      headers: <String, String>{
+        //  "Access-Control-Allow-Origin": "*",
+        'Authorization': 'Bearer '+token!,
+        'Content-Type': 'application/json'
+      },
+      body: jsonEncode(<String, String>{
+        'old_password': "12345678",
+        'new_password': "123456789",
+
+      }
+      ),
+
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print(jsonDecode(response.body));
+
+      return Getchangepwdresponse.fromJson(jsonDecode(response.body));
+
+
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception();
     }
   }
 

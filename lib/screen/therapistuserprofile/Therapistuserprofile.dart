@@ -12,6 +12,7 @@ import 'package:emaze_brain/screen/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -43,7 +44,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   bool viewbirth = false ;
   bool viewgender = false ;
   bool viewlanguage = false ;
-
+  late bool _passwordVisible;
+  late bool _newpasswordVisible;
+  late bool _confirmpasswordVisible;
 
   bool viewfirstnametext = true ;
   bool viewlastnametext = true ;
@@ -254,11 +257,31 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
     });
   }
-
+  final TextEditingController newpwdController = new TextEditingController();
+  final TextEditingController OldpwdController = new TextEditingController();
+  final TextEditingController confirmpwdController = new TextEditingController();
   void hidelanguagewidget(){
     setState(() {
       viewlanguage = false ;
     });
+  }
+  late String formatteddatetime;
+  @override
+  void initState() {
+    super.initState();
+    var now = new DateTime.now();
+    var formatter = new DateFormat('yyyy-MM-dd hh:mm:ss');
+    String formattedDate = formatter.format(now);
+    print(formattedDate); //
+    formatteddatetime=formattedDate;
+    _passwordVisible = false;
+    _confirmpasswordVisible=false;
+    _newpasswordVisible=false;
+    gettoken();
+    _futureAlbum= getuserdetails();
+
+    /*gettoken();
+    _futureAlbum= getuserdetails();*/
   }
 
   @override
@@ -551,7 +574,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       ],*/
                                                     ),
                                                     child: Text(
-                                                      'Patient',
+                                                      'Therapist',
                                                       textAlign: TextAlign.center,
 
                                                       style: TextStyle(
@@ -646,7 +669,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                   mainAxisAlignment: MainAxisAlignment.end,
                                                                   children: [
                                                                     IconButton(
-                                                                      icon: Image.asset('assets/images/offline.png'), onPressed: () {  },
+                                                                      icon: Image.asset('assets/images/blueonline.png'), onPressed: () {  },
                                                                     )
                                                                   ],
 
@@ -787,6 +810,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                             width: 244.sp,
                                             padding: EdgeInsets.all(20.sp),
 
+
                                             decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.only(
@@ -798,8 +822,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                             child: Column(
                                               children: [
                                                 DataViz(),
+
                                                 Text(
-                                                  "Patient's performance+2%",
+                                                  "Patients' Performance +2%",
                                                   style:
                                                   new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp,color: Color(0xFF808080),),
                                                 ),
@@ -854,23 +879,14 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                             Align(
                                               alignment: Alignment.centerLeft,
                                               child: Container(
-                                                child: Text(
-                                                  "Therapist user lauren harsh.User id 123456.",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      color: Color(0xFF989898 ),
-                                                      fontSize: 15.sp
-
-                                                  ),
-
-                                                ),
+                                                child: buildFutureBuilderuserid(),
                                               ),
                                             ),
                                             Align(
                                               alignment: Alignment.centerLeft,
                                               child: Container(
                                                 child: Text(
-                                                  "Last login today Mon 10:35:21 a.m.29/10/2021",
+                                                  "Last login "+formatteddatetime,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       color: Color(0xFF989898 ),
@@ -880,9 +896,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                 ),
                                               ),
                                             ),
-                                            Container(
-                                              height: 10.sp,
-                                            ),
+
                                             Row(
                                               children: [
                                                 Expanded(
@@ -916,9 +930,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       style: NeumorphicStyle(
                                                         shape: NeumorphicShape.concave,
                                                         boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
-                                                      //  depth: NeumorphicTheme.embossDepth(context),
-
                                                         depth: -8,
+                                                        // lightSource: LightSource.top,
+                                                        // depth: 8,
                                                         color:Color(0xFFF1F1F1),
 
                                                       ),
@@ -979,6 +993,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       child: Visibility(
                                                                         visible: viewfirstnametext,
                                                                         child: buildFutureBuilder(),
+
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1277,17 +1292,36 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     child: Padding(
                                                                       padding: EdgeInsets.symmetric(vertical: 10.0),
                                                                       child: Visibility(
-                                                                        visible: viewbirthtext,
-                                                                        child: Text(
-                                                                          "03/01/1991",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            // fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
+                                                                          visible: viewbirthtext,
+                                                                          child:   FutureBuilder<Getresp>(
+                                                                            future: _futureAlbum,
+                                                                            builder: (context, snapshot) {
+                                                                              if( snapshot.connectionState == ConnectionState.waiting){
+                                                                                return  Center(child: Text('Please wait its loading...'));
+                                                                              }
+                                                                              else{
+                                                                                if (snapshot.hasData) {
+                                                                                  return
+                                                                                    Text(
+                                                                                      snapshot.data!.data.usr_birth_date,
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                        color: Color(0xFF989898 ),
+                                                                                        // fontSize: 15.sp,
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                      ),
 
-                                                                        ),
+                                                                                    );
+                                                                                } else if (snapshot.hasError) {
+                                                                                  return Text('${snapshot.error}');
+                                                                                }
+                                                                              }
+
+
+                                                                              // By default, show a loading spinner.
+                                                                              return const CircularProgressIndicator();
+                                                                            },
+                                                                          )
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1360,15 +1394,28 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                       padding: EdgeInsets.symmetric(vertical: 10.0),
                                                                       child: Visibility(
                                                                         visible: viewgendertext,
-                                                                        child: Text(
-                                                                          "Male",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            // fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
+                                                                        child: FutureBuilder<Getresp>(
+                                                                          future: _futureAlbum,
+                                                                          builder: (context, snapshot) {
+                                                                            if (snapshot.hasData) {
+                                                                              return
+                                                                                Text(
+                                                                                  snapshot.data!.data.usr_gender,
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: TextStyle(
+                                                                                    color: Color(0xFF989898 ),
+                                                                                    // fontSize: 15.sp,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                  ),
 
+                                                                                );
+                                                                            } else if (snapshot.hasError) {
+                                                                              return Text('${snapshot.error}');
+                                                                            }
+
+                                                                            // By default, show a loading spinner.
+                                                                            return const CircularProgressIndicator();
+                                                                          },
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1441,17 +1488,30 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                     child: Padding(
                                                                       padding: EdgeInsets.symmetric(vertical: 10.0),
                                                                       child: Visibility(
-                                                                        visible: viewlanguagetext,
-                                                                        child: Text(
-                                                                          "English",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            // fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
+                                                                          visible: viewlanguagetext,
+                                                                          child: FutureBuilder<Getresp>(
+                                                                            future: _futureAlbum,
+                                                                            builder: (context, snapshot) {
+                                                                              if (snapshot.hasData) {
+                                                                                return
+                                                                                  Text(
+                                                                                    snapshot.data!.data.usr_language,
+                                                                                    textAlign: TextAlign.center,
+                                                                                    style: TextStyle(
+                                                                                      color: Color(0xFF989898 ),
+                                                                                      // fontSize: 15.sp,
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                    ),
 
-                                                                        ),
+                                                                                  );
+                                                                              } else if (snapshot.hasError) {
+                                                                                return Text('${snapshot.error}');
+                                                                              }
+
+                                                                              // By default, show a loading spinner.
+                                                                              return const CircularProgressIndicator();
+                                                                            },
+                                                                          )
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1517,10 +1577,13 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       mainAxisAlignment: MainAxisAlignment.start,
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
+                                                        Container(
+                                                          height: 10.sp,
+                                                        ),
                                                         Row(
                                                           children: [
                                                             Expanded(
-                                                              flex: 3,
+                                                              flex: 4,
                                                               child: SizedBox(
                                                                 height: 40.sp,
                                                                 width: 40.sp,
@@ -1535,7 +1598,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
 
                                                             Expanded(
-                                                              flex: 7,
+                                                              flex: 6,
                                                               child: Container(
                                                                 padding: EdgeInsets.only(left: 5.sp,right: 5.sp,top: 5.sp),
                                                                 height: 47.sp,
@@ -1597,11 +1660,11 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
 
                                                                             ),
-                                                                            /*  boxShadow: [
+                                                                            /* boxShadow: [
                                                                                  BoxShadow(
                                                                                    color: Colors.grey.withOpacity(0.2),
                                                                                    blurRadius: 2.0,
-                                                                                   spreadRadius: 0.0,
+                                                                                   spreadRadius: 3.0,
                                                                                    offset: Offset(2.0, 2.0), // changes position of shadow
                                                                                  ),
                                                                                ],*/
@@ -1780,13 +1843,315 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                 // fixedSize: Size(426.sp, 149.sp),
                                                                 // minimumSize: MaterialStateProperty.all(Size(width, 50)),
                                                                 backgroundColor:
-                                                                MaterialStateProperty.all(Color(0xFFFF2D5E),),
+                                                                MaterialStateProperty.all(Color(0xFF29AAE1),),
                                                                 // elevation: MaterialStateProperty.all(3),
                                                                 shadowColor:
-                                                                MaterialStateProperty.all( Color(0xFFFF2D5E),),
+                                                                MaterialStateProperty.all( Color(0xFF29AAE1),),
                                                               ),
                                                               onPressed: () {
+                                                                showDialog(
+                                                                    context: context,
+                                                                    builder: (context){
+                                                                      return Dialog(
+                                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                        elevation: 16,
 
+                                                                        child: Container(
+                                                                          // padding: EdgeInsets.all(5.sp),
+                                                                          width: 400.sp,
+                                                                          height: 400.sp,
+                                                                          decoration: BoxDecoration(
+                                                                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                            gradient: LinearGradient(
+                                                                                begin: Alignment.topLeft,
+                                                                                end: Alignment.bottomRight,
+                                                                                colors: <Color> [
+                                                                                  Color(0xFF3A3A3A),
+                                                                                  Color(0xFF8B8B8B),
+                                                                                  Color(0xFFDBDCDE),
+
+
+
+
+
+                                                                                ],
+                                                                                tileMode: TileMode.repeated
+                                                                            ),
+                                                                          ),
+                                                                          child: SingleChildScrollView(
+                                                                            child: Column(
+                                                                              children: [
+                                                                                Center(
+                                                                                  child: SizedBox(
+                                                                                    height: 65.sp,
+                                                                                    width: 200.sp,
+                                                                                    child: Image(image: AssetImage(
+                                                                                        'assets/images/emazelogofirst.png'
+                                                                                    ),
+
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                /*  Container(
+                                          height: 10.sp,
+                                        ),*/
+                                                                                Container(
+                                                                                  height: 54.sp,
+                                                                                  width: 500.sp,
+                                                                                  decoration: BoxDecoration(
+                                                                                    //  color: Colors.transparent
+                                                                                    gradient: LinearGradient(
+                                                                                        begin: Alignment.centerLeft,
+                                                                                        end: Alignment.centerRight,
+                                                                                        colors: <Color> [
+                                                                                          Color(0xFFB2BEB5),
+                                                                                          Color(0xFFE5E4E2),
+
+
+
+
+
+
+                                                                                        ],
+                                                                                        tileMode: TileMode.repeated
+                                                                                    ),
+                                                                                  ),
+                                                                                  child: Center(
+                                                                                    child: Text(
+                                                                                      "CHANGE PASSWORD",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                        color: Color(0xFFffffff),
+                                                                                        //  fontSize: 35.sp,
+                                                                                        fontFamily:  '',
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                      ),
+
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  height: 10.sp,
+                                                                                ),
+                                                                                Neumorphic(
+                                                                                  margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                  style: NeumorphicStyle(
+                                                                                      depth: NeumorphicTheme.embossDepth(context),
+                                                                                      boxShape: NeumorphicBoxShape.stadium(),
+                                                                                      color: Colors.white
+                                                                                  ),
+                                                                                  //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                  child: Container(
+                                                                                    height: 45.sp,
+                                                                                    padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                    child: TextFormField(
+                                                                                      // enabled:regemail,
+                                                                                      controller: OldpwdController,
+                                                                                      obscureText: !_passwordVisible,
+
+
+                                                                                      decoration: InputDecoration(
+                                                                                          border: InputBorder.none,
+                                                                                          //  filled: true,
+                                                                                          fillColor: Colors.white70,
+
+                                                                                          hintText: 'Old password',
+                                                                                          suffixIcon: GestureDetector(
+                                                                                            onLongPress: () {
+                                                                                              setState(() {
+                                                                                                _passwordVisible = true;
+                                                                                              });
+                                                                                            },
+                                                                                            onLongPressUp: () {
+                                                                                              setState(() {
+                                                                                                _passwordVisible = false;
+                                                                                              });
+                                                                                            },
+                                                                                            child: Icon(
+                                                                                                _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                                                            ),
+                                                                                          )
+
+                                                                                      ),
+                                                                                      textInputAction: TextInputAction.done,
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  height: 10.sp,
+                                                                                ),
+                                                                                Visibility(
+                                                                                  visible: false,
+                                                                                  child: Container(
+                                                                                    child: Text(
+                                                                                      "Email required or please enter valid email.",
+                                                                                      style: TextStyle(
+                                                                                        color: Colors.red,
+
+                                                                                      ),
+
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  height: 10.sp,
+                                                                                ),
+                                                                                Neumorphic(
+                                                                                  margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                  style: NeumorphicStyle(
+                                                                                      depth: NeumorphicTheme.embossDepth(context),
+                                                                                      boxShape: NeumorphicBoxShape.stadium(),
+                                                                                      color: Colors.white
+                                                                                  ),
+                                                                                  //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                  child: Container(
+                                                                                    height: 45.sp,
+                                                                                    padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                    child: TextFormField(
+                                                                                      // enabled:regemail,
+                                                                                      controller: newpwdController,
+                                                                                      obscureText: !_newpasswordVisible,
+
+
+                                                                                      decoration: InputDecoration(
+                                                                                          border: InputBorder.none,
+                                                                                          //  filled: true,
+                                                                                          fillColor: Colors.white70,
+
+                                                                                          hintText: 'New password',
+                                                                                          suffixIcon: GestureDetector(
+                                                                                            onLongPress: () {
+                                                                                              setState(() {
+                                                                                                _newpasswordVisible = true;
+                                                                                              });
+                                                                                            },
+                                                                                            onLongPressUp: () {
+                                                                                              setState(() {
+                                                                                                _newpasswordVisible = false;
+                                                                                              });
+                                                                                            },
+                                                                                            child: Icon(
+                                                                                                _newpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                                            ),
+                                                                                          )
+
+                                                                                      ),
+
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  height: 10.sp,
+                                                                                ),
+                                                                                Visibility(
+                                                                                  visible: false,
+                                                                                  child: Container(
+                                                                                    child: Text(
+                                                                                      "Email required or please enter valid email.",
+                                                                                      style: TextStyle(
+                                                                                        color: Colors.red,
+
+                                                                                      ),
+
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  height: 10.sp,
+                                                                                ),
+                                                                                Neumorphic(
+                                                                                  margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                  style: NeumorphicStyle(
+                                                                                      depth: NeumorphicTheme.embossDepth(context),
+                                                                                      boxShape: NeumorphicBoxShape.stadium(),
+                                                                                      color: Colors.white
+                                                                                  ),
+                                                                                  //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                  child: Container(
+                                                                                    height: 45.sp,
+                                                                                    padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                    child: TextFormField(
+                                                                                      // enabled:regemail,
+                                                                                      controller: confirmpwdController,
+
+                                                                                      obscureText: !_confirmpasswordVisible,
+
+
+                                                                                      decoration: InputDecoration(
+                                                                                          border: InputBorder.none,
+                                                                                          //  filled: true,
+                                                                                          fillColor: Colors.white70,
+
+                                                                                          hintText: 'Confirm password',
+                                                                                          suffixIcon: GestureDetector(
+                                                                                            onLongPress: () {
+                                                                                              setState(() {
+                                                                                                _confirmpasswordVisible = true;
+                                                                                              });
+                                                                                            },
+                                                                                            onLongPressUp: () {
+                                                                                              setState(() {
+                                                                                                _confirmpasswordVisible = false;
+                                                                                              });
+                                                                                            },
+                                                                                            child: Icon(
+                                                                                                _confirmpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                                            ),
+                                                                                          )
+
+                                                                                      ),
+
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  height: 10.sp,
+                                                                                ),
+                                                                                Visibility(
+                                                                                  visible: false,
+                                                                                  child: Container(
+                                                                                    child: Text(
+                                                                                      "Email required or please enter valid email.",
+                                                                                      style: TextStyle(
+                                                                                        color: Colors.red,
+
+                                                                                      ),
+
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  padding: EdgeInsets.all(10.sp),
+                                                                                  child: ButtonTheme(
+                                                                                    minWidth: 182.sp,
+                                                                                    height: 55.sp,
+                                                                                    shape: new RoundedRectangleBorder(
+                                                                                      borderRadius: new BorderRadius.circular(40.sp),
+                                                                                    ),
+                                                                                    child: RaisedButton(
+
+                                                                                      onPressed: ()  {
+                                                                                       // changepwd();
+                                                                                      },
+
+                                                                                      color: Color(0xFF29AAE1),
+                                                                                      child: Text("Submit",
+                                                                                        style: TextStyle(
+                                                                                          color: Colors.white,
+
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        ),
+
+                                                                      );
+                                                                    }
+                                                                );
                                                               },
                                                               child: Text("Change Password >",
                                                                 style: TextStyle(

@@ -132,7 +132,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
   TextEditingController regpasswordController = TextEditingController();
   TextEditingController regemailController = TextEditingController();
   TextEditingController regphnoController = TextEditingController();
-
+  TextEditingController forgotemailController = TextEditingController();
   void clearregtext(){
     regnameController.clear();
     regpasswordController.clear();
@@ -189,14 +189,41 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
     super.initState();
     _passwordVisible = false;
     _regpasswordVisible = false;
+    _loginusernamefocusnode = FocusNode();
     _loginpwdfocusnode = FocusNode();
-    // _regusernamefocusnode=FocusNode();
+    _regusernamefocusnode=FocusNode();
+    _regusernamefocusnode.addListener(_onFocusChange);
     _regpwdfocusnode=FocusNode();
+    _regpwdfocusnode.addListener(_onFocusChange);
     _regemailfocusnode=FocusNode();
+    _regemailfocusnode.addListener(_onFocusChange);
     _regphfocusnode=FocusNode();
+    _regphfocusnode.addListener(_onFocusChange);
     futureAlbum = fetchterms();
     privacypolicy=fetchprivacypolicy();
 
+  }
+  @override
+  void dispose() {
+    // Clean up the focus node when the Form is disposed.
+    // _loginusernamefocusnode.dispose();
+    _loginusernamefocusnode.dispose();
+    _loginpwdfocusnode.dispose();
+    _regusernamefocusnode.removeListener(_onFocusChange);
+    _regusernamefocusnode.dispose();
+    _regpwdfocusnode.removeListener(_onFocusChange);
+    _regpwdfocusnode.dispose();
+    _regphfocusnode.removeListener(_onFocusChange);
+    _regphfocusnode.dispose();
+    _regemailfocusnode.removeListener(_onFocusChange);
+    _regemailfocusnode.dispose();
+    super.dispose();
+  }
+  void _onFocusChange(){
+
+    debugPrint("Focusregusername: ${_regusernamefocusnode.hasFocus.toString()}");
+    debugPrint("Focusregemail: ${_regemailfocusnode.hasFocus.toString()}");
+    debugPrint("Focusregph: ${_regphfocusnode.hasFocus.toString()}");
   }
   bool viewvalidusername = false ;
   bool validemail = false ;
@@ -254,17 +281,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
       validpwd = false ;
     });
   }
-  @override
-  void dispose() {
-    // Clean up the focus node when the Form is disposed.
-    // _loginusernamefocusnode.dispose();
-    _loginpwdfocusnode.dispose();
-    //  _regusernamefocusnode=FocusNode();
-    _regpwdfocusnode.dispose();
-    _regemailfocusnode.dispose();
-    _regphfocusnode.dispose();
-    super.dispose();
-  }
+
   @override
   Widget build(BuildContext context) {
     var radius = Radius.circular(40);
@@ -661,11 +678,13 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                         child: Column(
                                                           children: [
                                                             RawKeyboardListener(
-                                                              focusNode: FocusNode(),
+                                                              focusNode: _loginusernamefocusnode,
                                                               onKey: (event) {
                                                                 if ((event.logicalKey == LogicalKeyboardKey.tab)){
                                                                   print("Tab Key pressed");
+                                                                  _loginusernamefocusnode.unfocus();
                                                                   _loginpwdfocusnode.requestFocus();
+
                                                                   // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
                                                                   // focusNode: _loginpwdfocusnode.requestFocus();
                                                                 }
@@ -696,9 +715,10 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                   return null;
                                                                 },
                                                                 textInputAction: TextInputAction.next,
-                                                                /* onFieldSubmitted: (v){
-                                                                  FocusScope.of(context).requestFocus(focus);
-                                                                },*/
+                                                                onFieldSubmitted: (v){
+                                                                  _loginusernamefocusnode.unfocus();
+                                                                  _loginpwdfocusnode.requestFocus();
+                                                                },
 
                                                                 //   onEditingComplete: () => _loginpwdfocusnode.requestFocus(),
                                                               ),
@@ -707,6 +727,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                               focusNode: _loginpwdfocusnode,
                                                               child: TextFormField(
                                                                 enabled: pwd,
+                                                                // focusNode: _loginpwdfocusnode,
                                                                 obscureText: !_passwordVisible,
                                                                 controller: passwordController,
                                                                 //  focusNode: _loginpwdfocusnode,
@@ -742,7 +763,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                   if (_formKey.currentState!.validate()) {
                                                                     try {
                                                                       GetLoginResponse resp=
-                                                                          await context.read(apiClientProvider).login(
+                                                                      await context.read(apiClientProvider).login(
                                                                           Loginuser( nameController.text, passwordController.text
                                                                           )
                                                                       );
@@ -850,14 +871,188 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                             ),
                                                             Spacer(),
-                                                            Text(
-                                                              "Forgot password?",
-                                                              textAlign: TextAlign.center,
-                                                              style: TextStyle(
-                                                                color: Colors.white,
-                                                                // fontSize: 15.sp
-                                                              ),
+                                                            GestureDetector(
+                                                              onTap: (){
+                                                                showDialog(
+                                                                    context: context,
+                                                                    builder: (context){
+                                                                      return Dialog(
+                                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                        elevation: 16,
+                                                                        child: SingleChildScrollView(
+                                                                          child: Container(
+                                                                            width: 400.sp,
+                                                                            height: 400.sp,
+                                                                            decoration: BoxDecoration(
+                                                                              borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                              gradient: LinearGradient(
+                                                                                  begin: Alignment.topLeft,
+                                                                                  end: Alignment.bottomRight,
+                                                                                  colors: <Color> [
+                                                                                    Color(0xFF2b2b49),
+                                                                                    Color(0xFF0d2561),
+                                                                                    Color(0xFF005890),
+                                                                                    Color(0xFF0071a6),
 
+
+
+
+
+                                                                                  ],
+                                                                                  tileMode: TileMode.repeated
+                                                                              ),
+                                                                            ),
+                                                                            child: Column(
+                                                                              children: [
+                                                                                Center(
+                                                                                  child: SizedBox(
+                                                                                    height: 100.sp,
+                                                                                    width: 200.sp,
+                                                                                    child: Image(image: AssetImage(
+                                                                                        'assets/images/emazelogofirst.png'
+                                                                                    ),
+
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  height: 10.sp,
+                                                                                ),
+                                                                                Container(
+                                                                                  height: 54.sp,
+                                                                                  width: 500.sp,
+                                                                                  decoration: BoxDecoration(
+                                                                                    // borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                                    gradient: LinearGradient(
+                                                                                        begin: Alignment.centerLeft,
+                                                                                        end: Alignment.centerRight,
+                                                                                        colors: <Color> [
+                                                                                          Color(0xFF005088),
+                                                                                          Color(0xFF29AAE1),
+
+
+
+
+
+
+                                                                                        ],
+                                                                                        tileMode: TileMode.repeated
+                                                                                    ),
+                                                                                  ),
+                                                                                  child: Center(
+                                                                                    child: Text(
+                                                                                      "Forgot password",
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: TextStyle(
+                                                                                        color: Color(0xFFffffff),
+                                                                                        //  fontSize: 35.sp,
+                                                                                        fontFamily:  '',
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                      ),
+
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  height: 10.sp,
+                                                                                ),
+                                                                                Neumorphic(
+                                                                                  margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                  style: NeumorphicStyle(
+                                                                                      depth: NeumorphicTheme.embossDepth(context),
+                                                                                      boxShape: NeumorphicBoxShape.stadium(),
+                                                                                      color: Colors.white
+                                                                                  ),
+                                                                                  //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                  child: Container(
+                                                                                    height: 45.sp,
+                                                                                    padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                    child: TextFormField(
+                                                                                      // enabled:regemail,
+                                                                                      controller: forgotemailController,
+
+                                                                                      validator: (regemailvalue) {
+                                                                                        final bool isValid = EmailValidator.validate(regemailvalue!);
+                                                                                        if (regemailvalue.isEmpty) {
+                                                                                          showvalidemail();
+                                                                                        }
+                                                                                        if (!isValid) {
+                                                                                          showvalidemail();
+                                                                                          // return "Email address invalid";
+                                                                                        }
+                                                                                        else{
+                                                                                          hidevalidemail();
+                                                                                        }
+                                                                                      },
+
+                                                                                      decoration: InputDecoration(
+                                                                                        border: InputBorder.none,
+                                                                                        //  filled: true,
+                                                                                        fillColor: Colors.white70,
+
+                                                                                        hintText: 'Email',
+
+                                                                                      ),
+                                                                                      textInputAction: TextInputAction.done,
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  height: 10.sp,
+                                                                                ),
+                                                                                Visibility(
+                                                                                  visible: validemail,
+                                                                                  child: Container(
+                                                                                    child: Text(
+                                                                                      "Email required or please enter valid email.",
+                                                                                      style: TextStyle(
+                                                                                        color: Colors.red,
+
+                                                                                      ),
+
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  child: ButtonTheme(
+                                                                                    minWidth: 182.sp,
+                                                                                    height: 63.sp,
+                                                                                    shape: new RoundedRectangleBorder(
+                                                                                      borderRadius: new BorderRadius.circular(40.sp),
+                                                                                    ),
+                                                                                    child: RaisedButton(
+
+                                                                                      onPressed: () async {
+
+                                                                                      },
+
+                                                                                      color: Color(0xFF29AAE1),
+                                                                                      child: Text("Submit",
+                                                                                        style: TextStyle(
+                                                                                          color: Colors.white,
+
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    }
+                                                                );
+                                                              },
+                                                              child: Text(
+                                                                "Forgot password?",
+                                                                textAlign: TextAlign.center,
+                                                                style: TextStyle(
+                                                                  color: Colors.white,
+                                                                  // fontSize: 15.sp
+                                                                ),
+
+                                                              ),
                                                             ),
 
                                                           ],
@@ -1108,37 +1303,19 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                   ),
                                                                   Expanded(
                                                                     flex: 9,
-                                                                    child: RawKeyboardListener(
-                                                                      focusNode: FocusNode(),
-                                                                      onKey: (event) {
-                                                                        if ((event.logicalKey == LogicalKeyboardKey.tab)){
-                                                                          print("Tab Key pressed");
-                                                                          //  FocusScope.of(context).unfocus();
-                                                                          _regemailfocusnode.requestFocus();
 
-                                                                          // _regphfocusnode.requestFocus();
-                                                                          //  _regpwdfocusnode.requestFocus();
-                                                                          // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
-                                                                          // focusNode: _loginpwdfocusnode.requestFocus();
-                                                                        }
-                                                                        /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
-                                                                  print("ENTER Key pressed");
-                                                                  //Do something
-                                                                  focusNode: _loginpwdfocusnode.requestFocus();
-                                                                }*/
-                                                                      },
-                                                                      child: Neumorphic(
+                                                                    child: Neumorphic(
+                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
 
-                                                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                      style: NeumorphicStyle(
+                                                                        depth: NeumorphicTheme.embossDepth(context),
+                                                                        boxShape: NeumorphicBoxShape.stadium(),
+                                                                        color: Colors.white,
 
-                                                                        style: NeumorphicStyle(
-                                                                          depth: NeumorphicTheme.embossDepth(context),
-                                                                          boxShape: NeumorphicBoxShape.stadium(),
-                                                                          color: Colors.white,
 
-                                                                        ),
-                                                                      //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                        /*padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
+                                                                      ),
+                                                                      // padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                                                                      /*padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
                                                                         decoration: ShapeDecoration(
                                                                           gradient: LinearGradient(
                                                                             colors: [Color(0xFFdfdfdf), Color(0xFFf1f1f1)],
@@ -1151,9 +1328,31 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                             borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                                           ),
                                                                         ),*/
-                                                                        child: Container(
-                                                                          height: 45.sp,
-                                                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                      child: Container(
+                                                                        height: 45.sp,
+                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+
+                                                                        child: RawKeyboardListener(
+
+                                                                          focusNode: _regusernamefocusnode,
+                                                                          onKey: (event) {
+                                                                            //  print(event);
+                                                                            if ((event.logicalKey == LogicalKeyboardKey.tab /*&& _regusernamefocusnode==true*/ )){
+                                                                              print("Tab Key pressed");
+                                                                              //  FocusScope.of(context).unfocus();
+                                                                              //_regusernamefocusnode.unfocus();
+                                                                              debugPrint("focususernamessss: ${_regusernamefocusnode.hasFocus.toString()}");
+
+                                                                              _regemailfocusnode.requestFocus();
+
+
+                                                                            }
+                                                                            /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                                  print("ENTER Key pressed");
+                                                                  //Do something
+                                                                  focusNode: _loginpwdfocusnode.requestFocus();
+                                                                }*/
+                                                                          },
                                                                           child: TextFormField(
                                                                             validator: (regvalue) {
                                                                               if (regvalue == null || regvalue.isEmpty) {
@@ -1176,12 +1375,17 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                               hintText: 'Full Name',
 
                                                                             ),
-                                                                            maxLines: 1,
+                                                                            // maxLines: 1,
+                                                                            onFieldSubmitted: (value){
+                                                                              _regusernamefocusnode.unfocus();
+                                                                              _regemailfocusnode.requestFocus();
+                                                                            },
                                                                             textInputAction: TextInputAction.next,
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
+
                                                                   ),
 
 
@@ -1216,36 +1420,30 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                   ),
                                                                   Expanded(
                                                                     flex: 9,
-                                                                    child: RawKeyboardListener(
-                                                                      focusNode: _regemailfocusnode,
-                                                                      onKey: (event) {
-                                                                        if ((event.logicalKey == LogicalKeyboardKey.tab)){
-                                                                          print("Tab Key pressed");
-                                                                          //  FocusScope.of(context).unfocus();
-                                                                          _regphfocusnode.requestFocus();
 
-                                                                          // _regphfocusnode.requestFocus();
-                                                                          //  _regpwdfocusnode.requestFocus();
-                                                                          // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
-                                                                          // focusNode: _loginpwdfocusnode.requestFocus();
-                                                                        }
-                                                                        /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
-                                                                  print("ENTER Key pressed");
-                                                                  //Do something
-                                                                  focusNode: _loginpwdfocusnode.requestFocus();
-                                                                }*/
-                                                                      },
-                                                                      child: Neumorphic(
-                                                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                        style: NeumorphicStyle(
-                                                                            depth: NeumorphicTheme.embossDepth(context),
-                                                                            boxShape: NeumorphicBoxShape.stadium(),
-                                                                            color: Colors.white
-                                                                        ),
-                                                                      //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                        child: Container(
-                                                                          height: 45.sp,
-                                                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+
+                                                                    child: Neumorphic(
+                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                      style: NeumorphicStyle(
+                                                                          depth: NeumorphicTheme.embossDepth(context),
+                                                                          boxShape: NeumorphicBoxShape.stadium(),
+                                                                          color: Colors.white
+                                                                      ),
+                                                                      //padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                                                                      child: Container(
+                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                        height: 50.sp,
+                                                                        child: RawKeyboardListener(
+                                                                          focusNode: _regemailfocusnode,
+                                                                          onKey: (emailevent){
+                                                                            // print(emailevent);
+                                                                            if ((emailevent.logicalKey == LogicalKeyboardKey.tab)){
+                                                                              _regphfocusnode.requestFocus();
+                                                                              debugPrint("Focusreemailsss: ${_regemailfocusnode.hasFocus.toString()}");
+                                                                              print("email tab");
+
+                                                                            }
+                                                                          },
                                                                           child: TextFormField(
                                                                             enabled:regemail,
                                                                             controller: regemailController,
@@ -1272,11 +1470,12 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                               hintText: 'Email',
 
                                                                             ),
-                                                                            textInputAction: TextInputAction.done,
+                                                                            textInputAction: TextInputAction.next,
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
+
                                                                   )
                                                                 ],
                                                               ),
@@ -1308,49 +1507,39 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                   ),
                                                                   Expanded(
                                                                     flex: 9,
-                                                                    child: RawKeyboardListener(
-                                                                      focusNode: _regphfocusnode,
-                                                                      onKey: (event) {
-                                                                        if ((event.logicalKey == LogicalKeyboardKey.tab)){
-                                                                          print("Tab Key pressed");
-                                                                          //  FocusScope.of(context).unfocus();
-                                                                          _regpwdfocusnode.requestFocus();
+                                                                    child: Neumorphic(
+                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                      style: NeumorphicStyle(
+                                                                          depth: NeumorphicTheme.embossDepth(context),
+                                                                          boxShape: NeumorphicBoxShape.stadium(),
+                                                                          color: Colors.white
+                                                                      ),
+                                                                      //padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                                                                      child: Container(
+                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                        height: 50.sp,
+                                                                        child: RawKeyboardListener(
+                                                                          focusNode: _regphfocusnode,
+                                                                          onKey: (phevent){
+                                                                            // print(phevent);
+                                                                            if ((phevent.logicalKey == LogicalKeyboardKey.tab)){
+                                                                              _regpwdfocusnode.requestFocus();
 
-                                                                          // _regphfocusnode.requestFocus();
-                                                                          //  _regpwdfocusnode.requestFocus();
-                                                                          // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
-                                                                          // focusNode: _loginpwdfocusnode.requestFocus();
-                                                                        }
-                                                                        /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
-                                                                  print("ENTER Key pressed");
-                                                                  //Do something
-                                                                  focusNode: _loginpwdfocusnode.requestFocus();
-                                                                }*/
-                                                                      },
-                                                                      child: Neumorphic(
-                                                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                        style: NeumorphicStyle(
-                                                                            depth: NeumorphicTheme.embossDepth(context),
-                                                                            boxShape: NeumorphicBoxShape.stadium(),
-                                                                            color: Colors.white
-                                                                        ),
-                                                                      //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                        child: Container(
-                                                                          height: 45.sp,
-                                                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                              print("ph tab");
+
+                                                                            }
+                                                                          },
                                                                           child: TextFormField(
                                                                             enabled:regph,
+                                                                            keyboardType: TextInputType.number,
+                                                                            inputFormatters: <TextInputFormatter>[
+                                                                              FilteringTextInputFormatter.digitsOnly],
                                                                             controller: regphnoController,
 
                                                                             validator: (regphvalue) {
-                                                                              if (regphvalue!.isEmpty) {
-
-                                                                                showvalidph();
-                                                                              }
-                                                                              else{
-                                                                                hidevalidph();
-                                                                              }
+                                                                              validateMobile(regphvalue);
                                                                             },
+
 
                                                                             decoration: InputDecoration(
                                                                               border: InputBorder.none,
@@ -1360,7 +1549,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                               hintText: 'Phone number',
 
                                                                             ),
-                                                                            textInputAction: TextInputAction.done,
+                                                                            textInputAction: TextInputAction.next,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -1375,7 +1564,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                 visible: validph,
                                                                 child: Container(
                                                                   child: Text(
-                                                                    "Phone number required.",
+                                                                    "Phone number required or enter valid phone number.",
                                                                     style: TextStyle(
                                                                       color: Colors.red,
 
@@ -1406,7 +1595,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                             boxShape: NeumorphicBoxShape.stadium(),
                                                                             color: Colors.white
                                                                         ),
-                                                                      //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                        //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                                                                         child: Container(
                                                                           height: 45.sp,
                                                                           padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
@@ -1450,11 +1639,12 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                                   hideWidget();
                                                                                   try {
                                                                                     Getreguserresponse resp=
-                                                                                        await context.read(apiClientProvider).createUser(
+                                                                                    await context.read(apiClientProvider).createUser(
                                                                                         Reguser(
-                                                                                            regnameController.text, "","",regemailController.text,regphnoController.text,regpasswordController.text,"2"
+                                                                                            regnameController.text, "","",regemailController.text,regphnoController.text,regpasswordController.text,"1"
                                                                                         )
                                                                                     );
+
 
 
                                                                                     print("Regions: ${resp.data.toJson()}");
@@ -1601,7 +1791,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                                                           ),
                                                                                           child: Text(
-                                                                                            'Privacy Policy',
+                                                                                            ' Privacy Policy ',
                                                                                             textAlign: TextAlign.center,
 
                                                                                             style: TextStyle(
@@ -1612,7 +1802,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                                         ),
                                                                                       ),
                                                                                       Text(
-                                                                                        'Terms and Conditions',
+                                                                                        ' Terms and Conditions ',
                                                                                         textAlign: TextAlign.center,
                                                                                         style: TextStyle(
                                                                                           fontWeight: FontWeight.bold,
@@ -1796,7 +1986,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                               },
                                                               child: Text.rich(
                                                                 TextSpan(
-                                                                  text: "I'm agree with",
+                                                                  text: "I'm agree with ",
 
                                                                   style: TextStyle(
                                                                     color: Colors.white,
@@ -1861,6 +2051,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                           child: RaisedButton(
 
                                                             onPressed: () async {
+
                                                               if (_regformKey.currentState!.validate()) {
 
                                                                 if(selectedbox==true){
@@ -2072,6 +2263,15 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                 }
             )
     );
+  }
+
+  void validateMobile(String? regphvalue) {
+    if (regphvalue!.length!= 13){
+      showvalidph();
+    }
+    else{
+      hidevalidph();
+    }
   }
 
 }

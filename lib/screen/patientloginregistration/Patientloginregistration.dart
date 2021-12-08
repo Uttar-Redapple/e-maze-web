@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:html';
 
 import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
@@ -72,8 +73,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   late FocusNode _loginusernamefocusnode;
   late FocusNode _loginpwdfocusnode;
   late FocusNode _regusernamefocusnode;
-  late final FocusNode _regemailfocusnode;
-  late final FocusNode _regphfocusnode;
+  late  FocusNode _regemailfocusnode;
+  late  FocusNode _regphfocusnode;
   late FocusNode _regpwdfocusnode;
 
   bool _hasBeenPressedlogin = false;
@@ -209,12 +210,37 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
     _loginusernamefocusnode = FocusNode();
     _loginpwdfocusnode = FocusNode();
     _regusernamefocusnode=FocusNode();
+    _regusernamefocusnode.addListener(_onFocusChange);
     _regpwdfocusnode=FocusNode();
+    _regpwdfocusnode.addListener(_onFocusChange);
     _regemailfocusnode=FocusNode();
+    _regemailfocusnode.addListener(_onFocusChange);
     _regphfocusnode=FocusNode();
+    _regphfocusnode.addListener(_onFocusChange);
     futureAlbum = fetchterms();
     privacypolicy=fetchprivacypolicy();
 
+  }
+  @override
+  void dispose() {
+    // Clean up the focus node when the Form is disposed.
+    _loginusernamefocusnode.dispose();
+    _loginpwdfocusnode.dispose();
+    _regusernamefocusnode.removeListener(_onFocusChange);
+    _regusernamefocusnode.dispose();
+    _regpwdfocusnode.removeListener(_onFocusChange);
+    _regpwdfocusnode.dispose();
+    _regphfocusnode.removeListener(_onFocusChange);
+    _regphfocusnode.dispose();
+    _regemailfocusnode.removeListener(_onFocusChange);
+    _regemailfocusnode.dispose();
+    super.dispose();
+  }
+  void _onFocusChange(){
+
+    debugPrint("Focusregusername: ${_regusernamefocusnode.hasFocus.toString()}");
+    debugPrint("Focusregemail: ${_regemailfocusnode.hasFocus.toString()}");
+    debugPrint("Focusregph: ${_regphfocusnode.hasFocus.toString()}");
   }
   bool viewvalidusername = false ;
   bool validemail = false ;
@@ -272,21 +298,17 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
       validpwd = false ;
     });
   }
-  @override
-  void dispose() {
-    // Clean up the focus node when the Form is disposed.
-    _loginusernamefocusnode.dispose();
-    _loginpwdfocusnode.dispose();
-    _regusernamefocusnode=FocusNode();
-    _regpwdfocusnode.dispose();
-    _regemailfocusnode.dispose();
-    _regphfocusnode.dispose();
-    super.dispose();
-  }
+
+
 
   @override
   Widget build(BuildContext context) {
     var radius = Radius.circular(40);
+    document.addEventListener('keydown', (dynamic event) {
+      if (event.code == 'Tab') {
+        event.preventDefault();
+      }
+    });
     return ScreenUtilInit(
         builder: () =>
             ResponsiveBuilder(
@@ -726,10 +748,10 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               ),
                                                             ),
                                                             RawKeyboardListener(
-                                                              focusNode: FocusNode(),
+                                                              focusNode: _loginpwdfocusnode,
                                                               child: TextFormField(
                                                                 enabled: pwd,
-                                                                focusNode: _loginpwdfocusnode,
+                                                               // focusNode: _loginpwdfocusnode,
                                                                 obscureText: !_passwordVisible,
                                                                 controller: passwordController,
                                                                 //  focusNode: _loginpwdfocusnode,
@@ -943,7 +965,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                               ),
                                                                               child: Center(
                                                                                 child: Text(
-                                                                                  "Forgot password",
+                                                                                  "FORGOT PASSWORD",
                                                                                   textAlign: TextAlign.center,
                                                                                   style: TextStyle(
                                                                                     color: Color(0xFFffffff),
@@ -956,7 +978,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                               ),
                                                                             ),
                                                                             Container(
-                                                                               height: 10.sp,
+                                                                               height: 30.sp,
                                                                             ),
                                                                             Neumorphic(
                                                                               margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
@@ -1000,7 +1022,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                               ),
                                                                             ),
                                                                             Container(
-                                                                              height: 10.sp,
+                                                                              height: 30.sp,
                                                                             ),
                                                                             Visibility(
                                                                               visible: validemail,
@@ -1338,10 +1360,13 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                               focusNode: _regusernamefocusnode,
                                                                               onKey: (event) {
-                                                                                if ((event.logicalKey == LogicalKeyboardKey.tab)){
+                                                                              //  print(event);
+                                                                                if ((event.logicalKey == LogicalKeyboardKey.tab /*&& _regusernamefocusnode==true*/ )){
                                                                                   print("Tab Key pressed");
                                                                                   //  FocusScope.of(context).unfocus();
-                                                                                  _regusernamefocusnode.unfocus();
+                                                                                  //_regusernamefocusnode.unfocus();
+                                                                                  debugPrint("focususernamessss: ${_regusernamefocusnode.hasFocus.toString()}");
+
                                                                                   _regemailfocusnode.requestFocus();
 
 
@@ -1434,9 +1459,12 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                           height: 50.sp,
                                                                           child: RawKeyboardListener(
                                                                             focusNode: _regemailfocusnode,
-                                                                            onKey: (event){
-                                                        if ((event.logicalKey == LogicalKeyboardKey.tab)){
-                                                          _regphfocusnode.requestFocus();
+                                                                            onKey: (emailevent){
+                                                                             // print(emailevent);
+                                                                    if ((emailevent.logicalKey == LogicalKeyboardKey.tab)){
+                                                                     _regphfocusnode.requestFocus();
+                                                                     debugPrint("Focusreemailsss: ${_regemailfocusnode.hasFocus.toString()}");
+                                                                     print("email tab");
 
                                                                        }
                                                                             },
@@ -1503,44 +1531,39 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                   ),
                                                                   Expanded(
                                                                     flex: 9,
-                                                                    child: RawKeyboardListener(
-                                                                      focusNode: _regphfocusnode,
-                                                                      onKey: (event) {
-                                                                        if ((event.logicalKey == LogicalKeyboardKey.tab)){
-                                                                          print("Tab Key pressed");
-                                                                          //  FocusScope.of(context).unfocus();
-                                                                          _regpwdfocusnode.requestFocus();
+                                                                    child: Neumorphic(
+                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                      style: NeumorphicStyle(
+                                                                          depth: NeumorphicTheme.embossDepth(context),
+                                                                          boxShape: NeumorphicBoxShape.stadium(),
+                                                                          color: Colors.white
+                                                                      ),
+                                                                      //padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                                                                      child: Container(
+                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                        height: 50.sp,
+                                                                        child: RawKeyboardListener(
+                                                                          focusNode: _regphfocusnode,
+                                                                          onKey: (phevent){
+                                                                           // print(phevent);
+                                                                            if ((phevent.logicalKey == LogicalKeyboardKey.tab)){
+                                                                              _regpwdfocusnode.requestFocus();
 
-                                                                          // _regphfocusnode.requestFocus();
-                                                                          //  _regpwdfocusnode.requestFocus();
-                                                                          // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
-                                                                          // focusNode: _loginpwdfocusnode.requestFocus();
-                                                                        }
-                                                                        /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
-                                                                  print("ENTER Key pressed");
-                                                                  //Do something
-                                                                  focusNode: _loginpwdfocusnode.requestFocus();
-                                                                }*/
-                                                                      },
-                                                                      child: Neumorphic(
-                                                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                        style: NeumorphicStyle(
-                                                                            depth: NeumorphicTheme.embossDepth(context),
-                                                                            boxShape: NeumorphicBoxShape.stadium(),
-                                                                            color: Colors.white
-                                                                        ),
-                                                                     //   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                        child: Container(
-                                                                          height: 45.sp,
-                                                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                              print("ph tab");
+
+                                                                            }
+                                                                          },
                                                                           child: TextFormField(
                                                                             enabled:regph,
                                                                             keyboardType: TextInputType.number,
+                                                                            inputFormatters: <TextInputFormatter>[
+                                                                              FilteringTextInputFormatter.digitsOnly],
                                                                             controller: regphnoController,
 
                                                                             validator: (regphvalue) {
                                                                               validateMobile(regphvalue);
                                                                             },
+
 
                                                                             decoration: InputDecoration(
                                                                               border: InputBorder.none,
@@ -1550,7 +1573,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                               hintText: 'Phone number',
 
                                                                             ),
-                                                                            textInputAction: TextInputAction.done,
+                                                                            textInputAction: TextInputAction.next,
                                                                           ),
                                                                         ),
                                                                       ),
@@ -1565,7 +1588,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                 visible: validph,
                                                                 child: Container(
                                                                   child: Text(
-                                                                    "Phone number required.",
+                                                                    "Phone number required or enter valid phone number.",
                                                                     style: TextStyle(
                                                                       color: Colors.red,
 
@@ -1792,7 +1815,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                                              ),
                                                                                              child: Text(
-                                                                                               'Privacy Policy',
+                                                                                               ' Privacy Policy ',
                                                                                                textAlign: TextAlign.center,
 
                                                                                                style: TextStyle(
@@ -1803,7 +1826,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                                            ),
                                                                                          ),
                                                                                          Text(
-                                                                                           'Terms and Conditions',
+                                                                                           ' Terms and Conditions ',
                                                                                            textAlign: TextAlign.center,
                                                                                            style: TextStyle(
                                                                                              fontWeight: FontWeight.bold,
@@ -1987,7 +2010,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                              },
                                                               child: Text.rich(
                                                                 TextSpan(
-                                                                  text: "I'm agree with",
+                                                                  text: "I'm agree with ",
 
                                                                   style: TextStyle(
                                                                     color: Colors.white,
@@ -2267,7 +2290,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   }
 
   void validateMobile(String? regphvalue) {
-    if (regphvalue!.length!= 13){
+    if (regphvalue!.length!= 10){
       showvalidph();
     }
     else{
