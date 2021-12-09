@@ -2432,7 +2432,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
           msg: message,
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 10,
+          timeInSecForIosWeb: 2,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0,
@@ -2442,6 +2442,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
 
     } else {
+      Fluttertoast.showToast(
+          msg: "User id not found",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 10,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+          webPosition: "center"
+      );
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
       throw Exception();
