@@ -8,6 +8,8 @@ import 'package:emaze_brain/model/get_reguser.dart';
 import 'package:emaze_brain/model/response/get_loginresp.dart';
 import 'package:emaze_brain/model/response/get_regresponse.dart';
 import 'package:emaze_brain/model/response/get_terms.dart';
+import 'package:emaze_brain/model/response/getchangepwdresponse.dart';
+import 'package:emaze_brain/model/response/getresp.dart';
 import 'package:emaze_brain/provider/api_client_provider.dart';
 import 'package:emaze_brain/screen/gamestartscreen/Gamestartscreen.dart';
 import 'package:emaze_brain/screen/loginscreen/Therapistorpatient.dart';
@@ -19,6 +21,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:http/http.dart' as http;
@@ -63,13 +66,14 @@ class Patientloginregistration extends StatefulWidget{
     // TODO: implement createState
     return PatientloginregistrationState();
   }
-  
+
 }
 class PatientloginregistrationState extends State<Patientloginregistration> with TickerProviderStateMixin{
   late Future<GetTerms> futureAlbum;
   late Future<GetTerms> privacypolicy;
   final _formKey = GlobalKey<FormState>();
   final _regformKey = GlobalKey<FormState>();
+  final _forgotformKey = GlobalKey<FormState>();
   late FocusNode _loginusernamefocusnode;
   late FocusNode _loginpwdfocusnode;
   late FocusNode _regusernamefocusnode;
@@ -81,16 +85,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   bool _hasBeenPressedregister = false;
   double _width = 600.sp;
   double _height = 450.sp;
-   bool roundcheckboxselection=false;
+  bool roundcheckboxselection=false;
   bool viewVisible = false ;
   bool viewerrormsgvisible=false;
   bool viewregsucess=false;
   bool viewreg=false;
   BorderRadiusGeometry _borderRadius = BorderRadius.circular(40.sp);
-   bool regusername=false;
-   bool regpwd=false;
-   bool regph=false;
-   bool regemail=false;
+  bool regusername=false;
+  bool regpwd=false;
+  bool regph=false;
+  bool regemail=false;
 
   bool username=true;
   bool pwd=true;
@@ -112,7 +116,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   TextEditingController regphnoController = TextEditingController();
   TextEditingController forgotemailController = TextEditingController();
   bool _obscureText = true;
-
+  late bool _isButtonDisabled;
   late String _password;
   late bool _passwordVisible;
   late bool _regpasswordVisible;
@@ -120,10 +124,13 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   bool isChecked = false;
   bool isEnabled = true;
   final focus = FocusNode();
-   bool selectedbox=false;
+  bool selectedbox=false;
 
   String checkvalue="Please";
   String valuetext="Wrong username/password";
+
+  var messageresponse;
+  String message="";
 
   void clearregtext(){
     regnameController.clear();
@@ -219,6 +226,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
     _regphfocusnode.addListener(_onFocusChange);
     futureAlbum = fetchterms();
     privacypolicy=fetchprivacypolicy();
+    _isButtonDisabled = false;
 
   }
   @override
@@ -739,9 +747,9 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                   return null;
                                                                 },
                                                                 textInputAction: TextInputAction.next,
-                                                                 onFieldSubmitted: (v){
-                                                                   _loginusernamefocusnode.unfocus();
-                                                                   _loginpwdfocusnode.requestFocus();
+                                                                onFieldSubmitted: (v){
+                                                                  _loginusernamefocusnode.unfocus();
+                                                                  _loginpwdfocusnode.requestFocus();
                                                                 },
 
                                                                 //   onEditingComplete: () => _loginpwdfocusnode.requestFocus(),
@@ -751,7 +759,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                               focusNode: _loginpwdfocusnode,
                                                               child: TextFormField(
                                                                 enabled: pwd,
-                                                               // focusNode: _loginpwdfocusnode,
+                                                                // focusNode: _loginpwdfocusnode,
                                                                 obscureText: !_passwordVisible,
                                                                 controller: passwordController,
                                                                 //  focusNode: _loginpwdfocusnode,
@@ -787,7 +795,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                   if (_formKey.currentState!.validate()) {
                                                                     try {
                                                                       GetLoginResponse resp=
-                                                                          await context.read(apiClientProvider).login(
+                                                                      await context.read(apiClientProvider).login(
                                                                           Loginuser( nameController.text, passwordController.text
                                                                           )
                                                                       );
@@ -797,15 +805,17 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                       if(resp.data.user_type==1){
                                                                         print("usertype: ${resp.data.user_type}");
-                                                                        Navigator.pushNamed(context, 'patient/profile');
+
                                                                         SharedPreferences pref = await SharedPreferences.getInstance();
                                                                         pref.setString('authtoken', resp.data.token);
+                                                                        getuserdetails(resp.data.token,resp.data.user_id);
                                                                         pref.setInt('p_id', resp.data.user_id);
+
                                                                       }
                                                                       else{
                                                                         showerrorWidget();
                                                                       }
-                                                                      print("Regions: ${resp.data.toJson()}");
+                                                                      //print("Regions: ${resp.data.toJson()}");
 
                                                                       clearlogintext();
                                                                       // hideerrorWidget();
@@ -898,62 +908,27 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                             GestureDetector(
                                                               onTap: (){
                                                                 showDialog(
-                                                                  context: context,
-                                                                builder: (context){
-                                                                  return Dialog(
-                                                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                                                                    elevation: 16,
-                                                                    child: SingleChildScrollView(
-                                                                      child: Container(
-                                                                        width: 400.sp,
-                                                                        height: 400.sp,
-                                                                        decoration: BoxDecoration(
-                                                                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                                                                          gradient: LinearGradient(
-                                                                              begin: Alignment.topLeft,
-                                                                              end: Alignment.bottomRight,
-                                                                              colors: <Color> [
-                                                                                Color(0xFF2b2b49),
-                                                                                Color(0xFF0d2561),
-                                                                                Color(0xFF005890),
-                                                                                Color(0xFF0071a6),
-
-
-
-
-
-                                                                              ],
-                                                                              tileMode: TileMode.repeated
-                                                                          ),
-                                                                        ),
-                                                                        child: Column(
-                                                                          children: [
-                                                                            Center(
-                                                                              child: SizedBox(
-                                                                                height: 100.sp,
-                                                                                width: 200.sp,
-                                                                                child: Image(image: AssetImage(
-                                                                                    'assets/images/emazelogofirst.png'
-                                                                                ),
-
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            Container(
-                                                                              height: 10.sp,
-                                                                            ),
-                                                                            Container(
-                                                                              height: 54.sp,
-                                                                              width: 500.sp,
+                                                                    context: context,
+                                                                    builder: (context){
+                                                                      return Dialog(
+                                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                        elevation: 16,
+                                                                        child: SingleChildScrollView(
+                                                                          child: Form(
+                                                                            key: _forgotformKey,
+                                                                            child: Container(
+                                                                              width: 400.sp,
+                                                                              height: 400.sp,
                                                                               decoration: BoxDecoration(
-                                                                               // borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                                borderRadius: BorderRadius.all(Radius.circular(20.0)),
                                                                                 gradient: LinearGradient(
-                                                                                    begin: Alignment.centerLeft,
-                                                                                    end: Alignment.centerRight,
+                                                                                    begin: Alignment.topLeft,
+                                                                                    end: Alignment.bottomRight,
                                                                                     colors: <Color> [
-                                                                                      Color(0xFF005088),
-                                                                                      Color(0xFF29AAE1),
-
+                                                                                      Color(0xFF2b2b49),
+                                                                                      Color(0xFF0d2561),
+                                                                                      Color(0xFF005890),
+                                                                                      Color(0xFF0071a6),
 
 
 
@@ -963,110 +938,162 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                                     tileMode: TileMode.repeated
                                                                                 ),
                                                                               ),
-                                                                              child: Center(
-                                                                                child: Text(
-                                                                                  "FORGOT PASSWORD",
-                                                                                  textAlign: TextAlign.center,
-                                                                                  style: TextStyle(
-                                                                                    color: Color(0xFFffffff),
-                                                                                  //  fontSize: 35.sp,
-                                                                                    fontFamily:  '',
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
+                                                                              child: Column(
+                                                                                children: [
+                                                                                  Center(
+                                                                                    child: SizedBox(
+                                                                                      height: 100.sp,
+                                                                                      width: 200.sp,
+                                                                                      child: Image(image: AssetImage(
+                                                                                          'assets/images/emazelogofirst.png'
+                                                                                      ),
 
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            Container(
-                                                                               height: 30.sp,
-                                                                            ),
-                                                                            Neumorphic(
-                                                                              margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                              style: NeumorphicStyle(
-                                                                                  depth: NeumorphicTheme.embossDepth(context),
-                                                                                  boxShape: NeumorphicBoxShape.stadium(),
-                                                                                  color: Colors.white
-                                                                              ),
-                                                                              //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                              child: Container(
-                                                                                height: 45.sp,
-                                                                                padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                                                                child: TextFormField(
-                                                                                 // enabled:regemail,
-                                                                                  controller: forgotemailController,
-
-                                                                                  validator: (regemailvalue) {
-                                                                                    final bool isValid = EmailValidator.validate(regemailvalue!);
-                                                                                    if (regemailvalue.isEmpty) {
-                                                                                      showvalidemail();
-                                                                                    }
-                                                                                    if (!isValid) {
-                                                                                      showvalidemail();
-                                                                                      // return "Email address invalid";
-                                                                                    }
-                                                                                    else{
-                                                                                      hidevalidemail();
-                                                                                    }
-                                                                                  },
-
-                                                                                  decoration: InputDecoration(
-                                                                                    border: InputBorder.none,
-                                                                                    //  filled: true,
-                                                                                    fillColor: Colors.white70,
-
-                                                                                    hintText: 'Email',
-
-                                                                                  ),
-                                                                                  textInputAction: TextInputAction.done,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            Container(
-                                                                              height: 30.sp,
-                                                                            ),
-                                                                            Visibility(
-                                                                              visible: validemail,
-                                                                              child: Container(
-                                                                                child: Text(
-                                                                                  "Email required or please enter valid email.",
-                                                                                  style: TextStyle(
-                                                                                    color: Colors.red,
-
-                                                                                  ),
-
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            Container(
-                                                                              child: ButtonTheme(
-                                                                                minWidth: 182.sp,
-                                                                                height: 63.sp,
-                                                                                shape: new RoundedRectangleBorder(
-                                                                                  borderRadius: new BorderRadius.circular(40.sp),
-                                                                                ),
-                                                                                child: RaisedButton(
-
-                                                                                  onPressed: () async {
-
-                                                                                  },
-
-                                                                                  color: Color(0xFF29AAE1),
-                                                                                  child: Text("Submit",
-                                                                                    style: TextStyle(
-                                                                                      color: Colors.white,
-
+                                                                                      ),
                                                                                     ),
                                                                                   ),
-                                                                                ),
+                                                                                  Container(
+                                                                                    height: 10.sp,
+                                                                                  ),
+                                                                                  Container(
+                                                                                    height: 54.sp,
+                                                                                    width: 500.sp,
+                                                                                    decoration: BoxDecoration(
+                                                                                      // borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                                      gradient: LinearGradient(
+                                                                                          begin: Alignment.centerLeft,
+                                                                                          end: Alignment.centerRight,
+                                                                                          colors: <Color> [
+                                                                                            Color(0xFF005088),
+                                                                                            Color(0xFF29AAE1),
+
+
+
+
+
+
+                                                                                          ],
+                                                                                          tileMode: TileMode.repeated
+                                                                                      ),
+                                                                                    ),
+                                                                                    child: Center(
+                                                                                      child: Text(
+                                                                                        "FORGOT PASSWORD",
+                                                                                        textAlign: TextAlign.center,
+                                                                                        style: TextStyle(
+                                                                                          color: Color(0xFFffffff),
+                                                                                          //  fontSize: 35.sp,
+                                                                                          fontFamily:  '',
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                        ),
+
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    height: 30.sp,
+                                                                                  ),
+                                                                                  Neumorphic(
+                                                                                    margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                    style: NeumorphicStyle(
+                                                                                        depth: NeumorphicTheme.embossDepth(context),
+                                                                                        boxShape: NeumorphicBoxShape.stadium(),
+                                                                                        color: Colors.white
+                                                                                    ),
+                                                                                    //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                    child: Container(
+                                                                                      height: 45.sp,
+                                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                      child: TextFormField(
+                                                                                        // enabled:regemail,
+                                                                                        controller: forgotemailController,
+
+                                                                                        validator: (regemailvalue) {
+                                                                                          final bool isValid = EmailValidator.validate(regemailvalue!);
+
+                                                                                          if (!isValid) {
+                                                                                            showvalidemailtoast();
+
+                                                                                            // showvalidemail();
+                                                                                            // return "Email address invalid";
+                                                                                          }
+                                                                                          else{
+                                                                                            //hidevalidemail();
+                                                                                          }
+                                                                                        },
+
+                                                                                        decoration: InputDecoration(
+                                                                                          border: InputBorder.none,
+                                                                                          //  filled: true,
+                                                                                          fillColor: Colors.white70,
+
+                                                                                          hintText: 'Email',
+
+                                                                                        ),
+                                                                                        textInputAction: TextInputAction.done,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    height: 30.sp,
+                                                                                  ),
+                                                                                  Visibility(
+                                                                                    visible: validemail,
+                                                                                    child: Container(
+                                                                                      child: Text(
+                                                                                        "Email required or please enter valid email.",
+                                                                                        style: TextStyle(
+                                                                                          color: Colors.red,
+
+                                                                                        ),
+
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    child: ButtonTheme(
+                                                                                      minWidth: 182.sp,
+                                                                                      height: 63.sp,
+                                                                                      shape: new RoundedRectangleBorder(
+                                                                                        borderRadius: new BorderRadius.circular(40.sp),
+                                                                                      ),
+                                                                                      child: RaisedButton(
+
+                                                                                        onPressed: () async {
+                                                                                          if (_forgotformKey.currentState!.validate()) {
+                                                                                            frgtpwd();
+                                                                                          }
+
+                                                                                        },
+
+                                                                                        color: Color(0xFF29AAE1),
+                                                                                        child: Text("Submit",
+                                                                                          style: TextStyle(
+                                                                                            color: Colors.white,
+
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+
+                                                                                  Text(
+                                                                                    "",
+                                                                                    style: TextStyle(
+                                                                                      color: Colors.red,
+
+                                                                                    ),
+
+                                                                                  ),
+                                                                                ],
                                                                               ),
                                                                             ),
-                                                                          ],
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                }
-                                                                );
+                                                                      );
+                                                                    }
+                                                                ).then((val) {
+                                                                  forgotemailController.clear();
+                                                                });;
                                                               },
                                                               child: Text(
                                                                 "Forgot password?",
@@ -1146,15 +1173,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                   if(resp.data.user_type==1){
                                                                     print("usertype: ${resp.data.user_type}");
-                                                                    Navigator.pushNamed(context, 'patient/profile');
+
                                                                     SharedPreferences pref = await SharedPreferences.getInstance();
                                                                     pref.setString('authtoken', resp.data.token);
+                                                                    getuserdetails(resp.data.token,resp.data.user_id);
                                                                     pref.setInt('p_id', resp.data.user_id);
                                                                   }
                                                                   else{
                                                                     showerrorWidget();
                                                                   }
-                                                                  print("Regions: ${resp.data.toJson()}");
+                                                                  // print("Regions: ${resp.data.toJson()}");
 
                                                                   clearlogintext();
                                                                   // hideerrorWidget();
@@ -1328,18 +1356,18 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                   Expanded(
                                                                     flex: 9,
 
-                                                                      child: Neumorphic(
-                                                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                    child: Neumorphic(
+                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
 
-                                                                        style: NeumorphicStyle(
-                                                                            depth: NeumorphicTheme.embossDepth(context),
-                                                                            boxShape: NeumorphicBoxShape.stadium(),
-                                                                            color: Colors.white,
+                                                                      style: NeumorphicStyle(
+                                                                        depth: NeumorphicTheme.embossDepth(context),
+                                                                        boxShape: NeumorphicBoxShape.stadium(),
+                                                                        color: Colors.white,
 
 
-                                                                        ),
-                                                                       // padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                                                                        /*padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
+                                                                      ),
+                                                                      // padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                                                                      /*padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
                                                                         decoration: ShapeDecoration(
                                                                           gradient: LinearGradient(
                                                                             colors: [Color(0xFFdfdfdf), Color(0xFFf1f1f1)],
@@ -1352,63 +1380,63 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                             borderRadius: BorderRadius.all(Radius.circular(32.0)),
                                                                           ),
                                                                         ),*/
-                                                                        child: Container(
-                                                                          height: 45.sp,
-                                                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                      child: Container(
+                                                                        height: 45.sp,
+                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
 
-                                                                          child: RawKeyboardListener(
+                                                                        child: RawKeyboardListener(
 
-                                                                              focusNode: _regusernamefocusnode,
-                                                                              onKey: (event) {
-                                                                              //  print(event);
-                                                                                if ((event.logicalKey == LogicalKeyboardKey.tab /*&& _regusernamefocusnode==true*/ )){
-                                                                                  print("Tab Key pressed");
-                                                                                  //  FocusScope.of(context).unfocus();
-                                                                                  //_regusernamefocusnode.unfocus();
-                                                                                  debugPrint("focususernamessss: ${_regusernamefocusnode.hasFocus.toString()}");
+                                                                          focusNode: _regusernamefocusnode,
+                                                                          onKey: (event) {
+                                                                            //  print(event);
+                                                                            if ((event.logicalKey == LogicalKeyboardKey.tab /*&& _regusernamefocusnode==true*/ )){
+                                                                              print("Tab Key pressed");
+                                                                              //  FocusScope.of(context).unfocus();
+                                                                              //_regusernamefocusnode.unfocus();
+                                                                              debugPrint("focususernamessss: ${_regusernamefocusnode.hasFocus.toString()}");
 
-                                                                                  _regemailfocusnode.requestFocus();
+                                                                              _regemailfocusnode.requestFocus();
 
 
-                                                                                }
-                                                                                /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
+                                                                            }
+                                                                            /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
                                                                   print("ENTER Key pressed");
                                                                   //Do something
                                                                   focusNode: _loginpwdfocusnode.requestFocus();
                                                                 }*/
-                                                                              },
-                                                                            child: TextFormField(
-                                                                              validator: (regvalue) {
-                                                                                if (regvalue == null || regvalue.isEmpty) {
+                                                                          },
+                                                                          child: TextFormField(
+                                                                            validator: (regvalue) {
+                                                                              if (regvalue == null || regvalue.isEmpty) {
 
-                                                                                  showvalidusername();
-                                                                                }
-                                                                                else{
-                                                                                  hidevalidusername();
-                                                                                }
+                                                                                showvalidusername();
+                                                                              }
+                                                                              else{
+                                                                                hidevalidusername();
+                                                                              }
 
-                                                                                //    hidevalidusername();
-                                                                              },
-                                                                              enabled:regusername,
-                                                                              controller: regnameController,
-                                                                              decoration: InputDecoration(
-                                                                                border: InputBorder.none,
-                                                                                //  filled: true,
-                                                                                fillColor: Colors.white70,
+                                                                              //    hidevalidusername();
+                                                                            },
+                                                                            enabled:regusername,
+                                                                            controller: regnameController,
+                                                                            decoration: InputDecoration(
+                                                                              border: InputBorder.none,
+                                                                              //  filled: true,
+                                                                              fillColor: Colors.white70,
 
-                                                                                hintText: 'Full Name',
+                                                                              hintText: 'Full Name',
 
-                                                                              ),
-                                                                             // maxLines: 1,
-                                                                              onFieldSubmitted: (value){
-                                                                                _regusernamefocusnode.unfocus();
-                                                                                _regemailfocusnode.requestFocus();
-                                                                              },
-                                                                              textInputAction: TextInputAction.next,
                                                                             ),
+                                                                            // maxLines: 1,
+                                                                            onFieldSubmitted: (value){
+                                                                              _regusernamefocusnode.unfocus();
+                                                                              _regemailfocusnode.requestFocus();
+                                                                            },
+                                                                            textInputAction: TextInputAction.next,
                                                                           ),
                                                                         ),
                                                                       ),
+                                                                    ),
 
                                                                   ),
 
@@ -1446,59 +1474,59 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                     flex: 9,
 
 
-                                                                      child: Neumorphic(
-                                                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                        style: NeumorphicStyle(
-                                                                            depth: NeumorphicTheme.embossDepth(context),
-                                                                            boxShape: NeumorphicBoxShape.stadium(),
-                                                                            color: Colors.white
-                                                                        ),
-                                                                        //padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                                                                        child: Container(
-                                                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                                                          height: 50.sp,
-                                                                          child: RawKeyboardListener(
-                                                                            focusNode: _regemailfocusnode,
-                                                                            onKey: (emailevent){
-                                                                             // print(emailevent);
-                                                                    if ((emailevent.logicalKey == LogicalKeyboardKey.tab)){
-                                                                     _regphfocusnode.requestFocus();
-                                                                     debugPrint("Focusreemailsss: ${_regemailfocusnode.hasFocus.toString()}");
-                                                                     print("email tab");
+                                                                    child: Neumorphic(
+                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                      style: NeumorphicStyle(
+                                                                          depth: NeumorphicTheme.embossDepth(context),
+                                                                          boxShape: NeumorphicBoxShape.stadium(),
+                                                                          color: Colors.white
+                                                                      ),
+                                                                      //padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                                                                      child: Container(
+                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                        height: 50.sp,
+                                                                        child: RawKeyboardListener(
+                                                                          focusNode: _regemailfocusnode,
+                                                                          onKey: (emailevent){
+                                                                            // print(emailevent);
+                                                                            if ((emailevent.logicalKey == LogicalKeyboardKey.tab)){
+                                                                              _regphfocusnode.requestFocus();
+                                                                              debugPrint("Focusreemailsss: ${_regemailfocusnode.hasFocus.toString()}");
+                                                                              print("email tab");
 
-                                                                       }
+                                                                            }
+                                                                          },
+                                                                          child: TextFormField(
+                                                                            enabled:regemail,
+                                                                            controller: regemailController,
+
+                                                                            validator: (regemailvalue) {
+                                                                              final bool isValid = EmailValidator.validate(regemailvalue!);
+                                                                              if (regemailvalue.isEmpty) {
+                                                                                showvalidemail();
+                                                                              }
+                                                                              if (!isValid) {
+                                                                                showvalidemail();
+                                                                                // return "Email address invalid";
+                                                                              }
+                                                                              else{
+                                                                                hidevalidemail();
+                                                                              }
                                                                             },
-                                                                            child: TextFormField(
-                                                                              enabled:regemail,
-                                                                              controller: regemailController,
 
-                                                                              validator: (regemailvalue) {
-                                                                                final bool isValid = EmailValidator.validate(regemailvalue!);
-                                                                                if (regemailvalue.isEmpty) {
-                                                                                  showvalidemail();
-                                                                                }
-                                                                                if (!isValid) {
-                                                                                  showvalidemail();
-                                                                                  // return "Email address invalid";
-                                                                                }
-                                                                                else{
-                                                                                  hidevalidemail();
-                                                                                }
-                                                                              },
+                                                                            decoration: InputDecoration(
+                                                                              border: InputBorder.none,
+                                                                              //  filled: true,
+                                                                              fillColor: Colors.white70,
 
-                                                                              decoration: InputDecoration(
-                                                                                border: InputBorder.none,
-                                                                                //  filled: true,
-                                                                                fillColor: Colors.white70,
+                                                                              hintText: 'Email',
 
-                                                                                hintText: 'Email',
-
-                                                                              ),
-                                                                              textInputAction: TextInputAction.next,
                                                                             ),
+                                                                            textInputAction: TextInputAction.next,
                                                                           ),
                                                                         ),
                                                                       ),
+                                                                    ),
 
                                                                   )
                                                                 ],
@@ -1545,7 +1573,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                         child: RawKeyboardListener(
                                                                           focusNode: _regphfocusnode,
                                                                           onKey: (phevent){
-                                                                           // print(phevent);
+                                                                            // print(phevent);
                                                                             if ((phevent.logicalKey == LogicalKeyboardKey.tab)){
                                                                               _regpwdfocusnode.requestFocus();
 
@@ -1561,7 +1589,14 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                             controller: regphnoController,
 
                                                                             validator: (regphvalue) {
-                                                                              validateMobile(regphvalue);
+
+                                                                              if (regphvalue!.length< 10 || regphvalue.length> 13 ){
+                                                                                showvalidph();
+                                                                              }
+                                                                              else{
+                                                                                hidevalidph();
+                                                                              }
+
                                                                             },
 
 
@@ -1619,7 +1654,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                             boxShape: NeumorphicBoxShape.stadium(),
                                                                             color: Colors.white
                                                                         ),
-                                                                      //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                        //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                                                                         child: Container(
                                                                           height: 45.sp,
                                                                           padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
@@ -1629,6 +1664,9 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                             controller: regpasswordController,
                                                                             validator: (regpwdvalue) {
                                                                               if (regpwdvalue!.isEmpty) {
+                                                                                showvalidpwd();
+                                                                              }
+                                                                              else if (regpwdvalue.length < 6 ){
                                                                                 showvalidpwd();
                                                                               }
                                                                               else{
@@ -1661,24 +1699,55 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                                 if(selectedbox==true){
                                                                                   hideWidget();
+
                                                                                   try {
-                                                                                    Getreguserresponse resp=
-                                                                                        await context.read(apiClientProvider).createUser(
-                                                                                        Reguser(
-                                                                                            regnameController.text, "","",regemailController.text,regphnoController.text,regpasswordController.text,"1"
-                                                                                        )
-                                                                                    );
-
-
-
-                                                                                    print("Regions: ${resp.data.toJson()}");
-                                                                                    showregsucesswidget();
-                                                                                    /*ScaffoldMessenger.of(context).showSnackBar(
+                                                                                    String name = regnameController.text.toString();
+                                                                                    String lastnames=regnameController.text.toString().trim();
+                                                                                    if(name.contains(" ")){
+                                                                                      final dateList = name.split(" ");
+                                                                                      print( dateList[1]);
+                                                                                      String firstname=dateList[0];
+                                                                                      String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
+                                                                                      print(firstname);
+                                                                                      print(lastname);
+                                                                                      Getreguserresponse resp=
+                                                                                      await context.read(apiClientProvider).createUser(
+                                                                                          Reguser(
+                                                                                              regnameController.text, firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                                          )
+                                                                                      );
+                                                                                      //    print("Regions: ${resp.data.toJson()}");
+                                                                                      showregsucesswidget();
+                                                                                      /*ScaffoldMessenger.of(context).showSnackBar(
                                                                       SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
                                                                     );*/
-                                                                                    clearregtext();
-                                                                                    hideerrorWidget();
-                                                                                    hidewidget();
+                                                                                      clearregtext();
+                                                                                      hideerrorWidget();
+                                                                                      hidewidget();
+                                                                                    }
+                                                                                    else{
+                                                                                      String firstname=name;
+                                                                                      print(firstname);
+
+                                                                                      Getreguserresponse resp=
+                                                                                      await context.read(apiClientProvider).createUser(
+                                                                                          Reguser(
+                                                                                              regnameController.text, firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                                          )
+                                                                                      );
+                                                                                      //  print("Regions: ${resp.data.toJson()}");
+                                                                                      showregsucesswidget();
+
+                                                                                      clearregtext();
+                                                                                      hideerrorWidget();
+                                                                                      hidewidget();
+                                                                                      //print( date);
+                                                                                    }
+
+
+
+
+
                                                                                   } catch (e) {
                                                                                     print(e);
                                                                                     if (e is DioError) {
@@ -1724,7 +1793,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                 visible: validpwd,
                                                                 child: Container(
                                                                   child: Text(
-                                                                    "Password required.",
+                                                                    "Password required or enter minimum 6 charecter.",
                                                                     style: TextStyle(
                                                                       color: Colors.red,
 
@@ -1733,6 +1802,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                   ),
                                                                 ),
                                                               ),
+
                                                             ],
                                                           )
                                                       ),
@@ -1766,10 +1836,10 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                             ),
                                                             GestureDetector(
-                                                             onTap: () {
-                                                               showDialog(
-                                                                   context: context,
-                                                                   builder: (context){
+                                                              onTap: () {
+                                                                showDialog(
+                                                                    context: context,
+                                                                    builder: (context){
                                                                       return Dialog(
 
                                                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -1796,218 +1866,218 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                                   tileMode: TileMode.repeated
                                                                               ),
                                                                             ),
-                                                                          
-                                                                              child: Column(
-                                                                                 children: [
-                                                                                   Container(
-                                                                                     
-                                                                                     padding: EdgeInsets.all(20.sp),
-                                                                                     height: 500.sp,
-                                                                                     width: 500.sp,
-                                                                                     child: ContainedTabBarView(
-                                                                                       tabs: [
-                                                                                         Container(
-                                                                                           decoration: BoxDecoration(
 
-                                                                                           ),
-                                                                                           child: Container(
-                                                                                             decoration: BoxDecoration(
+                                                                            child: Column(
+                                                                              children: [
+                                                                                Container(
 
-                                                                                             ),
-                                                                                             child: Text(
-                                                                                               ' Privacy Policy ',
-                                                                                               textAlign: TextAlign.center,
+                                                                                  padding: EdgeInsets.all(20.sp),
+                                                                                  height: 500.sp,
+                                                                                  width: 500.sp,
+                                                                                  child: ContainedTabBarView(
+                                                                                    tabs: [
+                                                                                      Container(
+                                                                                        decoration: BoxDecoration(
 
-                                                                                               style: TextStyle(
-                                                                                                 fontWeight: FontWeight.bold,
-                                                                                                 // fontSize: 10.sp
-                                                                                               ),
-                                                                                             ),
-                                                                                           ),
-                                                                                         ),
-                                                                                         Text(
-                                                                                           ' Terms and Conditions ',
-                                                                                           textAlign: TextAlign.center,
-                                                                                           style: TextStyle(
-                                                                                             fontWeight: FontWeight.bold,
-                                                                                             //  fontSize: 10.sp
-                                                                                           ),
-                                                                                         ),
-                                                                                       ],
-                                                                                       tabBarProperties: TabBarProperties(
-                                                                                         width: 300.sp,
-                                                                                         height: 40.sp,
-                                                                                         background: Container(
-                                                                                           width: 300.sp,
-                                                                                           height: 40.sp,
-                                                                                           decoration: BoxDecoration(
-                                                                                               color: Colors.white,
+                                                                                        ),
+                                                                                        child: Container(
+                                                                                          decoration: BoxDecoration(
 
-                                                                                               borderRadius: BorderRadius.all(Radius.circular(40.0)),
-                                                                                               boxShadow: [
-                                                                                                 BoxShadow(
-                                                                                                   color: Colors.white,
-                                                                                                   spreadRadius: 0.5,
-                                                                                                   blurRadius: 2,
-                                                                                                   offset: Offset(1, -1),
-                                                                                                 ),
-                                                                                               ]
-
-                                                                                           ),
-                                                                                         ),
-
-                                                                                         indicator: ShapeDecoration(
-                                                                                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
-                                                                                               topLeft: radius,bottomLeft: radius,bottomRight: radius)),
-                                                                                           color: Color(0xFF29AAE1),
-                                                                                         ),
-                                                                                         indicatorColor: Colors.transparent,
-                                                                                         labelColor: Colors.white,
-                                                                                         unselectedLabelColor: Colors.grey[400],
-                                                                                       ),
-                                                                                       views: [
-                                                                                         Container(
-                                                                                           padding: EdgeInsets.all(10.sp),
-                                                                                           child: SingleChildScrollView(
-                                                                                             child: Column(
-                                                                                               children: [
-                                                                                                 FutureBuilder<GetTerms>(
-                                                                                                   future: privacypolicy,
-                                                                                                   builder: (context, snapshot) {
-                                                                                                     if (snapshot.hasData) {
-                                                                                                       return Html(
-                                                                                                         data: snapshot.data!.data.pageContent,
-
-
-
-                                                                                                       );
-                                                                                                     } else if (snapshot.hasError) {
-                                                                                                       return Text('${snapshot.error}');
-                                                                                                     }
-
-                                                                                                     // By default, show a loading spinner.
-                                                                                                     return const CircularProgressIndicator();
-                                                                                                   },
-                                                                                                 )
-                                                                                               ],
-                                                                                             ),
-                                                                                           ),
-                                                                                         ),
-                                                                                         Container(
-                                                                                           padding: EdgeInsets.all(10.sp),
-                                                                                           child: SingleChildScrollView(
-                                                                                             child: Column(
-                                                                                               children: [
-                                                                                                 FutureBuilder<GetTerms>(
-                                                                                                   future: futureAlbum,
-                                                                                                   builder: (context, snapshot) {
-                                                                                                     if (snapshot.hasData) {
-                                                                                                       return Html(
-                                                                                                         data: snapshot.data!.data.pageContent,
-
-
-
-                                                                                                       );
-                                                                                                     } else if (snapshot.hasError) {
-                                                                                                       return Text('${snapshot.error}');
-                                                                                                     }
-
-                                                                                                     // By default, show a loading spinner.
-                                                                                                     return const CircularProgressIndicator();
-                                                                                                   },
-                                                                                                 )
-                                                                                               ],
-                                                                                             ),
-                                                                                           ),
-                                                                                         )
-                                                                                       ],
-
-                                                                                     ),
-                                                                                   ),
-                                                                                    Container(
-                                                                                      padding: EdgeInsets.all(10.sp),
-                                                                                      child: Row(
-                                                                                        mainAxisAlignment: MainAxisAlignment.end,
-                                                                                        //crossAxisAlignment: CrossAxisAlignment.end,
-                                                                                        children: [
-                                                                                          Text(
-                                                                                            "Got it",
+                                                                                          ),
+                                                                                          child: Text(
+                                                                                            ' Privacy Policy ',
                                                                                             textAlign: TextAlign.center,
+
                                                                                             style: TextStyle(
-                                                                                              color: Color(0xFFFFFFFF),
-                                                                                              fontSize: 20.sp
-
-                                                                                              
+                                                                                              fontWeight: FontWeight.bold,
+                                                                                              // fontSize: 10.sp
                                                                                             ),
-
                                                                                           ),
-                                                                                          Container(
-                                                                                            width: 20.sp,
-                                                                                          ),
-                                                                                          GestureDetector(
-                                                                                              onTap: (){
-                                                                                                Navigator.pop(context);
-                                                                                              },
-                                                                                              child: Container(
-                                                                                              width: 40,
-                                                                                              height: 40,
-
-                                                                                              decoration: BoxDecoration(
-                                                                                                  shape: BoxShape.circle,
-                                                                                                 boxShadow: [
-                                                                                                    BoxShadow(
-                                                                                                      color: Colors.white,
-                                                                                                      blurRadius: 2,
-                                                                                                      spreadRadius: 1,
-                                                                                                      offset: Offset(-1, 0),
-                                                                                                    ),
-                                                                                                    BoxShadow(
-                                                                                                      color: Colors.grey.shade400,
-                                                                                                      blurRadius: 2.0,
-                                                                                                      spreadRadius: 0.0,
-                                                                                                      offset: Offset(2.0, 0.0), // changes position of shadow
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                  gradient:
-                                                                                                  LinearGradient(
-
-                                                                                                      begin: Alignment.centerLeft,
-                                                                                                      end: Alignment.centerRight,
-                                                                                                      colors: <Color> [
-                                                                                                        Color(0xFF29E166),
-                                                                                                        Color(0xFF11AD4A)
-
-
-                                                                                                      ],
-                                                                                                      tileMode: TileMode.repeated)
-
-                                                                                            ),
-                                                                                              child:Center(
-                                                                                                child: SizedBox(
-                                                                                                  width: 20,
-                                                                                                  height: 20,
-                                                                                                  child: Image(image: AssetImage(
-                                                                                                      'assets/images/ticknew.png'
-                                                                                                  ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              )
-
-                                                                                            ),
-                                                                                          )
-                                                                                        ],
+                                                                                        ),
                                                                                       ),
-                                                                                    )
-                                                                                 ],
+                                                                                      Text(
+                                                                                        ' Terms and Conditions ',
+                                                                                        textAlign: TextAlign.center,
+                                                                                        style: TextStyle(
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                          //  fontSize: 10.sp
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                    tabBarProperties: TabBarProperties(
+                                                                                      width: 300.sp,
+                                                                                      height: 40.sp,
+                                                                                      background: Container(
+                                                                                        width: 300.sp,
+                                                                                        height: 40.sp,
+                                                                                        decoration: BoxDecoration(
+                                                                                            color: Colors.white,
 
-                                                                              ),
-                                                                            
+                                                                                            borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                                                                                            boxShadow: [
+                                                                                              BoxShadow(
+                                                                                                color: Colors.white,
+                                                                                                spreadRadius: 0.5,
+                                                                                                blurRadius: 2,
+                                                                                                offset: Offset(1, -1),
+                                                                                              ),
+                                                                                            ]
+
+                                                                                        ),
+                                                                                      ),
+
+                                                                                      indicator: ShapeDecoration(
+                                                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
+                                                                                            topLeft: radius,bottomLeft: radius,bottomRight: radius)),
+                                                                                        color: Color(0xFF29AAE1),
+                                                                                      ),
+                                                                                      indicatorColor: Colors.transparent,
+                                                                                      labelColor: Colors.white,
+                                                                                      unselectedLabelColor: Colors.grey[400],
+                                                                                    ),
+                                                                                    views: [
+                                                                                      Container(
+                                                                                        padding: EdgeInsets.all(10.sp),
+                                                                                        child: SingleChildScrollView(
+                                                                                          child: Column(
+                                                                                            children: [
+                                                                                              FutureBuilder<GetTerms>(
+                                                                                                future: privacypolicy,
+                                                                                                builder: (context, snapshot) {
+                                                                                                  if (snapshot.hasData) {
+                                                                                                    return Html(
+                                                                                                      data: snapshot.data!.data.pageContent,
+
+
+
+                                                                                                    );
+                                                                                                  } else if (snapshot.hasError) {
+                                                                                                    return Text('${snapshot.error}');
+                                                                                                  }
+
+                                                                                                  // By default, show a loading spinner.
+                                                                                                  return const CircularProgressIndicator();
+                                                                                                },
+                                                                                              )
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Container(
+                                                                                        padding: EdgeInsets.all(10.sp),
+                                                                                        child: SingleChildScrollView(
+                                                                                          child: Column(
+                                                                                            children: [
+                                                                                              FutureBuilder<GetTerms>(
+                                                                                                future: futureAlbum,
+                                                                                                builder: (context, snapshot) {
+                                                                                                  if (snapshot.hasData) {
+                                                                                                    return Html(
+                                                                                                      data: snapshot.data!.data.pageContent,
+
+
+
+                                                                                                    );
+                                                                                                  } else if (snapshot.hasError) {
+                                                                                                    return Text('${snapshot.error}');
+                                                                                                  }
+
+                                                                                                  // By default, show a loading spinner.
+                                                                                                  return const CircularProgressIndicator();
+                                                                                                },
+                                                                                              )
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                      )
+                                                                                    ],
+
+                                                                                  ),
+                                                                                ),
+                                                                                Container(
+                                                                                  padding: EdgeInsets.all(10.sp),
+                                                                                  child: Row(
+                                                                                    mainAxisAlignment: MainAxisAlignment.end,
+                                                                                    //crossAxisAlignment: CrossAxisAlignment.end,
+                                                                                    children: [
+                                                                                      Text(
+                                                                                        "Got it",
+                                                                                        textAlign: TextAlign.center,
+                                                                                        style: TextStyle(
+                                                                                            color: Color(0xFFFFFFFF),
+                                                                                            fontSize: 20.sp
+
+
+                                                                                        ),
+
+                                                                                      ),
+                                                                                      Container(
+                                                                                        width: 20.sp,
+                                                                                      ),
+                                                                                      GestureDetector(
+                                                                                        onTap: (){
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Container(
+                                                                                            width: 40,
+                                                                                            height: 40,
+
+                                                                                            decoration: BoxDecoration(
+                                                                                                shape: BoxShape.circle,
+                                                                                                boxShadow: [
+                                                                                                  BoxShadow(
+                                                                                                    color: Colors.white,
+                                                                                                    blurRadius: 2,
+                                                                                                    spreadRadius: 1,
+                                                                                                    offset: Offset(-1, 0),
+                                                                                                  ),
+                                                                                                  BoxShadow(
+                                                                                                    color: Colors.grey.shade400,
+                                                                                                    blurRadius: 2.0,
+                                                                                                    spreadRadius: 0.0,
+                                                                                                    offset: Offset(2.0, 0.0), // changes position of shadow
+                                                                                                  ),
+                                                                                                ],
+                                                                                                gradient:
+                                                                                                LinearGradient(
+
+                                                                                                    begin: Alignment.centerLeft,
+                                                                                                    end: Alignment.centerRight,
+                                                                                                    colors: <Color> [
+                                                                                                      Color(0xFF29E166),
+                                                                                                      Color(0xFF11AD4A)
+
+
+                                                                                                    ],
+                                                                                                    tileMode: TileMode.repeated)
+
+                                                                                            ),
+                                                                                            child:Center(
+                                                                                              child: SizedBox(
+                                                                                                width: 20,
+                                                                                                height: 20,
+                                                                                                child: Image(image: AssetImage(
+                                                                                                    'assets/images/ticknew.png'
+                                                                                                ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            )
+
+                                                                                        ),
+                                                                                      )
+                                                                                    ],
+                                                                                  ),
+                                                                                )
+                                                                              ],
+
+                                                                            ),
+
                                                                           ),
                                                                         ),
                                                                       );
-                                                                   }
-                                                               );
-                                                             },
+                                                                    }
+                                                                );
+                                                              },
                                                               child: Text.rich(
                                                                 TextSpan(
                                                                   text: "I'm agree with ",
@@ -2080,27 +2150,55 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                 if(selectedbox==true){
                                                                   hideWidget();
+
                                                                   try {
-                                                                    Getreguserresponse resp=
-                                                                    await context.read(apiClientProvider).createUser(
-                                                                        Reguser(
-                                                                            regnameController.text, "","",regemailController.text,regphnoController.text,regpasswordController.text,"1"
-                                                                        )
-                                                                    );
-
-
-                                                                    /* print( User(
-                                                                      "abc@gmail.com",
-                                                                      "123456"
-                                                                  ));*/
-                                                                    print("Regions: ${resp.data.toJson()}");
-                                                                    showregsucesswidget();
-                                                                    /*ScaffoldMessenger.of(context).showSnackBar(
+                                                                    String name = regnameController.text.toString();
+                                                                    String lastnames=regnameController.text.toString().trim();
+                                                                    if(name.contains(" ")){
+                                                                      final dateList = name.split(" ");
+                                                                      print( dateList[1]);
+                                                                      String firstname=dateList[0];
+                                                                      String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
+                                                                      print(firstname);
+                                                                      print(lastname);
+                                                                      Getreguserresponse resp=
+                                                                      await context.read(apiClientProvider).createUser(
+                                                                          Reguser(
+                                                                              regnameController.text, firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                          )
+                                                                      );
+                                                                      //  print("Regions: ${resp.data.toJson()}");
+                                                                      showregsucesswidget();
+                                                                      /*ScaffoldMessenger.of(context).showSnackBar(
                                                                       SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
                                                                     );*/
-                                                                    clearregtext();
-                                                                    hideerrorWidget();
-                                                                    hidewidget();
+                                                                      clearregtext();
+                                                                      hideerrorWidget();
+                                                                      hidewidget();
+                                                                    }
+                                                                    else{
+                                                                      String firstname=name;
+                                                                      print(firstname);
+
+                                                                      Getreguserresponse resp=
+                                                                      await context.read(apiClientProvider).createUser(
+                                                                          Reguser(
+                                                                              regnameController.text, firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                          )
+                                                                      );
+                                                                      //   print("Regions: ${resp.data.toJson()}");
+                                                                      showregsucesswidget();
+
+                                                                      clearregtext();
+                                                                      hideerrorWidget();
+                                                                      hidewidget();
+                                                                      //print( date);
+                                                                    }
+
+
+
+
+
                                                                   } catch (e) {
                                                                     print(e);
                                                                     if (e is DioError) {
@@ -2290,13 +2388,148 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   }
 
   void validateMobile(String? regphvalue) {
-    if (regphvalue!.length!= 10){
+    if (regphvalue!.length< 10 || regphvalue!.length> 13 ){
       showvalidph();
     }
     else{
       hidevalidph();
     }
+    /* if(regphvalue.le5 && regphvalue! < 100) {
+      showvalidph();
+    }
+    else{
+      hidevalidph();
+    }*/
+
   }
+  Future<Getchangepwdresponse>  frgtpwd() async {
+    //print(fname);
+    final response = await http.post(
+      Uri.parse('https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/user/forgot-password'),
+      headers: <String, String>{
+        //  "Access-Control-Allow-Origin": "*",
+        // 'Authorization': 'Bearer '+token!,
+        'Content-Type': 'application/json'
+      },
+      body: jsonEncode(<String, String>{
+        'email': forgotemailController.text,
+        'type': "1",
+
+      }
+      ),
+
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print(jsonDecode(response.body));
+      Map<String, dynamic> data = json.decode(response.body);
+      print(data["message"]);
+      message=data["message"];
+      forgotemailController.clear();
+      Fluttertoast.showToast(
+          msg: message,
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 10,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+          webPosition: "center"
+      );
+      return Getchangepwdresponse.fromJson(jsonDecode(response.body));
+
+
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception();
+    }
+  }
+
+  void validatepwd(String? regpwdvalue) {
+    if (regpwdvalue!.length < 6 ){
+      Fluttertoast.showToast(
+          msg: "Password should be 6 charecters",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 10,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+          webPosition: "center"
+      );
+
+    }
+    else{
+
+    }
+  }
+
+  void showvalidemailtoast() {
+    Fluttertoast.showToast(
+        msg: "Email required or please enter valid email address",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 2,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+        webPosition: "center"
+    );
+  }
+
+  Future<Getresp> getuserdetails(String token, int user_id) async {
+    final response = await http.post(
+      Uri.parse(Constants.baseurl+'user/details'),
+      headers: <String, String>{
+        // "Access-Control-Allow-Origin": "*",
+        'Authorization': 'Bearer '+token,
+        'Content-Type': 'application/json'
+      },
+      body: jsonEncode(<String, int>{
+        'user_id': user_id,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print(jsonDecode(response.body));
+      Map<String, dynamic> data = json.decode(response.body);
+      print(data["data"]["usr_first_name"]);
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      String userfname=data["data"]["usr_first_name"];
+      pref.setString('userfname', userfname);
+      String usr_last_name=data["data"]["usr_last_name"];
+      pref.setString('usr_last_name', usr_last_name);
+      String usr_user_name=data["data"]["usr_user_name"];
+      pref.setString('usr_user_name', usr_user_name);
+      String usr_email=data["data"]["usr_email"];
+      pref.setString('usr_email', usr_email);
+      String usr_phone=data["data"]["usr_phone"];
+      pref.setString('usr_phone', usr_phone);
+      String usr_birth_date=data["data"]["usr_birth_date"];
+      pref.setString('usr_birth_date', usr_birth_date);
+      String usr_gender=data["data"]["usr_gender"];
+      pref.setString('usr_gender', usr_gender);
+      String usr_language=data["data"]["usr_language"];
+      pref.setString('usr_language', usr_language);
+      String usr_profile_image=data["data"]["usr_profile_image"];
+      pref.setString('usr_profile_image', usr_profile_image);
+      Navigator.pushNamed(context, 'patient/profile');
+
+      return Getresp.fromJson(jsonDecode(response.body));
+      // Navigator.pushNamed(context, 'patient/profile');
+
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to create album.');
+    }
+  }
+
 
 
 }

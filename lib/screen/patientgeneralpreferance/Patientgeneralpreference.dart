@@ -1535,7 +1535,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
               ),
             )
         ),
-        PopupMenuItem<String>(
+       /* PopupMenuItem<String>(
             child:   Container(
               child: Row(
                 children: [
@@ -1810,7 +1810,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                 ],
               ),
             )
-        ),
+        ),*/
         PopupMenuItem<String>(
             child:  Container(
               child: Row(

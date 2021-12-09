@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:emaze_brain/model/response/getchangepwdresponse.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:emaze_brain/model/response/getresp.dart';
@@ -37,6 +39,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   bool status = false;
   Future<Getresp>? _futureAlbum;
   final _formKey = GlobalKey<FormState>();
+  final _changepwdformKey = GlobalKey<FormState>();
   bool viewfirstname = false ;
   bool viewlastname = false ;
   bool viewemail = false ;
@@ -47,7 +50,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   late bool _passwordVisible;
   late bool _newpasswordVisible;
   late bool _confirmpasswordVisible;
-
+  String?userfname,usr_last_name,usr_user_name,usr_email,usr_phone,usr_birth_date,usr_gender,usr_language,usr_profile_image;
   bool viewfirstnametext = true ;
   bool viewlastnametext = true ;
   bool viewemailtext = true ;
@@ -257,9 +260,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
     });
   }
-  final TextEditingController newpwdController = new TextEditingController();
-  final TextEditingController OldpwdController = new TextEditingController();
-  final TextEditingController confirmpwdController = new TextEditingController();
+   TextEditingController newpwdController = new TextEditingController();
+   TextEditingController OldpwdController = new TextEditingController();
+   TextEditingController confirmpwdController = new TextEditingController();
   void hidelanguagewidget(){
     setState(() {
       viewlanguage = false ;
@@ -1182,7 +1185,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           //Navigator.pushNamed(context, "myRoute");
                                                                         },
                                                                         child: Text(
-                                                                          "EDIT",
+                                                                          "",
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
@@ -1255,7 +1258,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           //Navigator.pushNamed(context, "myRoute");
                                                                         },
                                                                         child: Text(
-                                                                          "EDIT",
+                                                                          "",
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
@@ -1313,7 +1316,16 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
                                                                                     );
                                                                                 } else if (snapshot.hasError) {
-                                                                                  return Text('${snapshot.error}');
+                                                                                  return Text(
+                                                                                    usr_birth_date!,
+                                                                                    textAlign: TextAlign.center,
+                                                                                    style: TextStyle(
+                                                                                      color: Color(0xFF989898 ),
+                                                                                      // fontSize: 15.sp,
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                    ),
+
+                                                                                  );
                                                                                 }
                                                                               }
 
@@ -1410,7 +1422,16 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
                                                                                 );
                                                                             } else if (snapshot.hasError) {
-                                                                              return Text('${snapshot.error}');
+                                                                              return Text(
+                                                                                usr_gender!,
+                                                                                textAlign: TextAlign.center,
+                                                                                style: TextStyle(
+                                                                                  color: Color(0xFF989898 ),
+                                                                                  // fontSize: 15.sp,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                ),
+
+                                                                              );
                                                                             }
 
                                                                             // By default, show a loading spinner.
@@ -1505,7 +1526,16 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
                                                                                   );
                                                                               } else if (snapshot.hasError) {
-                                                                                return Text('${snapshot.error}');
+                                                                                return Text(
+                                                                                  usr_language!,
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: TextStyle(
+                                                                                    color: Color(0xFF989898 ),
+                                                                                    // fontSize: 15.sp,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                  ),
+
+                                                                                );
                                                                               }
 
                                                                               // By default, show a loading spinner.
@@ -1843,10 +1873,10 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                 // fixedSize: Size(426.sp, 149.sp),
                                                                 // minimumSize: MaterialStateProperty.all(Size(width, 50)),
                                                                 backgroundColor:
-                                                                MaterialStateProperty.all(Color(0xFF29AAE1),),
+                                                                MaterialStateProperty.all(Color(0xFFFF2D5E),),
                                                                 // elevation: MaterialStateProperty.all(3),
                                                                 shadowColor:
-                                                                MaterialStateProperty.all( Color(0xFF29AAE1),),
+                                                                MaterialStateProperty.all( Color(0xFFFF2D5E),),
                                                               ),
                                                               onPressed: () {
                                                                 showDialog(
@@ -1856,302 +1886,410 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                                                                         elevation: 16,
 
-                                                                        child: Container(
-                                                                          // padding: EdgeInsets.all(5.sp),
-                                                                          width: 400.sp,
-                                                                          height: 400.sp,
-                                                                          decoration: BoxDecoration(
-                                                                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                                                                            gradient: LinearGradient(
-                                                                                begin: Alignment.topLeft,
-                                                                                end: Alignment.bottomRight,
-                                                                                colors: <Color> [
-                                                                                  Color(0xFF3A3A3A),
-                                                                                  Color(0xFF8B8B8B),
-                                                                                  Color(0xFFDBDCDE),
+                                                                        child: Form(
+                                                                          key: _changepwdformKey,
+                                                                          child: Container(
+                                                                            // padding: EdgeInsets.all(5.sp),
+                                                                            width: 400.sp,
+                                                                            height: 400.sp,
+                                                                            decoration: BoxDecoration(
+                                                                              borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                              gradient: LinearGradient(
+                                                                                  begin: Alignment.topLeft,
+                                                                                  end: Alignment.bottomRight,
+                                                                                  colors: <Color> [
+                                                                                    Color(0xFF3A3A3A),
+                                                                                    Color(0xFF8B8B8B),
+                                                                                    Color(0xFFDBDCDE),
 
 
 
 
 
-                                                                                ],
-                                                                                tileMode: TileMode.repeated
+                                                                                  ],
+                                                                                  tileMode: TileMode.repeated
+                                                                              ),
                                                                             ),
-                                                                          ),
-                                                                          child: SingleChildScrollView(
-                                                                            child: Column(
-                                                                              children: [
-                                                                                Center(
-                                                                                  child: SizedBox(
-                                                                                    height: 65.sp,
-                                                                                    width: 200.sp,
-                                                                                    child: Image(image: AssetImage(
-                                                                                        'assets/images/emazelogofirst.png'
-                                                                                    ),
+                                                                            child: SingleChildScrollView(
+                                                                              child: Column(
+                                                                                children: [
+                                                                                  Center(
+                                                                                    child: SizedBox(
+                                                                                      height: 65.sp,
+                                                                                      width: 200.sp,
+                                                                                      child: Image(image: AssetImage(
+                                                                                          'assets/images/emazelogofirst.png'
+                                                                                      ),
 
+                                                                                      ),
                                                                                     ),
                                                                                   ),
-                                                                                ),
-                                                                                /*  Container(
+                                                                                  /*  Container(
                                           height: 10.sp,
                                         ),*/
-                                                                                Container(
-                                                                                  height: 54.sp,
-                                                                                  width: 500.sp,
-                                                                                  decoration: BoxDecoration(
-                                                                                    //  color: Colors.transparent
-                                                                                    gradient: LinearGradient(
-                                                                                        begin: Alignment.centerLeft,
-                                                                                        end: Alignment.centerRight,
-                                                                                        colors: <Color> [
-                                                                                          Color(0xFFB2BEB5),
-                                                                                          Color(0xFFE5E4E2),
+                                                                                  Container(
+                                                                                    height: 54.sp,
+                                                                                    width: 500.sp,
+                                                                                    decoration: BoxDecoration(
+                                                                                      //  color: Colors.transparent
+                                                                                      gradient: LinearGradient(
+                                                                                          begin: Alignment.centerLeft,
+                                                                                          end: Alignment.centerRight,
+                                                                                          colors: <Color> [
+                                                                                            Color(0xFFB2BEB5),
+                                                                                            Color(0xFFE5E4E2),
 
 
 
 
 
 
-                                                                                        ],
-                                                                                        tileMode: TileMode.repeated
-                                                                                    ),
-                                                                                  ),
-                                                                                  child: Center(
-                                                                                    child: Text(
-                                                                                      "CHANGE PASSWORD",
-                                                                                      textAlign: TextAlign.center,
-                                                                                      style: TextStyle(
-                                                                                        color: Color(0xFFffffff),
-                                                                                        //  fontSize: 35.sp,
-                                                                                        fontFamily:  '',
-                                                                                        fontWeight: FontWeight.bold,
+                                                                                          ],
+                                                                                          tileMode: TileMode.repeated
                                                                                       ),
-
                                                                                     ),
-                                                                                  ),
-                                                                                ),
-                                                                                Container(
-                                                                                  height: 10.sp,
-                                                                                ),
-                                                                                Neumorphic(
-                                                                                  margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                                  style: NeumorphicStyle(
-                                                                                      depth: NeumorphicTheme.embossDepth(context),
-                                                                                      boxShape: NeumorphicBoxShape.stadium(),
-                                                                                      color: Colors.white
-                                                                                  ),
-                                                                                  //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                                  child: Container(
-                                                                                    height: 45.sp,
-                                                                                    padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                                                                    child: TextFormField(
-                                                                                      // enabled:regemail,
-                                                                                      controller: OldpwdController,
-                                                                                      obscureText: !_passwordVisible,
-
-
-                                                                                      decoration: InputDecoration(
-                                                                                          border: InputBorder.none,
-                                                                                          //  filled: true,
-                                                                                          fillColor: Colors.white70,
-
-                                                                                          hintText: 'Old password',
-                                                                                          suffixIcon: GestureDetector(
-                                                                                            onLongPress: () {
-                                                                                              setState(() {
-                                                                                                _passwordVisible = true;
-                                                                                              });
-                                                                                            },
-                                                                                            onLongPressUp: () {
-                                                                                              setState(() {
-                                                                                                _passwordVisible = false;
-                                                                                              });
-                                                                                            },
-                                                                                            child: Icon(
-                                                                                                _passwordVisible ? Icons.visibility : Icons.visibility_off
-                                                                                            ),
-                                                                                          )
-
-                                                                                      ),
-                                                                                      textInputAction: TextInputAction.done,
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                Container(
-                                                                                  height: 10.sp,
-                                                                                ),
-                                                                                Visibility(
-                                                                                  visible: false,
-                                                                                  child: Container(
-                                                                                    child: Text(
-                                                                                      "Email required or please enter valid email.",
-                                                                                      style: TextStyle(
-                                                                                        color: Colors.red,
-
-                                                                                      ),
-
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                Container(
-                                                                                  height: 10.sp,
-                                                                                ),
-                                                                                Neumorphic(
-                                                                                  margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                                  style: NeumorphicStyle(
-                                                                                      depth: NeumorphicTheme.embossDepth(context),
-                                                                                      boxShape: NeumorphicBoxShape.stadium(),
-                                                                                      color: Colors.white
-                                                                                  ),
-                                                                                  //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                                  child: Container(
-                                                                                    height: 45.sp,
-                                                                                    padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                                                                    child: TextFormField(
-                                                                                      // enabled:regemail,
-                                                                                      controller: newpwdController,
-                                                                                      obscureText: !_newpasswordVisible,
-
-
-                                                                                      decoration: InputDecoration(
-                                                                                          border: InputBorder.none,
-                                                                                          //  filled: true,
-                                                                                          fillColor: Colors.white70,
-
-                                                                                          hintText: 'New password',
-                                                                                          suffixIcon: GestureDetector(
-                                                                                            onLongPress: () {
-                                                                                              setState(() {
-                                                                                                _newpasswordVisible = true;
-                                                                                              });
-                                                                                            },
-                                                                                            onLongPressUp: () {
-                                                                                              setState(() {
-                                                                                                _newpasswordVisible = false;
-                                                                                              });
-                                                                                            },
-                                                                                            child: Icon(
-                                                                                                _newpasswordVisible ? Icons.visibility : Icons.visibility_off
-                                                                                            ),
-                                                                                          )
-
-                                                                                      ),
-
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                Container(
-                                                                                  height: 10.sp,
-                                                                                ),
-                                                                                Visibility(
-                                                                                  visible: false,
-                                                                                  child: Container(
-                                                                                    child: Text(
-                                                                                      "Email required or please enter valid email.",
-                                                                                      style: TextStyle(
-                                                                                        color: Colors.red,
-
-                                                                                      ),
-
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                Container(
-                                                                                  height: 10.sp,
-                                                                                ),
-                                                                                Neumorphic(
-                                                                                  margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                                  style: NeumorphicStyle(
-                                                                                      depth: NeumorphicTheme.embossDepth(context),
-                                                                                      boxShape: NeumorphicBoxShape.stadium(),
-                                                                                      color: Colors.white
-                                                                                  ),
-                                                                                  //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                                  child: Container(
-                                                                                    height: 45.sp,
-                                                                                    padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                                                                    child: TextFormField(
-                                                                                      // enabled:regemail,
-                                                                                      controller: confirmpwdController,
-
-                                                                                      obscureText: !_confirmpasswordVisible,
-
-
-                                                                                      decoration: InputDecoration(
-                                                                                          border: InputBorder.none,
-                                                                                          //  filled: true,
-                                                                                          fillColor: Colors.white70,
-
-                                                                                          hintText: 'Confirm password',
-                                                                                          suffixIcon: GestureDetector(
-                                                                                            onLongPress: () {
-                                                                                              setState(() {
-                                                                                                _confirmpasswordVisible = true;
-                                                                                              });
-                                                                                            },
-                                                                                            onLongPressUp: () {
-                                                                                              setState(() {
-                                                                                                _confirmpasswordVisible = false;
-                                                                                              });
-                                                                                            },
-                                                                                            child: Icon(
-                                                                                                _confirmpasswordVisible ? Icons.visibility : Icons.visibility_off
-                                                                                            ),
-                                                                                          )
-
-                                                                                      ),
-
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                Container(
-                                                                                  height: 10.sp,
-                                                                                ),
-                                                                                Visibility(
-                                                                                  visible: false,
-                                                                                  child: Container(
-                                                                                    child: Text(
-                                                                                      "Email required or please enter valid email.",
-                                                                                      style: TextStyle(
-                                                                                        color: Colors.red,
-
-                                                                                      ),
-
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                Container(
-                                                                                  padding: EdgeInsets.all(10.sp),
-                                                                                  child: ButtonTheme(
-                                                                                    minWidth: 182.sp,
-                                                                                    height: 55.sp,
-                                                                                    shape: new RoundedRectangleBorder(
-                                                                                      borderRadius: new BorderRadius.circular(40.sp),
-                                                                                    ),
-                                                                                    child: RaisedButton(
-
-                                                                                      onPressed: ()  {
-                                                                                       // changepwd();
-                                                                                      },
-
-                                                                                      color: Color(0xFF29AAE1),
-                                                                                      child: Text("Submit",
+                                                                                    child: Center(
+                                                                                      child: Text(
+                                                                                        "CHANGE PASSWORD",
+                                                                                        textAlign: TextAlign.center,
                                                                                         style: TextStyle(
-                                                                                          color: Colors.white,
+                                                                                          color: Color(0xFFffffff),
+                                                                                          //  fontSize: 35.sp,
+                                                                                          fontFamily:  '',
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                        ),
 
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    height: 10.sp,
+                                                                                  ),
+                                                                                  Neumorphic(
+                                                                                    margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                    style: NeumorphicStyle(
+                                                                                        depth: NeumorphicTheme.embossDepth(context),
+                                                                                        boxShape: NeumorphicBoxShape.stadium(),
+                                                                                        color: Colors.white
+                                                                                    ),
+                                                                                    //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                    child: Container(
+                                                                                      height: 45.sp,
+                                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                      child: TextFormField(
+                                                                                        // enabled:regemail,
+                                                                                        obscureText: true,
+                                                                                        validator: (oldpwd) {
+                                                                                          if (oldpwd == null || oldpwd.isEmpty || oldpwd.length < 6) {
+
+                                                                                            Fluttertoast.showToast(
+                                                                                                msg: "Old Password Required or Old Password should be 6 charecter",
+                                                                                                toastLength: Toast.LENGTH_SHORT,
+                                                                                                gravity: ToastGravity.CENTER,
+                                                                                                timeInSecForIosWeb: 10,
+                                                                                                backgroundColor: Colors.red,
+                                                                                                textColor: Colors.white,
+                                                                                                fontSize: 16.0,
+                                                                                                webPosition: "center"
+                                                                                            );
+
+                                                                                            //    showoldpassword();
+                                                                                          }
+                                                                                          else{
+                                                                                            //   hideoldpassword();
+                                                                                          }
+
+                                                                                          //    hidevalidusername();
+                                                                                        },
+                                                                                        controller: OldpwdController,
+
+
+                                                                                        decoration: InputDecoration(
+                                                                                            border: InputBorder.none,
+                                                                                            //  filled: true,
+                                                                                            fillColor: Colors.white70,
+
+                                                                                            hintText: 'Old Password',
+                                                                                           /* suffixIcon: GestureDetector(
+                                                                                              onLongPress: () {
+                                                                                                setState(() {
+                                                                                                  _passwordVisible = true;
+                                                                                                });
+                                                                                              },
+                                                                                              onLongPressUp: () {
+                                                                                                setState(() {
+                                                                                                  _passwordVisible = false;
+                                                                                                });
+                                                                                              },
+                                                                                              child: Icon(
+                                                                                                  _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                                                              ),
+                                                                                            )*/
+
+                                                                                        ),
+                                                                                        textInputAction: TextInputAction.done,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    height: 10.sp,
+                                                                                  ),
+                                                                                  Visibility(
+                                                                                    visible: false,
+                                                                                    child: Container(
+                                                                                      child: Text(
+                                                                                        "Old Password Required.",
+                                                                                        style: TextStyle(
+                                                                                          color: Colors.red,
+
+                                                                                        ),
+
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    height: 10.sp,
+                                                                                  ),
+                                                                                  Neumorphic(
+                                                                                    margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                    style: NeumorphicStyle(
+                                                                                        depth: NeumorphicTheme.embossDepth(context),
+                                                                                        boxShape: NeumorphicBoxShape.stadium(),
+                                                                                        color: Colors.white
+                                                                                    ),
+                                                                                    //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                    child: Container(
+                                                                                      height: 45.sp,
+                                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                      child: TextFormField(
+                                                                                        // enabled:regemail,
+                                                                                        obscureText: true,
+                                                                                        validator: (newpwd) {
+                                                                                          if (newpwd == null || newpwd.isEmpty || newpwd.length < 6) {
+                                                                                            Fluttertoast.showToast(
+                                                                                                msg: "New Password Required or New pPassword should be 6 charecters",
+                                                                                                toastLength: Toast.LENGTH_SHORT,
+                                                                                                gravity: ToastGravity.CENTER,
+                                                                                                timeInSecForIosWeb: 10,
+                                                                                                backgroundColor: Colors.red,
+                                                                                                textColor: Colors.white,
+                                                                                                fontSize: 16.0,
+                                                                                                webPosition: "center"
+                                                                                            );
+
+                                                                                            //shownewpwd();
+                                                                                          }
+                                                                                          else{
+                                                                                            // hidenewpwd();
+                                                                                          }
+
+                                                                                          //    hidevalidusername();
+                                                                                        },
+                                                                                        controller: newpwdController,
+
+
+
+                                                                                        decoration: InputDecoration(
+                                                                                            border: InputBorder.none,
+                                                                                            //  filled: true,
+                                                                                            fillColor: Colors.white70,
+
+                                                                                            hintText: 'New Password',
+                                                                                          /*  suffixIcon: GestureDetector(
+                                                                                              onLongPress: () {
+                                                                                                setState(() {
+                                                                                                  _newpasswordVisible = true;
+                                                                                                });
+                                                                                              },
+                                                                                              onLongPressUp: () {
+                                                                                                setState(() {
+                                                                                                  _newpasswordVisible = false;
+                                                                                                });
+                                                                                              },
+                                                                                              child: Icon(
+                                                                                                  _newpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                                              ),
+                                                                                            )*/
+
+                                                                                        ),
+
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    height: 10.sp,
+                                                                                  ),
+                                                                                  Visibility(
+                                                                                    visible: false,
+                                                                                    child: Container(
+                                                                                      child: Text(
+                                                                                        "New Password Required",
+                                                                                        style: TextStyle(
+                                                                                          color: Colors.red,
+
+                                                                                        ),
+
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    height: 10.sp,
+                                                                                  ),
+                                                                                  Neumorphic(
+                                                                                    margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                    style: NeumorphicStyle(
+                                                                                        depth: NeumorphicTheme.embossDepth(context),
+                                                                                        boxShape: NeumorphicBoxShape.stadium(),
+                                                                                        color: Colors.white
+                                                                                    ),
+                                                                                    //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                    child: Container(
+                                                                                      height: 45.sp,
+                                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                      child: TextFormField(
+                                                                                        // enabled:regemail,
+                                                                                        obscureText: true,
+                                                                                        validator: (cnfpwd) {
+                                                                                          if (cnfpwd == null || cnfpwd.isEmpty || cnfpwd.length < 6) {
+                                                                                            Fluttertoast.showToast(
+                                                                                                msg: "Confirm Password Required or Confirm Password should be 6 charecters",
+                                                                                                toastLength: Toast.LENGTH_SHORT,
+                                                                                                gravity: ToastGravity.CENTER,
+                                                                                                timeInSecForIosWeb: 10,
+                                                                                                backgroundColor: Colors.red,
+                                                                                                textColor: Colors.white,
+                                                                                                fontSize: 16.0,
+                                                                                                webPosition: "center"
+                                                                                            );
+
+                                                                                            //showcnfpwd();
+                                                                                          }
+                                                                                          else{
+                                                                                            //   hidecnfpwd();
+                                                                                          }
+
+                                                                                          //    hidevalidusername();
+                                                                                        },
+                                                                                        controller: confirmpwdController,
+
+
+
+
+                                                                                        decoration: InputDecoration(
+                                                                                            border: InputBorder.none,
+                                                                                            //  filled: true,
+                                                                                            fillColor: Colors.white70,
+
+                                                                                            hintText: 'Confirm Password',
+                                                                                           /* suffixIcon: GestureDetector(
+                                                                                              onLongPress: () {
+                                                                                                setState(() {
+                                                                                                  _confirmpasswordVisible = true;
+                                                                                                });
+                                                                                              },
+                                                                                              onLongPressUp: () {
+                                                                                                setState(() {
+                                                                                                  _confirmpasswordVisible = false;
+                                                                                                });
+                                                                                              },
+                                                                                              child: Icon(
+                                                                                                  _confirmpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                                              ),
+                                                                                            )*/
+
+                                                                                        ),
+
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    height: 10.sp,
+                                                                                  ),
+                                                                                  Visibility(
+                                                                                    visible: false,
+                                                                                    child: Container(
+                                                                                      child: Text(
+                                                                                        "Confirm Password Required.",
+                                                                                        style: TextStyle(
+                                                                                          color: Colors.red,
+
+                                                                                        ),
+
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Visibility(
+                                                                                    visible: false,
+                                                                                    child: Container(
+                                                                                      child: Text(
+                                                                                        "Confirm password and new password should match.",
+                                                                                        style: TextStyle(
+                                                                                          color: Colors.red,
+
+                                                                                        ),
+
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    padding: EdgeInsets.all(10.sp),
+                                                                                    child: ButtonTheme(
+                                                                                      minWidth: 182.sp,
+                                                                                      height: 55.sp,
+                                                                                      shape: new RoundedRectangleBorder(
+                                                                                        borderRadius: new BorderRadius.circular(40.sp),
+                                                                                      ),
+                                                                                      child: RaisedButton(
+
+                                                                                        onPressed: () async {
+                                                                                          if (_changepwdformKey.currentState!.validate()) {
+                                                                                            if(newpwdController.text.toString()==confirmpwdController.text.toString()){
+                                                                                              changepwd();
+                                                                                              // hidecnfpwd();
+                                                                                            }
+                                                                                            else{
+                                                                                              Fluttertoast.showToast(
+                                                                                                  msg: "Confirm password and new password should match",
+                                                                                                  toastLength: Toast.LENGTH_SHORT,
+                                                                                                  gravity: ToastGravity.CENTER,
+                                                                                                  timeInSecForIosWeb: 10,
+                                                                                                  backgroundColor: Colors.red,
+                                                                                                  textColor: Colors.white,
+                                                                                                  fontSize: 16.0,
+                                                                                                  webPosition: "center"
+                                                                                              );
+                                                                                             // showcnfpwd();
+
+                                                                                            }
+
+                                                                                          }
+
+                                                                                        },
+
+                                                                                        color: Color(0xFF29AAE1),
+                                                                                        child: Text("Submit",
+                                                                                          style: TextStyle(
+                                                                                            color: Colors.white,
+
+                                                                                          ),
                                                                                         ),
                                                                                       ),
                                                                                     ),
                                                                                   ),
-                                                                                ),
-                                                                              ],
+
+                                                                                ],
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ),
 
                                                                       );
                                                                     }
-                                                                );
+                                                                ).then((val) {
+                                                                  confirmpwdController.clear();
+                                                                  OldpwdController.clear();
+                                                                  newpwdController.clear();
+                                                                });;;
                                                               },
                                                               child: Text("Change Password >",
                                                                 style: TextStyle(
@@ -2514,6 +2652,16 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     token=prefs.getString("doctorauthtoken");
     p_id=prefs.getInt("doc_id");
+    userfname=prefs.getString("userfname");
+    usr_last_name=prefs.getString("usr_last_name");
+    usr_user_name=prefs.getString("usr_user_name");
+    usr_email=prefs.getString("usr_email");
+    usr_phone=prefs.getString("usr_phone");
+    usr_birth_date=prefs.getString("usr_birth_date");
+    usr_gender=prefs.getString("usr_gender");
+
+    usr_language=prefs.getString("usr_language");
+    usr_profile_image=prefs.getString("usr_profile_image");
     print(token);
   }
   Future<Getresp> getuserdetails() async {
@@ -2547,10 +2695,25 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     return FutureBuilder<Getresp>(
       future: _futureAlbum,
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              snapshot.data!.data.usrFirstName,
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
+        }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                snapshot.data!.data.usrFirstName,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+
+              );
+          } else if (snapshot.hasError) {
+            return  Text(
+              userfname!,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color(0xFF989898 ),
@@ -2559,9 +2722,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
               ),
 
             );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
+          }
         }
+
 
         return const CircularProgressIndicator();
       },
@@ -2571,20 +2734,34 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     return FutureBuilder<Getresp>(
       future: _futureAlbum,
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              snapshot.data!.data.usrLastName,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
-              ),
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
+        }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                snapshot.data!.data.usrLastName,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
 
+              );
+          } else if (snapshot.hasError) {
+            return Text(
+                usr_last_name!,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                )
             );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
+          }
+
         }
 
         return const CircularProgressIndicator();
@@ -2595,21 +2772,35 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     return FutureBuilder<Getresp>(
       future: _futureAlbum,
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              snapshot.data!.data.usrEmail,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
-              ),
-
-            );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
         }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                snapshot.data!.data.usrEmail,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+
+              );
+          } else if (snapshot.hasError) {
+            return Text(
+                usr_email!,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                )
+            );
+          }
+        }
+
 
         return const CircularProgressIndicator();
       },
@@ -2619,21 +2810,35 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     return FutureBuilder<Getresp>(
       future: _futureAlbum,
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              snapshot.data!.data.usrPhone,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
-              ),
-
-            );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
         }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                snapshot.data!.data.usrPhone,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+
+              );
+          } else if (snapshot.hasError) {
+            return Text(
+                usr_phone!,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                )
+            );
+          }
+        }
+
 
         return const CircularProgressIndicator();
       },
@@ -2643,21 +2848,35 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     return FutureBuilder<Getresp>(
       future: _futureAlbum,
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              snapshot.data!.data.usrUserName,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
-              ),
-
-            );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
         }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                snapshot.data!.data.usrUserName,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+
+              );
+          } else if (snapshot.hasError) {
+            return Text(
+                usr_user_name!,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                )
+            );
+          }
+        }
+
 
         return const CircularProgressIndicator();
       },
@@ -2667,27 +2886,40 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     return FutureBuilder<Getresp>(
       future: _futureAlbum,
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return
-            Text(
-              "Patient"+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
-              ),
-
-            );
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error.toString()}');
+        if( snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: Text('Please wait its loading...'));
         }
+        else{
+          if (snapshot.hasData) {
+            return
+              Text(
+                "Patient"+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+
+              );
+          } else if (snapshot.hasError) {
+            return Text(
+                "Patient"+usr_user_name!+ " User id "+p_id!.toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF989898 ),
+                  // fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                )
+            );
+          }
+        }
+
 
         return const CircularProgressIndicator();
       },
     );
   }
-
   Future<Updateprofileresponse>  updatedetails() async {
     //print(fname);
     final response = await http.post(
@@ -2720,6 +2952,64 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
       throw Exception('Failed to update user.');
+    }
+  }
+
+  Future<Getchangepwdresponse>  changepwd() async {
+    //print(fname);
+    final response = await http.post(
+      Uri.parse('https://us-central1-emazebrain-5cf9b.cloudfunctions.net/app/user/change-password'),
+      headers: <String, String>{
+        //  "Access-Control-Allow-Origin": "*",
+        'Authorization': 'Bearer '+token!,
+        'Content-Type': 'application/json'
+      },
+      body: jsonEncode(<String, String>{
+        'old_password': OldpwdController.text,
+        'new_password': confirmpwdController.text,
+
+      }
+      ),
+
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print(jsonDecode(response.body));
+      Map<String, dynamic> data = json.decode(response.body);
+      print(data["message"]);
+      OldpwdController.clear();
+      confirmpwdController.clear();
+      newpwdController.clear();
+      Navigator.pop(context);
+      Fluttertoast.showToast(
+          msg: data["message"],
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 10,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+          webPosition: "center"
+      );
+      return Getchangepwdresponse.fromJson(jsonDecode(response.body));
+
+
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      Fluttertoast.showToast(
+          msg: "Old Password Not Matching",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 10,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+          webPosition: "center"
+      );
+      throw Exception();
     }
   }
 
