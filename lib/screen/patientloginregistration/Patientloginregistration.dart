@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:html';
+import 'dart:math';
 
 import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
@@ -227,6 +228,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
     futureAlbum = fetchterms();
     privacypolicy=fetchprivacypolicy();
     _isButtonDisabled = false;
+
 
   }
   @override
@@ -1710,10 +1712,12 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                                       String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
                                                                                       print(firstname);
                                                                                       print(lastname);
+                                                                                      var rng = new Random();
+                                                                                      var randomno = rng.nextInt(9000) + 1000;
                                                                                       Getreguserresponse resp=
                                                                                       await context.read(apiClientProvider).createUser(
                                                                                           Reguser(
-                                                                                              regnameController.text, firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                                              firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
                                                                                           )
                                                                                       );
                                                                                       //    print("Regions: ${resp.data.toJson()}");
@@ -1726,13 +1730,15 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                                       hidewidget();
                                                                                     }
                                                                                     else{
+                                                                                      var rng = new Random();
+                                                                                      var randomno = rng.nextInt(9000) + 1000;
                                                                                       String firstname=name;
                                                                                       print(firstname);
 
                                                                                       Getreguserresponse resp=
                                                                                       await context.read(apiClientProvider).createUser(
                                                                                           Reguser(
-                                                                                              regnameController.text, firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                                              firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
                                                                                           )
                                                                                       );
                                                                                       //  print("Regions: ${resp.data.toJson()}");
@@ -2161,13 +2167,15 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                       String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
                                                                       print(firstname);
                                                                       print(lastname);
+                                                                      var rng = new Random();
+                                                                      var randomno = rng.nextInt(9000) + 1000;
                                                                       Getreguserresponse resp=
                                                                       await context.read(apiClientProvider).createUser(
                                                                           Reguser(
-                                                                              regnameController.text, firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                              firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
                                                                           )
                                                                       );
-                                                                      //  print("Regions: ${resp.data.toJson()}");
+                                                                      //    print("Regions: ${resp.data.toJson()}");
                                                                       showregsucesswidget();
                                                                       /*ScaffoldMessenger.of(context).showSnackBar(
                                                                       SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
@@ -2177,16 +2185,18 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                       hidewidget();
                                                                     }
                                                                     else{
+                                                                      var rng = new Random();
+                                                                      var randomno = rng.nextInt(9000) + 1000;
                                                                       String firstname=name;
                                                                       print(firstname);
 
                                                                       Getreguserresponse resp=
                                                                       await context.read(apiClientProvider).createUser(
                                                                           Reguser(
-                                                                              regnameController.text, firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                              firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
                                                                           )
                                                                       );
-                                                                      //   print("Regions: ${resp.data.toJson()}");
+                                                                      //  print("Regions: ${resp.data.toJson()}");
                                                                       showregsucesswidget();
 
                                                                       clearregtext();
@@ -2387,21 +2397,21 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
     );
   }
 
-  void validateMobile(String? regphvalue) {
+ /* void validateMobile(String? regphvalue) {
     if (regphvalue!.length< 10 || regphvalue!.length> 13 ){
       showvalidph();
     }
     else{
       hidevalidph();
     }
-    /* if(regphvalue.le5 && regphvalue! < 100) {
+    *//* if(regphvalue.le5 && regphvalue! < 100) {
       showvalidph();
     }
     else{
       hidevalidph();
-    }*/
+    }*//*
 
-  }
+  }*/
   Future<Getchangepwdresponse>  frgtpwd() async {
     //print(fname);
     final response = await http.post(

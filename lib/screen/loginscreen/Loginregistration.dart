@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:email_validator/email_validator.dart';
 import 'package:emaze_brain/model/get_login.dart';
@@ -1673,24 +1674,59 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                                                 if(selectedbox==true){
                                                                                   hideWidget();
+
                                                                                   try {
-                                                                                    Getreguserresponse resp=
-                                                                                    await context.read(apiClientProvider).createUser(
-                                                                                        Reguser(
-                                                                                            regnameController.text, "","",regemailController.text,regphnoController.text,regpasswordController.text,"1"
-                                                                                        )
-                                                                                    );
-
-
-
-                                                                                    print("Regions: ${resp.data.toJson()}");
-                                                                                    showregsucesswidget();
-                                                                                    /*ScaffoldMessenger.of(context).showSnackBar(
+                                                                                    String name = regnameController.text.toString();
+                                                                                    String lastnames=regnameController.text.toString().trim();
+                                                                                    if(name.contains(" ")){
+                                                                                      final dateList = name.split(" ");
+                                                                                      print( dateList[1]);
+                                                                                      String firstname=dateList[0];
+                                                                                      String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
+                                                                                      print(firstname);
+                                                                                      print(lastname);
+                                                                                      var rng = new Random();
+                                                                                      var randomno = rng.nextInt(9000) + 1000;
+                                                                                      Getreguserresponse resp=
+                                                                                      await context.read(apiClientProvider).createUser(
+                                                                                          Reguser(
+                                                                                              firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"2"
+                                                                                          )
+                                                                                      );
+                                                                                      print("Regions: ${resp.data.toJson()}");
+                                                                                      showregsucesswidget();
+                                                                                      /*ScaffoldMessenger.of(context).showSnackBar(
                                                                       SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
                                                                     );*/
-                                                                                    clearregtext();
-                                                                                    hideerrorWidget();
-                                                                                    hidewidget();
+                                                                                      clearregtext();
+                                                                                      hideerrorWidget();
+                                                                                      hidewidget();
+                                                                                    }
+                                                                                    else{
+                                                                                      var rng = new Random();
+                                                                                      var randomno = rng.nextInt(9000) + 1000;
+                                                                                      String firstname=name;
+                                                                                      print(firstname);
+
+                                                                                      Getreguserresponse resp=
+                                                                                      await context.read(apiClientProvider).createUser(
+                                                                                          Reguser(
+                                                                                              firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"2"
+                                                                                          )
+                                                                                      );
+                                                                                      print("Regions: ${resp.data.toJson()}");
+                                                                                      showregsucesswidget();
+
+                                                                                      clearregtext();
+                                                                                      hideerrorWidget();
+                                                                                      hidewidget();
+                                                                                      //print( date);
+                                                                                    }
+
+
+
+
+
                                                                                   } catch (e) {
                                                                                     print(e);
                                                                                     if (e is DioError) {
@@ -2103,10 +2139,12 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                       String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
                                                                       print(firstname);
                                                                       print(lastname);
+                                                                      var rng = new Random();
+                                                                      var randomno = rng.nextInt(9000) + 1000;
                                                                       Getreguserresponse resp=
                                                                       await context.read(apiClientProvider).createUser(
                                                                           Reguser(
-                                                                              regnameController.text, firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"2"
+                                                                              firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"2"
                                                                           )
                                                                       );
                                                                       print("Regions: ${resp.data.toJson()}");
@@ -2119,13 +2157,15 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                       hidewidget();
                                                                     }
                                                                     else{
+                                                                      var rng = new Random();
+                                                                      var randomno = rng.nextInt(9000) + 1000;
                                                                       String firstname=name;
                                                                       print(firstname);
 
                                                                       Getreguserresponse resp=
                                                                       await context.read(apiClientProvider).createUser(
                                                                           Reguser(
-                                                                              regnameController.text, firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                              firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"2"
                                                                           )
                                                                       );
                                                                       print("Regions: ${resp.data.toJson()}");
@@ -2380,6 +2420,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
 
     } else {
+      Fluttertoast.showToast(
+          msg: "User id not found",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 10,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+          webPosition: "center"
+      );
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
       throw Exception();
