@@ -1772,7 +1772,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                 visible: validpwd,
                                                                 child: Container(
                                                                   child: Text(
-                                                                    "Password required.",
+                                                                    "Password required or enter minimum 6 character.",
                                                                     style: TextStyle(
                                                                       color: Colors.red,
 

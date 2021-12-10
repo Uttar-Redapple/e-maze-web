@@ -1799,7 +1799,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                 visible: validpwd,
                                                                 child: Container(
                                                                   child: Text(
-                                                                    "Password required or enter minimum 6 charecter.",
+                                                                    "Password required or enter minimum 6 character.",
                                                                     style: TextStyle(
                                                                       color: Colors.red,
 
