@@ -1686,7 +1686,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                 decoration: InputDecoration(
                                                                                   border: UnderlineInputBorder(),
 
-                                                                                  hintText: 'Enter birth date',
+                                                                                  hintText: 'Enter birth date (YYYY-MM-DD)',
                                                                                 ),
                                                                               ),
                                                                             ),

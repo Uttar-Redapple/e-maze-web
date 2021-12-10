@@ -1441,7 +1441,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                decoration: InputDecoration(
                                                                                  border: UnderlineInputBorder(),
 
-                                                                                 hintText: 'Enter birth date',
+                                                                                 hintText: 'Enter birth date (YYYY-MM-DD)',
                                                                                ),
                                                                              ),
                                                                            ),
@@ -3051,7 +3051,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
       body: jsonEncode(<String, String>{
         'usr_first_name': firstnameController.text,
         'usr_last_name': lastnameController.text,
-        'usr_birth_date': "09/01/1991",
+        'usr_birth_date': birthController.text,
         'usr_gender': genderController.text,
         'usr_language': languageController.text
       }
