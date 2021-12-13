@@ -1350,8 +1350,10 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                   Expanded(
                                                                       flex: 1,
                                                                       child: Container(
-                                                                        child: IconButton(
-                                                                          icon: Image.asset('assets/images/username-gray.png'), onPressed: () {  },
+                                                                        height: 25.sp,
+                                                                        width: 25.sp,
+                                                                        child: Image(
+                                                                          image: AssetImage('assets/images/username-gray.png'),
                                                                         ),
                                                                       )
                                                                   ),
@@ -1386,27 +1388,9 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                         height: 45.sp,
                                                                         padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
 
-                                                                        child: RawKeyboardListener(
-
-                                                                          focusNode: _regusernamefocusnode,
-                                                                          onKey: (event) {
-                                                                            //  print(event);
-                                                                            if ((event.logicalKey == LogicalKeyboardKey.tab /*&& _regusernamefocusnode==true*/ )){
-                                                                              print("Tab Key pressed");
-                                                                              //  FocusScope.of(context).unfocus();
-                                                                              //_regusernamefocusnode.unfocus();
-                                                                              debugPrint("focususernamessss: ${_regusernamefocusnode.hasFocus.toString()}");
-
-                                                                              _regemailfocusnode.requestFocus();
 
 
-                                                                            }
-                                                                            /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
-                                                                  print("ENTER Key pressed");
-                                                                  //Do something
-                                                                  focusNode: _loginpwdfocusnode.requestFocus();
-                                                                }*/
-                                                                          },
+
                                                                           child: TextFormField(
                                                                             validator: (regvalue) {
                                                                               if (regvalue == null || regvalue.isEmpty) {
@@ -1436,7 +1420,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                             },
                                                                             textInputAction: TextInputAction.next,
                                                                           ),
-                                                                        ),
+
                                                                       ),
                                                                     ),
 
@@ -1467,8 +1451,10 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                   Expanded(
                                                                       flex: 1,
                                                                       child: Container(
-                                                                        child: IconButton(
-                                                                          icon: Image.asset('assets/images/message-gray.png'), onPressed: () {  },
+                                                                        height: 25.sp,
+                                                                        width: 25.sp,
+                                                                        child: Image(
+                                                                          image: AssetImage('assets/images/message-gray.png'),
                                                                         ),
                                                                       )
                                                                   ),
@@ -1487,17 +1473,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                       child: Container(
                                                                         padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
                                                                         height: 50.sp,
-                                                                        child: RawKeyboardListener(
-                                                                          focusNode: _regemailfocusnode,
-                                                                          onKey: (emailevent){
-                                                                            // print(emailevent);
-                                                                            if ((emailevent.logicalKey == LogicalKeyboardKey.tab)){
-                                                                              _regphfocusnode.requestFocus();
-                                                                              debugPrint("Focusreemailsss: ${_regemailfocusnode.hasFocus.toString()}");
-                                                                              print("email tab");
 
-                                                                            }
-                                                                          },
+
                                                                           child: TextFormField(
                                                                             enabled:regemail,
                                                                             controller: regemailController,
@@ -1526,7 +1503,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                             ),
                                                                             textInputAction: TextInputAction.next,
                                                                           ),
-                                                                        ),
+
                                                                       ),
                                                                     ),
 
@@ -1553,9 +1530,12 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                 children: [
                                                                   Expanded(
                                                                       flex: 1,
+
                                                                       child: Container(
-                                                                        child: IconButton(
-                                                                          icon: Image.asset('assets/images/contact-gray.png'), onPressed: () {  },
+                                                                        height: 25.sp,
+                                                                        width: 25.sp,
+                                                                        child: Image(
+                                                                          image: AssetImage('assets/images/contact-gray.png'),
                                                                         ),
                                                                       )
                                                                   ),
@@ -1572,17 +1552,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                       child: Container(
                                                                         padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
                                                                         height: 50.sp,
-                                                                        child: RawKeyboardListener(
-                                                                          focusNode: _regphfocusnode,
-                                                                          onKey: (phevent){
-                                                                            // print(phevent);
-                                                                            if ((phevent.logicalKey == LogicalKeyboardKey.tab)){
-                                                                              _regpwdfocusnode.requestFocus();
 
-                                                                              print("ph tab");
 
-                                                                            }
-                                                                          },
                                                                           child: TextFormField(
                                                                             enabled:regph,
                                                                             keyboardType: TextInputType.number,
@@ -1612,7 +1583,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                             ),
                                                                             textInputAction: TextInputAction.next,
                                                                           ),
-                                                                        ),
+
                                                                       ),
                                                                     ),
                                                                   )
@@ -1639,15 +1610,17 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                   Expanded(
                                                                       flex: 1,
                                                                       child: Container(
-                                                                        child: IconButton(
-                                                                          icon: Image.asset('assets/images/lock-gray.png'), onPressed: () {  },
+                                                                        height: 25.sp,
+                                                                        width: 25.sp,
+                                                                        child: Image(
+                                                                          image: AssetImage('assets/images/lock-gray.png'),
                                                                         ),
                                                                       )
                                                                   ),
                                                                   Expanded(
                                                                     flex: 9,
-                                                                    child: RawKeyboardListener(
-                                                                      focusNode: _regpwdfocusnode,
+
+
 
                                                                       child: Neumorphic(
                                                                         margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
@@ -1791,7 +1764,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ),
+
                                                                   )
                                                                 ],
                                                               ),
