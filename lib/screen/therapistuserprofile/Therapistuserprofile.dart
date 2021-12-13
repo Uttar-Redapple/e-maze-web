@@ -2800,6 +2800,27 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       print(jsonDecode(response.body));
+      Map<String, dynamic> data = json.decode(response.body);
+      print(data["data"]["usr_first_name"]);
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      String userfname=data["data"]["usr_first_name"];
+      pref.setString('userfname', userfname);
+      String usr_last_name=data["data"]["usr_last_name"];
+      pref.setString('usr_last_name', usr_last_name);
+      String usr_user_name=data["data"]["usr_user_name"];
+      pref.setString('usr_user_name', usr_user_name);
+      String usr_email=data["data"]["usr_email"];
+      pref.setString('usr_email', usr_email);
+      String usr_phone=data["data"]["usr_phone"];
+      pref.setString('usr_phone', usr_phone);
+      String usr_birth_date=data["data"]["usr_birth_date"];
+      pref.setString('usr_birth_date', usr_birth_date);
+      String usr_gender=data["data"]["usr_gender"];
+      pref.setString('usr_gender', usr_gender);
+      String usr_language=data["data"]["usr_language"];
+      pref.setString('usr_language', usr_language);
+      String usr_profile_image=data["data"]["usr_profile_image"];
+      pref.setString('usr_profile_image', usr_profile_image);
 
       return Getresp.fromJson(jsonDecode(response.body));
 
@@ -3012,7 +3033,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
           if (snapshot.hasData) {
             return
               Text(
-                "Patient"+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
+                "Patient"+" "+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),

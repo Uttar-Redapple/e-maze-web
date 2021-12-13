@@ -770,6 +770,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                   ));*/
 
                                                                       if(resp.data.user_type==2){
+                                                                        Fluttertoast.showToast(
+                                                                            msg: resp.data.username+" "+resp.data.email+" "+resp.data.first_name+" "+resp.data.last_name+" "+resp.data.phone,
+                                                                            toastLength: Toast.LENGTH_SHORT,
+                                                                            gravity: ToastGravity.CENTER,
+                                                                            timeInSecForIosWeb: 12,
+                                                                            backgroundColor: Colors.red,
+                                                                            textColor: Colors.white,
+                                                                            fontSize: 16.0,
+                                                                            webPosition: "center"
+                                                                        );
                                                                         print("usertype: ${resp.data.user_type}");
                                                                         SharedPreferences pref = await SharedPreferences.getInstance();
                                                                         pref.setString('doctorauthtoken', resp.data.token);
@@ -1137,6 +1147,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                   ));*/
 
                                                                   if(resp.data.user_type==2){
+                                                                    Fluttertoast.showToast(
+                                                                        msg: resp.data.username+" "+resp.data.email+" "+resp.data.first_name+" "+resp.data.last_name+" "+resp.data.phone,
+                                                                        toastLength: Toast.LENGTH_SHORT,
+                                                                        gravity: ToastGravity.CENTER,
+                                                                        timeInSecForIosWeb: 12,
+                                                                        backgroundColor: Colors.red,
+                                                                        textColor: Colors.white,
+                                                                        fontSize: 16.0,
+                                                                        webPosition: "center"
+                                                                    );
                                                                     print("usertype: ${resp.data.user_type}");
                                                                     SharedPreferences pref = await SharedPreferences.getInstance();
                                                                     pref.setString('doctorauthtoken', resp.data.token);
@@ -1652,6 +1672,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                                               firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"2"
                                                                                           )
                                                                                       );
+                                                                                      Fluttertoast.showToast(
+                                                                                          msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
+                                                                                          toastLength: Toast.LENGTH_SHORT,
+                                                                                          gravity: ToastGravity.CENTER,
+                                                                                          timeInSecForIosWeb: 12,
+                                                                                          backgroundColor: Colors.red,
+                                                                                          textColor: Colors.white,
+                                                                                          fontSize: 16.0,
+                                                                                          webPosition: "center"
+                                                                                      );
                                                                                       print("Regions: ${resp.data.toJson()}");
                                                                                       showregsucesswidget();
                                                                                       /*ScaffoldMessenger.of(context).showSnackBar(
@@ -1674,6 +1704,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                                           )
                                                                                       );
                                                                                       print("Regions: ${resp.data.toJson()}");
+                                                                                      Fluttertoast.showToast(
+                                                                                          msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
+                                                                                          toastLength: Toast.LENGTH_SHORT,
+                                                                                          gravity: ToastGravity.CENTER,
+                                                                                          timeInSecForIosWeb: 12,
+                                                                                          backgroundColor: Colors.red,
+                                                                                          textColor: Colors.white,
+                                                                                          fontSize: 16.0,
+                                                                                          webPosition: "center"
+                                                                                      );
                                                                                       showregsucesswidget();
 
                                                                                       clearregtext();
@@ -2106,6 +2146,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                               firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"2"
                                                                           )
                                                                       );
+                                                                      Fluttertoast.showToast(
+                                                                          msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
+                                                                          toastLength: Toast.LENGTH_SHORT,
+                                                                          gravity: ToastGravity.CENTER,
+                                                                          timeInSecForIosWeb: 12,
+                                                                          backgroundColor: Colors.red,
+                                                                          textColor: Colors.white,
+                                                                          fontSize: 16.0,
+                                                                          webPosition: "center"
+                                                                      );
                                                                       print("Regions: ${resp.data.toJson()}");
                                                                       showregsucesswidget();
                                                                       /*ScaffoldMessenger.of(context).showSnackBar(
@@ -2126,6 +2176,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                           Reguser(
                                                                               firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"2"
                                                                           )
+                                                                      );
+                                                                      Fluttertoast.showToast(
+                                                                          msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
+                                                                          toastLength: Toast.LENGTH_SHORT,
+                                                                          gravity: ToastGravity.CENTER,
+                                                                          timeInSecForIosWeb: 12,
+                                                                          backgroundColor: Colors.red,
+                                                                          textColor: Colors.white,
+                                                                          fontSize: 16.0,
+                                                                          webPosition: "center"
                                                                       );
                                                                       print("Regions: ${resp.data.toJson()}");
                                                                       showregsucesswidget();
