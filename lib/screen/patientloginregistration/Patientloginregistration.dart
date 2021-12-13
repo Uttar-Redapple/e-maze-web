@@ -210,11 +210,18 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
       isEnabled = false;
     });
   }
+  late bool loginabsrobpointer;
+  late bool regabsorbpointer;
+  late bool loginbutton;
+  late bool regbutton;
   @override
   void initState() {
     super.initState();
+    loginbutton=true;
+    regbutton=false;
     _passwordVisible = false;
     _regpasswordVisible = false;
+
     _loginusernamefocusnode = FocusNode();
     _loginpwdfocusnode = FocusNode();
     _regusernamefocusnode=FocusNode();
@@ -228,7 +235,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
     futureAlbum = fetchterms();
     privacypolicy=fetchprivacypolicy();
     _isButtonDisabled = false;
-
+    loginabsrobpointer=false;
+    regabsorbpointer=true;
 
   }
   @override
@@ -246,6 +254,57 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
     _regemailfocusnode.dispose();
     super.dispose();
   }
+  void enableloginbutton(){
+    setState(() {
+      loginbutton=true;
+    });
+  }
+  void disableloginbutton(){
+    setState(() {
+      loginbutton=false;
+    });
+  }
+
+  void enableregbutton(){
+    setState(() {
+      regbutton=true;
+    });
+  }
+  void disableregbutton(){
+    setState(() {
+      regbutton=false;
+    });
+  }
+
+  void enablelogin(){
+    setState(() {
+      loginabsrobpointer=false;
+    });
+
+
+  }
+  void disablelogin(){
+    setState(() {
+      loginabsrobpointer=true;
+    });
+
+
+  }
+  void enablereg(){
+    setState(() {
+      regabsorbpointer=false;
+    });
+
+
+  }
+  void disablereg(){
+    setState(() {
+      regabsorbpointer=true;
+    });
+
+
+  }
+
   void _onFocusChange(){
 
     debugPrint("Focusregusername: ${_regusernamefocusnode.hasFocus.toString()}");
@@ -256,6 +315,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
   bool validemail = false ;
   bool validph = false ;
   bool validpwd = false ;
+
   void showvalidusername(){
     setState(() {
       viewvalidusername = true ;
@@ -412,6 +472,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                               hidevalidph();
                                               hidevalidemail();
                                               hidevalidusername();
+                                              /*enablelogin();
+                                              disablereg();*/
                                               pwd=true;
                                               _regborderRadius =
                                                   BorderRadius.circular(40.sp);
@@ -460,6 +522,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                   hidevalidph();
                                                   hidevalidemail();
                                                   hidevalidusername();
+                                                  /*enablelogin();
+                                                  disablereg();*/
                                                   pwd=true;
                                                   _regborderRadius =
                                                       BorderRadius.circular(40.sp);
@@ -510,6 +574,9 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                   BorderRadius.circular(40.sp);
                                               hideerrorWidget();
                                               clearlogintext();
+                                             /* disablelogin();
+                                              enablereg();*/
+
                                               _hasBeenPressedlogin = !_hasBeenPressedlogin;
                                             });
                                           },
@@ -552,6 +619,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                       BorderRadius.circular(40.sp);
                                                   hideerrorWidget();
                                                   clearlogintext();
+                                              /*    disablelogin();
+                                                  enablereg();*/
                                                   _hasBeenPressedlogin = !_hasBeenPressedlogin;
                                                 });
                                               },
@@ -583,344 +652,1226 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                 child: Row(
 
                                   children: [
-                                    Expanded(
-                                      flex: 5,
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            _regcolor = Colors.white;
-                                            _logincolor=Colors.green;
-                                            _logintextcolor=Colors.white;
-                                            _regtextcolor=Colors.black;
-                                            // Generate a random width and height.
-                                            _width = 600.sp;
-                                            _height = 450.sp;
-                                            _regwidth = 570.sp;
-                                            _regheight = 370.sp;
-                                            regpwd=false;
-                                            regph=false;
-                                            regemail=false;
-                                            regusername=false;
-                                            username=true;
-                                            hidewidget();
-                                            hideWidget();
-                                            clearregtext();
-                                            hideregsucesswidget();
-                                            hidevalidpwd();
-                                            hidevalidph();
-                                            hidevalidemail();
-                                            hidevalidusername();
-                                            pwd=true;
-                                            _regborderRadius =
-                                                BorderRadius.circular(40.sp);
-                                            _borderRadius =
-                                                BorderRadius.circular(40.sp);
-                                            _hasBeenPressedregister = !_hasBeenPressedregister;
-                                          });
-                                        },
-                                        child: Container(
+
+                                       Expanded(
+                                        flex: 5,
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              _regcolor = Colors.white;
+                                              _logincolor=Colors.green;
+                                              _logintextcolor=Colors.white;
+                                              _regtextcolor=Colors.black;
+                                              // Generate a random width and height.
+                                              _width = 600.sp;
+                                              _height = 450.sp;
+                                              _regwidth = 570.sp;
+                                              _regheight = 370.sp;
+                                              regpwd=false;
+                                              regph=false;
+                                              regemail=false;
+                                              regusername=false;
+                                              username=true;
+                                              hidewidget();
+                                              hideWidget();
+                                              clearregtext();
+                                              hideregsucesswidget();
+                                              hidevalidpwd();
+                                              hidevalidph();
+                                              hidevalidemail();
+                                              hidevalidusername();
+                                              /*enablelogin();
+                                              disablereg();*/
+                                              pwd=true;
+                                              _regborderRadius =
+                                                  BorderRadius.circular(40.sp);
+                                              _borderRadius =
+                                                  BorderRadius.circular(40.sp);
+                                              _hasBeenPressedregister = !_hasBeenPressedregister;
+                                            });
+                                          },
+                                          child: Container(
 
 
-                                          padding: EdgeInsets.all(40.sp),
-                                          child: Align(
+                                            padding: EdgeInsets.all(40.sp),
+                                            child: Align(
 
-                                            child: AnimatedContainer(
+                                              child: AnimatedContainer(
 
 
-                                              padding: EdgeInsets.all(10.sp),
-                                              width: _width,
-                                              height: _height,
+                                                padding: EdgeInsets.all(10.sp),
+                                                width: _width,
+                                                height: _height,
 
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                                image: DecorationImage(
-                                                  image: AssetImage("assets/images/login.png"),
+                                                decoration: BoxDecoration(
+                                                  color: Colors.transparent,
+                                                  image: DecorationImage(
+                                                    image: AssetImage("assets/images/login.png"),
 
-                                                  fit: BoxFit.cover,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                  /* gradient: LinearGradient(
+                                                      begin: Alignment.centerLeft,
+                                                      end: Alignment.centerRight,
+                                                      colors: <Color> [
+                                                        Color(0xFF282842),
+                                                        Color(0xFF1C3973)
+
+
+
+
+                                                      ],
+                                                      tileMode: TileMode.repeated
+                                                  ),*/
+                                                  border: Border.all(
+
+                                                      color: Color(0xFF55708b)
+                                                  ),
+                                                  borderRadius: _borderRadius,
+
                                                 ),
-                                                /* gradient: LinearGradient(
-                                                    begin: Alignment.centerLeft,
-                                                    end: Alignment.centerRight,
-                                                    colors: <Color> [
-                                                      Color(0xFF282842),
-                                                      Color(0xFF1C3973)
+                                                duration:  Duration(seconds: 1),
+                                                child: SingleChildScrollView(
+                                                  child: Form(
+                                                    key: _formKey,
+                                                    child: Column(
 
+                                                      children:<Widget>[
 
+                                                        Container(
+                                                          margin: new EdgeInsets.symmetric(horizontal: 20.sp),
+                                                          padding: EdgeInsets.symmetric(vertical: 10.sp,),
+                                                          child: Row(
 
+                                                            children: [
+                                                              Text(
+                                                                "USER / EMAIL / ID / PHONE",
+                                                                textAlign: TextAlign.center,
+                                                                style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    fontSize: 15.sp
+                                                                ),
 
-                                                    ],
-                                                    tileMode: TileMode.repeated
-                                                ),*/
-                                                border: Border.all(
-
-                                                    color: Color(0xFF55708b)
-                                                ),
-                                                borderRadius: _borderRadius,
-
-                                              ),
-                                              duration:  Duration(seconds: 1),
-                                              child: SingleChildScrollView(
-                                                child: Form(
-                                                  key: _formKey,
-                                                  child: Column(
-
-                                                    children:<Widget>[
-
-                                                      Container(
-                                                        margin: new EdgeInsets.symmetric(horizontal: 20.sp),
-                                                        padding: EdgeInsets.symmetric(vertical: 10.sp,),
-                                                        child: Row(
-
-                                                          children: [
-                                                            Text(
-                                                              "USER / EMAIL / ID / PHONE",
-                                                              textAlign: TextAlign.center,
-                                                              style: TextStyle(
-                                                                  color: Colors.white,
-                                                                  fontSize: 15.sp
                                                               ),
-
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-
-                                                      ),
-                                                      Container(
-
-                                                        //  height: 140.sp,
-                                                        width: 700.sp,
-                                                        margin: new EdgeInsets.symmetric(horizontal: 20.sp),
-                                                        padding: EdgeInsets.all(20.sp),
-                                                        decoration: BoxDecoration(
-
-                                                          color: Colors.white,
-                                                          border: Border.all(color: Colors.white),
-                                                          borderRadius: BorderRadius.all(Radius.circular(10.sp)),
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              color: Color(0xFF243B40),
-                                                              blurRadius: 2.0,
-                                                              spreadRadius: 0.0,
-                                                              offset: Offset(2.0, 2.0), // changes position of shadow
-                                                            ),
-                                                          ],
+                                                        Container(
+                                                          height: 10.sp,
 
                                                         ),
-                                                        child: Column(
-                                                          children: [
-                                                            RawKeyboardListener(
-                                                              focusNode: _loginusernamefocusnode,
-                                                              onKey: (event) {
-                                                                if ((event.logicalKey == LogicalKeyboardKey.tab)){
-                                                                  print("Tab Key pressed");
-                                                                  _loginusernamefocusnode.unfocus();
-                                                                  _loginpwdfocusnode.requestFocus();
+                                                        Container(
 
-                                                                  // FocusScope.of(context).requestFocus(_loginpwdfocusnode);
-                                                                  // focusNode: _loginpwdfocusnode.requestFocus();
-                                                                }
-                                                                /* if (event.runtimeType == RawKeyDownEvent && (event.logicalKey.keyId == 9)) {
-                                                                  print("ENTER Key pressed");
-                                                                  //Do something
-                                                                  focusNode: _loginpwdfocusnode.requestFocus();
-                                                                }*/
-                                                              },
-                                                              child: TextFormField(
-                                                                enabled: username,
-                                                                controller: nameController,
-                                                                decoration: InputDecoration(
-                                                                    border: UnderlineInputBorder(),
-                                                                    labelText: 'User Name',
-                                                                    hintText: "name@example.com"
+                                                          //  height: 140.sp,
+                                                          width: 700.sp,
+                                                          margin: new EdgeInsets.symmetric(horizontal: 20.sp),
+                                                          padding: EdgeInsets.all(20.sp),
+                                                          decoration: BoxDecoration(
 
+                                                            color: Colors.white,
+                                                            border: Border.all(color: Colors.white),
+                                                            borderRadius: BorderRadius.all(Radius.circular(10.sp)),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                color: Color(0xFF243B40),
+                                                                blurRadius: 2.0,
+                                                                spreadRadius: 0.0,
+                                                                offset: Offset(2.0, 2.0), // changes position of shadow
+                                                              ),
+                                                            ],
+
+                                                          ),
+                                                          child: Column(
+                                                            children: [
+
+                                                                TextFormField(
+                                                                  enabled: username,
+                                                                  controller: nameController,
+                                                                  decoration: InputDecoration(
+                                                                      border: UnderlineInputBorder(),
+                                                                      labelText: 'User Name',
+                                                                      hintText: "name@example.com"
+
+                                                                  ),
+
+
+
+
+
+                                                                  validator: (value) {
+                                                                    if (value == null || value.isEmpty) {
+                                                                      return 'Username required';
+                                                                    }
+                                                                    return null;
+                                                                  },
+                                                                  textInputAction: TextInputAction.next,
+                                                                  onFieldSubmitted: (v){
+                                                                    _loginusernamefocusnode.unfocus();
+                                                                    _loginpwdfocusnode.requestFocus();
+                                                                  },
+
+                                                                  //   onEditingComplete: () => _loginpwdfocusnode.requestFocus(),
                                                                 ),
 
 
+                                                               TextFormField(
+                                                                  enabled: pwd,
+                                                                  // focusNode: _loginpwdfocusnode,
+                                                                  obscureText: !_passwordVisible,
+                                                                  controller: passwordController,
+                                                                  //  focusNode: _loginpwdfocusnode,
+
+                                                                  validator: (pwdvalue) {
+                                                                    if (pwdvalue!.isEmpty) {
+                                                                      return "Password Required";
+                                                                    }
+                                                                  },
 
 
-
-                                                                validator: (value) {
-                                                                  if (value == null || value.isEmpty) {
-                                                                    return 'Username required';
-                                                                  }
-                                                                  return null;
-                                                                },
-                                                                textInputAction: TextInputAction.next,
-                                                                onFieldSubmitted: (v){
-                                                                  _loginusernamefocusnode.unfocus();
-                                                                  _loginpwdfocusnode.requestFocus();
-                                                                },
-
-                                                                //   onEditingComplete: () => _loginpwdfocusnode.requestFocus(),
-                                                              ),
-                                                            ),
-                                                            RawKeyboardListener(
-                                                              focusNode: _loginpwdfocusnode,
-                                                              child: TextFormField(
-                                                                enabled: pwd,
-                                                                // focusNode: _loginpwdfocusnode,
-                                                                obscureText: !_passwordVisible,
-                                                                controller: passwordController,
-                                                                //  focusNode: _loginpwdfocusnode,
-
-                                                                validator: (pwdvalue) {
-                                                                  if (pwdvalue!.isEmpty) {
-                                                                    return "Password Required";
-                                                                  }
-                                                                },
-
-
-                                                                decoration: InputDecoration(
-                                                                    border: InputBorder.none,
-                                                                    //  border: UnderlineInputBorder(),
-                                                                    labelText: 'Password',
-                                                                    suffixIcon: GestureDetector(
-                                                                      onLongPress: () {
-                                                                        setState(() {
-                                                                          _passwordVisible = true;
-                                                                        });
-                                                                      },
-                                                                      onLongPressUp: () {
-                                                                        setState(() {
-                                                                          _passwordVisible = false;
-                                                                        });
-                                                                      },
-                                                                      child: Icon(
-                                                                          _passwordVisible ? Icons.visibility : Icons.visibility_off
-                                                                      ),
-                                                                    )
-                                                                ),
-                                                                onFieldSubmitted: (value) async {
-                                                                  if (_formKey.currentState!.validate()) {
-                                                                    try {
-                                                                      GetLoginResponse resp=
-                                                                      await context.read(apiClientProvider).login(
-                                                                          Loginuser( nameController.text, passwordController.text
-                                                                          )
-                                                                      );
+                                                                  decoration: InputDecoration(
+                                                                      border: InputBorder.none,
+                                                                      //  border: UnderlineInputBorder(),
+                                                                      labelText: 'Password',
+                                                                      suffixIcon: GestureDetector(
+                                                                        onLongPress: () {
+                                                                          setState(() {
+                                                                            _passwordVisible = true;
+                                                                          });
+                                                                        },
+                                                                        onLongPressUp: () {
+                                                                          setState(() {
+                                                                            _passwordVisible = false;
+                                                                          });
+                                                                        },
+                                                                        child: Icon(
+                                                                            _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                                        ),
+                                                                      )
+                                                                  ),
+                                                                  onFieldSubmitted: (value) async {
+                                                                    if (_formKey.currentState!.validate()) {
+                                                                      try {
+                                                                        GetLoginResponse resp=
+                                                                        await context.read(apiClientProvider).login(
+                                                                            Loginuser( nameController.text, passwordController.text
+                                                                            )
+                                                                        );
 
 
 
 
-                                                                      if(resp.data.user_type==1){
-                                                                        print("usertype: ${resp.data.user_type}");
+                                                                        if(resp.data.user_type==1){
+                                                                          print("usertype: ${resp.data.user_type}");
 
-                                                                        SharedPreferences pref = await SharedPreferences.getInstance();
-                                                                        pref.setString('authtoken', resp.data.token);
-                                                                        getuserdetails(resp.data.token,resp.data.user_id);
-                                                                        pref.setInt('p_id', resp.data.user_id);
+                                                                          SharedPreferences pref = await SharedPreferences.getInstance();
+                                                                          pref.setString('authtoken', resp.data.token);
+                                                                          getuserdetails(resp.data.token,resp.data.user_id);
+                                                                          pref.setInt('p_id', resp.data.user_id);
 
-                                                                      }
-                                                                      else{
-                                                                        showerrorWidget();
-                                                                      }
-                                                                      //print("Regions: ${resp.data.toJson()}");
+                                                                        }
+                                                                        else{
+                                                                          showerrorWidget();
+                                                                        }
+                                                                        //print("Regions: ${resp.data.toJson()}");
 
-                                                                      clearlogintext();
-                                                                      // hideerrorWidget();
-
-                                                                    } catch (e) {
-                                                                      print(e);
-                                                                      if (e is DioError) {
-                                                                        showerrorWidget();
                                                                         clearlogintext();
-                                                                        /* ScaffoldMessenger.of(context).showSnackBar(
-                                                                      SnackBar(content: Text('Wrong username or password')),
-                                                                    );*/
+                                                                        // hideerrorWidget();
 
-                                                                        //handle DioError here by error type or by error code
+                                                                      } catch (e) {
+                                                                        print(e);
+                                                                        if (e is DioError) {
+                                                                          showerrorWidget();
+                                                                          clearlogintext();
+                                                                          /* ScaffoldMessenger.of(context).showSnackBar(
+                                                                        SnackBar(content: Text('Wrong username or password')),
+                                                                      );*/
 
-                                                                      } else {
+                                                                          //handle DioError here by error type or by error code
+
+                                                                        } else {
+
+                                                                        }
 
                                                                       }
+                                                                      // If the form is valid, display a snackbar. In the real world,
+                                                                      // you'd often call a server or save the information in a database.
+
 
                                                                     }
-                                                                    // If the form is valid, display a snackbar. In the real world,
-                                                                    // you'd often call a server or save the information in a database.
+                                                                  },
+                                                                  textInputAction: TextInputAction.done,
+                                                                ),
 
+
+                                                            ],
+                                                          ),
+
+                                                        ),
+                                                        Container(
+                                                          height: 10.sp,
+
+                                                        ),
+                                                        Container(
+                                                          margin:  EdgeInsets.only(left: 15.sp, right: 15.sp),
+
+                                                          child: Row(
+
+                                                            children: [
+                                                              Container(
+                                                                height: 25.sp,
+                                                                width: 25.sp,
+                                                                child: RoundCheckBox(
+                                                                  onTap: (selected) {},
+
+                                                                  animationDuration: Duration(
+                                                                    milliseconds: 50,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Container(
+                                                                width: 4.sp,
+                                                                height: 2.sp,
+                                                              ),
+
+                                                              /* FutureBuilder<Album>(
+                                                                  future: futureAlbum,
+                                                                  builder: (context, snapshot) {
+                                                                    if (snapshot.hasData) {
+                                                                      return Text(
+                                                                          snapshot.data!.title,
+                                                                        textAlign: TextAlign.center,
+                                                                        style: TextStyle(
+                                                                            color: Colors.white,
+                                                                            fontSize: 15.sp
+                                                                        ),
+                                                                      );
+                                                                    } else if (snapshot.hasError) {
+                                                                      return Text('${snapshot.error}');
+                                                                    }
+                                                                    return const CircularProgressIndicator();
+                                                                  }
+                                                              ),*/
+
+                                                              Text(
+                                                                "Remember me",
+                                                                textAlign: TextAlign.center,
+                                                                style: TextStyle(
+                                                                  color: Colors.white,
+                                                                  // fontSize: 15.sp
+                                                                ),
+
+                                                              ),
+                                                              Spacer(),
+                                                              GestureDetector(
+                                                                onTap: (){
+                                                                  showDialog(
+                                                                      context: context,
+                                                                      builder: (context){
+                                                                        return Dialog(
+                                                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                          elevation: 16,
+                                                                          child: SingleChildScrollView(
+                                                                            child: Form(
+                                                                              key: _forgotformKey,
+                                                                              child: Container(
+                                                                                width: 400.sp,
+                                                                                height: 400.sp,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                                  gradient: LinearGradient(
+                                                                                      begin: Alignment.topLeft,
+                                                                                      end: Alignment.bottomRight,
+                                                                                      colors: <Color> [
+                                                                                        Color(0xFF2b2b49),
+                                                                                        Color(0xFF0d2561),
+                                                                                        Color(0xFF005890),
+                                                                                        Color(0xFF0071a6),
+
+
+
+
+
+                                                                                      ],
+                                                                                      tileMode: TileMode.repeated
+                                                                                  ),
+                                                                                ),
+                                                                                child: Column(
+                                                                                  children: [
+                                                                                    Center(
+                                                                                      child: SizedBox(
+                                                                                        height: 100.sp,
+                                                                                        width: 200.sp,
+                                                                                        child: Image(image: AssetImage(
+                                                                                            'assets/images/emazelogofirst.png'
+                                                                                        ),
+
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Container(
+                                                                                      height: 10.sp,
+                                                                                    ),
+                                                                                    Container(
+                                                                                      height: 54.sp,
+                                                                                      width: 500.sp,
+                                                                                      decoration: BoxDecoration(
+                                                                                        // borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                                        gradient: LinearGradient(
+                                                                                            begin: Alignment.centerLeft,
+                                                                                            end: Alignment.centerRight,
+                                                                                            colors: <Color> [
+                                                                                              Color(0xFF005088),
+                                                                                              Color(0xFF29AAE1),
+
+
+
+
+
+
+                                                                                            ],
+                                                                                            tileMode: TileMode.repeated
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: Center(
+                                                                                        child: Text(
+                                                                                          "FORGOT PASSWORD",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                            color: Color(0xFFffffff),
+                                                                                            //  fontSize: 35.sp,
+                                                                                            fontFamily:  '',
+                                                                                            fontWeight: FontWeight.bold,
+                                                                                          ),
+
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Container(
+                                                                                      height: 30.sp,
+                                                                                    ),
+                                                                                    Neumorphic(
+                                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                                      style: NeumorphicStyle(
+                                                                                          depth: NeumorphicTheme.embossDepth(context),
+                                                                                          boxShape: NeumorphicBoxShape.stadium(),
+                                                                                          color: Colors.white
+                                                                                      ),
+                                                                                      //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                                      child: Container(
+                                                                                        height: 45.sp,
+                                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                                        child: TextFormField(
+                                                                                          // enabled:regemail,
+                                                                                          controller: forgotemailController,
+
+                                                                                          validator: (regemailvalue) {
+                                                                                            final bool isValid = EmailValidator.validate(regemailvalue!);
+
+                                                                                            if (!isValid) {
+                                                                                              showvalidemailtoast();
+
+                                                                                              // showvalidemail();
+                                                                                              // return "Email address invalid";
+                                                                                            }
+                                                                                            else{
+                                                                                              //hidevalidemail();
+                                                                                            }
+                                                                                          },
+
+                                                                                          decoration: InputDecoration(
+                                                                                            border: InputBorder.none,
+                                                                                            //  filled: true,
+                                                                                            fillColor: Colors.white70,
+
+                                                                                            hintText: 'Email',
+
+                                                                                          ),
+                                                                                          textInputAction: TextInputAction.done,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Container(
+                                                                                      height: 30.sp,
+                                                                                    ),
+                                                                                    Visibility(
+                                                                                      visible: validemail,
+                                                                                      child: Container(
+                                                                                        child: Text(
+                                                                                          "Email required or please enter valid email.",
+                                                                                          style: TextStyle(
+                                                                                            color: Colors.red,
+
+                                                                                          ),
+
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Container(
+                                                                                      child: ButtonTheme(
+                                                                                        minWidth: 182.sp,
+                                                                                        height: 63.sp,
+                                                                                        shape: new RoundedRectangleBorder(
+                                                                                          borderRadius: new BorderRadius.circular(40.sp),
+                                                                                        ),
+                                                                                        child: RaisedButton(
+
+                                                                                          onPressed: () async {
+                                                                                            if (_forgotformKey.currentState!.validate()) {
+                                                                                              frgtpwd();
+                                                                                            }
+
+                                                                                          },
+
+                                                                                          color: Color(0xFF29AAE1),
+                                                                                          child: Text("Submit",
+                                                                                            style: TextStyle(
+                                                                                              color: Colors.white,
+
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+
+                                                                                    Text(
+                                                                                      "",
+                                                                                      style: TextStyle(
+                                                                                        color: Colors.red,
+
+                                                                                      ),
+
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      }
+                                                                  ).then((val) {
+                                                                    forgotemailController.clear();
+                                                                  });;
+                                                                },
+                                                                child: Text(
+                                                                  "Forgot password?",
+                                                                  textAlign: TextAlign.center,
+                                                                  style: TextStyle(
+                                                                    color: Colors.white,
+                                                                    // fontSize: 15.sp
+                                                                  ),
+
+                                                                ),
+                                                              ),
+
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          height: 63.sp,
+
+                                                        ),
+                                                        Container(
+                                                          height: 60,
+                                                          decoration: BoxDecoration(
+                                                            /* gradient: LinearGradient(
+                                                                colors: [
+                                                                  Color.fromRGBO(255, 143, 158, 1),
+                                                                  Color.fromRGBO(255, 188, 143, 1),
+                                                                ],
+                                                                begin: Alignment.centerLeft,
+                                                                end: Alignment.centerRight,
+                                                              ),*/
+                                                              borderRadius: const BorderRadius.all(
+                                                                Radius.circular(25.0),
+                                                              ),
+                                                              boxShadow: [
+                                                                BoxShadow(
+                                                                  color: Colors.pink.withOpacity(0.2),
+                                                                  spreadRadius: 4,
+                                                                  blurRadius: 10,
+                                                                  offset: Offset(0, 3),
+                                                                )
+                                                              ]
+                                                          ),
+                                                          /*decoration: BoxDecoration(
+
+
+                                                              boxShadow: [
+                                                                BoxShadow(
+                                                                  color: Colors.grey.withOpacity(0.5),
+
+                                                                  blurRadius: 6,
+                                                                  offset: Offset(5, 5),
+                                                                )
+                                                              ]
+                                                          ),*/
+                                                          child: ButtonTheme(
+                                                            minWidth: 182.sp,
+                                                            height: 63.sp,
+                                                            shape: new RoundedRectangleBorder(
+                                                              borderRadius: new BorderRadius.circular(40.sp),
+
+                                                            ),
+                                                            child: RaisedButton(
+                                                              onPressed: () async {
+                                                                if (_formKey.currentState!.validate()) {
+                                                                  try {
+                                                                    GetLoginResponse resp=
+                                                                    await context.read(apiClientProvider).login(
+                                                                        Loginuser( nameController.text, passwordController.text
+                                                                        )
+                                                                    );
+
+
+                                                                    /* print( User(
+                                                                        "abc@gmail.com",
+                                                                        "123456"
+                                                                    ));*/
+
+                                                                    if(resp.data.user_type==1){
+                                                                      print("usertype: ${resp.data.user_type}");
+
+                                                                      SharedPreferences pref = await SharedPreferences.getInstance();
+                                                                      pref.setString('authtoken', resp.data.token);
+                                                                      getuserdetails(resp.data.token,resp.data.user_id);
+                                                                      pref.setInt('p_id', resp.data.user_id);
+                                                                    }
+                                                                    else{
+                                                                      showerrorWidget();
+                                                                    }
+                                                                    // print("Regions: ${resp.data.toJson()}");
+
+                                                                    clearlogintext();
+                                                                    // hideerrorWidget();
+
+                                                                  } catch (e) {
+                                                                    print(e);
+                                                                    if (e is DioError) {
+                                                                      showerrorWidget();
+                                                                      clearlogintext();
+                                                                      /* ScaffoldMessenger.of(context).showSnackBar(
+                                                                        SnackBar(content: Text('Wrong username or password')),
+                                                                      );*/
+
+                                                                      //handle DioError here by error type or by error code
+
+                                                                    } else {
+
+                                                                    }
 
                                                                   }
-                                                                },
-                                                                textInputAction: TextInputAction.done,
-                                                              ),
-                                                            ),
+                                                                  // If the form is valid, display a snackbar. In the real world,
+                                                                  // you'd often call a server or save the information in a database.
 
-                                                          ],
-                                                        ),
 
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
+                                                                }
 
-                                                      ),
-                                                      Container(
-                                                        margin:  EdgeInsets.only(left: 15.sp, right: 15.sp),
+                                                              },
 
-                                                        child: Row(
+                                                              color: Color(0xFF29AAE1),
+                                                              child: Text("Sign In",
+                                                                style: TextStyle(
+                                                                  color: Colors.white,
 
-                                                          children: [
-                                                            Container(
-                                                              height: 25.sp,
-                                                              width: 25.sp,
-                                                              child: RoundCheckBox(
-                                                                onTap: (selected) {},
-
-                                                                animationDuration: Duration(
-                                                                  milliseconds: 50,
                                                                 ),
                                                               ),
                                                             ),
-                                                            Container(
-                                                              width: 4.sp,
-                                                              height: 2.sp,
-                                                            ),
+                                                          ),
 
-                                                            /* FutureBuilder<Album>(
-                                                                future: futureAlbum,
-                                                                builder: (context, snapshot) {
-                                                                  if (snapshot.hasData) {
-                                                                    return Text(
-                                                                        snapshot.data!.title,
-                                                                      textAlign: TextAlign.center,
-                                                                      style: TextStyle(
-                                                                          color: Colors.white,
-                                                                          fontSize: 15.sp
+                                                        ),
+                                                        Container(
+                                                          height: 10.sp,
+                                                        ),
+                                                        Visibility(
+                                                          visible: viewerrormsgvisible,
+                                                          child: Text(valuetext,
+                                                            style: TextStyle(
+                                                              color: Color(0xFFFF4500),
+
+                                                            ),
+                                                          ),
+                                                        ),
+
+                                                      ],
+
+                                                    ),
+                                                  ),
+                                                ),
+
+                                              ),
+                                            ),
+
+
+
+
+                                          ),
+                                        ),
+                                      ),
+
+
+                                      Expanded(
+                                        flex: 5,
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              regpwd=true;
+                                              regph=true;
+                                              regemail=true;
+                                              regusername=true;
+                                              username=false;
+                                              pwd=false;
+                                              _logincolor = Colors.white;
+                                              _regcolor= Colors.green;
+                                              _logintextcolor=Colors.black;
+                                              _regtextcolor=Colors.white;
+                                              _width = 500.sp;
+                                              _height = 350.sp;
+                                              _borderRadius =
+                                                  BorderRadius.circular(40.sp);
+
+                                              _regwidth = 650.sp;
+                                              _regheight = 450.sp;
+                                              _regborderRadius =
+                                                  BorderRadius.circular(40.sp);
+                                              hideerrorWidget();
+                                              clearlogintext();
+                                             /* enablereg();
+                                              disablelogin()*/
+                                              _hasBeenPressedlogin = !_hasBeenPressedlogin;
+                                            });
+                                          },
+                                          child: Container(
+                                            //  height: 600.sp,
+
+                                            padding: EdgeInsets.all(20.sp),
+                                            child: Align(
+
+                                              child: AnimatedContainer(
+
+
+                                                padding: EdgeInsets.all(10.sp),
+                                                width: _regwidth,
+                                                height: _regheight,
+
+                                                decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                    image: DecorationImage(
+                                                      image: AssetImage("assets/images/regagain.png"),
+
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                    /* gradient: LinearGradient(
+                                                        begin: Alignment.centerLeft,
+                                                        end: Alignment.centerRight,
+                                                        colors: <Color> [
+                                                          Color(0xFF263E7A),
+
+                                                          Color(0xFF0070A8)
+
+
+
+                                                        ],
+                                                        tileMode: TileMode.repeated
+                                                    ),*/
+                                                    border: Border.all(
+
+                                                        color: Color(0xFF55708b)
+                                                    ),
+                                                    borderRadius: _regborderRadius
+
+                                                ),
+                                                duration:  Duration(seconds: 1),
+                                                curve: Curves.fastOutSlowIn,
+                                                child: SingleChildScrollView(
+                                                  child: Form(
+                                                    key: _regformKey,
+                                                    child: Column(
+
+                                                      children: [
+                                                        Container(
+                                                          height: 20.sp,
+                                                        ),
+                                                        Container(
+                                                            margin: new EdgeInsets.symmetric(horizontal: 20.sp),
+                                                            padding: EdgeInsets.all(20.sp),
+                                                            decoration: BoxDecoration(
+
+                                                              color: Colors.white,
+                                                              border: Border.all(color: Colors.white),
+                                                              borderRadius: BorderRadius.all(Radius.circular(21)),
+
+
+                                                            ),
+                                                            child: Column(
+                                                              children: [
+                                                                Row(
+                                                                  children: [
+                                                                    Expanded(
+                                                                        flex: 1,
+                                                                        child: Container(
+                                                                          height: 25.sp,
+                                                                          width: 25.sp,
+                                                                          child: Image(
+                                                                            image: AssetImage('assets/images/username-gray.png'),
+                                                                          ),
+                                                                        )
+                                                                    ),
+                                                                    Expanded(
+                                                                      flex: 9,
+
+                                                                      child: Neumorphic(
+                                                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                        style: NeumorphicStyle(
+                                                                            depth: NeumorphicTheme.embossDepth(context),
+                                                                            boxShape: NeumorphicBoxShape.stadium(),
+                                                                            color: Colors.white
+                                                                        ),
+                                                                        child: Container(
+                                                                          height: 45.sp,
+                                                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+
+
+
+
+                                                                            child: TextFormField(
+                                                                              enabled:regusername,
+                                                                              controller: regnameController,
+                                                                              validator: (regvalue) {
+                                                                                if (regvalue == null || regvalue.isEmpty) {
+
+                                                                                  showvalidusername();
+                                                                                }
+                                                                                else{
+                                                                                  hidevalidusername();
+                                                                                }
+
+                                                                                //    hidevalidusername();
+                                                                              },
+
+                                                                              decoration: InputDecoration(
+                                                                                border: InputBorder.none,
+                                                                                //  filled: true,
+                                                                                fillColor: Colors.white70,
+
+                                                                                hintText: 'Full Name',
+
+                                                                              ),
+                                                                              // maxLines: 1,
+                                                                             /* onFieldSubmitted: (value){
+                                                                                _regusernamefocusnode.unfocus();
+                                                                                _regemailfocusnode.requestFocus();
+                                                                              },*/
+                                                                              textInputAction: TextInputAction.next,
+                                                                            ),
+
+                                                                        ),
                                                                       ),
-                                                                    );
-                                                                  } else if (snapshot.hasError) {
-                                                                    return Text('${snapshot.error}');
-                                                                  }
-                                                                  return const CircularProgressIndicator();
-                                                                }
-                                                            ),*/
 
-                                                            Text(
-                                                              "Remember me",
-                                                              textAlign: TextAlign.center,
-                                                              style: TextStyle(
-                                                                color: Colors.white,
-                                                                // fontSize: 15.sp
+                                                                    ),
+
+
+                                                                  ],
+
+                                                                ),
+                                                                Container(
+                                                                  height: 10.sp,
+                                                                ),
+                                                                Visibility(
+                                                                  visible: viewvalidusername,
+                                                                  child: Container(
+                                                                    child: Text(
+                                                                      "Full name required.",
+                                                                      style: TextStyle(
+                                                                        color: Colors.red,
+
+                                                                      ),
+
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Row(
+                                                                  children: [
+                                                                    Expanded(
+                                                                        flex: 1,
+                                                                        child: Container(
+                                                                          height: 25.sp,
+                                                                          width: 25.sp,
+                                                                          child: Image(
+                                                                            image: AssetImage('assets/images/message-gray.png'),
+                                                                          ),
+                                                                        )
+                                                                    ),
+                                                                    Expanded(
+                                                                      flex: 9,
+
+
+                                                                      child: Neumorphic(
+                                                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                        style: NeumorphicStyle(
+                                                                            depth: NeumorphicTheme.embossDepth(context),
+                                                                            boxShape: NeumorphicBoxShape.stadium(),
+                                                                            color: Colors.white
+                                                                        ),
+                                                                        //padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                                                                        child: Container(
+                                                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                          height: 50.sp,
+
+
+                                                                            child: TextFormField(
+                                                                              enabled:regemail,
+
+                                                                              controller: regemailController,
+
+                                                                              validator: (regemailvalue) {
+                                                                                final bool isValid = EmailValidator.validate(regemailvalue!);
+                                                                                if (regemailvalue.isEmpty) {
+                                                                                  showvalidemail();
+                                                                                }
+                                                                                if (!isValid) {
+                                                                                  showvalidemail();
+                                                                                  // return "Email address invalid";
+                                                                                }
+                                                                                else{
+                                                                                  hidevalidemail();
+                                                                                }
+                                                                              },
+
+                                                                              decoration: InputDecoration(
+                                                                                border: InputBorder.none,
+                                                                                //  filled: true,
+                                                                                fillColor: Colors.white70,
+
+                                                                                hintText: 'Email',
+
+
+                                                                              ),
+                                                                              textInputAction: TextInputAction.next,
+
+                                                                            ),
+
+                                                                        ),
+                                                                      ),
+
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                                Container(
+                                                                  height: 10.sp,
+                                                                ),
+                                                                Visibility(
+                                                                  visible: validemail,
+                                                                  child: Container(
+                                                                    child: Text(
+                                                                      "Email required or please enter valid email.",
+                                                                      style: TextStyle(
+                                                                        color: Colors.red,
+
+                                                                      ),
+
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Row(
+                                                                  children: [
+                                                                    Expanded(
+                                                                        flex: 1,
+
+                                                                        child: Container(
+                                                                          height: 25.sp,
+                                                                          width: 25.sp,
+                                                                          child: Image(
+                                                                            image: AssetImage('assets/images/contact-gray.png'),
+                                                                          ),
+                                                                        )
+                                                                    ),
+                                                                    Expanded(
+                                                                      flex: 9,
+                                                                      child: Neumorphic(
+                                                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                        style: NeumorphicStyle(
+                                                                            depth: NeumorphicTheme.embossDepth(context),
+                                                                            boxShape: NeumorphicBoxShape.stadium(),
+                                                                            color: Colors.white
+                                                                        ),
+                                                                        //padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                                                                        child: Container(
+                                                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                          height: 50.sp,
+
+
+                                                                            child: TextFormField(
+                                                                              enabled:regph,
+                                                                              keyboardType: TextInputType.number,
+                                                                              inputFormatters: <TextInputFormatter>[
+                                                                                FilteringTextInputFormatter.digitsOnly],
+                                                                              controller: regphnoController,
+
+                                                                              validator: (regphvalue) {
+
+                                                                                if (regphvalue!.length< 10 || regphvalue.length> 13 ){
+                                                                                  showvalidph();
+                                                                                }
+                                                                                else{
+                                                                                  hidevalidph();
+                                                                                }
+
+                                                                              },
+
+
+                                                                              decoration: InputDecoration(
+                                                                                border: InputBorder.none,
+                                                                                //  filled: true,
+                                                                                fillColor: Colors.white70,
+
+                                                                                hintText: 'Phone number',
+
+                                                                              ),
+                                                                              textInputAction: TextInputAction.next,
+                                                                            ),
+
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                                Container(
+                                                                  height: 10.sp,
+                                                                ),
+                                                                Visibility(
+                                                                  visible: validph,
+                                                                  child: Container(
+                                                                    child: Text(
+                                                                      "Phone number required or enter valid phone number.",
+                                                                      style: TextStyle(
+                                                                        color: Colors.red,
+
+                                                                      ),
+
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Row(
+                                                                  children: [
+                                                                    Expanded(
+                                                                        flex: 1,
+                                                                        child: Container(
+                                                                          height: 25.sp,
+                                                                          width: 25.sp,
+                                                                          child: Image(
+                                                                            image: AssetImage('assets/images/lock-gray.png'),
+                                                                          ),
+                                                                        )
+                                                                    ),
+                                                                    Expanded(
+                                                                      flex: 9,
+
+
+
+                                                                        child: Neumorphic(
+                                                                          margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                                                          style: NeumorphicStyle(
+                                                                              depth: NeumorphicTheme.embossDepth(context),
+                                                                              boxShape: NeumorphicBoxShape.stadium(),
+                                                                              color: Colors.white
+                                                                          ),
+                                                                          //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                                                          child: Container(
+                                                                            height: 45.sp,
+                                                                            padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                                                            child: TextFormField(
+                                                                              enabled:regpwd,
+                                                                              obscureText: !_regpasswordVisible,
+                                                                              controller: regpasswordController,
+                                                                              validator: (regpwdvalue) {
+                                                                                if (regpwdvalue!.isEmpty) {
+                                                                                  showvalidpwd();
+                                                                                }
+                                                                                else if (regpwdvalue.length < 6 ){
+                                                                                  showvalidpwd();
+                                                                                }
+                                                                                else{
+                                                                                  hidevalidpwd();
+                                                                                }
+                                                                              },
+                                                                              decoration: InputDecoration(
+
+                                                                                  border: InputBorder.none,
+                                                                                  hintText: 'Password',
+
+                                                                                  suffixIcon: GestureDetector(
+                                                                                    onLongPress: () {
+                                                                                      setState(() {
+                                                                                        _regpasswordVisible = true;
+                                                                                      });
+                                                                                    },
+                                                                                    onLongPressUp: () {
+                                                                                      setState(() {
+                                                                                        _regpasswordVisible = false;
+                                                                                      });
+                                                                                    },
+                                                                                    child: Icon(
+                                                                                        _regpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                                                    ),
+                                                                                  )
+                                                                              ),
+                                                                              onFieldSubmitted: (value) async {
+                                                                                if (_regformKey.currentState!.validate()) {
+
+                                                                                  if(selectedbox==true){
+                                                                                    hideWidget();
+
+                                                                                    try {
+                                                                                      String name = regnameController.text.toString();
+                                                                                      String lastnames=regnameController.text.toString().trim();
+                                                                                      if(name.contains(" ")){
+                                                                                        final dateList = name.split(" ");
+                                                                                        print( dateList[1]);
+                                                                                        String firstname=dateList[0];
+                                                                                        String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
+                                                                                        print(firstname);
+                                                                                        print(lastname);
+                                                                                        var rng = new Random();
+                                                                                        var randomno = rng.nextInt(9000) + 1000;
+                                                                                        Getreguserresponse resp=
+                                                                                        await context.read(apiClientProvider).createUser(
+                                                                                            Reguser(
+                                                                                                firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                                            )
+                                                                                        );
+                                                                                        //    print("Regions: ${resp.data.toJson()}");
+                                                                                        showregsucesswidget();
+                                                                                        /*ScaffoldMessenger.of(context).showSnackBar(
+                                                                        SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
+                                                                      );*/
+                                                                                        clearregtext();
+                                                                                        hideerrorWidget();
+                                                                                        hidewidget();
+                                                                                      }
+                                                                                      else{
+                                                                                        var rng = new Random();
+                                                                                        var randomno = rng.nextInt(9000) + 1000;
+                                                                                        String firstname=name;
+                                                                                        print(firstname);
+
+                                                                                        Getreguserresponse resp=
+                                                                                        await context.read(apiClientProvider).createUser(
+                                                                                            Reguser(
+                                                                                                firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                                            )
+                                                                                        );
+                                                                                        //  print("Regions: ${resp.data.toJson()}");
+                                                                                        showregsucesswidget();
+
+                                                                                        clearregtext();
+                                                                                        hideerrorWidget();
+                                                                                        hidewidget();
+                                                                                        //print( date);
+                                                                                      }
+
+
+
+
+
+                                                                                    } catch (e) {
+                                                                                      print(e);
+                                                                                      if (e is DioError) {
+
+                                                                                        showidget();
+                                                                                        clearregtext();
+                                                                                        hideregsucesswidget();
+                                                                                        /*ScaffoldMessenger.of(context).showSnackBar(
+                                                                          SnackBar(content: Text('Email/Phone is already exists')),
+                                                                        );*/
+
+                                                                                        //handle DioError here by error type or by error code
+
+                                                                                      } else {
+
+                                                                                      }
+
+                                                                                    }
+                                                                                  }
+                                                                                  else if(selectedbox==false){
+                                                                                    print(selectedbox);
+                                                                                    showWidget();
+                                                                                    checkvalue="Please check I am agree with privacy policy,terms and conditions.";
+
+                                                                                  }
+
+                                                                                  // If the form is valid, display a snackbar. In the real world,
+                                                                                  // you'd often call a server or save the information in a database.
+
+
+
+                                                                                }
+                                                                              },
+                                                                              textInputAction: TextInputAction.done,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                                Visibility(
+                                                                  visible: validpwd,
+                                                                  child: Container(
+                                                                    child: Text(
+                                                                      "Password required or enter minimum 6 character.",
+                                                                      style: TextStyle(
+                                                                        color: Colors.red,
+
+                                                                      ),
+
+                                                                    ),
+                                                                  ),
+                                                                ),
+
+                                                              ],
+                                                            )
+                                                        ),
+                                                        Container(
+                                                          height: 10.sp,
+                                                        ),
+                                                        Container(
+                                                          margin:  EdgeInsets.only(left: 20.sp, right: 20.sp),
+
+                                                          child: Row(
+
+                                                            children: [
+                                                              Container(
+                                                                height: 25.sp,
+                                                                width: 25.sp,
+                                                                child: RoundCheckBox(
+                                                                  onTap: (selected) {
+                                                                    print(selected);
+                                                                    selectedbox=selected! ;
+                                                                    //hideWidget();
+                                                                  },
+
+                                                                  // isChecked: roundcheckboxselection,
+                                                                  animationDuration: Duration(
+                                                                    milliseconds: 50,
+                                                                  ),
+                                                                ),
                                                               ),
+                                                              Container(
+                                                                width: 2.sp,
 
-                                                            ),
-                                                            Spacer(),
-                                                            GestureDetector(
-                                                              onTap: (){
-                                                                showDialog(
-                                                                    context: context,
-                                                                    builder: (context){
-                                                                      return Dialog(
-                                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                                                                        elevation: 16,
-                                                                        child: SingleChildScrollView(
-                                                                          child: Form(
-                                                                            key: _forgotformKey,
+                                                              ),
+                                                              GestureDetector(
+                                                                onTap: () {
+                                                                  showDialog(
+                                                                      context: context,
+                                                                      builder: (context){
+                                                                        return Dialog(
+
+                                                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                          elevation: 16,
+                                                                          child: SingleChildScrollView(
                                                                             child: Container(
-                                                                              width: 400.sp,
-                                                                              height: 400.sp,
+                                                                              width: 500.sp,
                                                                               decoration: BoxDecoration(
                                                                                 borderRadius: BorderRadius.all(Radius.circular(20.0)),
                                                                                 gradient: LinearGradient(
@@ -940,1330 +1891,426 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                                     tileMode: TileMode.repeated
                                                                                 ),
                                                                               ),
+
                                                                               child: Column(
                                                                                 children: [
-                                                                                  Center(
-                                                                                    child: SizedBox(
-                                                                                      height: 100.sp,
-                                                                                      width: 200.sp,
-                                                                                      child: Image(image: AssetImage(
-                                                                                          'assets/images/emazelogofirst.png'
-                                                                                      ),
+                                                                                  Container(
 
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Container(
-                                                                                    height: 10.sp,
-                                                                                  ),
-                                                                                  Container(
-                                                                                    height: 54.sp,
+                                                                                    padding: EdgeInsets.all(20.sp),
+                                                                                    height: 500.sp,
                                                                                     width: 500.sp,
-                                                                                    decoration: BoxDecoration(
-                                                                                      // borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                                                                                      gradient: LinearGradient(
-                                                                                          begin: Alignment.centerLeft,
-                                                                                          end: Alignment.centerRight,
-                                                                                          colors: <Color> [
-                                                                                            Color(0xFF005088),
-                                                                                            Color(0xFF29AAE1),
-
-
-
-
-
-
-                                                                                          ],
-                                                                                          tileMode: TileMode.repeated
-                                                                                      ),
-                                                                                    ),
-                                                                                    child: Center(
-                                                                                      child: Text(
-                                                                                        "FORGOT PASSWORD",
-                                                                                        textAlign: TextAlign.center,
-                                                                                        style: TextStyle(
-                                                                                          color: Color(0xFFffffff),
-                                                                                          //  fontSize: 35.sp,
-                                                                                          fontFamily:  '',
-                                                                                          fontWeight: FontWeight.bold,
-                                                                                        ),
-
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Container(
-                                                                                    height: 30.sp,
-                                                                                  ),
-                                                                                  Neumorphic(
-                                                                                    margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                                    style: NeumorphicStyle(
-                                                                                        depth: NeumorphicTheme.embossDepth(context),
-                                                                                        boxShape: NeumorphicBoxShape.stadium(),
-                                                                                        color: Colors.white
-                                                                                    ),
-                                                                                    //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                                    child: Container(
-                                                                                      height: 45.sp,
-                                                                                      padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                                                                      child: TextFormField(
-                                                                                        // enabled:regemail,
-                                                                                        controller: forgotemailController,
-
-                                                                                        validator: (regemailvalue) {
-                                                                                          final bool isValid = EmailValidator.validate(regemailvalue!);
-
-                                                                                          if (!isValid) {
-                                                                                            showvalidemailtoast();
-
-                                                                                            // showvalidemail();
-                                                                                            // return "Email address invalid";
-                                                                                          }
-                                                                                          else{
-                                                                                            //hidevalidemail();
-                                                                                          }
-                                                                                        },
-
-                                                                                        decoration: InputDecoration(
-                                                                                          border: InputBorder.none,
-                                                                                          //  filled: true,
-                                                                                          fillColor: Colors.white70,
-
-                                                                                          hintText: 'Email',
-
-                                                                                        ),
-                                                                                        textInputAction: TextInputAction.done,
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Container(
-                                                                                    height: 30.sp,
-                                                                                  ),
-                                                                                  Visibility(
-                                                                                    visible: validemail,
-                                                                                    child: Container(
-                                                                                      child: Text(
-                                                                                        "Email required or please enter valid email.",
-                                                                                        style: TextStyle(
-                                                                                          color: Colors.red,
-
-                                                                                        ),
-
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Container(
-                                                                                    child: ButtonTheme(
-                                                                                      minWidth: 182.sp,
-                                                                                      height: 63.sp,
-                                                                                      shape: new RoundedRectangleBorder(
-                                                                                        borderRadius: new BorderRadius.circular(40.sp),
-                                                                                      ),
-                                                                                      child: RaisedButton(
-
-                                                                                        onPressed: () async {
-                                                                                          if (_forgotformKey.currentState!.validate()) {
-                                                                                            frgtpwd();
-                                                                                          }
-
-                                                                                        },
-
-                                                                                        color: Color(0xFF29AAE1),
-                                                                                        child: Text("Submit",
-                                                                                          style: TextStyle(
-                                                                                            color: Colors.white,
-
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-
-                                                                                  Text(
-                                                                                    "",
-                                                                                    style: TextStyle(
-                                                                                      color: Colors.red,
-
-                                                                                    ),
-
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    }
-                                                                ).then((val) {
-                                                                  forgotemailController.clear();
-                                                                });;
-                                                              },
-                                                              child: Text(
-                                                                "Forgot password?",
-                                                                textAlign: TextAlign.center,
-                                                                style: TextStyle(
-                                                                  color: Colors.white,
-                                                                  // fontSize: 15.sp
-                                                                ),
-
-                                                              ),
-                                                            ),
-
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        height: 63.sp,
-
-                                                      ),
-                                                      Container(
-                                                        height: 60,
-                                                        decoration: BoxDecoration(
-                                                          /* gradient: LinearGradient(
-                                                              colors: [
-                                                                Color.fromRGBO(255, 143, 158, 1),
-                                                                Color.fromRGBO(255, 188, 143, 1),
-                                                              ],
-                                                              begin: Alignment.centerLeft,
-                                                              end: Alignment.centerRight,
-                                                            ),*/
-                                                            borderRadius: const BorderRadius.all(
-                                                              Radius.circular(25.0),
-                                                            ),
-                                                            boxShadow: [
-                                                              BoxShadow(
-                                                                color: Colors.pink.withOpacity(0.2),
-                                                                spreadRadius: 4,
-                                                                blurRadius: 10,
-                                                                offset: Offset(0, 3),
-                                                              )
-                                                            ]
-                                                        ),
-                                                        /*decoration: BoxDecoration(
-
-
-                                                            boxShadow: [
-                                                              BoxShadow(
-                                                                color: Colors.grey.withOpacity(0.5),
-
-                                                                blurRadius: 6,
-                                                                offset: Offset(5, 5),
-                                                              )
-                                                            ]
-                                                        ),*/
-                                                        child: ButtonTheme(
-                                                          minWidth: 182.sp,
-                                                          height: 63.sp,
-                                                          shape: new RoundedRectangleBorder(
-                                                            borderRadius: new BorderRadius.circular(40.sp),
-
-                                                          ),
-                                                          child: RaisedButton(
-                                                            onPressed: () async {
-                                                              if (_formKey.currentState!.validate()) {
-                                                                try {
-                                                                  GetLoginResponse resp=
-                                                                  await context.read(apiClientProvider).login(
-                                                                      Loginuser( nameController.text, passwordController.text
-                                                                      )
-                                                                  );
-
-
-                                                                  /* print( User(
-                                                                      "abc@gmail.com",
-                                                                      "123456"
-                                                                  ));*/
-
-                                                                  if(resp.data.user_type==1){
-                                                                    print("usertype: ${resp.data.user_type}");
-
-                                                                    SharedPreferences pref = await SharedPreferences.getInstance();
-                                                                    pref.setString('authtoken', resp.data.token);
-                                                                    getuserdetails(resp.data.token,resp.data.user_id);
-                                                                    pref.setInt('p_id', resp.data.user_id);
-                                                                  }
-                                                                  else{
-                                                                    showerrorWidget();
-                                                                  }
-                                                                  // print("Regions: ${resp.data.toJson()}");
-
-                                                                  clearlogintext();
-                                                                  // hideerrorWidget();
-
-                                                                } catch (e) {
-                                                                  print(e);
-                                                                  if (e is DioError) {
-                                                                    showerrorWidget();
-                                                                    clearlogintext();
-                                                                    /* ScaffoldMessenger.of(context).showSnackBar(
-                                                                      SnackBar(content: Text('Wrong username or password')),
-                                                                    );*/
-
-                                                                    //handle DioError here by error type or by error code
-
-                                                                  } else {
-
-                                                                  }
-
-                                                                }
-                                                                // If the form is valid, display a snackbar. In the real world,
-                                                                // you'd often call a server or save the information in a database.
-
-
-                                                              }
-
-                                                            },
-
-                                                            color: Color(0xFF29AAE1),
-                                                            child: Text("Sign In",
-                                                              style: TextStyle(
-                                                                color: Colors.white,
-
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-                                                      ),
-                                                      Visibility(
-                                                        visible: viewerrormsgvisible,
-                                                        child: Text(valuetext,
-                                                          style: TextStyle(
-                                                            color: Color(0xFFFF4500),
-
-                                                          ),
-                                                        ),
-                                                      ),
-
-                                                    ],
-
-                                                  ),
-                                                ),
-                                              ),
-
-                                            ),
-                                          ),
-
-
-
-
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 5,
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            regpwd=true;
-                                            regph=true;
-                                            regemail=true;
-                                            regusername=true;
-                                            username=false;
-                                            pwd=false;
-                                            _logincolor = Colors.white;
-                                            _regcolor= Colors.green;
-                                            _logintextcolor=Colors.black;
-                                            _regtextcolor=Colors.white;
-                                            _width = 500.sp;
-                                            _height = 350.sp;
-                                            _borderRadius =
-                                                BorderRadius.circular(40.sp);
-
-                                            _regwidth = 650.sp;
-                                            _regheight = 450.sp;
-                                            _regborderRadius =
-                                                BorderRadius.circular(40.sp);
-                                            hideerrorWidget();
-                                            clearlogintext();
-                                            _hasBeenPressedlogin = !_hasBeenPressedlogin;
-                                          });
-                                        },
-                                        child: Container(
-                                          //  height: 600.sp,
-
-                                          padding: EdgeInsets.all(20.sp),
-                                          child: Align(
-
-                                            child: AnimatedContainer(
-
-
-                                              padding: EdgeInsets.all(10.sp),
-                                              width: _regwidth,
-                                              height: _regheight,
-
-                                              decoration: BoxDecoration(
-                                                  color: Colors.transparent,
-                                                  image: DecorationImage(
-                                                    image: AssetImage("assets/images/regagain.png"),
-
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  /* gradient: LinearGradient(
-                                                      begin: Alignment.centerLeft,
-                                                      end: Alignment.centerRight,
-                                                      colors: <Color> [
-                                                        Color(0xFF263E7A),
-
-                                                        Color(0xFF0070A8)
-
-
-
-                                                      ],
-                                                      tileMode: TileMode.repeated
-                                                  ),*/
-                                                  border: Border.all(
-
-                                                      color: Color(0xFF55708b)
-                                                  ),
-                                                  borderRadius: _regborderRadius
-
-                                              ),
-                                              duration:  Duration(seconds: 1),
-                                              curve: Curves.fastOutSlowIn,
-                                              child: SingleChildScrollView(
-                                                child: Form(
-                                                  key: _regformKey,
-                                                  child: Column(
-
-                                                    children: [
-                                                      Container(
-                                                        height: 20.sp,
-                                                      ),
-                                                      Container(
-                                                          margin: new EdgeInsets.symmetric(horizontal: 20.sp),
-                                                          padding: EdgeInsets.all(20.sp),
-                                                          decoration: BoxDecoration(
-
-                                                            color: Colors.white,
-                                                            border: Border.all(color: Colors.white),
-                                                            borderRadius: BorderRadius.all(Radius.circular(21)),
-
-
-                                                          ),
-                                                          child: Column(
-                                                            children: [
-                                                              Row(
-                                                                children: [
-                                                                  Expanded(
-                                                                      flex: 1,
-                                                                      child: Container(
-                                                                        height: 25.sp,
-                                                                        width: 25.sp,
-                                                                        child: Image(
-                                                                          image: AssetImage('assets/images/username-gray.png'),
-                                                                        ),
-                                                                      )
-                                                                  ),
-                                                                  Expanded(
-                                                                    flex: 9,
-
-                                                                    child: Neumorphic(
-                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-
-                                                                      style: NeumorphicStyle(
-                                                                        depth: NeumorphicTheme.embossDepth(context),
-                                                                        boxShape: NeumorphicBoxShape.stadium(),
-                                                                        color: Colors.white,
-
-
-                                                                      ),
-                                                                      // padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                                                                      /*padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 5.sp,bottom: 5.sp),
-                                                                        decoration: ShapeDecoration(
-                                                                          gradient: LinearGradient(
-                                                                            colors: [Color(0xFFdfdfdf), Color(0xFFf1f1f1)],
-                                                                            begin: FractionalOffset.topCenter,
-                                                                            end: FractionalOffset.bottomCenter,
-                                                                            stops: [0.0, 0.2],
-                                                                            tileMode: TileMode.clamp,
-                                                                          ),
-                                                                          shape: RoundedRectangleBorder(
-                                                                            borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                                                                          ),
-                                                                        ),*/
-                                                                      child: Container(
-                                                                        height: 45.sp,
-                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-
-
-
-
-                                                                          child: TextFormField(
-                                                                            validator: (regvalue) {
-                                                                              if (regvalue == null || regvalue.isEmpty) {
-
-                                                                                showvalidusername();
-                                                                              }
-                                                                              else{
-                                                                                hidevalidusername();
-                                                                              }
-
-                                                                              //    hidevalidusername();
-                                                                            },
-                                                                            enabled:regusername,
-                                                                            controller: regnameController,
-                                                                            decoration: InputDecoration(
-                                                                              border: InputBorder.none,
-                                                                              //  filled: true,
-                                                                              fillColor: Colors.white70,
-
-                                                                              hintText: 'Full Name',
-
-                                                                            ),
-                                                                            // maxLines: 1,
-                                                                            onFieldSubmitted: (value){
-                                                                              _regusernamefocusnode.unfocus();
-                                                                              _regemailfocusnode.requestFocus();
-                                                                            },
-                                                                            textInputAction: TextInputAction.next,
-                                                                          ),
-
-                                                                      ),
-                                                                    ),
-
-                                                                  ),
-
-
-                                                                ],
-
-                                                              ),
-                                                              Container(
-                                                                height: 10.sp,
-                                                              ),
-                                                              Visibility(
-                                                                visible: viewvalidusername,
-                                                                child: Container(
-                                                                  child: Text(
-                                                                    "Full name required.",
-                                                                    style: TextStyle(
-                                                                      color: Colors.red,
-
-                                                                    ),
-
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Row(
-                                                                children: [
-                                                                  Expanded(
-                                                                      flex: 1,
-                                                                      child: Container(
-                                                                        height: 25.sp,
-                                                                        width: 25.sp,
-                                                                        child: Image(
-                                                                          image: AssetImage('assets/images/message-gray.png'),
-                                                                        ),
-                                                                      )
-                                                                  ),
-                                                                  Expanded(
-                                                                    flex: 9,
-
-
-                                                                    child: Neumorphic(
-                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                      style: NeumorphicStyle(
-                                                                          depth: NeumorphicTheme.embossDepth(context),
-                                                                          boxShape: NeumorphicBoxShape.stadium(),
-                                                                          color: Colors.white
-                                                                      ),
-                                                                      //padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                                                                      child: Container(
-                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                                                        height: 50.sp,
-
-
-                                                                          child: TextFormField(
-                                                                            enabled:regemail,
-                                                                            controller: regemailController,
-
-                                                                            validator: (regemailvalue) {
-                                                                              final bool isValid = EmailValidator.validate(regemailvalue!);
-                                                                              if (regemailvalue.isEmpty) {
-                                                                                showvalidemail();
-                                                                              }
-                                                                              if (!isValid) {
-                                                                                showvalidemail();
-                                                                                // return "Email address invalid";
-                                                                              }
-                                                                              else{
-                                                                                hidevalidemail();
-                                                                              }
-                                                                            },
-
-                                                                            decoration: InputDecoration(
-                                                                              border: InputBorder.none,
-                                                                              //  filled: true,
-                                                                              fillColor: Colors.white70,
-
-                                                                              hintText: 'Email',
-
-                                                                            ),
-                                                                            textInputAction: TextInputAction.next,
-                                                                          ),
-
-                                                                      ),
-                                                                    ),
-
-                                                                  )
-                                                                ],
-                                                              ),
-                                                              Container(
-                                                                height: 10.sp,
-                                                              ),
-                                                              Visibility(
-                                                                visible: validemail,
-                                                                child: Container(
-                                                                  child: Text(
-                                                                    "Email required or please enter valid email.",
-                                                                    style: TextStyle(
-                                                                      color: Colors.red,
-
-                                                                    ),
-
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Row(
-                                                                children: [
-                                                                  Expanded(
-                                                                      flex: 1,
-
-                                                                      child: Container(
-                                                                        height: 25.sp,
-                                                                        width: 25.sp,
-                                                                        child: Image(
-                                                                          image: AssetImage('assets/images/contact-gray.png'),
-                                                                        ),
-                                                                      )
-                                                                  ),
-                                                                  Expanded(
-                                                                    flex: 9,
-                                                                    child: Neumorphic(
-                                                                      margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                      style: NeumorphicStyle(
-                                                                          depth: NeumorphicTheme.embossDepth(context),
-                                                                          boxShape: NeumorphicBoxShape.stadium(),
-                                                                          color: Colors.white
-                                                                      ),
-                                                                      //padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                                                                      child: Container(
-                                                                        padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                                                        height: 50.sp,
-
-
-                                                                          child: TextFormField(
-                                                                            enabled:regph,
-                                                                            keyboardType: TextInputType.number,
-                                                                            inputFormatters: <TextInputFormatter>[
-                                                                              FilteringTextInputFormatter.digitsOnly],
-                                                                            controller: regphnoController,
-
-                                                                            validator: (regphvalue) {
-
-                                                                              if (regphvalue!.length< 10 || regphvalue.length> 13 ){
-                                                                                showvalidph();
-                                                                              }
-                                                                              else{
-                                                                                hidevalidph();
-                                                                              }
-
-                                                                            },
-
-
-                                                                            decoration: InputDecoration(
-                                                                              border: InputBorder.none,
-                                                                              //  filled: true,
-                                                                              fillColor: Colors.white70,
-
-                                                                              hintText: 'Phone number',
-
-                                                                            ),
-                                                                            textInputAction: TextInputAction.next,
-                                                                          ),
-
-                                                                      ),
-                                                                    ),
-                                                                  )
-                                                                ],
-                                                              ),
-                                                              Container(
-                                                                height: 10.sp,
-                                                              ),
-                                                              Visibility(
-                                                                visible: validph,
-                                                                child: Container(
-                                                                  child: Text(
-                                                                    "Phone number required or enter valid phone number.",
-                                                                    style: TextStyle(
-                                                                      color: Colors.red,
-
-                                                                    ),
-
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Row(
-                                                                children: [
-                                                                  Expanded(
-                                                                      flex: 1,
-                                                                      child: Container(
-                                                                        height: 25.sp,
-                                                                        width: 25.sp,
-                                                                        child: Image(
-                                                                          image: AssetImage('assets/images/lock-gray.png'),
-                                                                        ),
-                                                                      )
-                                                                  ),
-                                                                  Expanded(
-                                                                    flex: 9,
-
-
-
-                                                                      child: Neumorphic(
-                                                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                                                        style: NeumorphicStyle(
-                                                                            depth: NeumorphicTheme.embossDepth(context),
-                                                                            boxShape: NeumorphicBoxShape.stadium(),
-                                                                            color: Colors.white
-                                                                        ),
-                                                                        //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                                                        child: Container(
-                                                                          height: 45.sp,
-                                                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                                                          child: TextFormField(
-                                                                            enabled:regpwd,
-                                                                            obscureText: !_regpasswordVisible,
-                                                                            controller: regpasswordController,
-                                                                            validator: (regpwdvalue) {
-                                                                              if (regpwdvalue!.isEmpty) {
-                                                                                showvalidpwd();
-                                                                              }
-                                                                              else if (regpwdvalue.length < 6 ){
-                                                                                showvalidpwd();
-                                                                              }
-                                                                              else{
-                                                                                hidevalidpwd();
-                                                                              }
-                                                                            },
-                                                                            decoration: InputDecoration(
-
-                                                                                border: InputBorder.none,
-                                                                                hintText: 'Password',
-
-                                                                                suffixIcon: GestureDetector(
-                                                                                  onLongPress: () {
-                                                                                    setState(() {
-                                                                                      _regpasswordVisible = true;
-                                                                                    });
-                                                                                  },
-                                                                                  onLongPressUp: () {
-                                                                                    setState(() {
-                                                                                      _regpasswordVisible = false;
-                                                                                    });
-                                                                                  },
-                                                                                  child: Icon(
-                                                                                      _regpasswordVisible ? Icons.visibility : Icons.visibility_off
-                                                                                  ),
-                                                                                )
-                                                                            ),
-                                                                            onFieldSubmitted: (value) async {
-                                                                              if (_regformKey.currentState!.validate()) {
-
-                                                                                if(selectedbox==true){
-                                                                                  hideWidget();
-
-                                                                                  try {
-                                                                                    String name = regnameController.text.toString();
-                                                                                    String lastnames=regnameController.text.toString().trim();
-                                                                                    if(name.contains(" ")){
-                                                                                      final dateList = name.split(" ");
-                                                                                      print( dateList[1]);
-                                                                                      String firstname=dateList[0];
-                                                                                      String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
-                                                                                      print(firstname);
-                                                                                      print(lastname);
-                                                                                      var rng = new Random();
-                                                                                      var randomno = rng.nextInt(9000) + 1000;
-                                                                                      Getreguserresponse resp=
-                                                                                      await context.read(apiClientProvider).createUser(
-                                                                                          Reguser(
-                                                                                              firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
-                                                                                          )
-                                                                                      );
-                                                                                      //    print("Regions: ${resp.data.toJson()}");
-                                                                                      showregsucesswidget();
-                                                                                      /*ScaffoldMessenger.of(context).showSnackBar(
-                                                                      SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
-                                                                    );*/
-                                                                                      clearregtext();
-                                                                                      hideerrorWidget();
-                                                                                      hidewidget();
-                                                                                    }
-                                                                                    else{
-                                                                                      var rng = new Random();
-                                                                                      var randomno = rng.nextInt(9000) + 1000;
-                                                                                      String firstname=name;
-                                                                                      print(firstname);
-
-                                                                                      Getreguserresponse resp=
-                                                                                      await context.read(apiClientProvider).createUser(
-                                                                                          Reguser(
-                                                                                              firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
-                                                                                          )
-                                                                                      );
-                                                                                      //  print("Regions: ${resp.data.toJson()}");
-                                                                                      showregsucesswidget();
-
-                                                                                      clearregtext();
-                                                                                      hideerrorWidget();
-                                                                                      hidewidget();
-                                                                                      //print( date);
-                                                                                    }
-
-
-
-
-
-                                                                                  } catch (e) {
-                                                                                    print(e);
-                                                                                    if (e is DioError) {
-
-                                                                                      showidget();
-                                                                                      clearregtext();
-                                                                                      hideregsucesswidget();
-                                                                                      /*ScaffoldMessenger.of(context).showSnackBar(
-                                                                        SnackBar(content: Text('Email/Phone is already exists')),
-                                                                      );*/
-
-                                                                                      //handle DioError here by error type or by error code
-
-                                                                                    } else {
-
-                                                                                    }
-
-                                                                                  }
-                                                                                }
-                                                                                else if(selectedbox==false){
-                                                                                  print(selectedbox);
-                                                                                  showWidget();
-                                                                                  checkvalue="Please check I am agree with privacy policy,terms and conditions.";
-
-                                                                                }
-
-                                                                                // If the form is valid, display a snackbar. In the real world,
-                                                                                // you'd often call a server or save the information in a database.
-
-
-
-                                                                              }
-                                                                            },
-                                                                            textInputAction: TextInputAction.done,
-                                                                          ),
-                                                                        ),
-                                                                      ),
-
-                                                                  )
-                                                                ],
-                                                              ),
-                                                              Visibility(
-                                                                visible: validpwd,
-                                                                child: Container(
-                                                                  child: Text(
-                                                                    "Password required or enter minimum 6 character.",
-                                                                    style: TextStyle(
-                                                                      color: Colors.red,
-
-                                                                    ),
-
-                                                                  ),
-                                                                ),
-                                                              ),
-
-                                                            ],
-                                                          )
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-                                                      ),
-                                                      Container(
-                                                        margin:  EdgeInsets.only(left: 20.sp, right: 20.sp),
-
-                                                        child: Row(
-
-                                                          children: [
-                                                            Container(
-                                                              height: 25.sp,
-                                                              width: 25.sp,
-                                                              child: RoundCheckBox(
-                                                                onTap: (selected) {
-                                                                  print(selected);
-                                                                  selectedbox=selected! ;
-                                                                  //hideWidget();
-                                                                },
-
-                                                                // isChecked: roundcheckboxselection,
-                                                                animationDuration: Duration(
-                                                                  milliseconds: 50,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              width: 2.sp,
-
-                                                            ),
-                                                            GestureDetector(
-                                                              onTap: () {
-                                                                showDialog(
-                                                                    context: context,
-                                                                    builder: (context){
-                                                                      return Dialog(
-
-                                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                                                                        elevation: 16,
-                                                                        child: SingleChildScrollView(
-                                                                          child: Container(
-                                                                            width: 500.sp,
-                                                                            decoration: BoxDecoration(
-                                                                              borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                                                                              gradient: LinearGradient(
-                                                                                  begin: Alignment.topLeft,
-                                                                                  end: Alignment.bottomRight,
-                                                                                  colors: <Color> [
-                                                                                    Color(0xFF2b2b49),
-                                                                                    Color(0xFF0d2561),
-                                                                                    Color(0xFF005890),
-                                                                                    Color(0xFF0071a6),
-
-
-
-
-
-                                                                                  ],
-                                                                                  tileMode: TileMode.repeated
-                                                                              ),
-                                                                            ),
-
-                                                                            child: Column(
-                                                                              children: [
-                                                                                Container(
-
-                                                                                  padding: EdgeInsets.all(20.sp),
-                                                                                  height: 500.sp,
-                                                                                  width: 500.sp,
-                                                                                  child: ContainedTabBarView(
-                                                                                    tabs: [
-                                                                                      Container(
-                                                                                        decoration: BoxDecoration(
-
-                                                                                        ),
-                                                                                        child: Container(
+                                                                                    child: ContainedTabBarView(
+                                                                                      tabs: [
+                                                                                        Container(
                                                                                           decoration: BoxDecoration(
 
                                                                                           ),
-                                                                                          child: Text(
-                                                                                            ' Privacy Policy ',
-                                                                                            textAlign: TextAlign.center,
+                                                                                          child: Container(
+                                                                                            decoration: BoxDecoration(
 
-                                                                                            style: TextStyle(
-                                                                                              fontWeight: FontWeight.bold,
-                                                                                              // fontSize: 10.sp
+                                                                                            ),
+                                                                                            child: Text(
+                                                                                              ' Privacy Policy ',
+                                                                                              textAlign: TextAlign.center,
+
+                                                                                              style: TextStyle(
+                                                                                                fontWeight: FontWeight.bold,
+                                                                                                // fontSize: 10.sp
+                                                                                              ),
                                                                                             ),
                                                                                           ),
                                                                                         ),
-                                                                                      ),
-                                                                                      Text(
-                                                                                        ' Terms and Conditions ',
-                                                                                        textAlign: TextAlign.center,
-                                                                                        style: TextStyle(
-                                                                                          fontWeight: FontWeight.bold,
-                                                                                          //  fontSize: 10.sp
+                                                                                        Text(
+                                                                                          ' Terms and Conditions ',
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                            fontWeight: FontWeight.bold,
+                                                                                            //  fontSize: 10.sp
+                                                                                          ),
                                                                                         ),
-                                                                                      ),
-                                                                                    ],
-                                                                                    tabBarProperties: TabBarProperties(
-                                                                                      width: 300.sp,
-                                                                                      height: 40.sp,
-                                                                                      background: Container(
+                                                                                      ],
+                                                                                      tabBarProperties: TabBarProperties(
                                                                                         width: 300.sp,
                                                                                         height: 40.sp,
-                                                                                        decoration: BoxDecoration(
-                                                                                            color: Colors.white,
+                                                                                        background: Container(
+                                                                                          width: 300.sp,
+                                                                                          height: 40.sp,
+                                                                                          decoration: BoxDecoration(
+                                                                                              color: Colors.white,
 
-                                                                                            borderRadius: BorderRadius.all(Radius.circular(40.0)),
-                                                                                            boxShadow: [
-                                                                                              BoxShadow(
-                                                                                                color: Colors.white,
-                                                                                                spreadRadius: 0.5,
-                                                                                                blurRadius: 2,
-                                                                                                offset: Offset(1, -1),
-                                                                                              ),
-                                                                                            ]
+                                                                                              borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                                                                                              boxShadow: [
+                                                                                                BoxShadow(
+                                                                                                  color: Colors.white,
+                                                                                                  spreadRadius: 0.5,
+                                                                                                  blurRadius: 2,
+                                                                                                  offset: Offset(1, -1),
+                                                                                                ),
+                                                                                              ]
 
-                                                                                        ),
-                                                                                      ),
-
-                                                                                      indicator: ShapeDecoration(
-                                                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
-                                                                                            topLeft: radius,bottomLeft: radius,bottomRight: radius)),
-                                                                                        color: Color(0xFF29AAE1),
-                                                                                      ),
-                                                                                      indicatorColor: Colors.transparent,
-                                                                                      labelColor: Colors.white,
-                                                                                      unselectedLabelColor: Colors.grey[400],
-                                                                                    ),
-                                                                                    views: [
-                                                                                      Container(
-                                                                                        padding: EdgeInsets.all(10.sp),
-                                                                                        child: SingleChildScrollView(
-                                                                                          child: Column(
-                                                                                            children: [
-                                                                                              FutureBuilder<GetTerms>(
-                                                                                                future: privacypolicy,
-                                                                                                builder: (context, snapshot) {
-                                                                                                  if (snapshot.hasData) {
-                                                                                                    return Html(
-                                                                                                      data: snapshot.data!.data.pageContent,
-
-
-
-                                                                                                    );
-                                                                                                  } else if (snapshot.hasError) {
-                                                                                                    return Text('${snapshot.error}');
-                                                                                                  }
-
-                                                                                                  // By default, show a loading spinner.
-                                                                                                  return const CircularProgressIndicator();
-                                                                                                },
-                                                                                              )
-                                                                                            ],
                                                                                           ),
                                                                                         ),
-                                                                                      ),
-                                                                                      Container(
-                                                                                        padding: EdgeInsets.all(10.sp),
-                                                                                        child: SingleChildScrollView(
-                                                                                          child: Column(
-                                                                                            children: [
-                                                                                              FutureBuilder<GetTerms>(
-                                                                                                future: futureAlbum,
-                                                                                                builder: (context, snapshot) {
-                                                                                                  if (snapshot.hasData) {
-                                                                                                    return Html(
-                                                                                                      data: snapshot.data!.data.pageContent,
 
-
-
-                                                                                                    );
-                                                                                                  } else if (snapshot.hasError) {
-                                                                                                    return Text('${snapshot.error}');
-                                                                                                  }
-
-                                                                                                  // By default, show a loading spinner.
-                                                                                                  return const CircularProgressIndicator();
-                                                                                                },
-                                                                                              )
-                                                                                            ],
-                                                                                          ),
+                                                                                        indicator: ShapeDecoration(
+                                                                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: radius,
+                                                                                              topLeft: radius,bottomLeft: radius,bottomRight: radius)),
+                                                                                          color: Color(0xFF29AAE1),
                                                                                         ),
-                                                                                      )
-                                                                                    ],
-
-                                                                                  ),
-                                                                                ),
-                                                                                Container(
-                                                                                  padding: EdgeInsets.all(10.sp),
-                                                                                  child: Row(
-                                                                                    mainAxisAlignment: MainAxisAlignment.end,
-                                                                                    //crossAxisAlignment: CrossAxisAlignment.end,
-                                                                                    children: [
-                                                                                      Text(
-                                                                                        "Got it",
-                                                                                        textAlign: TextAlign.center,
-                                                                                        style: TextStyle(
-                                                                                            color: Color(0xFFFFFFFF),
-                                                                                            fontSize: 20.sp
-
-
-                                                                                        ),
-
+                                                                                        indicatorColor: Colors.transparent,
+                                                                                        labelColor: Colors.white,
+                                                                                        unselectedLabelColor: Colors.grey[400],
                                                                                       ),
-                                                                                      Container(
-                                                                                        width: 20.sp,
-                                                                                      ),
-                                                                                      GestureDetector(
-                                                                                        onTap: (){
-                                                                                          Navigator.pop(context);
-                                                                                        },
-                                                                                        child: Container(
-                                                                                            width: 40,
-                                                                                            height: 40,
-
-                                                                                            decoration: BoxDecoration(
-                                                                                                shape: BoxShape.circle,
-                                                                                                boxShadow: [
-                                                                                                  BoxShadow(
-                                                                                                    color: Colors.white,
-                                                                                                    blurRadius: 2,
-                                                                                                    spreadRadius: 1,
-                                                                                                    offset: Offset(-1, 0),
-                                                                                                  ),
-                                                                                                  BoxShadow(
-                                                                                                    color: Colors.grey.shade400,
-                                                                                                    blurRadius: 2.0,
-                                                                                                    spreadRadius: 0.0,
-                                                                                                    offset: Offset(2.0, 0.0), // changes position of shadow
-                                                                                                  ),
-                                                                                                ],
-                                                                                                gradient:
-                                                                                                LinearGradient(
-
-                                                                                                    begin: Alignment.centerLeft,
-                                                                                                    end: Alignment.centerRight,
-                                                                                                    colors: <Color> [
-                                                                                                      Color(0xFF29E166),
-                                                                                                      Color(0xFF11AD4A)
+                                                                                      views: [
+                                                                                        Container(
+                                                                                          padding: EdgeInsets.all(10.sp),
+                                                                                          child: SingleChildScrollView(
+                                                                                            child: Column(
+                                                                                              children: [
+                                                                                                FutureBuilder<GetTerms>(
+                                                                                                  future: privacypolicy,
+                                                                                                  builder: (context, snapshot) {
+                                                                                                    if (snapshot.hasData) {
+                                                                                                      return Html(
+                                                                                                        data: snapshot.data!.data.pageContent,
 
 
-                                                                                                    ],
-                                                                                                    tileMode: TileMode.repeated)
 
+                                                                                                      );
+                                                                                                    } else if (snapshot.hasError) {
+                                                                                                      return Text('${snapshot.error}');
+                                                                                                    }
+
+                                                                                                    // By default, show a loading spinner.
+                                                                                                    return const CircularProgressIndicator();
+                                                                                                  },
+                                                                                                )
+                                                                                              ],
                                                                                             ),
-                                                                                            child:Center(
-                                                                                              child: SizedBox(
-                                                                                                width: 20,
-                                                                                                height: 20,
-                                                                                                child: Image(image: AssetImage(
-                                                                                                    'assets/images/ticknew.png'
-                                                                                                ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            )
+                                                                                          ),
+                                                                                        ),
+                                                                                        Container(
+                                                                                          padding: EdgeInsets.all(10.sp),
+                                                                                          child: SingleChildScrollView(
+                                                                                            child: Column(
+                                                                                              children: [
+                                                                                                FutureBuilder<GetTerms>(
+                                                                                                  future: futureAlbum,
+                                                                                                  builder: (context, snapshot) {
+                                                                                                    if (snapshot.hasData) {
+                                                                                                      return Html(
+                                                                                                        data: snapshot.data!.data.pageContent,
+
+
+
+                                                                                                      );
+                                                                                                    } else if (snapshot.hasError) {
+                                                                                                      return Text('${snapshot.error}');
+                                                                                                    }
+
+                                                                                                    // By default, show a loading spinner.
+                                                                                                    return const CircularProgressIndicator();
+                                                                                                  },
+                                                                                                )
+                                                                                              ],
+                                                                                            ),
+                                                                                          ),
+                                                                                        )
+                                                                                      ],
+
+                                                                                    ),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    padding: EdgeInsets.all(10.sp),
+                                                                                    child: Row(
+                                                                                      mainAxisAlignment: MainAxisAlignment.end,
+                                                                                      //crossAxisAlignment: CrossAxisAlignment.end,
+                                                                                      children: [
+                                                                                        Text(
+                                                                                          "Got it",
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                              color: Color(0xFFFFFFFF),
+                                                                                              fontSize: 20.sp
+
+
+                                                                                          ),
 
                                                                                         ),
-                                                                                      )
-                                                                                    ],
-                                                                                  ),
-                                                                                )
-                                                                              ],
+                                                                                        Container(
+                                                                                          width: 20.sp,
+                                                                                        ),
+                                                                                        GestureDetector(
+                                                                                          onTap: (){
+                                                                                            Navigator.pop(context);
+                                                                                          },
+                                                                                          child: Container(
+                                                                                              width: 40,
+                                                                                              height: 40,
+
+                                                                                              decoration: BoxDecoration(
+                                                                                                  shape: BoxShape.circle,
+                                                                                                  boxShadow: [
+                                                                                                    BoxShadow(
+                                                                                                      color: Colors.white,
+                                                                                                      blurRadius: 2,
+                                                                                                      spreadRadius: 1,
+                                                                                                      offset: Offset(-1, 0),
+                                                                                                    ),
+                                                                                                    BoxShadow(
+                                                                                                      color: Colors.grey.shade400,
+                                                                                                      blurRadius: 2.0,
+                                                                                                      spreadRadius: 0.0,
+                                                                                                      offset: Offset(2.0, 0.0), // changes position of shadow
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                  gradient:
+                                                                                                  LinearGradient(
+
+                                                                                                      begin: Alignment.centerLeft,
+                                                                                                      end: Alignment.centerRight,
+                                                                                                      colors: <Color> [
+                                                                                                        Color(0xFF29E166),
+                                                                                                        Color(0xFF11AD4A)
+
+
+                                                                                                      ],
+                                                                                                      tileMode: TileMode.repeated)
+
+                                                                                              ),
+                                                                                              child:Center(
+                                                                                                child: SizedBox(
+                                                                                                  width: 20,
+                                                                                                  height: 20,
+                                                                                                  child: Image(image: AssetImage(
+                                                                                                      'assets/images/ticknew.png'
+                                                                                                  ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              )
+
+                                                                                          ),
+                                                                                        )
+                                                                                      ],
+                                                                                    ),
+                                                                                  )
+                                                                                ],
+
+                                                                              ),
 
                                                                             ),
-
                                                                           ),
-                                                                        ),
-                                                                      );
-                                                                    }
-                                                                );
-                                                              },
-                                                              child: Text.rich(
-                                                                TextSpan(
-                                                                  text: "I'm agree with ",
+                                                                        );
+                                                                      }
+                                                                  );
+                                                                },
+                                                                child: Text.rich(
+                                                                  TextSpan(
+                                                                    text: "I'm agree with ",
 
-                                                                  style: TextStyle(
-                                                                    color: Colors.white,
-                                                                    //   fontSize: 15.sp
+                                                                    style: TextStyle(
+                                                                      color: Colors.white,
+                                                                      //   fontSize: 15.sp
+                                                                    ),
+                                                                    children: <TextSpan>[
+                                                                      TextSpan(
+                                                                          text: 'Privacy policy ',
+                                                                          style: TextStyle(
+                                                                            color: Colors.white,
+                                                                            decoration: TextDecoration.underline,
+                                                                            decorationColor: Colors.white,
+                                                                            decorationThickness: 2,
+                                                                          )),
+                                                                      TextSpan(
+                                                                          text: 'terms and conditions',
+                                                                          style: TextStyle(
+                                                                            color: Colors.white,
+                                                                            decoration: TextDecoration.underline,
+                                                                            decorationColor: Colors.white,
+                                                                            decorationThickness: 2,
+                                                                          )),
+                                                                      // can add more TextSpans here...
+                                                                    ],
                                                                   ),
-                                                                  children: <TextSpan>[
-                                                                    TextSpan(
-                                                                        text: 'Privacy policy ',
-                                                                        style: TextStyle(
-                                                                          color: Colors.white,
-                                                                          decoration: TextDecoration.underline,
-                                                                          decorationColor: Colors.white,
-                                                                          decorationThickness: 2,
-                                                                        )),
-                                                                    TextSpan(
-                                                                        text: 'terms and conditions',
-                                                                        style: TextStyle(
-                                                                          color: Colors.white,
-                                                                          decoration: TextDecoration.underline,
-                                                                          decorationColor: Colors.white,
-                                                                          decorationThickness: 2,
-                                                                        )),
-                                                                    // can add more TextSpans here...
-                                                                  ],
+                                                                ),
+                                                              ),
+
+
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Visibility(
+                                                          visible: viewVisible,
+                                                          child: Column(
+                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            children: [
+                                                              Text(
+                                                                checkvalue,
+                                                                textAlign: TextAlign.center,
+                                                                style: TextStyle(
+                                                                    color:  Color(0xFFFF4500),
+                                                                    fontSize: 14.sp
+                                                                ),
+
+                                                              ),
+                                                            ],
+
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          height: 10.sp,
+
+                                                        ),
+                                                        Container(
+                                                          child: ButtonTheme(
+                                                            minWidth: 182.sp,
+                                                            height: 63.sp,
+                                                            shape: new RoundedRectangleBorder(
+                                                              borderRadius: new BorderRadius.circular(40.sp),
+                                                            ),
+                                                            child: RaisedButton(
+
+                                                              onPressed: () async {
+
+                                                                if (_regformKey.currentState!.validate()) {
+
+                                                                  if(selectedbox==true){
+                                                                    hideWidget();
+
+                                                                    try {
+                                                                      String name = regnameController.text.toString();
+                                                                      String lastnames=regnameController.text.toString().trim();
+                                                                      if(name.contains(" ")){
+                                                                        final dateList = name.split(" ");
+                                                                        print( dateList[1]);
+                                                                        String firstname=dateList[0];
+                                                                        String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
+                                                                        print(firstname);
+                                                                        print(lastname);
+                                                                        var rng = new Random();
+                                                                        var randomno = rng.nextInt(9000) + 1000;
+                                                                        Getreguserresponse resp=
+                                                                        await context.read(apiClientProvider).createUser(
+                                                                            Reguser(
+                                                                                firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                            )
+                                                                        );
+                                                                        //    print("Regions: ${resp.data.toJson()}");
+                                                                        showregsucesswidget();
+                                                                        /*ScaffoldMessenger.of(context).showSnackBar(
+                                                                        SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
+                                                                      );*/
+                                                                        clearregtext();
+                                                                        hideerrorWidget();
+                                                                        hidewidget();
+                                                                      }
+                                                                      else{
+                                                                        var rng = new Random();
+                                                                        var randomno = rng.nextInt(9000) + 1000;
+                                                                        String firstname=name;
+                                                                        print(firstname);
+
+                                                                        Getreguserresponse resp=
+                                                                        await context.read(apiClientProvider).createUser(
+                                                                            Reguser(
+                                                                                firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
+                                                                            )
+                                                                        );
+                                                                        //  print("Regions: ${resp.data.toJson()}");
+                                                                        showregsucesswidget();
+
+                                                                        clearregtext();
+                                                                        hideerrorWidget();
+                                                                        hidewidget();
+                                                                        //print( date);
+                                                                      }
+
+
+
+
+
+                                                                    } catch (e) {
+                                                                      print(e);
+                                                                      if (e is DioError) {
+
+                                                                        showidget();
+                                                                        clearregtext();
+                                                                        hideregsucesswidget();
+                                                                        /*ScaffoldMessenger.of(context).showSnackBar(
+                                                                          SnackBar(content: Text('Email/Phone is already exists')),
+                                                                        );*/
+
+                                                                        //handle DioError here by error type or by error code
+
+                                                                      } else {
+
+                                                                      }
+
+                                                                    }
+                                                                  }
+                                                                  else if(selectedbox==false){
+                                                                    print(selectedbox);
+                                                                    showWidget();
+                                                                    checkvalue="Please check I am agree with privacy policy,terms and conditions.";
+
+                                                                  }
+
+                                                                  // If the form is valid, display a snackbar. In the real world,
+                                                                  // you'd often call a server or save the information in a database.
+
+
+
+                                                                }
+                                                              },
+
+                                                              color: Color(0xFF29AAE1),
+                                                              child: Text("Sign Up",
+                                                                style: TextStyle(
+                                                                  color: Colors.white,
+
                                                                 ),
                                                               ),
                                                             ),
-
-
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Visibility(
-                                                        visible: viewVisible,
-                                                        child: Column(
-                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                          children: [
-                                                            Text(
-                                                              checkvalue,
-                                                              textAlign: TextAlign.center,
-                                                              style: TextStyle(
-                                                                  color:  Color(0xFFFF4500),
-                                                                  fontSize: 14.sp
-                                                              ),
-
-                                                            ),
-                                                          ],
-
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-
-                                                      ),
-                                                      Container(
-                                                        child: ButtonTheme(
-                                                          minWidth: 182.sp,
-                                                          height: 63.sp,
-                                                          shape: new RoundedRectangleBorder(
-                                                            borderRadius: new BorderRadius.circular(40.sp),
                                                           ),
-                                                          child: RaisedButton(
+                                                        ),
+                                                        Container(
+                                                          height: 10.sp,
+                                                        ),
+                                                        Visibility(
+                                                          visible: viewreg,
+                                                          child: Text("Email/Phone/Username is already exists",
+                                                            style: TextStyle(
+                                                              color:  Color(0xFFFF4500),
 
-                                                            onPressed: () async {
-
-                                                              if (_regformKey.currentState!.validate()) {
-
-                                                                if(selectedbox==true){
-                                                                  hideWidget();
-
-                                                                  try {
-                                                                    String name = regnameController.text.toString();
-                                                                    String lastnames=regnameController.text.toString().trim();
-                                                                    if(name.contains(" ")){
-                                                                      final dateList = name.split(" ");
-                                                                      print( dateList[1]);
-                                                                      String firstname=dateList[0];
-                                                                      String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
-                                                                      print(firstname);
-                                                                      print(lastname);
-                                                                      var rng = new Random();
-                                                                      var randomno = rng.nextInt(9000) + 1000;
-                                                                      Getreguserresponse resp=
-                                                                      await context.read(apiClientProvider).createUser(
-                                                                          Reguser(
-                                                                              firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
-                                                                          )
-                                                                      );
-                                                                      //    print("Regions: ${resp.data.toJson()}");
-                                                                      showregsucesswidget();
-                                                                      /*ScaffoldMessenger.of(context).showSnackBar(
-                                                                      SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
-                                                                    );*/
-                                                                      clearregtext();
-                                                                      hideerrorWidget();
-                                                                      hidewidget();
-                                                                    }
-                                                                    else{
-                                                                      var rng = new Random();
-                                                                      var randomno = rng.nextInt(9000) + 1000;
-                                                                      String firstname=name;
-                                                                      print(firstname);
-
-                                                                      Getreguserresponse resp=
-                                                                      await context.read(apiClientProvider).createUser(
-                                                                          Reguser(
-                                                                              firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
-                                                                          )
-                                                                      );
-                                                                      //  print("Regions: ${resp.data.toJson()}");
-                                                                      showregsucesswidget();
-
-                                                                      clearregtext();
-                                                                      hideerrorWidget();
-                                                                      hidewidget();
-                                                                      //print( date);
-                                                                    }
-
-
-
-
-
-                                                                  } catch (e) {
-                                                                    print(e);
-                                                                    if (e is DioError) {
-
-                                                                      showidget();
-                                                                      clearregtext();
-                                                                      hideregsucesswidget();
-                                                                      /*ScaffoldMessenger.of(context).showSnackBar(
-                                                                        SnackBar(content: Text('Email/Phone is already exists')),
-                                                                      );*/
-
-                                                                      //handle DioError here by error type or by error code
-
-                                                                    } else {
-
-                                                                    }
-
-                                                                  }
-                                                                }
-                                                                else if(selectedbox==false){
-                                                                  print(selectedbox);
-                                                                  showWidget();
-                                                                  checkvalue="Please check I am agree with privacy policy,terms and conditions.";
-
-                                                                }
-
-                                                                // If the form is valid, display a snackbar. In the real world,
-                                                                // you'd often call a server or save the information in a database.
-
-
-
-                                                              }
-                                                            },
-
-                                                            color: Color(0xFF29AAE1),
-                                                            child: Text("Sign Up",
-                                                              style: TextStyle(
-                                                                color: Colors.white,
-
-                                                              ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                      Container(
-                                                        height: 10.sp,
-                                                      ),
-                                                      Visibility(
-                                                        visible: viewreg,
-                                                        child: Text("Email/Phone/Username is already exists",
-                                                          style: TextStyle(
-                                                            color:  Color(0xFFFF4500),
+                                                        Visibility(
+                                                          visible: viewregsucess,
+                                                          child: Text("Your registration is successfull.Please login with your creadentials.",
+                                                            style: TextStyle(
+                                                              color: Colors.white,
 
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                      Visibility(
-                                                        visible: viewregsucess,
-                                                        child: Text("Your registration is successfull.Please login with your creadentials.",
-                                                          style: TextStyle(
-                                                            color: Colors.white,
-
-                                                          ),
-                                                        ),
-                                                      ),
 
 
-                                                    ],
+                                                      ],
 
+                                                    ),
                                                   ),
                                                 ),
+
                                               ),
-
                                             ),
+
+
+
+
                                           ),
-
-
-
-
                                         ),
                                       ),
-                                    ),
+
                                   ],
                                 ),
                               ),
