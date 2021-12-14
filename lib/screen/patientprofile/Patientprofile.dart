@@ -559,7 +559,7 @@ class PatientprofileState extends State<Patientprofile>{
           if (snapshot.hasData) {
             return
               Text(
-                "Patient"+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
+                "Patient/"+snapshot.data!.data.usrUserName+ " User id/"+snapshot.data!.data.id.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
@@ -570,7 +570,7 @@ class PatientprofileState extends State<Patientprofile>{
               );
           } else if (snapshot.hasError) {
             return Text(
-                "Patient"+usr_user_name!+ " User id "+p_id!.toString(),
+                "Patient/"+usr_user_name!+ "User id/"+p_id!.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
@@ -1191,7 +1191,7 @@ class PatientprofileState extends State<Patientprofile>{
                                               alignment: Alignment.centerLeft,
                                               child: Container(
                                                 child: Text(
-                                                  "Last login "+formatteddatetime,
+                                                  "Last login /"+formatteddatetime,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       color: Color(0xFF989898 ),
@@ -2342,7 +2342,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                     validator: (oldpwd) {
                                                                                                       if (oldpwd == null || oldpwd.isEmpty || oldpwd.length < 6) {
 
-                                                                                                        Fluttertoast.showToast(
+                                                                                                       /* Fluttertoast.showToast(
                                                                                                             msg: "Old Password Required or Old Password should be 6 charecter",
                                                                                                             toastLength: Toast.LENGTH_SHORT,
                                                                                                             gravity: ToastGravity.CENTER,
@@ -2351,7 +2351,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                             textColor: Colors.white,
                                                                                                             fontSize: 16.0,
                                                                                                             webPosition: "center"
-                                                                                                        );
+                                                                                                        );*/
 
                                                                                                     //    showoldpassword();
                                                                                                       }
@@ -2428,7 +2428,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                     keyboardType: TextInputType.visiblePassword,
                                                                                                     validator: (newpwd) {
                                                                                                       if (newpwd == null || newpwd.isEmpty || newpwd.length < 6) {
-                                                                                                        Fluttertoast.showToast(
+                                                                                                     /*   Fluttertoast.showToast(
                                                                                                             msg: "New Password Required or New Password should 6 charecter",
                                                                                                             toastLength: Toast.LENGTH_SHORT,
                                                                                                             gravity: ToastGravity.CENTER,
@@ -2437,7 +2437,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                             textColor: Colors.white,
                                                                                                             fontSize: 16.0,
                                                                                                             webPosition: "center"
-                                                                                                        );
+                                                                                                        );*/
 
                                                                                                         //shownewpwd();
                                                                                                       }
@@ -2514,7 +2514,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                     obscureText: true,
                                                                                                     validator: (cnfpwd) {
                                                                                                       if (cnfpwd == null || cnfpwd.isEmpty || cnfpwd.length < 6) {
-                                                                                                        Fluttertoast.showToast(
+                                                                                                       /* Fluttertoast.showToast(
                                                                                                             msg: "Confirm Password Required or Confirm Password should be minimum 6 charecter",
                                                                                                             toastLength: Toast.LENGTH_SHORT,
                                                                                                             gravity: ToastGravity.CENTER,
@@ -2523,22 +2523,11 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                             textColor: Colors.white,
                                                                                                             fontSize: 16.0,
                                                                                                             webPosition: "center"
-                                                                                                        );
+                                                                                                        );*/
 
                                                                                                         //showcnfpwd();
                                                                                                       }
-                                                                                                    /* if (cnfpwd!.length < 6 ){
-                                                                                                       Fluttertoast.showToast(
-                                                                                                           msg: "CPasswrod should be minimum 6 charecter",
-                                                                                                           toastLength: Toast.LENGTH_SHORT,
-                                                                                                           gravity: ToastGravity.CENTER,
-                                                                                                           timeInSecForIosWeb: 10,
-                                                                                                           backgroundColor: Colors.red,
-                                                                                                           textColor: Colors.white,
-                                                                                                           fontSize: 16.0,
-                                                                                                           webPosition: "center"
-                                                                                                       );
-                                                                                                       }*/
+
                                                                                                       else{
                                                                                                      //   hidecnfpwd();
                                                                                                       }
@@ -2617,27 +2606,75 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                   child: RaisedButton(
 
                                                                                                     onPressed: () async {
-                                                                                                    if (_changepwdformKey.currentState!.validate()) {
-                                                                                                      if(newpwdController.text==confirmpwdController.text){
-                                                                                                        changepwd();
-                                                                                                       // hidecnfpwd();
-                                                                                                      }
-                                                                                                      else{
-                                                                                                        Fluttertoast.showToast(
-                                                                                                            msg: "Confirm password and new password should match",
-                                                                                                            toastLength: Toast.LENGTH_SHORT,
-                                                                                                            gravity: ToastGravity.CENTER,
-                                                                                                            timeInSecForIosWeb: 2,
-                                                                                                            backgroundColor: Colors.red,
-                                                                                                            textColor: Colors.white,
-                                                                                                            fontSize: 16.0,
-                                                                                                            webPosition: "center"
-                                                                                                        );
-                                                                                                        showcnfpwd();
+                                                                                                     if (!_changepwdformKey.currentState!.validate()) {
 
-                                                                                                      }
 
-                                                                                                    }
+                                                                                                          }
+                                                                                                    else if (OldpwdController.text == null || OldpwdController.text.isEmpty || OldpwdController.text.length < 6) {
+
+                                                                                                       Fluttertoast.showToast(
+                                                                                                           msg: "Old Password Required or Old Password should be 6 charecter",
+                                                                                                           toastLength: Toast.LENGTH_SHORT,
+                                                                                                           gravity: ToastGravity.CENTER,
+                                                                                                           timeInSecForIosWeb: 2,
+                                                                                                           backgroundColor: Colors.red,
+                                                                                                           textColor: Colors.white,
+                                                                                                           fontSize: 16.0,
+                                                                                                           webPosition: "center"
+                                                                                                       );
+
+                                                                                                       //    showoldpassword();
+                                                                                                     }
+                                                                                                     else if (newpwdController.text == null || newpwdController.text.isEmpty || newpwdController.text.length < 6) {
+
+                                                                                                       Fluttertoast.showToast(
+                                                                                                           msg: "New Password Required or New Password should 6 charecter",
+                                                                                                           toastLength: Toast.LENGTH_SHORT,
+                                                                                                           gravity: ToastGravity.CENTER,
+                                                                                                           timeInSecForIosWeb: 2,
+                                                                                                           backgroundColor: Colors.red,
+                                                                                                           textColor: Colors.white,
+                                                                                                           fontSize: 16.0,
+                                                                                                           webPosition: "center"
+                                                                                                       );
+
+                                                                                                       //    showoldpassword();
+                                                                                                     }
+                                                                                                     else if (confirmpwdController.text == null || confirmpwdController.text.isEmpty || confirmpwdController.text.length < 6) {
+
+                                                                                                       Fluttertoast.showToast(
+                                                                                                           msg: "Confirm Password Required or Confirm Password should be minimum 6 charecter",
+                                                                                                           toastLength: Toast.LENGTH_SHORT,
+                                                                                                           gravity: ToastGravity.CENTER,
+                                                                                                           timeInSecForIosWeb: 2,
+                                                                                                           backgroundColor: Colors.red,
+                                                                                                           textColor: Colors.white,
+                                                                                                           fontSize: 16.0,
+                                                                                                           webPosition: "center"
+                                                                                                       );
+
+                                                                                                       //    showoldpassword();
+                                                                                                     }
+
+                                                                                                     else{
+                                                                                                       if(newpwdController.text==confirmpwdController.text){
+                                                                                                         changepwd();
+                                                                                                         // hidecnfpwd();
+                                                                                                       }
+                                                                                                       else{
+                                                                                                         Fluttertoast.showToast(
+                                                                                                             msg: "Confirm password and new password should match",
+                                                                                                             toastLength: Toast.LENGTH_SHORT,
+                                                                                                             gravity: ToastGravity.CENTER,
+                                                                                                             timeInSecForIosWeb: 2,
+                                                                                                             backgroundColor: Colors.red,
+                                                                                                             textColor: Colors.white,
+                                                                                                             fontSize: 16.0,
+                                                                                                             webPosition: "center"
+                                                                                                         );
+                                                                                                       }
+                                                                                                       //   hideoldpassword();
+                                                                                                     }
 
                                                                                                     },
 

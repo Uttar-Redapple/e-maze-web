@@ -889,7 +889,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                               alignment: Alignment.centerLeft,
                                               child: Container(
                                                 child: Text(
-                                                  "Last login "+formatteddatetime,
+                                                  "Last login/"+formatteddatetime,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       color: Color(0xFF989898 ),
@@ -1003,38 +1003,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                           child: Visibility(
                                                                             visible: viewfirstnametext,
-                                                                            child: FutureBuilder<Getresp>(
-                                                                              future: _futureAlbum,
-                                                                              builder: (context, snapshot) {
-                                                                                if (snapshot.hasData) {
-                                                                                  return
-                                                                                    Text(
-                                                                                      snapshot.data!.data.usrFirstName,
-                                                                                      textAlign: TextAlign.left,
-                                                                                      style: TextStyle(
-                                                                                        color: Color(0xFF989898 ),
-                                                                                        fontSize: 12.sp,
-                                                                                        fontWeight: FontWeight.bold,
-                                                                                      ),
-
-                                                                                    );
-                                                                                } else if (snapshot.hasError) {
-                                                                                  return Text(
-                                                                                    userfname!,
-                                                                                    textAlign: TextAlign.left,
-                                                                                    style: TextStyle(
-                                                                                      color: Color(0xFF989898 ),
-                                                                                      fontSize: 12.sp,
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                    ),
-
-                                                                                  );
-                                                                                }
-
-                                                                                // By default, show a loading spinner.
-                                                                                return const CircularProgressIndicator();
-                                                                              },
-                                                                            ),
+                                                                            child: buildFutureBuilder(),
 
                                                                           ),
                                                                         ),
@@ -1124,38 +1093,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           child: Visibility(
                                                                             visible: viewlastnametext,
 
-                                                                            child: FutureBuilder<Getresp>(
-                                                                              future: _futureAlbum,
-                                                                              builder: (context, snapshot) {
-                                                                                if (snapshot.hasData) {
-                                                                                  return
-                                                                                    Text(
-                                                                                      snapshot.data!.data.usrLastName,
-                                                                                      textAlign: TextAlign.left,
-                                                                                      style: TextStyle(
-                                                                                        color: Color(0xFF989898 ),
-                                                                                        fontSize: 12.sp,
-                                                                                        fontWeight: FontWeight.bold,
-                                                                                      ),
-
-                                                                                    );
-                                                                                } else if (snapshot.hasError) {
-                                                                                  return Text(
-                                                                                    usr_last_name!,
-                                                                                    textAlign: TextAlign.left,
-                                                                                    style: TextStyle(
-                                                                                      color: Color(0xFF989898 ),
-                                                                                      fontSize: 12.sp,
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                    ),
-
-                                                                                  );
-                                                                                }
-
-                                                                                // By default, show a loading spinner.
-                                                                                return const CircularProgressIndicator();
-                                                                              },
-                                                                            ),
+                                                                            child: buildFutureBuilderlastname(),
                                                                           ),
                                                                         ),
                                                                       ),
@@ -1396,11 +1334,26 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                child:   FutureBuilder<Getresp>(
                                                                                  future: _futureAlbum,
                                                                                  builder: (context, snapshot) {
-                                                                                   if (snapshot.hasData) {
-                                                                                     return
-                                                                                       Text(
-                                                                                         snapshot.data!.data.usr_birth_date,
-                                                                                         textAlign: TextAlign.left,
+                                                                                   if( snapshot.connectionState == ConnectionState.waiting){
+                                                                                     return  Center(child: Text('Please wait its loading...'));
+                                                                                   }
+                                                                                   else{
+                                                                                     if (snapshot.hasData) {
+                                                                                       return
+                                                                                         Text(
+                                                                                           snapshot.data!.data.usr_birth_date,
+                                                                                           textAlign: TextAlign.center,
+                                                                                           style: TextStyle(
+                                                                                             color: Color(0xFF989898 ),
+                                                                                             fontSize: 12.sp,
+                                                                                             fontWeight: FontWeight.bold,
+                                                                                           ),
+
+                                                                                         );
+                                                                                     } else if (snapshot.hasError) {
+                                                                                       return Text(
+                                                                                         usr_birth_date!,
+                                                                                         textAlign: TextAlign.center,
                                                                                          style: TextStyle(
                                                                                            color: Color(0xFF989898 ),
                                                                                            fontSize: 12.sp,
@@ -1408,23 +1361,14 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                          ),
 
                                                                                        );
-                                                                                   } else if (snapshot.hasError) {
-                                                                                     return Text(
-                                                                                       usr_birth_date!,
-                                                                                       textAlign: TextAlign.left,
-                                                                                       style: TextStyle(
-                                                                                         color: Color(0xFF989898 ),
-                                                                                         fontSize: 12.sp,
-                                                                                         fontWeight: FontWeight.bold,
-                                                                                       ),
-
-                                                                                     );
+                                                                                     }
                                                                                    }
+
 
                                                                                    // By default, show a loading spinner.
                                                                                    return const CircularProgressIndicator();
                                                                                  },
-                                                                               ),
+                                                                               )
                                                                            ),
                                                                          ),
                                                                        ),
@@ -1503,38 +1447,44 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                            padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                            child: Visibility(
                                                                              visible: viewgendertext,
-                                                                             child: FutureBuilder<Getresp>(
-                                                                               future: _futureAlbum,
-                                                                               builder: (context, snapshot) {
-                                                                                 if (snapshot.hasData) {
-                                                                                   return
-                                                                                     Text(
-                                                                                       snapshot.data!.data.usr_gender,
-                                                                                       textAlign: TextAlign.left,
-                                                                                       style: TextStyle(
-                                                                                         color: Color(0xFF989898 ),
-                                                                                         fontSize: 12.sp,
-                                                                                         fontWeight: FontWeight.bold,
-                                                                                       ),
+                                                                               child:   FutureBuilder<Getresp>(
+                                                                                 future: _futureAlbum,
+                                                                                 builder: (context, snapshot) {
+                                                                                   if( snapshot.connectionState == ConnectionState.waiting){
+                                                                                     return  Center(child: Text('Please wait its loading...'));
+                                                                                   }
+                                                                                   else{
+                                                                                     if (snapshot.hasData) {
+                                                                                       return
+                                                                                         Text(
+                                                                                           snapshot.data!.data.usr_gender,
+                                                                                           textAlign: TextAlign.center,
+                                                                                           style: TextStyle(
+                                                                                             color: Color(0xFF989898 ),
+                                                                                             fontSize: 12.sp,
+                                                                                             fontWeight: FontWeight.bold,
+                                                                                           ),
 
-                                                                                     );
-                                                                                 } else if (snapshot.hasError) {
-                                                                                   return Text(
-                                                                                     usr_gender!,
-                                                                                     textAlign: TextAlign.left,
-                                                                                     style: TextStyle(
-                                                                                       color: Color(0xFF989898 ),
-                                                                                       fontSize: 12.sp,
-                                                                                       fontWeight: FontWeight.bold,
-                                                                                     ),
+                                                                                         );
+                                                                                     } else if (snapshot.hasError) {
+                                                                                       return Text(
+                                                                                         usr_gender!,
+                                                                                         textAlign: TextAlign.center,
+                                                                                         style: TextStyle(
+                                                                                           color: Color(0xFF989898 ),
+                                                                                           fontSize: 12.sp,
+                                                                                           fontWeight: FontWeight.bold,
+                                                                                         ),
 
-                                                                                   );
-                                                                                 }
+                                                                                       );
+                                                                                     }
+                                                                                   }
 
-                                                                                 // By default, show a loading spinner.
-                                                                                 return const CircularProgressIndicator();
-                                                                               },
-                                                                             ),
+
+                                                                                   // By default, show a loading spinner.
+                                                                                   return const CircularProgressIndicator();
+                                                                                 },
+                                                                               )
                                                                            ),
                                                                          ),
                                                                        ),
@@ -1613,14 +1563,29 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                           child: Visibility(
                                                                               visible: viewlanguagetext,
-                                                                              child: FutureBuilder<Getresp>(
+                                                                              child:   FutureBuilder<Getresp>(
                                                                                 future: _futureAlbum,
                                                                                 builder: (context, snapshot) {
-                                                                                  if (snapshot.hasData) {
-                                                                                    return
-                                                                                      Text(
-                                                                                        snapshot.data!.data.usr_language,
-                                                                                        textAlign: TextAlign.left,
+                                                                                  if( snapshot.connectionState == ConnectionState.waiting){
+                                                                                    return  Center(child: Text('Please wait its loading...'));
+                                                                                  }
+                                                                                  else{
+                                                                                    if (snapshot.hasData) {
+                                                                                      return
+                                                                                        Text(
+                                                                                          snapshot.data!.data.usr_language,
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                            color: Color(0xFF989898 ),
+                                                                                            fontSize: 12.sp,
+                                                                                            fontWeight: FontWeight.bold,
+                                                                                          ),
+
+                                                                                        );
+                                                                                    } else if (snapshot.hasError) {
+                                                                                      return Text(
+                                                                                        usr_language!,
+                                                                                        textAlign: TextAlign.center,
                                                                                         style: TextStyle(
                                                                                           color: Color(0xFF989898 ),
                                                                                           fontSize: 12.sp,
@@ -1628,18 +1593,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                         ),
 
                                                                                       );
-                                                                                  } else if (snapshot.hasError) {
-                                                                                    return Text(
-                                                                                      usr_language!,
-                                                                                      textAlign: TextAlign.left,
-                                                                                      style: TextStyle(
-                                                                                        color: Color(0xFF989898 ),
-                                                                                        fontSize: 12.sp,
-                                                                                        fontWeight: FontWeight.bold,
-                                                                                      ),
-
-                                                                                    );
+                                                                                    }
                                                                                   }
+
 
                                                                                   // By default, show a loading spinner.
                                                                                   return const CircularProgressIndicator();
@@ -2089,7 +2045,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                         validator: (oldpwd) {
                                                                                           if (oldpwd == null || oldpwd.isEmpty || oldpwd.length < 6) {
 
-                                                                                            Fluttertoast.showToast(
+                                                                                          /*  Fluttertoast.showToast(
                                                                                                 msg: "Old Password Required or Old Password should be 6 charecter",
                                                                                                 toastLength: Toast.LENGTH_SHORT,
                                                                                                 gravity: ToastGravity.CENTER,
@@ -2098,7 +2054,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                 textColor: Colors.white,
                                                                                                 fontSize: 16.0,
                                                                                                 webPosition: "center"
-                                                                                            );
+                                                                                            );*/
 
                                                                                             //    showoldpassword();
                                                                                           }
@@ -2173,7 +2129,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                         obscureText: true,
                                                                                         validator: (newpwd) {
                                                                                           if (newpwd == null || newpwd.isEmpty || newpwd.length < 6) {
-                                                                                            Fluttertoast.showToast(
+                                                                                           /* Fluttertoast.showToast(
                                                                                                 msg: "New Password Required or New pPassword should be 6 charecters",
                                                                                                 toastLength: Toast.LENGTH_SHORT,
                                                                                                 gravity: ToastGravity.CENTER,
@@ -2182,7 +2138,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                 textColor: Colors.white,
                                                                                                 fontSize: 16.0,
                                                                                                 webPosition: "center"
-                                                                                            );
+                                                                                            );*/
 
                                                                                             //shownewpwd();
                                                                                           }
@@ -2258,7 +2214,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                         obscureText: true,
                                                                                         validator: (cnfpwd) {
                                                                                           if (cnfpwd == null || cnfpwd.isEmpty || cnfpwd.length < 6) {
-                                                                                            Fluttertoast.showToast(
+                                                                                            /*Fluttertoast.showToast(
                                                                                                 msg: "Confirm Password Required or Confirm Password should be 6 charecters",
                                                                                                 toastLength: Toast.LENGTH_SHORT,
                                                                                                 gravity: ToastGravity.CENTER,
@@ -2267,7 +2223,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                 textColor: Colors.white,
                                                                                                 fontSize: 16.0,
                                                                                                 webPosition: "center"
-                                                                                            );
+                                                                                            );*/
 
                                                                                             //showcnfpwd();
                                                                                           }
@@ -2349,8 +2305,58 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                       child: RaisedButton(
 
                                                                                         onPressed: () async {
-                                                                                          if (_changepwdformKey.currentState!.validate()) {
-                                                                                            if(newpwdController.text.toString()==confirmpwdController.text.toString()){
+                                                                                          if (!_changepwdformKey.currentState!.validate()) {
+
+
+                                                                                          }
+                                                                                          else if (OldpwdController.text == null || OldpwdController.text.isEmpty || OldpwdController.text.length < 6) {
+
+                                                                                            Fluttertoast.showToast(
+                                                                                                msg: "Old Password Required or Old Password should be 6 charecter",
+                                                                                                toastLength: Toast.LENGTH_SHORT,
+                                                                                                gravity: ToastGravity.CENTER,
+                                                                                                timeInSecForIosWeb: 2,
+                                                                                                backgroundColor: Colors.red,
+                                                                                                textColor: Colors.white,
+                                                                                                fontSize: 16.0,
+                                                                                                webPosition: "center"
+                                                                                            );
+
+                                                                                            //    showoldpassword();
+                                                                                          }
+                                                                                          else if (newpwdController.text == null || newpwdController.text.isEmpty || newpwdController.text.length < 6) {
+
+                                                                                            Fluttertoast.showToast(
+                                                                                                msg: "New Password Required or New Password should 6 charecter",
+                                                                                                toastLength: Toast.LENGTH_SHORT,
+                                                                                                gravity: ToastGravity.CENTER,
+                                                                                                timeInSecForIosWeb: 2,
+                                                                                                backgroundColor: Colors.red,
+                                                                                                textColor: Colors.white,
+                                                                                                fontSize: 16.0,
+                                                                                                webPosition: "center"
+                                                                                            );
+
+                                                                                            //    showoldpassword();
+                                                                                          }
+                                                                                          else if (confirmpwdController.text == null || confirmpwdController.text.isEmpty || confirmpwdController.text.length < 6) {
+
+                                                                                            Fluttertoast.showToast(
+                                                                                                msg: "Confirm Password Required or Confirm Password should be minimum 6 charecter",
+                                                                                                toastLength: Toast.LENGTH_SHORT,
+                                                                                                gravity: ToastGravity.CENTER,
+                                                                                                timeInSecForIosWeb: 2,
+                                                                                                backgroundColor: Colors.red,
+                                                                                                textColor: Colors.white,
+                                                                                                fontSize: 16.0,
+                                                                                                webPosition: "center"
+                                                                                            );
+
+                                                                                            //    showoldpassword();
+                                                                                          }
+
+                                                                                          else{
+                                                                                            if(newpwdController.text==confirmpwdController.text){
                                                                                               changepwd();
                                                                                               // hidecnfpwd();
                                                                                             }
@@ -2359,16 +2365,14 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                   msg: "Confirm password and new password should match",
                                                                                                   toastLength: Toast.LENGTH_SHORT,
                                                                                                   gravity: ToastGravity.CENTER,
-                                                                                                  timeInSecForIosWeb: 10,
+                                                                                                  timeInSecForIosWeb: 2,
                                                                                                   backgroundColor: Colors.red,
                                                                                                   textColor: Colors.white,
                                                                                                   fontSize: 16.0,
                                                                                                   webPosition: "center"
                                                                                               );
-                                                                                             // showcnfpwd();
-
                                                                                             }
-
+                                                                                            //   hideoldpassword();
                                                                                           }
 
                                                                                         },
@@ -2908,6 +2912,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
       },
     );
   }
+
   FutureBuilder<Getresp> buildFutureBuilderemail() {
     return FutureBuilder<Getresp>(
       future: _futureAlbum,
@@ -2920,10 +2925,10 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
             return
               Text(
                 snapshot.data!.data.usrEmail,
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                   fontSize: 12.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -2931,10 +2936,10 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
           } else if (snapshot.hasError) {
             return Text(
                 usr_email!,
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                   fontSize: 12.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -2958,7 +2963,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
             return
               Text(
                 snapshot.data!.data.usrPhone,
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
                   fontSize: 12.sp,
@@ -2969,7 +2974,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
           } else if (snapshot.hasError) {
             return Text(
                 usr_phone!,
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
                   fontSize: 12.sp,
@@ -2996,7 +3001,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
             return
               Text(
                 snapshot.data!.data.usrUserName,
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
                   fontSize: 12.sp,
@@ -3007,7 +3012,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
           } else if (snapshot.hasError) {
             return Text(
                 usr_user_name!,
-                textAlign: TextAlign.left,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
                   fontSize: 12.sp,
@@ -3033,22 +3038,22 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
           if (snapshot.hasData) {
             return
               Text(
-                "Patient"+" "+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
+                "Therapist /"+snapshot.data!.data.usrUserName+ " User id/ "+snapshot.data!.data.id.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
               );
           } else if (snapshot.hasError) {
             return Text(
-                "Patient"+usr_user_name!+ " User id "+p_id!.toString(),
+                "Therapist /"+usr_user_name!+ " User id/ "+p_id!.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -3084,9 +3089,10 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
      // gettoken();
-      _futureAlbum= getuserdetails();
-      print(jsonDecode(response.body));
 
+      print(jsonDecode(response.body));
+      gettoken();
+      _futureAlbum= getuserdetails();
       return Updateprofileresponse.fromJson(jsonDecode(response.body));
 
 

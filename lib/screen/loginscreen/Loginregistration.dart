@@ -27,7 +27,9 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+
 import '../../main.dart';
+
 Future<GetTerms> fetchterms() async {
   final response = await http
       .get(Uri.parse(Constants.baseurl+"page/1"));
@@ -290,6 +292,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
   @override
   Widget build(BuildContext context) {
     var radius = Radius.circular(40);
+
     return ScreenUtilInit(
         builder: () =>
             ResponsiveBuilder(
@@ -757,6 +760,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                 onFieldSubmitted: (value) async {
                                                                   if (_formKey.currentState!.validate()) {
                                                                     try {
+                                                                      showLoaderDialog(context);
                                                                       GetLoginResponse resp=
                                                                       await context.read(apiClientProvider).login(
                                                                           Loginuser( nameController.text, passwordController.text
@@ -770,6 +774,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                   ));*/
 
                                                                       if(resp.data.user_type==2){
+                                                                        Navigator.pop(context);
                                                                         Fluttertoast.showToast(
                                                                             msg: resp.data.username+" "+resp.data.email+" "+resp.data.first_name+" "+resp.data.last_name+" "+resp.data.phone,
                                                                             toastLength: Toast.LENGTH_SHORT,
@@ -788,6 +793,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                         // Navigator.pushNamed(context, 'therapist/profile');
                                                                       }
                                                                       else{
+                                                                        Navigator.pop(context);
                                                                         showerrorWidget();
                                                                       }
                                                                       print("Regions: ${resp.data.toJson()}");
@@ -798,6 +804,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                     } catch (e) {
                                                                       print(e);
                                                                       if (e is DioError) {
+                                                                        Navigator.pop(context);
                                                                         showerrorWidget();
                                                                         clearlogintext();
                                                                         /* ScaffoldMessenger.of(context).showSnackBar(
@@ -839,11 +846,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                               height: 25.sp,
                                                               width: 25.sp,
                                                               child: RoundCheckBox(
-                                                                onTap: (selected) {},
 
-                                                                animationDuration: Duration(
-                                                                  milliseconds: 50,
-                                                                ),
+                                                                 onTap: (selected) {
+
+                                                                 },
+                                                                  uncheckedColor: Colors.white,
+
+                                                                 animationDuration: Duration(
+                                                                   milliseconds: 50,
+                                                                 ),
+
                                                               ),
                                                             ),
                                                             Container(
@@ -986,7 +998,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                                           final bool isValid = EmailValidator.validate(regemailvalue!);
 
                                                                                           if (!isValid) {
-                                                                                            showvalidemailtoast();
+                                                                                           // showvalidemailtoast();
 
                                                                                             // showvalidemail();
                                                                                             // return "Email address invalid";
@@ -1034,8 +1046,20 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                                       child: RaisedButton(
 
                                                                                         onPressed: () async {
-                                                                                          if (_forgotformKey.currentState!.validate()) {
+                                                                                          final bool isValid = EmailValidator.validate(forgotemailController.text);
+                                                                                          if (!_forgotformKey.currentState!.validate()) {
+                                                                                           // showvalidemailtoast();
+                                                                                           // frgtpwd();
+                                                                                          }
+                                                                                         else if (!isValid) {
+                                                                                            showvalidemailtoast();
+
+                                                                                            // showvalidemail();
+                                                                                            // return "Email address invalid";
+                                                                                          }
+                                                                                          else{
                                                                                             frgtpwd();
+                                                                                            //hidevalidemail();
                                                                                           }
 
                                                                                         },
@@ -1133,12 +1157,15 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                           child: RaisedButton(
                                                             onPressed: () async {
                                                               if (_formKey.currentState!.validate()) {
+                                                                //final ProgressDialog pr = ProgressDialog(context);
                                                                 try {
+                                                                  showLoaderDialog(context);
                                                                   GetLoginResponse resp=
                                                                   await context.read(apiClientProvider).login(
                                                                       Loginuser( nameController.text, passwordController.text
                                                                       )
                                                                   );
+
 
 
                                                                   /* print( User(
@@ -1147,6 +1174,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                   ));*/
 
                                                                   if(resp.data.user_type==2){
+                                                                    Navigator.pop(context);
                                                                     Fluttertoast.showToast(
                                                                         msg: resp.data.username+" "+resp.data.email+" "+resp.data.first_name+" "+resp.data.last_name+" "+resp.data.phone,
                                                                         toastLength: Toast.LENGTH_SHORT,
@@ -1165,6 +1193,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                    // Navigator.pushNamed(context, 'therapist/profile');
                                                                   }
                                                                   else{
+                                                                    Navigator.pop(context);
                                                                     showerrorWidget();
                                                                   }
                                                                   print("Regions: ${resp.data.toJson()}");
@@ -1175,6 +1204,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                 } catch (e) {
                                                                   print(e);
                                                                   if (e is DioError) {
+                                                                    Navigator.pop(context);
                                                                     showerrorWidget();
                                                                     clearlogintext();
                                                                     /* ScaffoldMessenger.of(context).showSnackBar(
@@ -1484,6 +1514,19 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                                             ),
                                                                             textInputAction: TextInputAction.next,
+                                                                            onChanged: (regemailvalue) {
+                                                                              final bool isValid = EmailValidator.validate(regemailvalue);
+                                                                              if (regemailvalue.isEmpty) {
+                                                                                showvalidemail();
+                                                                              }
+                                                                              if (!isValid) {
+                                                                                showvalidemail();
+                                                                                // return "Email address invalid";
+                                                                              }
+                                                                              else{
+                                                                                hidevalidemail();
+                                                                              }
+                                                                            },
                                                                           ),
 
                                                                       ),
@@ -1562,6 +1605,14 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                                             ),
                                                                             textInputAction: TextInputAction.next,
+                                                                            onChanged: (regphvalue) {
+                                                                              if (regphvalue.length< 10 || regphvalue.length > 13 ){
+                                                                                showvalidph();
+                                                                              }
+                                                                              else{
+                                                                                hidevalidph();
+                                                                              }
+                                                                            },
                                                                           ),
 
                                                                       ),
@@ -1649,117 +1700,164 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                                 )
                                                                             ),
                                                                             onFieldSubmitted: (value) async {
-                                                                              if (_regformKey.currentState!.validate()) {
+                                                                              final bool isValid = EmailValidator.validate(regemailController.text);
+                                                                              if (!_regformKey.currentState!.validate()) {
 
-                                                                                if(selectedbox==true){
-                                                                                  hideWidget();
+                                                                              }
 
-                                                                                  try {
-                                                                                    String name = regnameController.text.toString();
-                                                                                    String lastnames=regnameController.text.toString().trim();
-                                                                                    if(name.contains(" ")){
-                                                                                      final dateList = name.split(" ");
-                                                                                      print( dateList[1]);
-                                                                                      String firstname=dateList[0];
-                                                                                      String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
-                                                                                      print(firstname);
-                                                                                      print(lastname);
-                                                                                      var rng = new Random();
-                                                                                      var randomno = rng.nextInt(9000) + 1000;
-                                                                                      Getreguserresponse resp=
-                                                                                      await context.read(apiClientProvider).createUser(
-                                                                                          Reguser(
-                                                                                              firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"2"
-                                                                                          )
-                                                                                      );
-                                                                                      Fluttertoast.showToast(
-                                                                                          msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
-                                                                                          toastLength: Toast.LENGTH_SHORT,
-                                                                                          gravity: ToastGravity.CENTER,
-                                                                                          timeInSecForIosWeb: 12,
-                                                                                          backgroundColor: Colors.red,
-                                                                                          textColor: Colors.white,
-                                                                                          fontSize: 16.0,
-                                                                                          webPosition: "center"
-                                                                                      );
-                                                                                      print("Regions: ${resp.data.toJson()}");
-                                                                                      showregsucesswidget();
-                                                                                      /*ScaffoldMessenger.of(context).showSnackBar(
+
+                                                                              else if (regnameController.text == null || regnameController.text.isEmpty) {
+
+                                                                                showvalidusername();
+                                                                              }
+                                                                              else if (regemailController.text == null || regemailController.text.isEmpty) {
+
+                                                                                showvalidusername();
+                                                                              }
+                                                                              else if (!isValid) {
+                                                                                showvalidemail();
+
+                                                                                // showvalidemail();
+                                                                                // return "Email address invalid";
+                                                                              }
+
+                                                                              else if (regphnoController.text.length< 10 || regphnoController.text.length > 13 ){
+                                                                                showvalidph();
+                                                                              }
+                                                                              else if (regpasswordController.text.isEmpty) {
+                                                                                showvalidpwd();
+                                                                              }
+                                                                              else if (regpasswordController.text.length < 6 ){
+                                                                                showvalidpwd();
+                                                                              }
+                                                                              else if(selectedbox == false){
+                                                                                print(selectedbox);
+                                                                                showWidget();
+                                                                                checkvalue="Please check I am agree with privacy policy,terms and conditions.";
+
+                                                                              }
+
+
+                                                                              else{
+                                                                                hidevalidusername();
+                                                                                hidevalidph();
+                                                                                hidevalidemail();
+                                                                                hidevalidpwd();
+                                                                                hideWidget();
+                                                                                Fluttertoast.showToast(
+                                                                                    msg: "validate",
+                                                                                    toastLength: Toast.LENGTH_SHORT,
+                                                                                    gravity: ToastGravity.CENTER,
+                                                                                    timeInSecForIosWeb: 12,
+                                                                                    backgroundColor: Colors.red,
+                                                                                    textColor: Colors.white,
+                                                                                    fontSize: 16.0,
+                                                                                    webPosition: "center"
+                                                                                );
+                                                                                try {
+                                                                                  String name = regnameController.text.toString();
+                                                                                  String lastnames=regnameController.text.toString().trim();
+                                                                                  if(name.contains(" ")){
+                                                                                    final dateList = name.split(" ");
+                                                                                    print( dateList[1]);
+                                                                                    String firstname=dateList[0];
+                                                                                    String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
+                                                                                    print(firstname);
+                                                                                    print(lastname);
+                                                                                    var rng = new Random();
+                                                                                    var randomno = rng.nextInt(9000) + 1000;
+                                                                                    Getreguserresponse resp=
+                                                                                    await context.read(apiClientProvider).createUser(
+                                                                                        Reguser(
+                                                                                            firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"2"
+                                                                                        )
+                                                                                    );
+                                                                                    Fluttertoast.showToast(
+                                                                                        msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
+                                                                                        toastLength: Toast.LENGTH_SHORT,
+                                                                                        gravity: ToastGravity.CENTER,
+                                                                                        timeInSecForIosWeb: 12,
+                                                                                        backgroundColor: Colors.red,
+                                                                                        textColor: Colors.white,
+                                                                                        fontSize: 16.0,
+                                                                                        webPosition: "center"
+                                                                                    );
+                                                                                    print("Regions: ${resp.data.toJson()}");
+                                                                                    showregsucesswidget();
+                                                                                    /*ScaffoldMessenger.of(context).showSnackBar(
                                                                       SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
                                                                     );*/
-                                                                                      clearregtext();
-                                                                                      hideerrorWidget();
-                                                                                      hidewidget();
-                                                                                    }
-                                                                                    else{
-                                                                                      var rng = new Random();
-                                                                                      var randomno = rng.nextInt(9000) + 1000;
-                                                                                      String firstname=name;
-                                                                                      print(firstname);
+                                                                                    clearregtext();
+                                                                                    hideerrorWidget();
+                                                                                    hidewidget();
+                                                                                  }
+                                                                                  else{
+                                                                                    var rng = new Random();
+                                                                                    var randomno = rng.nextInt(9000) + 1000;
+                                                                                    String firstname=name;
+                                                                                    print(firstname);
 
-                                                                                      Getreguserresponse resp=
-                                                                                      await context.read(apiClientProvider).createUser(
-                                                                                          Reguser(
-                                                                                              firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"2"
-                                                                                          )
-                                                                                      );
-                                                                                      print("Regions: ${resp.data.toJson()}");
-                                                                                      Fluttertoast.showToast(
-                                                                                          msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
-                                                                                          toastLength: Toast.LENGTH_SHORT,
-                                                                                          gravity: ToastGravity.CENTER,
-                                                                                          timeInSecForIosWeb: 12,
-                                                                                          backgroundColor: Colors.red,
-                                                                                          textColor: Colors.white,
-                                                                                          fontSize: 16.0,
-                                                                                          webPosition: "center"
-                                                                                      );
-                                                                                      showregsucesswidget();
+                                                                                    Getreguserresponse resp=
+                                                                                    await context.read(apiClientProvider).createUser(
+                                                                                        Reguser(
+                                                                                            firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"2"
+                                                                                        )
+                                                                                    );
+                                                                                    Fluttertoast.showToast(
+                                                                                        msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
+                                                                                        toastLength: Toast.LENGTH_SHORT,
+                                                                                        gravity: ToastGravity.CENTER,
+                                                                                        timeInSecForIosWeb: 12,
+                                                                                        backgroundColor: Colors.red,
+                                                                                        textColor: Colors.white,
+                                                                                        fontSize: 16.0,
+                                                                                        webPosition: "center"
+                                                                                    );
+                                                                                    print("Regions: ${resp.data.toJson()}");
+                                                                                    showregsucesswidget();
 
-                                                                                      clearregtext();
-                                                                                      hideerrorWidget();
-                                                                                      hidewidget();
-                                                                                      //print( date);
-                                                                                    }
-
-
+                                                                                    clearregtext();
+                                                                                    hideerrorWidget();
+                                                                                    hidewidget();
+                                                                                    //print( date);
+                                                                                  }
 
 
 
-                                                                                  } catch (e) {
-                                                                                    print(e);
-                                                                                    if (e is DioError) {
 
-                                                                                      showidget();
-                                                                                      clearregtext();
-                                                                                      hideregsucesswidget();
-                                                                                      /*ScaffoldMessenger.of(context).showSnackBar(
+
+                                                                                } catch (e) {
+                                                                                  print(e);
+                                                                                  if (e is DioError) {
+
+                                                                                    showidget();
+                                                                                    clearregtext();
+                                                                                    hideregsucesswidget();
+                                                                                    /*ScaffoldMessenger.of(context).showSnackBar(
                                                                         SnackBar(content: Text('Email/Phone is already exists')),
                                                                       );*/
 
-                                                                                      //handle DioError here by error type or by error code
+                                                                                    //handle DioError here by error type or by error code
 
-                                                                                    } else {
-
-                                                                                    }
+                                                                                  } else {
 
                                                                                   }
-                                                                                }
-                                                                                else if(selectedbox==false){
-                                                                                  print(selectedbox);
-                                                                                  showWidget();
-                                                                                  checkvalue="Please check I am agree with privacy policy,terms and conditions.";
 
                                                                                 }
-
-                                                                                // If the form is valid, display a snackbar. In the real world,
-                                                                                // you'd often call a server or save the information in a database.
-
-
-
                                                                               }
                                                                             },
                                                                             textInputAction: TextInputAction.done,
+                                                                            onChanged: (regpwdvalue) {
+                                                                              if (regpwdvalue.isEmpty) {
+                                                                                showvalidpwd();
+                                                                              }
+                                                                              else if (regpwdvalue.length < 6 ){
+                                                                                showvalidpwd();
+                                                                              }
+                                                                              else{
+                                                                                hidevalidpwd();
+                                                                              }
+                                                                            },
                                                                           ),
                                                                         ),
                                                                       ),
@@ -1800,7 +1898,8 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                   print(selected);
                                                                   selectedbox=selected! ;
                                                                   //hideWidget();
-                                                                },
+                                                                  },
+                                                                uncheckedColor: Colors.white,
 
                                                                 // isChecked: roundcheckboxselection,
                                                                 animationDuration: Duration(
@@ -2123,114 +2222,150 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                             onPressed: () async {
 
-                                                              if (_regformKey.currentState!.validate()) {
+                                                              final bool isValid = EmailValidator.validate(regemailController.text);
+                                                              if (!_regformKey.currentState!.validate()) {
 
-                                                                if(selectedbox==true){
-                                                                  hideWidget();
+                                                              }
 
-                                                                  try {
-                                                                    String name = regnameController.text.toString();
-                                                                    String lastnames=regnameController.text.toString().trim();
-                                                                    if(name.contains(" ")){
-                                                                      final dateList = name.split(" ");
-                                                                      print( dateList[1]);
-                                                                      String firstname=dateList[0];
-                                                                      String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
-                                                                      print(firstname);
-                                                                      print(lastname);
-                                                                      var rng = new Random();
-                                                                      var randomno = rng.nextInt(9000) + 1000;
-                                                                      Getreguserresponse resp=
-                                                                      await context.read(apiClientProvider).createUser(
-                                                                          Reguser(
-                                                                              firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"2"
-                                                                          )
-                                                                      );
-                                                                      Fluttertoast.showToast(
-                                                                          msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
-                                                                          toastLength: Toast.LENGTH_SHORT,
-                                                                          gravity: ToastGravity.CENTER,
-                                                                          timeInSecForIosWeb: 12,
-                                                                          backgroundColor: Colors.red,
-                                                                          textColor: Colors.white,
-                                                                          fontSize: 16.0,
-                                                                          webPosition: "center"
-                                                                      );
-                                                                      print("Regions: ${resp.data.toJson()}");
-                                                                      showregsucesswidget();
-                                                                      /*ScaffoldMessenger.of(context).showSnackBar(
+
+                                                              else if (regnameController.text == null || regnameController.text.isEmpty) {
+
+                                                                showvalidusername();
+                                                              }
+                                                              else if (regemailController.text == null || regemailController.text.isEmpty) {
+
+                                                                showvalidusername();
+                                                              }
+                                                              else if (!isValid) {
+                                                                showvalidemail();
+
+                                                                // showvalidemail();
+                                                                // return "Email address invalid";
+                                                              }
+
+                                                              else if (regphnoController.text.length< 10 || regphnoController.text.length > 13 ){
+                                                                showvalidph();
+                                                              }
+                                                              else if (regpasswordController.text.isEmpty) {
+                                                                showvalidpwd();
+                                                              }
+                                                              else if (regpasswordController.text.length < 6 ){
+                                                                showvalidpwd();
+                                                              }
+                                                              else if(selectedbox == false){
+                                                                print(selectedbox);
+                                                                showWidget();
+                                                                checkvalue="Please check I am agree with privacy policy,terms and conditions.";
+
+                                                              }
+
+
+                                                              else{
+                                                                hidevalidusername();
+                                                                hidevalidph();
+                                                                hidevalidemail();
+                                                                hidevalidpwd();
+                                                                hideWidget();
+                                                                Fluttertoast.showToast(
+                                                                    msg: "validate",
+                                                                    toastLength: Toast.LENGTH_SHORT,
+                                                                    gravity: ToastGravity.CENTER,
+                                                                    timeInSecForIosWeb: 12,
+                                                                    backgroundColor: Colors.red,
+                                                                    textColor: Colors.white,
+                                                                    fontSize: 16.0,
+                                                                    webPosition: "center"
+                                                                );
+                                                                try {
+                                                                  String name = regnameController.text.toString();
+                                                                  String lastnames=regnameController.text.toString().trim();
+                                                                  if(name.contains(" ")){
+                                                                    final dateList = name.split(" ");
+                                                                    print( dateList[1]);
+                                                                    String firstname=dateList[0];
+                                                                    String lastname=lastnames.substring(lastnames.lastIndexOf(" ")+1);
+                                                                    print(firstname);
+                                                                    print(lastname);
+                                                                    var rng = new Random();
+                                                                    var randomno = rng.nextInt(9000) + 1000;
+                                                                    Getreguserresponse resp=
+                                                                    await context.read(apiClientProvider).createUser(
+                                                                        Reguser(
+                                                                            firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"2"
+                                                                        )
+                                                                    );
+                                                                    Fluttertoast.showToast(
+                                                                        msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
+                                                                        toastLength: Toast.LENGTH_SHORT,
+                                                                        gravity: ToastGravity.CENTER,
+                                                                        timeInSecForIosWeb: 12,
+                                                                        backgroundColor: Colors.red,
+                                                                        textColor: Colors.white,
+                                                                        fontSize: 16.0,
+                                                                        webPosition: "center"
+                                                                    );
+                                                                    print("Regions: ${resp.data.toJson()}");
+                                                                    showregsucesswidget();
+                                                                    /*ScaffoldMessenger.of(context).showSnackBar(
                                                                       SnackBar(content: Text("Your registration is successfull.Please login with your credentials")),
                                                                     );*/
-                                                                      clearregtext();
-                                                                      hideerrorWidget();
-                                                                      hidewidget();
-                                                                    }
-                                                                    else{
-                                                                      var rng = new Random();
-                                                                      var randomno = rng.nextInt(9000) + 1000;
-                                                                      String firstname=name;
-                                                                      print(firstname);
+                                                                    clearregtext();
+                                                                    hideerrorWidget();
+                                                                    hidewidget();
+                                                                  }
+                                                                  else{
+                                                                    var rng = new Random();
+                                                                    var randomno = rng.nextInt(9000) + 1000;
+                                                                    String firstname=name;
+                                                                    print(firstname);
 
-                                                                      Getreguserresponse resp=
-                                                                      await context.read(apiClientProvider).createUser(
-                                                                          Reguser(
-                                                                              firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"2"
-                                                                          )
-                                                                      );
-                                                                      Fluttertoast.showToast(
-                                                                          msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
-                                                                          toastLength: Toast.LENGTH_SHORT,
-                                                                          gravity: ToastGravity.CENTER,
-                                                                          timeInSecForIosWeb: 12,
-                                                                          backgroundColor: Colors.red,
-                                                                          textColor: Colors.white,
-                                                                          fontSize: 16.0,
-                                                                          webPosition: "center"
-                                                                      );
-                                                                      print("Regions: ${resp.data.toJson()}");
-                                                                      showregsucesswidget();
+                                                                    Getreguserresponse resp=
+                                                                    await context.read(apiClientProvider).createUser(
+                                                                        Reguser(
+                                                                            firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"2"
+                                                                        )
+                                                                    );
+                                                                    Fluttertoast.showToast(
+                                                                        msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
+                                                                        toastLength: Toast.LENGTH_SHORT,
+                                                                        gravity: ToastGravity.CENTER,
+                                                                        timeInSecForIosWeb: 12,
+                                                                        backgroundColor: Colors.red,
+                                                                        textColor: Colors.white,
+                                                                        fontSize: 16.0,
+                                                                        webPosition: "center"
+                                                                    );
+                                                                    print("Regions: ${resp.data.toJson()}");
+                                                                    showregsucesswidget();
 
-                                                                      clearregtext();
-                                                                      hideerrorWidget();
-                                                                      hidewidget();
-                                                                      //print( date);
-                                                                    }
-
-
+                                                                    clearregtext();
+                                                                    hideerrorWidget();
+                                                                    hidewidget();
+                                                                    //print( date);
+                                                                  }
 
 
 
-                                                                  } catch (e) {
-                                                                    print(e);
-                                                                    if (e is DioError) {
 
-                                                                      showidget();
-                                                                      clearregtext();
-                                                                      hideregsucesswidget();
-                                                                      /*ScaffoldMessenger.of(context).showSnackBar(
+
+                                                                } catch (e) {
+                                                                  print(e);
+                                                                  if (e is DioError) {
+
+                                                                    showidget();
+                                                                    clearregtext();
+                                                                    hideregsucesswidget();
+                                                                    /*ScaffoldMessenger.of(context).showSnackBar(
                                                                         SnackBar(content: Text('Email/Phone is already exists')),
                                                                       );*/
 
-                                                                      //handle DioError here by error type or by error code
+                                                                    //handle DioError here by error type or by error code
 
-                                                                    } else {
-
-                                                                    }
+                                                                  } else {
 
                                                                   }
-                                                                }
-                                                                else if(selectedbox==false){
-                                                                  print(selectedbox);
-                                                                  showWidget();
-                                                                  checkvalue="Please check I am agree with privacy policy,terms and conditions.";
 
                                                                 }
-
-                                                                // If the form is valid, display a snackbar. In the real world,
-                                                                // you'd often call a server or save the information in a database.
-
-
-
                                                               }
                                                             },
 
@@ -2440,7 +2575,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
     } else {
       Fluttertoast.showToast(
-          msg: "User id not found",
+          msg: "Your email is not registered with us.Please try with registered email",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 10,
@@ -2516,6 +2651,21 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
       throw Exception('Failed to create album.');
     }
 
+  }
+  showLoaderDialog(BuildContext context){
+    AlertDialog alert=AlertDialog(
+      content: new Row(
+        children: [
+          CircularProgressIndicator(),
+          Container(margin: EdgeInsets.only(left: 7),child:Text("Loading..." )),
+        ],),
+    );
+    showDialog(barrierDismissible: false,
+      context:context,
+      builder:(BuildContext context){
+        return alert;
+      },
+    );
   }
 
 }
