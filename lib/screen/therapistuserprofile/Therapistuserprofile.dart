@@ -280,8 +280,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     _passwordVisible = false;
     _confirmpasswordVisible=false;
     _newpasswordVisible=false;
-    gettoken();
-    _futureAlbum= getuserdetails();
+    /*gettoken();
+    _futureAlbum= getuserdetails();*/
 
     /*gettoken();
     _futureAlbum= getuserdetails();*/
@@ -889,7 +889,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                               alignment: Alignment.centerLeft,
                                               child: Container(
                                                 child: Text(
-                                                  "Last login "+formatteddatetime,
+                                                  "Last login/"+formatteddatetime,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       color: Color(0xFF989898 ),
@@ -922,6 +922,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                         showgendertextwidget();
                                                         hidegenderwidget();
                                                         updatedetails();
+                                                        getuserdetails();
                                                         print(firstnameController.text);
                                                       });
                                                     },
@@ -967,6 +968,11 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                       child: Form(
                                                         key: _formKey,
                                                         child: Table(
+                                                          columnWidths: {
+                                                            0: FixedColumnWidth(75.sp),
+                                                            1: FixedColumnWidth(300.sp),
+                                                            2: FixedColumnWidth(25.sp),
+                                                          },
                                                           border: TableBorder(
                                                               horizontalInside: BorderSide(
                                                                   width: 1,  color: Colors.grey.withOpacity(0.5), style: BorderStyle.solid)),
@@ -974,7 +980,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                             TableRow(
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerLeft,
                                                                       child: Text(
@@ -982,48 +988,54 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                         textAlign: TextAlign.center,
                                                                         style: TextStyle(
                                                                           color: Color(0xFF989898 ),
-                                                                          //fontSize: 15.sp,
+                                                                          fontSize: 12.sp,
                                                                           fontWeight: FontWeight.bold,
                                                                         ),
 
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewfirstnametext,
-                                                                        child: buildFutureBuilder(),
+                                                                  Column(
+                                                                    children: [
+                                                                      Align(
+                                                                        alignment: Alignment.centerLeft,
+                                                                        child: Padding(
+                                                                          padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                          child: Visibility(
+                                                                            visible: viewfirstnametext,
+                                                                            child: buildFutureBuilder(),
 
+                                                                          ),
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewfirstname,
-                                                                      child: Center(
+                                                                      Padding(
+                                                                        padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                        child: Visibility(
+                                                                          visible: viewfirstname,
+                                                                          child: Center(
 
-                                                                        child: SizedBox(
-                                                                          //  height: 30.sp,
-                                                                          //  width: 200.sp,
-                                                                          child: TextFormField(
-                                                                            controller: firstnameController,
+                                                                            child: SizedBox(
+                                                                              //  height: 30.sp,
+                                                                              //  width: 200.sp,
+                                                                              child: TextFormField(
+                                                                                controller: firstnameController,
 
-                                                                            decoration: InputDecoration(
-                                                                              border: InputBorder.none,
+                                                                                decoration: InputDecoration(
+                                                                                  border: InputBorder.none,
 
-                                                                              hintText: 'Enter Firstname',
+                                                                                  hintText: 'Enter Firstname',
+                                                                                ),
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ),
+                                                                    ],
+
                                                                   ),
+
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: GestureDetector(
                                                                       onTap: () {
 
@@ -1042,7 +1054,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                             textAlign: TextAlign.center,
                                                                             style: TextStyle(
                                                                               color: Color(0xFF989898 ),
-                                                                              // fontSize: 15.sp,
+                                                                              fontSize: 12.sp,
                                                                               fontWeight: FontWeight.bold,
                                                                             ),
 
@@ -1057,7 +1069,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                             TableRow(
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerLeft,
                                                                       child: Text(
@@ -1065,45 +1077,51 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                         textAlign: TextAlign.center,
                                                                         style: TextStyle(
                                                                           color: Color(0xFF989898 ),
-                                                                          //  fontSize: 15.sp,
+                                                                          fontSize: 12.sp,
                                                                           fontWeight: FontWeight.bold,
                                                                         ),
 
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewlastnametext,
+                                                                  Column(
+                                                                    children: [
+                                                                      Align(
+                                                                        alignment: Alignment.centerLeft,
+                                                                        child: Padding(
+                                                                          padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                          child: Visibility(
+                                                                            visible: viewlastnametext,
 
-                                                                        child: buildFutureBuilderlastname(),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewlastname,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextField(
-                                                                          controller: lastnameController,
-
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
-
-                                                                            hintText: 'Enter Lastname',
+                                                                            child: buildFutureBuilderlastname(),
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ),
+                                                                      Padding(
+                                                                        padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                        child: Visibility(
+                                                                          visible: viewlastname,
+                                                                          child: SizedBox(
+                                                                           /* height: 30.sp,
+                                                                            width: 100.sp,*/
+                                                                            child: TextField(
+                                                                              controller: lastnameController,
+
+                                                                              decoration: InputDecoration(
+                                                                                border: UnderlineInputBorder(),
+
+                                                                                hintText: 'Enter Lastname',
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+
                                                                   ),
+
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerRight,
                                                                       child: GestureDetector(
@@ -1117,7 +1135,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
+                                                                            fontSize: 12.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1130,7 +1148,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                             TableRow(
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerLeft,
                                                                       child: Text(
@@ -1138,61 +1156,70 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                         textAlign: TextAlign.center,
                                                                         style: TextStyle(
                                                                           color: Color(0xFF989898 ),
-                                                                          //  fontSize: 15.sp,
+                                                                          fontSize: 12.sp,
                                                                           fontWeight: FontWeight.bold,
                                                                         ),
 
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewemailtext,
-                                                                        child: buildFutureBuilderemail(),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewemail,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextField(
-                                                                          controller: emailController,
-
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
-
-                                                                            hintText: 'Enter Email',
+                                                                  Column(
+                                                                    children: [
+                                                                      Align(
+                                                                        alignment: Alignment.centerLeft,
+                                                                        child: Padding(
+                                                                          padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                          child: Visibility(
+                                                                            visible: viewemailtext,
+                                                                            child: buildFutureBuilderemail(),
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                      alignment: Alignment.centerRight,
-                                                                      child: GestureDetector(
-                                                                        onTap: () {
-                                                                          //  hideemailtextwidget();
-                                                                          // showemailwidget();
-                                                                          //Navigator.pushNamed(context, "myRoute");
-                                                                        },
-                                                                        child: Text(
-                                                                          "",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
+                                                                      Padding(
+                                                                        padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                        child: Visibility(
+                                                                          visible: viewemail,
+                                                                          child: SizedBox(
+                                                                           /* height: 30.sp,
+                                                                            width: 100.sp,*/
+                                                                            child: TextField(
+                                                                              controller: emailController,
 
+                                                                              decoration: InputDecoration(
+                                                                                border: UnderlineInputBorder(),
+
+                                                                                hintText: 'Enter Email',
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+
+                                                                  ),
+
+                                                                  Visibility(
+                                                                      visible: false,
+                                                                    child: Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerRight,
+                                                                        child: GestureDetector(
+                                                                          onTap: () {
+                                                                            //  hideemailtextwidget();
+                                                                            // showemailwidget();
+                                                                            //Navigator.pushNamed(context, "myRoute");
+                                                                          },
+                                                                          child: Text(
+                                                                            "",
+                                                                            textAlign: TextAlign.center,
+                                                                            style: TextStyle(
+                                                                              color: Color(0xFF989898 ),
+                                                                              fontSize: 12.sp,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1203,7 +1230,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                             TableRow(
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerLeft,
                                                                       child: Text(
@@ -1211,44 +1238,50 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                         textAlign: TextAlign.center,
                                                                         style: TextStyle(
                                                                           color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
+                                                                          fontSize: 12.sp,
                                                                           fontWeight: FontWeight.bold,
                                                                         ),
 
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewphnotext,
-                                                                        child: buildFutureBuilderph(),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewphno,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextField(
-                                                                          controller: phnoController,
+                                                                  Column(
+                                                                     children: [
+                                                                       Align(
+                                                                         alignment: Alignment.centerLeft,
+                                                                         child: Padding(
+                                                                           padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                           child: Visibility(
+                                                                             visible: viewphnotext,
+                                                                             child: buildFutureBuilderph(),
+                                                                           ),
+                                                                         ),
+                                                                       ),
+                                                                       Padding(
+                                                                         padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                         child: Visibility(
+                                                                           visible: viewphno,
+                                                                           child: SizedBox(
+                                                                          /*   height: 30.sp,
+                                                                             width: 100.sp,*/
+                                                                             child: TextField(
+                                                                               controller: phnoController,
 
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
+                                                                               decoration: InputDecoration(
+                                                                                 border: UnderlineInputBorder(),
 
-                                                                            hintText: 'Enter phone number',
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
+                                                                                 hintText: 'Enter phone number',
+                                                                               ),
+                                                                             ),
+                                                                           ),
+                                                                         ),
+                                                                       ),
+                                                                     ],
+
                                                                   ),
+
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerRight,
                                                                       child: GestureDetector(
@@ -1262,7 +1295,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
+                                                                            fontSize: 12.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1275,7 +1308,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                             TableRow(
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerLeft,
                                                                       child: Text(
@@ -1283,82 +1316,88 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                         textAlign: TextAlign.center,
                                                                         style: TextStyle(
                                                                           color: Color(0xFF989898 ),
-                                                                          //  fontSize: 15.sp,
+                                                                          fontSize: 12.sp,
                                                                           fontWeight: FontWeight.bold,
                                                                         ),
 
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                          visible: viewbirthtext,
-                                                                          child:   FutureBuilder<Getresp>(
-                                                                            future: _futureAlbum,
-                                                                            builder: (context, snapshot) {
-                                                                              if( snapshot.connectionState == ConnectionState.waiting){
-                                                                                return  Center(child: Text('Please wait its loading...'));
-                                                                              }
-                                                                              else{
-                                                                                if (snapshot.hasData) {
-                                                                                  return
-                                                                                    Text(
-                                                                                      snapshot.data!.data.usr_birth_date,
-                                                                                      textAlign: TextAlign.center,
-                                                                                      style: TextStyle(
-                                                                                        color: Color(0xFF989898 ),
-                                                                                        // fontSize: 15.sp,
-                                                                                        fontWeight: FontWeight.bold,
-                                                                                      ),
+                                                                  Column(
+                                                                     children: [
+                                                                       Align(
+                                                                         alignment: Alignment.centerLeft,
+                                                                         child: Padding(
+                                                                           padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                           child: Visibility(
+                                                                               visible: viewbirthtext,
+                                                                               child:   FutureBuilder<Getresp>(
+                                                                                 future: _futureAlbum,
+                                                                                 builder: (context, snapshot) {
+                                                                                   if( snapshot.connectionState == ConnectionState.waiting){
+                                                                                     return  Center(child: Text('Please wait its loading...'));
+                                                                                   }
+                                                                                   else{
+                                                                                     if (snapshot.hasData) {
+                                                                                       return
+                                                                                         Text(
+                                                                                           snapshot.data!.data.usr_birth_date,
+                                                                                           textAlign: TextAlign.center,
+                                                                                           style: TextStyle(
+                                                                                             color: Color(0xFF989898 ),
+                                                                                             fontSize: 12.sp,
+                                                                                             fontWeight: FontWeight.bold,
+                                                                                           ),
 
-                                                                                    );
-                                                                                } else if (snapshot.hasError) {
-                                                                                  return Text(
-                                                                                    usr_birth_date!,
-                                                                                    textAlign: TextAlign.center,
-                                                                                    style: TextStyle(
-                                                                                      color: Color(0xFF989898 ),
-                                                                                      // fontSize: 15.sp,
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                    ),
+                                                                                         );
+                                                                                     } else if (snapshot.hasError) {
+                                                                                       return Text(
+                                                                                         usr_birth_date!,
+                                                                                         textAlign: TextAlign.center,
+                                                                                         style: TextStyle(
+                                                                                           color: Color(0xFF989898 ),
+                                                                                           fontSize: 12.sp,
+                                                                                           fontWeight: FontWeight.bold,
+                                                                                         ),
 
-                                                                                  );
-                                                                                }
-                                                                              }
+                                                                                       );
+                                                                                     }
+                                                                                   }
 
 
-                                                                              // By default, show a loading spinner.
-                                                                              return const CircularProgressIndicator();
-                                                                            },
-                                                                          )
-                                                                      ),
-                                                                    ),
+                                                                                   // By default, show a loading spinner.
+                                                                                   return const CircularProgressIndicator();
+                                                                                 },
+                                                                               )
+                                                                           ),
+                                                                         ),
+                                                                       ),
+                                                                       Padding(
+                                                                         padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                         child: Visibility(
+                                                                           visible: viewbirth,
+                                                                           child: SizedBox(
+                                                                            /* height: 30.sp,
+                                                                             width: 100.sp,*/
+                                                                             child: TextField(
+                                                                               controller: birthController,
+
+                                                                               decoration: InputDecoration(
+                                                                                 border: UnderlineInputBorder(),
+
+                                                                                 hintText: 'Enter birth date (YYYY-MM-DD)',
+                                                                               ),
+                                                                             ),
+                                                                           ),
+                                                                         ),
+                                                                       ),
+                                                                     ],
+
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewbirth,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextField(
-                                                                          controller: birthController,
 
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
-
-                                                                            hintText: 'Enter birth date',
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
 
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerRight,
                                                                       child: GestureDetector(
@@ -1372,7 +1411,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
+                                                                            fontSize: 12.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1385,7 +1424,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                             TableRow(
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerLeft,
                                                                       child: Text(
@@ -1393,75 +1432,87 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                         textAlign: TextAlign.center,
                                                                         style: TextStyle(
                                                                           color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
+                                                                          fontSize: 12.sp,
                                                                           fontWeight: FontWeight.bold,
                                                                         ),
 
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewgendertext,
-                                                                        child: FutureBuilder<Getresp>(
-                                                                          future: _futureAlbum,
-                                                                          builder: (context, snapshot) {
-                                                                            if (snapshot.hasData) {
-                                                                              return
-                                                                                Text(
-                                                                                  snapshot.data!.data.usr_gender,
-                                                                                  textAlign: TextAlign.center,
-                                                                                  style: TextStyle(
-                                                                                    color: Color(0xFF989898 ),
-                                                                                    // fontSize: 15.sp,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
+                                                                  Column(
+                                                                     children: [
+                                                                       Align(
+                                                                         alignment: Alignment.centerLeft,
+                                                                         child: Padding(
+                                                                           padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                           child: Visibility(
+                                                                             visible: viewgendertext,
+                                                                               child:   FutureBuilder<Getresp>(
+                                                                                 future: _futureAlbum,
+                                                                                 builder: (context, snapshot) {
+                                                                                   if( snapshot.connectionState == ConnectionState.waiting){
+                                                                                     return  Center(child: Text('Please wait its loading...'));
+                                                                                   }
+                                                                                   else{
+                                                                                     if (snapshot.hasData) {
+                                                                                       return
+                                                                                         Text(
+                                                                                           snapshot.data!.data.usr_gender,
+                                                                                           textAlign: TextAlign.center,
+                                                                                           style: TextStyle(
+                                                                                             color: Color(0xFF989898 ),
+                                                                                             fontSize: 12.sp,
+                                                                                             fontWeight: FontWeight.bold,
+                                                                                           ),
 
-                                                                                );
-                                                                            } else if (snapshot.hasError) {
-                                                                              return Text(
-                                                                                usr_gender!,
-                                                                                textAlign: TextAlign.center,
-                                                                                style: TextStyle(
-                                                                                  color: Color(0xFF989898 ),
-                                                                                  // fontSize: 15.sp,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                ),
+                                                                                         );
+                                                                                     } else if (snapshot.hasError) {
+                                                                                       return Text(
+                                                                                         usr_gender!,
+                                                                                         textAlign: TextAlign.center,
+                                                                                         style: TextStyle(
+                                                                                           color: Color(0xFF989898 ),
+                                                                                           fontSize: 12.sp,
+                                                                                           fontWeight: FontWeight.bold,
+                                                                                         ),
 
-                                                                              );
-                                                                            }
+                                                                                       );
+                                                                                     }
+                                                                                   }
 
-                                                                            // By default, show a loading spinner.
-                                                                            return const CircularProgressIndicator();
-                                                                          },
-                                                                        ),
-                                                                      ),
-                                                                    ),
+
+                                                                                   // By default, show a loading spinner.
+                                                                                   return const CircularProgressIndicator();
+                                                                                 },
+                                                                               )
+                                                                           ),
+                                                                         ),
+                                                                       ),
+                                                                       Padding(
+                                                                         padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                         child: Visibility(
+                                                                           visible: viewgender,
+                                                                           child: SizedBox(
+                                                                            /* height: 30.sp,
+                                                                             width: 100.sp,*/
+                                                                             child: TextField(
+                                                                               controller: genderController,
+
+                                                                               decoration: InputDecoration(
+                                                                                 border: UnderlineInputBorder(),
+
+                                                                                 hintText: 'Enter gender',
+                                                                               ),
+                                                                             ),
+                                                                           ),
+                                                                         ),
+                                                                       ),
+                                                                     ],
+
                                                                   ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewgender,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextField(
-                                                                          controller: genderController,
 
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
-
-                                                                            hintText: 'Enter gender',
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerRight,
                                                                       child: GestureDetector(
@@ -1475,7 +1526,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
+                                                                            fontSize: 12.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1489,7 +1540,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                             TableRow(
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerLeft,
                                                                       child: Text(
@@ -1497,75 +1548,87 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                         textAlign: TextAlign.center,
                                                                         style: TextStyle(
                                                                           color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
+                                                                          fontSize: 12.sp,
                                                                           fontWeight: FontWeight.bold,
                                                                         ),
 
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                          visible: viewlanguagetext,
-                                                                          child: FutureBuilder<Getresp>(
-                                                                            future: _futureAlbum,
-                                                                            builder: (context, snapshot) {
-                                                                              if (snapshot.hasData) {
-                                                                                return
-                                                                                  Text(
-                                                                                    snapshot.data!.data.usr_language,
-                                                                                    textAlign: TextAlign.center,
-                                                                                    style: TextStyle(
-                                                                                      color: Color(0xFF989898 ),
-                                                                                      // fontSize: 15.sp,
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                    ),
+                                                                  Column(
+                                                                    children: [
+                                                                      Align(
+                                                                        alignment: Alignment.centerLeft,
+                                                                        child: Padding(
+                                                                          padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                          child: Visibility(
+                                                                              visible: viewlanguagetext,
+                                                                              child:   FutureBuilder<Getresp>(
+                                                                                future: _futureAlbum,
+                                                                                builder: (context, snapshot) {
+                                                                                  if( snapshot.connectionState == ConnectionState.waiting){
+                                                                                    return  Center(child: Text('Please wait its loading...'));
+                                                                                  }
+                                                                                  else{
+                                                                                    if (snapshot.hasData) {
+                                                                                      return
+                                                                                        Text(
+                                                                                          snapshot.data!.data.usr_language,
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                            color: Color(0xFF989898 ),
+                                                                                            fontSize: 12.sp,
+                                                                                            fontWeight: FontWeight.bold,
+                                                                                          ),
 
-                                                                                  );
-                                                                              } else if (snapshot.hasError) {
-                                                                                return Text(
-                                                                                  usr_language!,
-                                                                                  textAlign: TextAlign.center,
-                                                                                  style: TextStyle(
-                                                                                    color: Color(0xFF989898 ),
-                                                                                    // fontSize: 15.sp,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
+                                                                                        );
+                                                                                    } else if (snapshot.hasError) {
+                                                                                      return Text(
+                                                                                        usr_language!,
+                                                                                        textAlign: TextAlign.center,
+                                                                                        style: TextStyle(
+                                                                                          color: Color(0xFF989898 ),
+                                                                                          fontSize: 12.sp,
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                        ),
 
-                                                                                );
-                                                                              }
+                                                                                      );
+                                                                                    }
+                                                                                  }
 
-                                                                              // By default, show a loading spinner.
-                                                                              return const CircularProgressIndicator();
-                                                                            },
-                                                                          )
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewlanguage,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextFormField(
-                                                                          controller: languageController,
 
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
-
-                                                                            hintText: 'Enter language',
+                                                                                  // By default, show a loading spinner.
+                                                                                  return const CircularProgressIndicator();
+                                                                                },
+                                                                              )
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                    ),
+                                                                      Padding(
+                                                                        padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                        child: Visibility(
+                                                                          visible: viewlanguage,
+                                                                          child: SizedBox(
+                                                                           /* height: 30.sp,
+                                                                            width: 100.sp,*/
+                                                                            child: TextFormField(
+                                                                              controller: languageController,
+
+                                                                              decoration: InputDecoration(
+                                                                                border: UnderlineInputBorder(),
+
+                                                                                hintText: 'Enter language',
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+
                                                                   ),
+
                                                                   Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                                                                    padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                     child: Align(
                                                                       alignment: Alignment.centerRight,
                                                                       child: GestureDetector(
@@ -1579,7 +1642,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
+                                                                            fontSize: 12.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
@@ -1982,7 +2045,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                         validator: (oldpwd) {
                                                                                           if (oldpwd == null || oldpwd.isEmpty || oldpwd.length < 6) {
 
-                                                                                            Fluttertoast.showToast(
+                                                                                          /*  Fluttertoast.showToast(
                                                                                                 msg: "Old Password Required or Old Password should be 6 charecter",
                                                                                                 toastLength: Toast.LENGTH_SHORT,
                                                                                                 gravity: ToastGravity.CENTER,
@@ -1991,7 +2054,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                 textColor: Colors.white,
                                                                                                 fontSize: 16.0,
                                                                                                 webPosition: "center"
-                                                                                            );
+                                                                                            );*/
 
                                                                                             //    showoldpassword();
                                                                                           }
@@ -2066,7 +2129,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                         obscureText: true,
                                                                                         validator: (newpwd) {
                                                                                           if (newpwd == null || newpwd.isEmpty || newpwd.length < 6) {
-                                                                                            Fluttertoast.showToast(
+                                                                                           /* Fluttertoast.showToast(
                                                                                                 msg: "New Password Required or New pPassword should be 6 charecters",
                                                                                                 toastLength: Toast.LENGTH_SHORT,
                                                                                                 gravity: ToastGravity.CENTER,
@@ -2075,7 +2138,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                 textColor: Colors.white,
                                                                                                 fontSize: 16.0,
                                                                                                 webPosition: "center"
-                                                                                            );
+                                                                                            );*/
 
                                                                                             //shownewpwd();
                                                                                           }
@@ -2151,7 +2214,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                         obscureText: true,
                                                                                         validator: (cnfpwd) {
                                                                                           if (cnfpwd == null || cnfpwd.isEmpty || cnfpwd.length < 6) {
-                                                                                            Fluttertoast.showToast(
+                                                                                            /*Fluttertoast.showToast(
                                                                                                 msg: "Confirm Password Required or Confirm Password should be 6 charecters",
                                                                                                 toastLength: Toast.LENGTH_SHORT,
                                                                                                 gravity: ToastGravity.CENTER,
@@ -2160,7 +2223,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                 textColor: Colors.white,
                                                                                                 fontSize: 16.0,
                                                                                                 webPosition: "center"
-                                                                                            );
+                                                                                            );*/
 
                                                                                             //showcnfpwd();
                                                                                           }
@@ -2242,8 +2305,58 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                       child: RaisedButton(
 
                                                                                         onPressed: () async {
-                                                                                          if (_changepwdformKey.currentState!.validate()) {
-                                                                                            if(newpwdController.text.toString()==confirmpwdController.text.toString()){
+                                                                                          if (!_changepwdformKey.currentState!.validate()) {
+
+
+                                                                                          }
+                                                                                          else if (OldpwdController.text == null || OldpwdController.text.isEmpty || OldpwdController.text.length < 6) {
+
+                                                                                            Fluttertoast.showToast(
+                                                                                                msg: "Old Password Required or Old Password should be 6 charecter",
+                                                                                                toastLength: Toast.LENGTH_SHORT,
+                                                                                                gravity: ToastGravity.CENTER,
+                                                                                                timeInSecForIosWeb: 2,
+                                                                                                backgroundColor: Colors.red,
+                                                                                                textColor: Colors.white,
+                                                                                                fontSize: 16.0,
+                                                                                                webPosition: "center"
+                                                                                            );
+
+                                                                                            //    showoldpassword();
+                                                                                          }
+                                                                                          else if (newpwdController.text == null || newpwdController.text.isEmpty || newpwdController.text.length < 6) {
+
+                                                                                            Fluttertoast.showToast(
+                                                                                                msg: "New Password Required or New Password should 6 charecter",
+                                                                                                toastLength: Toast.LENGTH_SHORT,
+                                                                                                gravity: ToastGravity.CENTER,
+                                                                                                timeInSecForIosWeb: 2,
+                                                                                                backgroundColor: Colors.red,
+                                                                                                textColor: Colors.white,
+                                                                                                fontSize: 16.0,
+                                                                                                webPosition: "center"
+                                                                                            );
+
+                                                                                            //    showoldpassword();
+                                                                                          }
+                                                                                          else if (confirmpwdController.text == null || confirmpwdController.text.isEmpty || confirmpwdController.text.length < 6) {
+
+                                                                                            Fluttertoast.showToast(
+                                                                                                msg: "Confirm Password Required or Confirm Password should be minimum 6 charecter",
+                                                                                                toastLength: Toast.LENGTH_SHORT,
+                                                                                                gravity: ToastGravity.CENTER,
+                                                                                                timeInSecForIosWeb: 2,
+                                                                                                backgroundColor: Colors.red,
+                                                                                                textColor: Colors.white,
+                                                                                                fontSize: 16.0,
+                                                                                                webPosition: "center"
+                                                                                            );
+
+                                                                                            //    showoldpassword();
+                                                                                          }
+
+                                                                                          else{
+                                                                                            if(newpwdController.text==confirmpwdController.text){
                                                                                               changepwd();
                                                                                               // hidecnfpwd();
                                                                                             }
@@ -2252,16 +2365,14 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                   msg: "Confirm password and new password should match",
                                                                                                   toastLength: Toast.LENGTH_SHORT,
                                                                                                   gravity: ToastGravity.CENTER,
-                                                                                                  timeInSecForIosWeb: 10,
+                                                                                                  timeInSecForIosWeb: 2,
                                                                                                   backgroundColor: Colors.red,
                                                                                                   textColor: Colors.white,
                                                                                                   fontSize: 16.0,
                                                                                                   webPosition: "center"
                                                                                               );
-                                                                                             // showcnfpwd();
-
                                                                                             }
-
+                                                                                            //   hideoldpassword();
                                                                                           }
 
                                                                                         },
@@ -2617,7 +2728,19 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async {
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      prefs.remove("doc_id");
+                      prefs.remove("doctorauthtoken");
+                      prefs.remove("userfname");
+                      prefs.remove("usr_last_name");
+                      prefs.remove("usr_user_name");
+                      prefs.remove("usr_email");
+                      prefs.remove("usr_phone");
+                      prefs.remove("usr_birth_date");
+                      prefs.remove("usr_gender");
+                      prefs.remove("usr_language");
+                      prefs.remove("usr_profile_image");
                       Navigator.pushNamed(context, '/');
                     },
                     child: Text(
@@ -2681,6 +2804,27 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       print(jsonDecode(response.body));
+      Map<String, dynamic> data = json.decode(response.body);
+      print(data["data"]["usr_first_name"]);
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      String userfname=data["data"]["usr_first_name"];
+      pref.setString('userfname', userfname);
+      String usr_last_name=data["data"]["usr_last_name"];
+      pref.setString('usr_last_name', usr_last_name);
+      String usr_user_name=data["data"]["usr_user_name"];
+      pref.setString('usr_user_name', usr_user_name);
+      String usr_email=data["data"]["usr_email"];
+      pref.setString('usr_email', usr_email);
+      String usr_phone=data["data"]["usr_phone"];
+      pref.setString('usr_phone', usr_phone);
+      String usr_birth_date=data["data"]["usr_birth_date"];
+      pref.setString('usr_birth_date', usr_birth_date);
+      String usr_gender=data["data"]["usr_gender"];
+      pref.setString('usr_gender', usr_gender);
+      String usr_language=data["data"]["usr_language"];
+      pref.setString('usr_language', usr_language);
+      String usr_profile_image=data["data"]["usr_profile_image"];
+      pref.setString('usr_profile_image', usr_profile_image);
 
       return Getresp.fromJson(jsonDecode(response.body));
 
@@ -2703,10 +2847,10 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
             return
               Text(
                 snapshot.data!.data.usrFirstName,
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -2714,10 +2858,10 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
           } else if (snapshot.hasError) {
             return  Text(
               userfname!,
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.left,
               style: TextStyle(
                 color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.bold,
               ),
 
@@ -2742,10 +2886,10 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
             return
               Text(
                 snapshot.data!.data.usrLastName,
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -2753,10 +2897,10 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
           } else if (snapshot.hasError) {
             return Text(
                 usr_last_name!,
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -2768,6 +2912,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
       },
     );
   }
+
   FutureBuilder<Getresp> buildFutureBuilderemail() {
     return FutureBuilder<Getresp>(
       future: _futureAlbum,
@@ -2783,7 +2928,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -2794,7 +2939,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -2821,7 +2966,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -2832,7 +2977,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -2859,7 +3004,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -2870,7 +3015,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -2893,22 +3038,22 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
           if (snapshot.hasData) {
             return
               Text(
-                "Patient"+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
+                "Therapist /"+snapshot.data!.data.usrUserName+ " User id/ "+snapshot.data!.data.id.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
               );
           } else if (snapshot.hasError) {
             return Text(
-                "Patient"+usr_user_name!+ " User id "+p_id!.toString(),
+                "Therapist /"+usr_user_name!+ " User id/ "+p_id!.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -2932,7 +3077,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
       body: jsonEncode(<String, String>{
         'usr_first_name': firstnameController.text,
         'usr_last_name': lastnameController.text,
-        'usr_birth_date': "09/01/1991",
+        'usr_birth_date': birthController.text,
         'usr_gender': genderController.text,
         'usr_language': languageController.text
       }
@@ -2943,8 +3088,11 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     if (response.statusCode == 200) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
-      print(jsonDecode(response.body));
+     // gettoken();
 
+      print(jsonDecode(response.body));
+      gettoken();
+      _futureAlbum= getuserdetails();
       return Updateprofileresponse.fromJson(jsonDecode(response.body));
 
 

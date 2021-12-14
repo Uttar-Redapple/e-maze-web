@@ -1,12 +1,19 @@
+import 'dart:convert';
+
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:emaze_brain/model/response/get_terms.dart';
+import 'package:emaze_brain/model/response/getresp.dart';
 import 'package:emaze_brain/screen/data_viz/data_viz.dart';
 import 'package:emaze_brain/screen/therapistgeneralpreference/Therapistgeneralpreference.dart';
+import 'package:emaze_brain/screen/util/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 class Patientgeneralpreference extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -16,6 +23,19 @@ class Patientgeneralpreference extends StatefulWidget{
   
 }
 class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
+  late Future<GetTerms> futureAlbum;
+  late Future<GetTerms> privacypolicy;
+  Future<Getresp>? _therapistprofile;
+  String? token;
+  String?userfname,usr_last_name,usr_user_name,usr_email,usr_phone,usr_birth_date,usr_gender,usr_language,usr_profile_image;
+  int? p_id;
+  @override
+  void initState() {
+    futureAlbum = fetchterms();
+    privacypolicy=fetchprivacypolicy();
+    gettoken();
+    _therapistprofile= getuserdetails();
+  }
   @override
   Widget build(BuildContext context) {
     var radius = Radius.circular(40);
@@ -710,15 +730,47 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                     ),
                                                                     Expanded(
                                                                       flex: 4,
-                                                                      child: RichText(
-                                                                        text: TextSpan(
-                                                                          text: 'Patient Carlos moron\n',
-                                                                          children: [
-                                                                            TextSpan(
-                                                                              text: 'Userid :8882222',
-                                                                            ),
-                                                                          ],
-                                                                        ),
+                                                                      child: FutureBuilder<Getresp>(
+                                                                        future: _therapistprofile,
+                                                                        builder: (context, snapshot) {
+                                                                          if( snapshot.connectionState == ConnectionState.waiting){
+                                                                            return  Center(child: Text('Please wait its loading...'));
+                                                                          }
+                                                                          else{
+                                                                            if (snapshot.hasData) {
+                                                                              return
+                                                                                RichText(
+                                                                               //   "Patient "+snapshot.data!.data.usrFirstName+" "+snapshot.data!.data.usrLastName,
+                                                                                  textAlign: TextAlign.center,
+                                                                                  text: TextSpan(
+                                                                                    text: "Patient "+snapshot.data!.data.usrFirstName+" "+snapshot.data!.data.usrLastName,
+                                                                                    children: [
+                                                                                      TextSpan(
+                                                                                        text: 'Userid :'+snapshot.data!.data.id.toString(),
+                                                                                      ),
+                                                                                    ]
+                                                                                  ),
+
+
+                                                                                );
+                                                                            } else if (snapshot.hasError) {
+                                                                              return Text(
+                                                                                "Patient "+userfname!+" "+usr_last_name!,
+                                                                                textAlign: TextAlign.center,
+                                                                                style: TextStyle(
+                                                                                  color: Color(0xFF989898 ),
+                                                                                  fontSize: 12.sp,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                ),
+
+                                                                              );
+                                                                            }
+                                                                          }
+
+
+                                                                          // By default, show a loading spinner.
+                                                                          return const CircularProgressIndicator();
+                                                                        },
                                                                       ),
                                                                     ),
                                                                   ],
@@ -1141,8 +1193,20 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                                 icon: Image.asset('assets/images/delete.png'), onPressed: () {  },
                                                                               ),
 
-                                                                              onPressed: () {
-
+                                                                              onPressed: () async {
+                                                                                SharedPreferences prefs = await SharedPreferences.getInstance();
+                                                                                prefs.remove("p_id");
+                                                                                prefs.remove("userfname");
+                                                                                prefs.remove("usr_last_name");
+                                                                                prefs.remove("usr_user_name");
+                                                                                prefs.remove("usr_email");
+                                                                                prefs.remove("usr_phone");
+                                                                                prefs.remove("usr_birth_date");
+                                                                                prefs.remove("usr_gender");
+                                                                                prefs.remove("usr_language");
+                                                                                prefs.remove("usr_profile_image");
+                                                                                prefs.remove("authtoken");
+                                                                                Navigator.pushNamed(context, '/');
                                                                               },
                                                                               style: ButtonStyle(
                                                                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -1235,7 +1299,140 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                               ),
 
                                                                               onPressed: () {
+                                                                                showDialog(
+                                                                                    context: context,
+                                                                                    builder: (context){
+                                                                                      return Dialog(
+                                                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                                        elevation: 16,
 
+                                                                                        child: Container(
+                                                                                          padding: EdgeInsets.all(10.sp),
+                                                                                          height: 500.sp,
+                                                                                          width: 500.sp,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                                            gradient: LinearGradient(
+                                                                                                begin: Alignment.topLeft,
+                                                                                                end: Alignment.bottomRight,
+                                                                                                colors: <Color> [
+                                                                                                  Color(0xFF2b2b49),
+                                                                                                  Color(0xFF0d2561),
+                                                                                                  Color(0xFF005890),
+                                                                                                  Color(0xFF0071a6),
+
+
+
+
+
+                                                                                                ],
+                                                                                                tileMode: TileMode.repeated
+                                                                                            ),
+                                                                                          ),
+                                                                                          child:  SingleChildScrollView(
+                                                                                            child: Column(
+                                                                                              children: [
+                                                                                                FutureBuilder<GetTerms>(
+                                                                                                  future: privacypolicy,
+                                                                                                  builder: (context, snapshot) {
+                                                                                                    if (snapshot.hasData) {
+                                                                                                      return Html(
+                                                                                                        data: snapshot.data!.data.pageContent,
+
+
+
+                                                                                                      );
+                                                                                                    } else if (snapshot.hasError) {
+                                                                                                      return Text('${snapshot.error}');
+                                                                                                    }
+
+                                                                                                    // By default, show a loading spinner.
+                                                                                                    return const CircularProgressIndicator();
+                                                                                                  },
+                                                                                                ),
+                                                                                                Container(
+                                                                                                  padding: EdgeInsets.all(10.sp),
+                                                                                                  child: Row(
+                                                                                                    mainAxisAlignment: MainAxisAlignment.end,
+                                                                                                    //crossAxisAlignment: CrossAxisAlignment.end,
+                                                                                                    children: [
+                                                                                                      Text(
+                                                                                                        "Got it",
+                                                                                                        textAlign: TextAlign.center,
+                                                                                                        style: TextStyle(
+                                                                                                            color: Color(0xFFFFFFFF),
+                                                                                                            fontSize: 20.sp
+
+
+                                                                                                        ),
+
+                                                                                                      ),
+                                                                                                      Container(
+                                                                                                        width: 20.sp,
+                                                                                                      ),
+                                                                                                      GestureDetector(
+                                                                                                        onTap: (){
+                                                                                                          Navigator.pop(context);
+                                                                                                        },
+                                                                                                        child: Container(
+                                                                                                            width: 40,
+                                                                                                            height: 40,
+
+                                                                                                            decoration: BoxDecoration(
+                                                                                                                shape: BoxShape.circle,
+                                                                                                                boxShadow: [
+                                                                                                                  BoxShadow(
+                                                                                                                    color: Colors.white,
+                                                                                                                    blurRadius: 2,
+                                                                                                                    spreadRadius: 1,
+                                                                                                                    offset: Offset(-1, 0),
+                                                                                                                  ),
+                                                                                                                  BoxShadow(
+                                                                                                                    color: Colors.grey.shade400,
+                                                                                                                    blurRadius: 2.0,
+                                                                                                                    spreadRadius: 0.0,
+                                                                                                                    offset: Offset(2.0, 0.0), // changes position of shadow
+                                                                                                                  ),
+                                                                                                                ],
+                                                                                                                gradient:
+                                                                                                                LinearGradient(
+
+                                                                                                                    begin: Alignment.centerLeft,
+                                                                                                                    end: Alignment.centerRight,
+                                                                                                                    colors: <Color> [
+                                                                                                                      Color(0xFF29E166),
+                                                                                                                      Color(0xFF11AD4A)
+
+
+                                                                                                                    ],
+                                                                                                                    tileMode: TileMode.repeated)
+
+                                                                                                            ),
+                                                                                                            child:Center(
+                                                                                                              child: SizedBox(
+                                                                                                                width: 20,
+                                                                                                                height: 20,
+                                                                                                                child: Image(image: AssetImage(
+                                                                                                                    'assets/images/ticknew.png'
+                                                                                                                ),
+                                                                                                                ),
+                                                                                                              ),
+                                                                                                            )
+
+                                                                                                        ),
+                                                                                                      )
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                )
+                                                                                              ],
+
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+
+                                                                                      );
+                                                                                    }
+                                                                                );
                                                                               },
                                                                               style: ButtonStyle(
                                                                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -1318,7 +1515,142 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                                                                             child: ElevatedButton(
 
 
-                                                                              onPressed: () {  },
+                                                                              onPressed: () {
+                                                                                  showDialog(
+                                                                                      context: context,
+                                                                                  builder: (context){
+                                                                                        return Dialog(
+                                                                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                                          elevation: 16,
+                                                                                           
+                                                                                              child: Container(
+                                                                                                padding: EdgeInsets.all(10.sp),
+                                                                                                height: 500.sp,
+                                                                                                width: 500.sp,
+                                                                                                decoration: BoxDecoration(
+                                                                                                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                                                  gradient: LinearGradient(
+                                                                                                      begin: Alignment.topLeft,
+                                                                                                      end: Alignment.bottomRight,
+                                                                                                      colors: <Color> [
+                                                                                                        Color(0xFF2b2b49),
+                                                                                                        Color(0xFF0d2561),
+                                                                                                        Color(0xFF005890),
+                                                                                                        Color(0xFF0071a6),
+
+
+
+
+
+                                                                                                      ],
+                                                                                                      tileMode: TileMode.repeated
+                                                                                                  ),
+                                                                                                ),
+                                                                                                child:  SingleChildScrollView(
+                                                                                                  child: Column(
+                                                                                                    children: [
+                                                                                                      FutureBuilder<GetTerms>(
+                                                                                                        future: futureAlbum,
+                                                                                                        builder: (context, snapshot) {
+                                                                                                          if (snapshot.hasData) {
+                                                                                                            return Html(
+                                                                                                              data: snapshot.data!.data.pageContent,
+
+
+
+                                                                                                            );
+                                                                                                          } else if (snapshot.hasError) {
+                                                                                                            return Text('${snapshot.error}');
+                                                                                                          }
+
+                                                                                                          // By default, show a loading spinner.
+                                                                                                          return const CircularProgressIndicator();
+                                                                                                        },
+                                                                                                      ),
+                                                                                                      Container(
+                                                                                                        padding: EdgeInsets.all(10.sp),
+                                                                                                        child: Row(
+                                                                                                          mainAxisAlignment: MainAxisAlignment.end,
+                                                                                                          //crossAxisAlignment: CrossAxisAlignment.end,
+                                                                                                          children: [
+                                                                                                            Text(
+                                                                                                              "Got it",
+                                                                                                              textAlign: TextAlign.center,
+                                                                                                              style: TextStyle(
+                                                                                                                  color: Color(0xFFFFFFFF),
+                                                                                                                  fontSize: 20.sp
+
+
+                                                                                                              ),
+
+                                                                                                            ),
+                                                                                                            Container(
+                                                                                                              width: 20.sp,
+                                                                                                            ),
+                                                                                                            GestureDetector(
+                                                                                                              onTap: (){
+                                                                                                                Navigator.pop(context);
+                                                                                                              },
+                                                                                                              child: Container(
+                                                                                                                  width: 40,
+                                                                                                                  height: 40,
+
+                                                                                                                  decoration: BoxDecoration(
+                                                                                                                      shape: BoxShape.circle,
+                                                                                                                      boxShadow: [
+                                                                                                                        BoxShadow(
+                                                                                                                          color: Colors.white,
+                                                                                                                          blurRadius: 2,
+                                                                                                                          spreadRadius: 1,
+                                                                                                                          offset: Offset(-1, 0),
+                                                                                                                        ),
+                                                                                                                        BoxShadow(
+                                                                                                                          color: Colors.grey.shade400,
+                                                                                                                          blurRadius: 2.0,
+                                                                                                                          spreadRadius: 0.0,
+                                                                                                                          offset: Offset(2.0, 0.0), // changes position of shadow
+                                                                                                                        ),
+                                                                                                                      ],
+                                                                                                                      gradient:
+                                                                                                                      LinearGradient(
+
+                                                                                                                          begin: Alignment.centerLeft,
+                                                                                                                          end: Alignment.centerRight,
+                                                                                                                          colors: <Color> [
+                                                                                                                            Color(0xFF29E166),
+                                                                                                                            Color(0xFF11AD4A)
+
+
+                                                                                                                          ],
+                                                                                                                          tileMode: TileMode.repeated)
+
+                                                                                                                  ),
+                                                                                                                  child:Center(
+                                                                                                                    child: SizedBox(
+                                                                                                                      width: 20,
+                                                                                                                      height: 20,
+                                                                                                                      child: Image(image: AssetImage(
+                                                                                                                          'assets/images/ticknew.png'
+                                                                                                                      ),
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                  )
+
+                                                                                                              ),
+                                                                                                            )
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                      )
+                                                                                                    ],
+
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                           
+                                                                                        );
+                                                                                  }
+                                                                                  );
+                                                                              },
                                                                               style: ButtonStyle(
                                                                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                                                                   RoundedRectangleBorder(
@@ -1981,7 +2313,22 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async {
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      prefs.remove("p_id");
+                      prefs.remove("userfname");
+                      prefs.remove("usr_last_name");
+                      prefs.remove("usr_user_name");
+                      prefs.remove("usr_email");
+                      prefs.remove("usr_phone");
+                      prefs.remove("usr_birth_date");
+                      prefs.remove("usr_gender");
+                      prefs.remove("usr_language");
+                      prefs.remove("usr_profile_image");
+                      prefs.remove("authtoken");
+
+
+                   //   Navigator.pushNamed(context, '/');
                       Navigator.pushNamed(context, '/');
                     },
                     child: Text(
@@ -2010,6 +2357,101 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
 
 
 
+  }
+
+  Future<GetTerms> fetchterms() async {
+    final response = await http
+        .get(Uri.parse(Constants.baseurl+"page/1"));
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      return GetTerms.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load album');
+    }
+  }
+  Future<GetTerms> fetchprivacypolicy() async {
+    final response = await http
+        .get(Uri.parse(Constants.baseurl+"page/2"));
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      return GetTerms.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load album');
+    }
+  }
+
+  void gettoken()  async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    token=prefs.getString("doctorauthtoken");
+    p_id=prefs.getInt("doc_id");
+    userfname=prefs.getString("userfname");
+    usr_last_name=prefs.getString("usr_last_name");
+    usr_user_name=prefs.getString("usr_user_name");
+    usr_email=prefs.getString("usr_email");
+    usr_phone=prefs.getString("usr_phone");
+    usr_birth_date=prefs.getString("usr_birth_date");
+    usr_gender=prefs.getString("usr_gender");
+
+    usr_language=prefs.getString("usr_language");
+    usr_profile_image=prefs.getString("usr_profile_image");
+    print(token);
+  }
+
+  Future<Getresp> getuserdetails() async {
+    final response = await http.post(
+      Uri.parse(Constants.baseurl+'user/details'),
+      headers: <String, String>{
+        "Access-Control-Allow-Origin": "*",
+        'Authorization': 'Bearer '+token!,
+        'Content-Type': 'application/json'
+      },
+      body: jsonEncode(<String, int>{
+        'user_id': p_id!,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print(jsonDecode(response.body));
+      Map<String, dynamic> data = json.decode(response.body);
+      print(data["data"]["usr_first_name"]);
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      String userfname=data["data"]["usr_first_name"];
+      pref.setString('userfname', userfname);
+      String usr_last_name=data["data"]["usr_last_name"];
+      pref.setString('usr_last_name', usr_last_name);
+      String usr_user_name=data["data"]["usr_user_name"];
+      pref.setString('usr_user_name', usr_user_name);
+      String usr_email=data["data"]["usr_email"];
+      pref.setString('usr_email', usr_email);
+      String usr_phone=data["data"]["usr_phone"];
+      pref.setString('usr_phone', usr_phone);
+      String usr_birth_date=data["data"]["usr_birth_date"];
+      pref.setString('usr_birth_date', usr_birth_date);
+      String usr_gender=data["data"]["usr_gender"];
+      pref.setString('usr_gender', usr_gender);
+      String usr_language=data["data"]["usr_language"];
+      pref.setString('usr_language', usr_language);
+      String usr_profile_image=data["data"]["usr_profile_image"];
+      pref.setString('usr_profile_image', usr_profile_image);
+
+      return Getresp.fromJson(jsonDecode(response.body));
+
+
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception('Failed to create album.');
+    }
   }
   
 }

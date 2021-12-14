@@ -336,8 +336,10 @@ class PatientprofileState extends State<Patientprofile>{
   @override
   void initState() {
     super.initState();
-    gettoken();
-    _futureAlbum=  getuserdetails();
+   /* gettoken();
+    _futureAlbum= getuserdetails();*/
+    /*gettoken();
+    _futureAlbum=  getuserdetails();*/
     _passwordVisible = false;
     _confirmpasswordVisible=false;
     _newpasswordVisible=false;
@@ -347,6 +349,8 @@ class PatientprofileState extends State<Patientprofile>{
     print(formattedDate); //
     formatteddatetime=formattedDate;
      formatters = new DateFormat('yyyy-MM-dd hh:mm:ss');
+   /* gettoken();
+    _futureAlbum= getuserdetails();*/
 
 
     /*gettoken();
@@ -368,7 +372,7 @@ class PatientprofileState extends State<Patientprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -379,7 +383,7 @@ class PatientprofileState extends State<Patientprofile>{
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color(0xFF989898 ),
-                // fontSize: 15.sp,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.bold,
               ),
 
@@ -407,7 +411,7 @@ class PatientprofileState extends State<Patientprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -418,7 +422,7 @@ class PatientprofileState extends State<Patientprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -445,7 +449,7 @@ class PatientprofileState extends State<Patientprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -456,7 +460,7 @@ class PatientprofileState extends State<Patientprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -483,7 +487,7 @@ class PatientprofileState extends State<Patientprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -494,7 +498,7 @@ class PatientprofileState extends State<Patientprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -521,7 +525,7 @@ class PatientprofileState extends State<Patientprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -532,7 +536,7 @@ class PatientprofileState extends State<Patientprofile>{
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -555,22 +559,22 @@ class PatientprofileState extends State<Patientprofile>{
           if (snapshot.hasData) {
             return
               Text(
-                "Patient"+snapshot.data!.data.usrUserName+ " User id "+snapshot.data!.data.id.toString(),
+                "Patient/"+snapshot.data!.data.usrUserName+ " User id/"+snapshot.data!.data.id.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 ),
 
               );
           } else if (snapshot.hasError) {
             return Text(
-                "Patient"+usr_user_name!+ " User id "+p_id!.toString(),
+                "Patient/"+usr_user_name!+ "User id/"+p_id!.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
-                  // fontSize: 15.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                 )
             );
@@ -586,7 +590,7 @@ class PatientprofileState extends State<Patientprofile>{
   @override
   Widget build(BuildContext context) {
     var radius = Radius.circular(40);
-    gettoken();
+   gettoken();
     _futureAlbum= getuserdetails();
 
    /* gettoken();
@@ -1187,7 +1191,7 @@ class PatientprofileState extends State<Patientprofile>{
                                               alignment: Alignment.centerLeft,
                                               child: Container(
                                                 child: Text(
-                                                  "Last login "+formatteddatetime,
+                                                  "Last login /"+formatteddatetime,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       color: Color(0xFF989898 ),
@@ -1220,6 +1224,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                         showgendertextwidget();
                                                         hidegenderwidget();
                                                         updatedetails();
+                                                        //updatedetails();
+                                                        getuserdetails();
                                                         print(firstnameController.text);
                                                       });
                                                     },
@@ -1265,74 +1271,166 @@ class PatientprofileState extends State<Patientprofile>{
                                                         child: Form(
                                                           key: _formKey,
                                                           child: Table(
-                                                              border: TableBorder(
-                                                                  horizontalInside: BorderSide(
-                                                                      width: 1,  color: Colors.grey.withOpacity(0.5), style: BorderStyle.solid)),
+                                                            columnWidths: {
+                                                              0: FixedColumnWidth(75.sp),
+                                                              1: FixedColumnWidth(300.sp),
+                                                              2: FixedColumnWidth(25.sp),
+                                                            },
+                                                            border: TableBorder(
+                                                                horizontalInside: BorderSide(
+                                                                    width: 1,  color: Colors.grey.withOpacity(0.5), style: BorderStyle.solid)),
                                                             children: [
                                                               TableRow(
-                                                                children: [
-                                                                  Padding(
-                                                          padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                      alignment: Alignment.centerLeft,
-                                                                      child: Text(
-                                                                        "FIRST NAME *",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          //fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerLeft,
+                                                                        child: Text(
+                                                                          "FIRST NAME *",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            fontSize: 12.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
+
                                                                         ),
-
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewfirstnametext,
-                                                                        child: buildFutureBuilder(),
+                                                                    Column(
+                                                                      children: [
+                                                                        Align(
+                                                                          alignment: Alignment.centerLeft,
+                                                                          child: Padding(
+                                                                            padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                            child: Visibility(
+                                                                              visible: viewfirstnametext,
+                                                                              child: buildFutureBuilder(),
 
-                                                                      ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                          child: Visibility(
+                                                                            visible: viewfirstname,
+                                                                            child: Center(
+
+                                                                              child: SizedBox(
+                                                                                //  height: 30.sp,
+                                                                                //  width: 200.sp,
+                                                                                child: TextFormField(
+                                                                                  controller: firstnameController,
+
+                                                                                  decoration: InputDecoration(
+                                                                                    border: InputBorder.none,
+
+                                                                                    hintText: 'Enter Firstname',
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+
                                                                     ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewfirstname,
-                                                                      child: Center(
 
-                                                                        child: SizedBox(
-                                                                          //  height: 30.sp,
-                                                                        //  width: 200.sp,
-                                                                          child: TextFormField(
-                                                                            controller: firstnameController,
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: GestureDetector(
+                                                                        onTap: () {
 
-                                                                            decoration: InputDecoration(
-                                                                              border: InputBorder.none,
+                                                                          //Navigator.pushNamed(context, "myRoute");
+                                                                        },
+                                                                        child: Align(
+                                                                          alignment: Alignment.centerRight,
+                                                                          child: GestureDetector(
+                                                                            onTap: () {
+                                                                              hidefirstnametextwidget();
+                                                                              showfirstnamewidget();
+                                                                              //Navigator.pushNamed(context, "myRoute");
+                                                                            },
+                                                                            child: Text(
+                                                                              "EDIT",
+                                                                              textAlign: TextAlign.center,
+                                                                              style: TextStyle(
+                                                                                color: Color(0xFF989898 ),
+                                                                                fontSize: 12.sp,
+                                                                                fontWeight: FontWeight.bold,
+                                                                              ),
 
-                                                                              hintText: 'Enter Firstname',
                                                                             ),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: GestureDetector(
-                                                                      onTap: () {
+                                                                  ]
+                                                              ),
 
-                                                                        //Navigator.pushNamed(context, "myRoute");
-                                                                      },
+                                                              TableRow(
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
                                                                       child: Align(
-                                                                         alignment: Alignment.centerRight,
+                                                                        alignment: Alignment.centerLeft,
+                                                                        child: Text(
+                                                                          "LAST NAME *",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            fontSize: 12.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
+
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Column(
+                                                                      children: [
+                                                                        Align(
+                                                                          alignment: Alignment.centerLeft,
+                                                                          child: Padding(
+                                                                            padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                            child: Visibility(
+                                                                              visible: viewlastnametext,
+
+                                                                              child: buildFutureBuilderlastname(),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                          child: Visibility(
+                                                                            visible: viewlastname,
+                                                                            child: SizedBox(
+                                                                              /* height: 30.sp,
+                                                                            width: 100.sp,*/
+                                                                              child: TextField(
+                                                                                controller: lastnameController,
+
+                                                                                decoration: InputDecoration(
+                                                                                  border: UnderlineInputBorder(),
+
+                                                                                  hintText: 'Enter Lastname',
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+
+                                                                    ),
+
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerRight,
                                                                         child: GestureDetector(
                                                                           onTap: () {
-                                                                            hidefirstnametextwidget();
-                                                                            showfirstnamewidget();
+                                                                            hidelastnametextwidget();
+                                                                            showlastnamewidget();
                                                                             //Navigator.pushNamed(context, "myRoute");
                                                                           },
                                                                           child: Text(
@@ -1340,7 +1438,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                             textAlign: TextAlign.center,
                                                                             style: TextStyle(
                                                                               color: Color(0xFF989898 ),
-                                                                              // fontSize: 15.sp,
+                                                                              fontSize: 12.sp,
                                                                               fontWeight: FontWeight.bold,
                                                                             ),
 
@@ -1348,546 +1446,502 @@ class PatientprofileState extends State<Patientprofile>{
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                ]
+                                                                  ]
                                                               ),
-
                                                               TableRow(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                       alignment: Alignment.centerLeft,
-                                                                      child: Text(
-                                                                        "LAST NAME *",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          //  fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
-
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewlastnametext,
-
-                                                                        child: buildFutureBuilderlastname(),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewlastname,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextField(
-                                                                          controller: lastnameController,
-
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
-
-                                                                            hintText: 'Enter Lastname',
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                      alignment: Alignment.centerRight,
-                                                                      child: GestureDetector(
-                                                                        onTap: () {
-                                                                          hidelastnametextwidget();
-                                                                          showlastnamewidget();
-                                                                          //Navigator.pushNamed(context, "myRoute");
-                                                                        },
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerLeft,
                                                                         child: Text(
-                                                                          "EDIT",
+                                                                          "EMAIL *",
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
+                                                                            fontSize: 12.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                ]
-                                                              ),
-                                                              TableRow(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                        alignment: Alignment.centerLeft,
-                                                                      child: Text(
-                                                                        "EMAIL *",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          //  fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
-
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewemailtext,
-                                                                        child: buildFutureBuilderemail(),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewemail,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextField(
-                                                                          controller: emailController,
-
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
-
-                                                                            hintText: 'Enter Email',
+                                                                    Column(
+                                                                      children: [
+                                                                        Align(
+                                                                          alignment: Alignment.centerLeft,
+                                                                          child: Padding(
+                                                                            padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                            child: Visibility(
+                                                                              visible: viewemailtext,
+                                                                              child: buildFutureBuilderemail(),
+                                                                            ),
                                                                           ),
                                                                         ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                      alignment: Alignment.centerRight,
-                                                                      child: GestureDetector(
-                                                                        onTap: () {
-                                                                        //  hideemailtextwidget();
-                                                                         // showemailwidget();
-                                                                          //Navigator.pushNamed(context, "myRoute");
-                                                                        },
-                                                                        child: Text(
-                                                                          "",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
+                                                                        Padding(
+                                                                          padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                          child: Visibility(
+                                                                            visible: viewemail,
+                                                                            child: SizedBox(
+                                                                              /* height: 30.sp,
+                                                                            width: 100.sp,*/
+                                                                              child: TextField(
+                                                                                controller: emailController,
 
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ]
+                                                                                decoration: InputDecoration(
+                                                                                  border: UnderlineInputBorder(),
 
-                                                              ),
-                                                              TableRow(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                        alignment: Alignment.centerLeft,
-                                                                      child: Text(
-                                                                        "PHONE NUMBER *",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
-
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewphnotext,
-                                                                        child: buildFutureBuilderph(),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewphno,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextField(
-                                                                          controller: phnoController,
-
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
-
-                                                                            hintText: 'Enter phone number',
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                      alignment: Alignment.centerRight,
-                                                                      child: GestureDetector(
-                                                                        onTap: () {
-                                                                         // hidephtextwidget();
-                                                                         // showphwidget();
-                                                                          //Navigator.pushNamed(context, "myRoute");
-                                                                        },
-                                                                        child: Text(
-                                                                          "",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
-
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ]
-                                                              ),
-                                                              TableRow(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                        alignment: Alignment.centerLeft,
-                                                                      child: Text(
-                                                                        "BIRTH *",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          //  fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
-
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Align(
-                                                                      alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewbirthtext,
-                                                                        child:   FutureBuilder<Getresp>(
-                                                                          future: _futureAlbum,
-                                                                          builder: (context, snapshot) {
-                                                               if( snapshot.connectionState == ConnectionState.waiting){
-                                                                  return  Center(child: Text('Please wait its loading...'));
-                                                                        }
-                                                              else{
-                                                              if (snapshot.hasData) {
-                                                                return
-                                                                  Text(
-
-                                                                    snapshot.data!.data.usr_birth_date,
-                                                                    textAlign: TextAlign.center,
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF989898 ),
-                                                                      // fontSize: 15.sp,
-                                                                      fontWeight: FontWeight.bold,
-                                                                    ),
-
-                                                                  );
-                                                              } else if (snapshot.hasError) {
-                                                                return Text(
-
-                                                                  usr_birth_date!,
-                                                                  textAlign: TextAlign.center,
-                                                                  style: TextStyle(
-                                                                    color: Color(0xFF989898 ),
-                                                                    // fontSize: 15.sp,
-                                                                    fontWeight: FontWeight.bold,
-                                                                  ),
-
-                                                                );
-                                                              }
-                                                            }
-
-
-                                                                            // By default, show a loading spinner.
-                                                                            return const CircularProgressIndicator();
-                                                                          },
-                                                                        )
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewbirth,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextField(
-                                                                          controller: birthController,
-
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
-
-                                                                            hintText: 'Enter birth date',
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                        alignment: Alignment.centerRight,
-                                                                      child: GestureDetector(
-                                                                        onTap: () {
-                                                                          hidebirthtextwidget();
-                                                                          showbirthwidget();
-                                                                          //Navigator.pushNamed(context, "myRoute");
-                                                                        },
-                                                                        child: Text(
-                                                                          "EDIT",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
-
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ]
-                                                              ),
-                                                              TableRow(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                        alignment: Alignment.centerLeft,
-                                                                      child: Text(
-                                                                        "GENDER *",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
-
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Align(
-                                                                  alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewgendertext,
-                                                                        child: FutureBuilder<Getresp>(
-                                                                          future: _futureAlbum,
-                                                                          builder: (context, snapshot) {
-                                                                            if (snapshot.hasData) {
-                                                                              return
-                                                                                Text(
-                                                                                  snapshot.data!.data.usr_gender,
-                                                                                  textAlign: TextAlign.center,
-                                                                                  style: TextStyle(
-                                                                                    color: Color(0xFF989898 ),
-                                                                                    // fontSize: 15.sp,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
-
-                                                                                );
-                                                                            } else if (snapshot.hasError) {
-                                                                              return  Text(
-                                                                                usr_gender!,
-                                                                                textAlign: TextAlign.center,
-                                                                                style: TextStyle(
-                                                                                  color: Color(0xFF989898 ),
-                                                                                  // fontSize: 15.sp,
-                                                                                  fontWeight: FontWeight.bold,
+                                                                                  hintText: 'Enter Email',
                                                                                 ),
-
-                                                                              );
-                                                                            }
-
-                                                                            // By default, show a loading spinner.
-                                                                            return const CircularProgressIndicator();
-                                                                          },
+                                                                              ),
+                                                                            ),
+                                                                          ),
                                                                         ),
-                                                                      ),
+                                                                      ],
+
                                                                     ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewgender,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextField(
-                                                                          controller: genderController,
 
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
+                                                                    Visibility(
+                                                                      visible: false,
+                                                                      child: Padding(
+                                                                        padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                        child: Align(
+                                                                          alignment: Alignment.centerRight,
+                                                                          child: GestureDetector(
+                                                                            onTap: () {
+                                                                              //  hideemailtextwidget();
+                                                                              // showemailwidget();
+                                                                              //Navigator.pushNamed(context, "myRoute");
+                                                                            },
+                                                                            child: Text(
+                                                                              "",
+                                                                              textAlign: TextAlign.center,
+                                                                              style: TextStyle(
+                                                                                color: Color(0xFF989898 ),
+                                                                                fontSize: 12.sp,
+                                                                                fontWeight: FontWeight.bold,
+                                                                              ),
 
-                                                                            hintText: 'Enter gender',
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                        alignment: Alignment.centerRight,
-                                                                      child: GestureDetector(
-                                                                        onTap: () {
-                                                                          hidegendertextwidget();
-                                                                          showgenderwidget();
-                                                                          //Navigator.pushNamed(context, "myRoute");
-                                                                        },
-                                                                        child: Text(
-                                                                          "EDIT",
-                                                                          textAlign: TextAlign.center,
-                                                                          style: TextStyle(
-                                                                            color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
-                                                                            fontWeight: FontWeight.bold,
-                                                                          ),
+                                                                  ]
 
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-
-                                                                ]
                                                               ),
                                                               TableRow(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
                                                                         alignment: Alignment.centerLeft,
-                                                                      child: Text(
-                                                                        "LANGUAGE *",
-                                                                        textAlign: TextAlign.center,
-                                                                        style: TextStyle(
-                                                                          color: Color(0xFF989898 ),
-                                                                          // fontSize: 15.sp,
-                                                                          fontWeight: FontWeight.bold,
-                                                                        ),
-
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Align(
-                                                                      alignment: Alignment.centerLeft,
-                                                                    child: Padding(
-                                                                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                      child: Visibility(
-                                                                        visible: viewlanguagetext,
-                                                                        child: FutureBuilder<Getresp>(
-                                                                          future: _futureAlbum,
-                                                                          builder: (context, snapshot) {
-                                                                            if (snapshot.hasData) {
-                                                                              return
-                                                                                Text(
-                                                                                  snapshot.data!.data.usr_language,
-                                                                                  textAlign: TextAlign.center,
-                                                                                  style: TextStyle(
-                                                                                    color: Color(0xFF989898 ),
-                                                                                    // fontSize: 15.sp,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
-
-                                                                                );
-                                                                            } else if (snapshot.hasError) {
-                                                                              return Text(
-                                                                                usr_language!,
-                                                                                textAlign: TextAlign.center,
-                                                                                style: TextStyle(
-                                                                                  color: Color(0xFF989898 ),
-                                                                                  // fontSize: 15.sp,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                ),
-
-                                                                              );
-                                                                            }
-
-                                                                            // By default, show a loading spinner.
-                                                                            return const CircularProgressIndicator();
-                                                                          },
-                                                                        )
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Visibility(
-                                                                      visible: viewlanguage,
-                                                                      child: SizedBox(
-                                                                        height: 30.sp,
-                                                                        width: 100.sp,
-                                                                        child: TextFormField(
-                                                                          controller: languageController,
-
-                                                                          decoration: InputDecoration(
-                                                                            border: UnderlineInputBorder(),
-
-                                                                            hintText: 'Enter language',
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                                                                    child: Align(
-                                                                        alignment: Alignment.centerRight,
-                                                                      child: GestureDetector(
-                                                                        onTap: () {
-                                                                          hidelanguagetextwidget();
-                                                                          showlanguagewidget();
-                                                                          //Navigator.pushNamed(context, "myRoute");
-                                                                        },
                                                                         child: Text(
-                                                                          "EDIT",
+                                                                          "PHONE NUMBER *",
                                                                           textAlign: TextAlign.center,
                                                                           style: TextStyle(
                                                                             color: Color(0xFF989898 ),
-                                                                            //  fontSize: 15.sp,
+                                                                            fontSize: 12.sp,
                                                                             fontWeight: FontWeight.bold,
                                                                           ),
 
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                ]
+                                                                    Column(
+                                                                      children: [
+                                                                        Align(
+                                                                          alignment: Alignment.centerLeft,
+                                                                          child: Padding(
+                                                                            padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                            child: Visibility(
+                                                                              visible: viewphnotext,
+                                                                              child: buildFutureBuilderph(),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                          child: Visibility(
+                                                                            visible: viewphno,
+                                                                            child: SizedBox(
+                                                                              /*   height: 30.sp,
+                                                                             width: 100.sp,*/
+                                                                              child: TextField(
+                                                                                controller: phnoController,
+
+                                                                                decoration: InputDecoration(
+                                                                                  border: UnderlineInputBorder(),
+
+                                                                                  hintText: 'Enter phone number',
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+
+                                                                    ),
+
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerRight,
+                                                                        child: GestureDetector(
+                                                                          onTap: () {
+                                                                            // hidephtextwidget();
+                                                                            // showphwidget();
+                                                                            //Navigator.pushNamed(context, "myRoute");
+                                                                          },
+                                                                          child: Text(
+                                                                            "",
+                                                                            textAlign: TextAlign.center,
+                                                                            style: TextStyle(
+                                                                              color: Color(0xFF989898 ),
+                                                                              fontSize: 12.sp,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ]
+                                                              ),
+                                                              TableRow(
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerLeft,
+                                                                        child: Text(
+                                                                          "BIRTH *",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            fontSize: 12.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
+
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Column(
+                                                                      children: [
+                                                                        Align(
+                                                                          alignment: Alignment.centerLeft,
+                                                                          child: Padding(
+                                                                            padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                            child: Visibility(
+                                                                                visible: viewbirthtext,
+                                                                                child:   FutureBuilder<Getresp>(
+                                                                                  future: _futureAlbum,
+                                                                                  builder: (context, snapshot) {
+                                                                                    if( snapshot.connectionState == ConnectionState.waiting){
+                                                                                      return  Center(child: Text('Please wait its loading...'));
+                                                                                    }
+                                                                                    else{
+                                                                                      if (snapshot.hasData) {
+                                                                                        return
+                                                                                          Text(
+                                                                                            snapshot.data!.data.usr_birth_date,
+                                                                                            textAlign: TextAlign.center,
+                                                                                            style: TextStyle(
+                                                                                              color: Color(0xFF989898 ),
+                                                                                              fontSize: 12.sp,
+                                                                                              fontWeight: FontWeight.bold,
+                                                                                            ),
+
+                                                                                          );
+                                                                                      } else if (snapshot.hasError) {
+                                                                                        return Text(
+                                                                                          usr_birth_date!,
+                                                                                          textAlign: TextAlign.center,
+                                                                                          style: TextStyle(
+                                                                                            color: Color(0xFF989898 ),
+                                                                                            fontSize: 12.sp,
+                                                                                            fontWeight: FontWeight.bold,
+                                                                                          ),
+
+                                                                                        );
+                                                                                      }
+                                                                                    }
+
+
+                                                                                    // By default, show a loading spinner.
+                                                                                    return const CircularProgressIndicator();
+                                                                                  },
+                                                                                )
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                          child: Visibility(
+                                                                            visible: viewbirth,
+                                                                            child: SizedBox(
+                                                                              /* height: 30.sp,
+                                                                             width: 100.sp,*/
+                                                                              child: TextField(
+                                                                                controller: birthController,
+
+                                                                                decoration: InputDecoration(
+                                                                                  border: UnderlineInputBorder(),
+
+                                                                                  hintText: 'Enter birth date (YYYY-MM-DD)',
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+
+                                                                    ),
+
+
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerRight,
+                                                                        child: GestureDetector(
+                                                                          onTap: () {
+                                                                            hidebirthtextwidget();
+                                                                            showbirthwidget();
+                                                                            //Navigator.pushNamed(context, "myRoute");
+                                                                          },
+                                                                          child: Text(
+                                                                            "EDIT",
+                                                                            textAlign: TextAlign.center,
+                                                                            style: TextStyle(
+                                                                              color: Color(0xFF989898 ),
+                                                                              fontSize: 12.sp,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ]
+                                                              ),
+                                                              TableRow(
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerLeft,
+                                                                        child: Text(
+                                                                          "GENDER *",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            fontSize: 12.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
+
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Column(
+                                                                      children: [
+                                                                        Align(
+                                                                          alignment: Alignment.centerLeft,
+                                                                          child: Padding(
+                                                                            padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                            child: Visibility(
+                                                                              visible: viewgendertext,
+                                                                              child: FutureBuilder<Getresp>(
+                                                                                future: _futureAlbum,
+                                                                                builder: (context, snapshot) {
+                                                                                  if (snapshot.hasData) {
+                                                                                    return
+                                                                                      Text(
+                                                                                        snapshot.data!.data.usr_gender,
+                                                                                        textAlign: TextAlign.left,
+                                                                                        style: TextStyle(
+                                                                                          color: Color(0xFF989898 ),
+                                                                                          fontSize: 12.sp,
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                        ),
+
+                                                                                      );
+                                                                                  } else if (snapshot.hasError) {
+                                                                                    return Text(
+                                                                                      usr_gender!,
+                                                                                      textAlign: TextAlign.left,
+                                                                                      style: TextStyle(
+                                                                                        color: Color(0xFF989898 ),
+                                                                                        fontSize: 12.sp,
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                      ),
+
+                                                                                    );
+                                                                                  }
+
+                                                                                  // By default, show a loading spinner.
+                                                                                  return const CircularProgressIndicator();
+                                                                                },
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                          child: Visibility(
+                                                                            visible: viewgender,
+                                                                            child: SizedBox(
+                                                                              /* height: 30.sp,
+                                                                             width: 100.sp,*/
+                                                                              child: TextField(
+                                                                                controller: genderController,
+
+                                                                                decoration: InputDecoration(
+                                                                                  border: UnderlineInputBorder(),
+
+                                                                                  hintText: 'Enter gender',
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+
+                                                                    ),
+
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerRight,
+                                                                        child: GestureDetector(
+                                                                          onTap: () {
+                                                                            hidegendertextwidget();
+                                                                            showgenderwidget();
+                                                                            //Navigator.pushNamed(context, "myRoute");
+                                                                          },
+                                                                          child: Text(
+                                                                            "EDIT",
+                                                                            textAlign: TextAlign.center,
+                                                                            style: TextStyle(
+                                                                              color: Color(0xFF989898 ),
+                                                                              fontSize: 12.sp,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+
+                                                                  ]
+                                                              ),
+                                                              TableRow(
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerLeft,
+                                                                        child: Text(
+                                                                          "LANGUAGE *",
+                                                                          textAlign: TextAlign.center,
+                                                                          style: TextStyle(
+                                                                            color: Color(0xFF989898 ),
+                                                                            fontSize: 12.sp,
+                                                                            fontWeight: FontWeight.bold,
+                                                                          ),
+
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Column(
+                                                                      children: [
+                                                                        Align(
+                                                                          alignment: Alignment.centerLeft,
+                                                                          child: Padding(
+                                                                            padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                            child: Visibility(
+                                                                                visible: viewlanguagetext,
+                                                                                child: FutureBuilder<Getresp>(
+                                                                                  future: _futureAlbum,
+                                                                                  builder: (context, snapshot) {
+                                                                                    if (snapshot.hasData) {
+                                                                                      return
+                                                                                        Text(
+                                                                                          snapshot.data!.data.usr_language,
+                                                                                          textAlign: TextAlign.left,
+                                                                                          style: TextStyle(
+                                                                                            color: Color(0xFF989898 ),
+                                                                                            fontSize: 12.sp,
+                                                                                            fontWeight: FontWeight.bold,
+                                                                                          ),
+
+                                                                                        );
+                                                                                    } else if (snapshot.hasError) {
+                                                                                      return Text(
+                                                                                        usr_language!,
+                                                                                        textAlign: TextAlign.left,
+                                                                                        style: TextStyle(
+                                                                                          color: Color(0xFF989898 ),
+                                                                                          fontSize: 12.sp,
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                        ),
+
+                                                                                      );
+                                                                                    }
+
+                                                                                    // By default, show a loading spinner.
+                                                                                    return const CircularProgressIndicator();
+                                                                                  },
+                                                                                )
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                          child: Visibility(
+                                                                            visible: viewlanguage,
+                                                                            child: SizedBox(
+                                                                              /* height: 30.sp,
+                                                                            width: 100.sp,*/
+                                                                              child: TextFormField(
+                                                                                controller: languageController,
+
+                                                                                decoration: InputDecoration(
+                                                                                  border: UnderlineInputBorder(),
+
+                                                                                  hintText: 'Enter language',
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+
+                                                                    ),
+
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                                                                      child: Align(
+                                                                        alignment: Alignment.centerRight,
+                                                                        child: GestureDetector(
+                                                                          onTap: () {
+                                                                            hidelanguagetextwidget();
+                                                                            showlanguagewidget();
+                                                                            //Navigator.pushNamed(context, "myRoute");
+                                                                          },
+                                                                          child: Text(
+                                                                            "EDIT",
+                                                                            textAlign: TextAlign.center,
+                                                                            style: TextStyle(
+                                                                              color: Color(0xFF989898 ),
+                                                                              fontSize: 12.sp,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ]
                                                               )
                                                             ],
                                                           ),
@@ -1932,7 +1986,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                 child: Container(
                                                                   padding: EdgeInsets.only(left: 5.sp,right: 5.sp,top: 5.sp),
                                                                    height: 47.sp,
-                                                                   width: 100.sp,
+                                                                  // width: 100.sp,
                                                                    decoration: BoxDecoration(
                                                                      /* boxShadow: [
                                                                   BoxShadow (
@@ -2288,16 +2342,16 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                     validator: (oldpwd) {
                                                                                                       if (oldpwd == null || oldpwd.isEmpty || oldpwd.length < 6) {
 
-                                                                                                        Fluttertoast.showToast(
+                                                                                                       /* Fluttertoast.showToast(
                                                                                                             msg: "Old Password Required or Old Password should be 6 charecter",
                                                                                                             toastLength: Toast.LENGTH_SHORT,
                                                                                                             gravity: ToastGravity.CENTER,
-                                                                                                            timeInSecForIosWeb: 10,
+                                                                                                            timeInSecForIosWeb: 2,
                                                                                                             backgroundColor: Colors.red,
                                                                                                             textColor: Colors.white,
                                                                                                             fontSize: 16.0,
                                                                                                             webPosition: "center"
-                                                                                                        );
+                                                                                                        );*/
 
                                                                                                     //    showoldpassword();
                                                                                                       }
@@ -2374,16 +2428,16 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                     keyboardType: TextInputType.visiblePassword,
                                                                                                     validator: (newpwd) {
                                                                                                       if (newpwd == null || newpwd.isEmpty || newpwd.length < 6) {
-                                                                                                        Fluttertoast.showToast(
+                                                                                                     /*   Fluttertoast.showToast(
                                                                                                             msg: "New Password Required or New Password should 6 charecter",
                                                                                                             toastLength: Toast.LENGTH_SHORT,
                                                                                                             gravity: ToastGravity.CENTER,
-                                                                                                            timeInSecForIosWeb: 10,
+                                                                                                            timeInSecForIosWeb: 2,
                                                                                                             backgroundColor: Colors.red,
                                                                                                             textColor: Colors.white,
                                                                                                             fontSize: 16.0,
                                                                                                             webPosition: "center"
-                                                                                                        );
+                                                                                                        );*/
 
                                                                                                         //shownewpwd();
                                                                                                       }
@@ -2460,31 +2514,20 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                     obscureText: true,
                                                                                                     validator: (cnfpwd) {
                                                                                                       if (cnfpwd == null || cnfpwd.isEmpty || cnfpwd.length < 6) {
-                                                                                                        Fluttertoast.showToast(
+                                                                                                       /* Fluttertoast.showToast(
                                                                                                             msg: "Confirm Password Required or Confirm Password should be minimum 6 charecter",
                                                                                                             toastLength: Toast.LENGTH_SHORT,
                                                                                                             gravity: ToastGravity.CENTER,
-                                                                                                            timeInSecForIosWeb: 10,
+                                                                                                            timeInSecForIosWeb: 2,
                                                                                                             backgroundColor: Colors.red,
                                                                                                             textColor: Colors.white,
                                                                                                             fontSize: 16.0,
                                                                                                             webPosition: "center"
-                                                                                                        );
+                                                                                                        );*/
 
                                                                                                         //showcnfpwd();
                                                                                                       }
-                                                                                                    /* if (cnfpwd!.length < 6 ){
-                                                                                                       Fluttertoast.showToast(
-                                                                                                           msg: "CPasswrod should be minimum 6 charecter",
-                                                                                                           toastLength: Toast.LENGTH_SHORT,
-                                                                                                           gravity: ToastGravity.CENTER,
-                                                                                                           timeInSecForIosWeb: 10,
-                                                                                                           backgroundColor: Colors.red,
-                                                                                                           textColor: Colors.white,
-                                                                                                           fontSize: 16.0,
-                                                                                                           webPosition: "center"
-                                                                                                       );
-                                                                                                       }*/
+
                                                                                                       else{
                                                                                                      //   hidecnfpwd();
                                                                                                       }
@@ -2527,7 +2570,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                 height: 10.sp,
                                                                                               ),
                                                                                               Visibility(
-                                                                                                visible: cnfpwdvisible,
+                                                                                                visible: false,
                                                                                                 child: Container(
                                                                                                   child: Text(
                                                                                                     "Confirm Password Required.",
@@ -2563,27 +2606,75 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                   child: RaisedButton(
 
                                                                                                     onPressed: () async {
-                                                                                                    if (_changepwdformKey.currentState!.validate()) {
-                                                                                                      if(newpwdController.text.toString()==confirmpwdController.text.toString()){
-                                                                                                        changepwd();
-                                                                                                       // hidecnfpwd();
-                                                                                                      }
-                                                                                                      else{
-                                                                                                        Fluttertoast.showToast(
-                                                                                                            msg: "Confirm password and new password should match",
-                                                                                                            toastLength: Toast.LENGTH_SHORT,
-                                                                                                            gravity: ToastGravity.CENTER,
-                                                                                                            timeInSecForIosWeb: 10,
-                                                                                                            backgroundColor: Colors.red,
-                                                                                                            textColor: Colors.white,
-                                                                                                            fontSize: 16.0,
-                                                                                                            webPosition: "center"
-                                                                                                        );
-                                                                                                        showcnfpwd();
+                                                                                                     if (!_changepwdformKey.currentState!.validate()) {
 
-                                                                                                      }
 
-                                                                                                    }
+                                                                                                          }
+                                                                                                    else if (OldpwdController.text == null || OldpwdController.text.isEmpty || OldpwdController.text.length < 6) {
+
+                                                                                                       Fluttertoast.showToast(
+                                                                                                           msg: "Old Password Required or Old Password should be 6 charecter",
+                                                                                                           toastLength: Toast.LENGTH_SHORT,
+                                                                                                           gravity: ToastGravity.CENTER,
+                                                                                                           timeInSecForIosWeb: 2,
+                                                                                                           backgroundColor: Colors.red,
+                                                                                                           textColor: Colors.white,
+                                                                                                           fontSize: 16.0,
+                                                                                                           webPosition: "center"
+                                                                                                       );
+
+                                                                                                       //    showoldpassword();
+                                                                                                     }
+                                                                                                     else if (newpwdController.text == null || newpwdController.text.isEmpty || newpwdController.text.length < 6) {
+
+                                                                                                       Fluttertoast.showToast(
+                                                                                                           msg: "New Password Required or New Password should 6 charecter",
+                                                                                                           toastLength: Toast.LENGTH_SHORT,
+                                                                                                           gravity: ToastGravity.CENTER,
+                                                                                                           timeInSecForIosWeb: 2,
+                                                                                                           backgroundColor: Colors.red,
+                                                                                                           textColor: Colors.white,
+                                                                                                           fontSize: 16.0,
+                                                                                                           webPosition: "center"
+                                                                                                       );
+
+                                                                                                       //    showoldpassword();
+                                                                                                     }
+                                                                                                     else if (confirmpwdController.text == null || confirmpwdController.text.isEmpty || confirmpwdController.text.length < 6) {
+
+                                                                                                       Fluttertoast.showToast(
+                                                                                                           msg: "Confirm Password Required or Confirm Password should be minimum 6 charecter",
+                                                                                                           toastLength: Toast.LENGTH_SHORT,
+                                                                                                           gravity: ToastGravity.CENTER,
+                                                                                                           timeInSecForIosWeb: 2,
+                                                                                                           backgroundColor: Colors.red,
+                                                                                                           textColor: Colors.white,
+                                                                                                           fontSize: 16.0,
+                                                                                                           webPosition: "center"
+                                                                                                       );
+
+                                                                                                       //    showoldpassword();
+                                                                                                     }
+
+                                                                                                     else{
+                                                                                                       if(newpwdController.text==confirmpwdController.text){
+                                                                                                         changepwd();
+                                                                                                         // hidecnfpwd();
+                                                                                                       }
+                                                                                                       else{
+                                                                                                         Fluttertoast.showToast(
+                                                                                                             msg: "Confirm password and new password should match",
+                                                                                                             toastLength: Toast.LENGTH_SHORT,
+                                                                                                             gravity: ToastGravity.CENTER,
+                                                                                                             timeInSecForIosWeb: 2,
+                                                                                                             backgroundColor: Colors.red,
+                                                                                                             textColor: Colors.white,
+                                                                                                             fontSize: 16.0,
+                                                                                                             webPosition: "center"
+                                                                                                         );
+                                                                                                       }
+                                                                                                       //   hideoldpassword();
+                                                                                                     }
 
                                                                                                     },
 
@@ -3283,7 +3374,21 @@ class PatientprofileState extends State<Patientprofile>{
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async{
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      prefs.remove("p_id");
+                      prefs.remove("userfname");
+                      prefs.remove("usr_last_name");
+                      prefs.remove("usr_user_name");
+                      prefs.remove("usr_email");
+                      prefs.remove("usr_phone");
+                      prefs.remove("usr_birth_date");
+                      prefs.remove("usr_gender");
+                      prefs.remove("usr_language");
+                      prefs.remove("usr_profile_image");
+                      prefs.remove("authtoken");
+
+                      
                       Navigator.pushNamed(context, '/');
                     },
                     child: Container(
@@ -3377,6 +3482,25 @@ class PatientprofileState extends State<Patientprofile>{
       print(jsonDecode(response.body));
       Map<String, dynamic> data = json.decode(response.body);
       print(data["data"]["usr_first_name"]);
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      String userfname=data["data"]["usr_first_name"];
+      pref.setString('userfname', userfname);
+      String usr_last_name=data["data"]["usr_last_name"];
+      pref.setString('usr_last_name', usr_last_name);
+      String usr_user_name=data["data"]["usr_user_name"];
+      pref.setString('usr_user_name', usr_user_name);
+      String usr_email=data["data"]["usr_email"];
+      pref.setString('usr_email', usr_email);
+      String usr_phone=data["data"]["usr_phone"];
+      pref.setString('usr_phone', usr_phone);
+      String usr_birth_date=data["data"]["usr_birth_date"];
+      pref.setString('usr_birth_date', usr_birth_date);
+      String usr_gender=data["data"]["usr_gender"];
+      pref.setString('usr_gender', usr_gender);
+      String usr_language=data["data"]["usr_language"];
+      pref.setString('usr_language', usr_language);
+      String usr_profile_image=data["data"]["usr_profile_image"];
+      pref.setString('usr_profile_image', usr_profile_image);
      ///  userfname=data["data"]["usr_first_name"];
       return Getresp.fromJson(jsonDecode(response.body));
 
@@ -3414,7 +3538,8 @@ class PatientprofileState extends State<Patientprofile>{
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       print(jsonDecode(response.body));
-
+      gettoken();
+      _futureAlbum= getuserdetails();
       return Updateprofileresponse.fromJson(jsonDecode(response.body));
 
 
@@ -3457,7 +3582,7 @@ class PatientprofileState extends State<Patientprofile>{
           msg: data["message"],
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 10,
+          timeInSecForIosWeb: 2,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0,
@@ -3473,7 +3598,7 @@ class PatientprofileState extends State<Patientprofile>{
           msg: "Old Password Not Matching",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 10,
+          timeInSecForIosWeb: 2,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0,
