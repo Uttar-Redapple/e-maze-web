@@ -19,20 +19,20 @@ Map<String, dynamic> _$GetrespToJson(Getresp instance) => <String, dynamic>{
     };
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
-      id: json['id'] as int,
-      usrSourceType: json['usr_source_type'] as int,
-      usrSourceKey: json['usr_source_key'] as String,
-      usrFirstName: json['usr_first_name'] as String,
-      usrLastName: json['usr_last_name'] as String,
-      usrUserName: json['usr_user_name'] as String,
-      usrEmail: json['usr_email'] as String,
-      usrPhone: json['usr_phone'] as String,
-      usrType: json['usr_type'] as int,
-      usrStatus: json['usr_status'] as int,
-      usr_birth_date: json['usr_birth_date'] as String,
-      usr_gender: json['usr_gender'] as String,
-      usr_language: json['usr_language'] as String,
-      usr_profile_image: json['usr_profile_image'] as String,
+      id: json['id'] as int ,
+      usrSourceType: (json['usr_source_type'] as int? ?? 0) ,
+      usrSourceKey: (json['usr_source_key'] as String? ?? '') ,
+      usrFirstName: (json['usr_first_name']as String? ?? '') ,
+      usrLastName: (json['usr_last_name'] as String? ?? '') ,
+      usrUserName: (json['usr_user_name']as String? ?? ''),
+      usrEmail: (json['usr_email'] as String?)! ,
+      usrPhone: (json['usr_phone'] as String? ?? '') ,
+      usrType: (json['usr_type'] as int? ?? 0) ,
+      usrStatus: (json['usr_status'] as int? ?? 0) ,
+      usr_birth_date: (json['usr_birth_date'] as String? ?? '') ,
+      usr_gender: (json['usr_gender'] as String? ?? '') ,
+      usr_language: (json['usr_language'] as String? ?? '') ,
+      usr_profile_image:  (json['usr_profile_image'] as String? ?? '') ,
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{

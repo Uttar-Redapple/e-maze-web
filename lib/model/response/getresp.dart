@@ -2,7 +2,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'getresp.g.dart'; 
 
-@JsonSerializable(nullable: false, ignoreUnannotated: false)
+@JsonSerializable(nullable: true, ignoreUnannotated: false)
+
 class Getresp {
   @JsonKey(name: 'error')
   int error;
@@ -18,33 +19,33 @@ class Getresp {
   Map<String, dynamic> toJson() => _$GetrespToJson(this);
 }
 
-@JsonSerializable(nullable: false, ignoreUnannotated: false)
+@JsonSerializable(nullable: true, ignoreUnannotated: false)
 class Data {
-  @JsonKey(name: 'id')
+  @JsonKey(name: 'id',defaultValue: false)
   int id;
-  @JsonKey(name: 'usr_source_type')
+  @JsonKey(name: 'usr_source_type',defaultValue: false)
   int usrSourceType;
-  @JsonKey(name: 'usr_source_key')
+  @JsonKey(name: 'usr_source_key',defaultValue: false)
   String usrSourceKey;
-  @JsonKey(name: 'usr_first_name')
+  @JsonKey(name: 'usr_first_name',defaultValue: false)
   String usrFirstName;
-  @JsonKey(name: 'usr_last_name')
+  @JsonKey(name: 'usr_last_name',defaultValue: false)
   String usrLastName;
-  @JsonKey(name: 'usr_user_name')
+  @JsonKey(name: 'usr_user_name',defaultValue: false)
   String usrUserName;
-  @JsonKey(name: 'usr_email')
+  @JsonKey(name: 'usr_email',defaultValue: false)
   String usrEmail;
-  @JsonKey(name: 'usr_phone')
+  @JsonKey(name: 'usr_phone',defaultValue: false)
   String usrPhone;
-  @JsonKey(name: 'usr_type')
+  @JsonKey(name: 'usr_type',defaultValue: false)
   int usrType;
-  @JsonKey(name: 'usr_status')
+  @JsonKey(name: 'usr_status',defaultValue: false)
   int usrStatus;
-  @JsonKey(name: 'usr_birth_date')
+  @JsonKey(name: 'usr_birth_date',defaultValue: false)
   String usr_birth_date;
-  @JsonKey(name: 'usr_gender')
+  @JsonKey(name: 'usr_gender',defaultValue: false)
   String usr_gender;
-  @JsonKey(name: 'usr_language')
+  @JsonKey(name: 'usr_language',defaultValue: false)
   String usr_language;
 
   @JsonKey(name: 'usr_profile_image')
@@ -60,6 +61,7 @@ class Data {
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  Map<String, dynamic> toJson() => _$DataToJson(this)..removeWhere(
+          (dynamic key, dynamic value) => key == null || value == null);
 }
 

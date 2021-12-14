@@ -805,6 +805,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                       if(resp.data.user_type==1){
                                                                         print("usertype: ${resp.data.user_type}");
+                                                                        print(resp.data.token);
 
                                                                         SharedPreferences pref = await SharedPreferences.getInstance();
                                                                         pref.setString('authtoken', resp.data.token);
@@ -1173,7 +1174,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                   if(resp.data.user_type==1){
                                                                     print("usertype: ${resp.data.user_type}");
-
+                                                                    print(resp.data.token);
                                                                     SharedPreferences pref = await SharedPreferences.getInstance();
                                                                     pref.setString('authtoken', resp.data.token);
                                                                     getuserdetails(resp.data.token,resp.data.user_id);
@@ -2521,11 +2522,30 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
       String usr_phone=data["data"]["usr_phone"];
       pref.setString('usr_phone', usr_phone);
       String usr_birth_date=data["data"]["usr_birth_date"];
-      pref.setString('usr_birth_date', usr_birth_date);
+      if(usr_birth_date=='Null'){
+        pref.setString('usr_birth_date', "");
+      }
+      else{
+        pref.setString('usr_birth_date', usr_birth_date);
+      }
+
       String usr_gender=data["data"]["usr_gender"];
-      pref.setString('usr_gender', usr_gender);
+      print(usr_gender);
+      if(usr_gender=='Null'){
+        pref.setString('usr_gender', "");
+      }
+      else{
+        pref.setString('usr_gender', usr_gender);
+      }
+
       String usr_language=data["data"]["usr_language"];
-      pref.setString('usr_language', usr_language);
+      if(usr_language=='Null'){
+        pref.setString('usr_language', "");
+      }
+      else{
+        pref.setString('usr_language', usr_gender);
+      }
+     // pref.setString('usr_language', usr_language);
       String usr_profile_image=data["data"]["usr_profile_image"];
       pref.setString('usr_profile_image', usr_profile_image);
       Navigator.pushNamed(context, 'patient/profile');
