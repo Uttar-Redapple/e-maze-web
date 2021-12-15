@@ -2535,6 +2535,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
         ),
         const PopupMenuDivider(),
         PopupMenuItem<String>(
+          onTap: () {
+            Navigator.pushNamed(context, 'therapist/generalpreference');
+          },
             child:   Container(
               child: Row(
                 children: [
@@ -2555,19 +2558,24 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                     child: Text(
                       "PROFILE",
                       textAlign: TextAlign.center,
+
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 12.sp,
 
 
+
                       ),
+
+
 
                     ),
                   ),
 
                 ],
               ),
-            )
+            ),
+          value: "0",
         ),
         PopupMenuItem<String>(
             child:  Container(
@@ -2627,7 +2635,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
                 ],
               ),
-            )
+            ),
+          value: "1",
         ),
         PopupMenuItem<String>(
             child:  Container(
@@ -2657,7 +2666,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
                 ],
               ),
-            )
+            ),
+          value: "2",
         ),
         PopupMenuItem<String>(
             child:  Container(
@@ -2687,9 +2697,13 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
                 ],
               ),
-            )
+            ),
+          value: "3",
         ),
         PopupMenuItem<String>(
+          onTap: () {
+            Navigator.pushNamed(context, 'therapist/generalpreference');
+          },
             child:  Container(
               child: Row(
                 children: [
@@ -2722,9 +2736,27 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
                 ],
               ),
-            )
+            ),
+          value: "4",
         ),
         PopupMenuItem<String>(
+          onTap: ()async{
+
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            prefs.remove("doc_id");
+            prefs.remove("doctorauthtoken");
+            prefs.remove("docuserfname");
+            prefs.remove("docusr_last_name");
+            prefs.remove("docusr_user_name");
+            prefs.remove("docusr_email");
+            prefs.remove("docusr_phone");
+            prefs.remove("docusr_birth_date");
+            prefs.remove("docusr_gender");
+            prefs.remove("docusr_language");
+            prefs.remove("docusr_profile_image");
+            await DefaultCacheManager().emptyCache();
+            Navigator.pushNamed(context, '/');
+          },
             child:  Container(
               child: Row(
                 children: [
@@ -2770,7 +2802,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
                 ],
               ),
-            )
+            ),
+          value: "5",
         ),
 
 

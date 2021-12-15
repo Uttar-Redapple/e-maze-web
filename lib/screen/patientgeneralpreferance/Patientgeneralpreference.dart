@@ -2062,6 +2062,9 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
         ),
         const PopupMenuDivider(),
         PopupMenuItem<String>(
+            onTap: () {
+              Navigator.pushNamed(context, 'patient/profile');
+            },
             child:   Container(
               child: Row(
                 children: [
@@ -2076,19 +2079,22 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
+                   /* onTap: () {
                       Navigator.pushNamed(context, 'patient/profile');
-                    },
-                    child: Text(
-                      "PROFILE",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12.sp,
+                    },*/
+                    child: Container(
 
+                      child: Text(
+                        "PROFILE",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12.sp,
+
+
+                        ),
 
                       ),
-
                     ),
                   ),
 
@@ -2096,7 +2102,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
               ),
             )
         ),
-       /* PopupMenuItem<String>(
+        /*PopupMenuItem<String>(
             child:   Container(
               child: Row(
                 children: [
@@ -2113,247 +2119,308 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                   GestureDetector(
                     onTap: () {
                       showDialog(
-                          context: context,
-                          builder: (context){
-                            return Dialog(
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                              elevation: 16,
+                        context: context,
+                      builder: (context){
+                        return Dialog(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                          elevation: 16,
 
-                              child: Container(
-                                width: 400.sp,
-                                height: 400.sp,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: <Color> [
-                                        Color(0xFF3A3A3A),
-                                        Color(0xFF8B8B8B),
-                                        Color(0xFFDBDCDE),
-
-
-
+                                child: Container(
+                                  // padding: EdgeInsets.all(5.sp),
+                                  width: 400.sp,
+                                  height: 400.sp,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: <Color> [
+                                Color(0xFF3A3A3A),
+                                Color(0xFF8B8B8B),
+                                Color(0xFFDBDCDE),
 
 
-                                      ],
-                                      tileMode: TileMode.repeated
-                                  ),
-                                ),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      Center(
-                                        child: SizedBox(
-                                          height: 100.sp,
-                                          width: 200.sp,
-                                          child: Image(image: AssetImage(
-                                              'assets/images/emazelogofirst.png'
-                                          ),
 
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 10.sp,
-                                      ),
-                                      Container(
-                                        height: 54.sp,
-                                        width: 500.sp,
-                                        decoration: BoxDecoration(
-                                            color: Colors.transparent
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            "Change password",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              color: Color(0xFFffffff),
-                                              //  fontSize: 35.sp,
-                                              fontFamily:  '',
-                                              fontWeight: FontWeight.bold,
+
+
+                              ],
+                              tileMode: TileMode.repeated
+                          ),
+                        ),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        Center(
+                                          child: SizedBox(
+                                            height: 65.sp,
+                                            width: 200.sp,
+                                            child: Image(image: AssetImage(
+                                                'assets/images/emazelogofirst.png'
                                             ),
 
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 10.sp,
-                                      ),
-                                      Neumorphic(
-                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                        style: NeumorphicStyle(
-                                            depth: NeumorphicTheme.embossDepth(context),
-                                            boxShape: NeumorphicBoxShape.stadium(),
-                                            color: Colors.white
-                                        ),
-                                        //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                        child: Container(
-                                          height: 45.sp,
-                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                          child: TextFormField(
-                                            // enabled:regemail,
-                                            // controller: forgotemailController,
-
-
-
-                                            decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              //  filled: true,
-                                              fillColor: Colors.white70,
-
-                                              hintText: 'Old password',
-
                                             ),
-                                            textInputAction: TextInputAction.done,
                                           ),
                                         ),
-                                      ),
-                                      Container(
-                                        height: 10.sp,
-                                      ),
-                                      Visibility(
-                                        visible: false,
-                                        child: Container(
-                                          child: Text(
-                                            "Email required or please enter valid email.",
-                                            style: TextStyle(
-                                              color: Colors.red,
+                                      *//*  Container(
+                                          height: 10.sp,
+                                        ),*//*
+                                        Container(
+                                          height: 54.sp,
+                                          width: 500.sp,
+                                          decoration: BoxDecoration(
+                                          //  color: Colors.transparent
+                                            gradient: LinearGradient(
+                                                begin: Alignment.centerLeft,
+                                                end: Alignment.centerRight,
+                                                colors: <Color> [
+                                                  Color(0xFFB2BEB5),
+                                                  Color(0xFFE5E4E2),
 
+
+
+
+
+
+                                                ],
+                                                tileMode: TileMode.repeated
                                             ),
-
                                           ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 10.sp,
-                                      ),
-                                      Neumorphic(
-                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                        style: NeumorphicStyle(
-                                            depth: NeumorphicTheme.embossDepth(context),
-                                            boxShape: NeumorphicBoxShape.stadium(),
-                                            color: Colors.white
-                                        ),
-                                        //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                        child: Container(
-                                          height: 45.sp,
-                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                          child: TextFormField(
-                                            // enabled:regemail,
-                                            // controller: forgotemailController,
-
-
-
-                                            decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              //  filled: true,
-                                              fillColor: Colors.white70,
-
-                                              hintText: 'New password',
-
-                                            ),
-                                            textInputAction: TextInputAction.done,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 10.sp,
-                                      ),
-                                      Visibility(
-                                        visible: false,
-                                        child: Container(
-                                          child: Text(
-                                            "Email required or please enter valid email.",
-                                            style: TextStyle(
-                                              color: Colors.red,
-
-                                            ),
-
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 10.sp,
-                                      ),
-                                      Neumorphic(
-                                        margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-                                        style: NeumorphicStyle(
-                                            depth: NeumorphicTheme.embossDepth(context),
-                                            boxShape: NeumorphicBoxShape.stadium(),
-                                            color: Colors.white
-                                        ),
-                                        //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                                        child: Container(
-                                          height: 45.sp,
-                                          padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
-                                          child: TextFormField(
-                                            // enabled:regemail,
-                                            // controller: forgotemailController,
-
-
-
-                                            decoration: InputDecoration(
-                                              border: InputBorder.none,
-                                              //  filled: true,
-                                              fillColor: Colors.white70,
-
-                                              hintText: 'Confirm password',
-
-                                            ),
-                                            textInputAction: TextInputAction.done,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 10.sp,
-                                      ),
-                                      Visibility(
-                                        visible: false,
-                                        child: Container(
-                                          child: Text(
-                                            "Email required or please enter valid email.",
-                                            style: TextStyle(
-                                              color: Colors.red,
-
-                                            ),
-
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.all(10.sp),
-                                        child: ButtonTheme(
-                                          minWidth: 182.sp,
-                                          height: 63.sp,
-                                          shape: new RoundedRectangleBorder(
-                                            borderRadius: new BorderRadius.circular(40.sp),
-                                          ),
-                                          child: RaisedButton(
-
-                                            onPressed: () async {
-
-                                            },
-
-                                            color: Color(0xFF29AAE1),
-                                            child: Text("Submit",
+                                          child: Center(
+                                            child: Text(
+                                              "CHANGE PASSWORD",
+                                              textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                color: Colors.white,
+                                                color: Color(0xFFffffff),
+                                                //  fontSize: 35.sp,
+                                                fontFamily:  '',
+                                                fontWeight: FontWeight.bold,
+                                              ),
 
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Neumorphic(
+                                          margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                          style: NeumorphicStyle(
+                                              depth: NeumorphicTheme.embossDepth(context),
+                                              boxShape: NeumorphicBoxShape.stadium(),
+                                              color: Colors.white
+                                          ),
+                                          //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                          child: Container(
+                                            height: 45.sp,
+                                            padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                            child: TextFormField(
+                                              // enabled:regemail,
+                                             // controller: forgotemailController,
+                                              obscureText: !_passwordVisible,
+
+
+                                              decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                //  filled: true,
+                                                fillColor: Colors.white70,
+
+                                                hintText: 'Old password',
+                                                  suffixIcon: GestureDetector(
+                                                    onLongPress: () {
+                                                      setState(() {
+                                                        _passwordVisible = true;
+                                                      });
+                                                    },
+                                                    onLongPressUp: () {
+                                                      setState(() {
+                                                        _passwordVisible = false;
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                        _passwordVisible ? Icons.visibility : Icons.visibility_off
+                                                    ),
+                                                  )
+
+                                              ),
+                                              textInputAction: TextInputAction.done,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Visibility(
+                                          visible: false,
+                                          child: Container(
+                                            child: Text(
+                                              "Email required or please enter valid email.",
+                                              style: TextStyle(
+                                                color: Colors.red,
+
+                                              ),
+
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Neumorphic(
+                                          margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                          style: NeumorphicStyle(
+                                              depth: NeumorphicTheme.embossDepth(context),
+                                              boxShape: NeumorphicBoxShape.stadium(),
+                                              color: Colors.white
+                                          ),
+                                          //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                          child: Container(
+                                            height: 45.sp,
+                                            padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                            child: TextFormField(
+                                              // enabled:regemail,
+                                              // controller: forgotemailController,
+                                              obscureText: !_newpasswordVisible,
+
+
+                                              decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                //  filled: true,
+                                                fillColor: Colors.white70,
+
+                                                hintText: 'New password',
+                                                  suffixIcon: GestureDetector(
+                                                    onLongPress: () {
+                                                      setState(() {
+                                                        _newpasswordVisible = true;
+                                                      });
+                                                    },
+                                                    onLongPressUp: () {
+                                                      setState(() {
+                                                        _newpasswordVisible = false;
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                        _newpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                    ),
+                                                  )
+
+                                              ),
+                                              textInputAction: TextInputAction.done,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Visibility(
+                                          visible: false,
+                                          child: Container(
+                                            child: Text(
+                                              "Email required or please enter valid email.",
+                                              style: TextStyle(
+                                                color: Colors.red,
+
+                                              ),
+
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Neumorphic(
+                                          margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+                                          style: NeumorphicStyle(
+                                              depth: NeumorphicTheme.embossDepth(context),
+                                              boxShape: NeumorphicBoxShape.stadium(),
+                                              color: Colors.white
+                                          ),
+                                          //  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                          child: Container(
+                                            height: 45.sp,
+                                            padding: EdgeInsets.only(left: 10.sp,right: 10.sp,top: 1.sp,bottom: 1.sp),
+                                            child: TextFormField(
+                                              // enabled:regemail,
+                                              // controller: forgotemailController,
+                                              obscureText: !_confirmpasswordVisible,
+
+
+                                              decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                //  filled: true,
+                                                fillColor: Colors.white70,
+
+                                                hintText: 'Confirm password',
+                                                  suffixIcon: GestureDetector(
+                                                    onLongPress: () {
+                                                      setState(() {
+                                                        _confirmpasswordVisible = true;
+                                                      });
+                                                    },
+                                                    onLongPressUp: () {
+                                                      setState(() {
+                                                        _confirmpasswordVisible = false;
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                        _confirmpasswordVisible ? Icons.visibility : Icons.visibility_off
+                                                    ),
+                                                  )
+
+                                              ),
+                                              textInputAction: TextInputAction.done,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 10.sp,
+                                        ),
+                                        Visibility(
+                                          visible: false,
+                                          child: Container(
+                                            child: Text(
+                                              "Email required or please enter valid email.",
+                                              style: TextStyle(
+                                                color: Colors.red,
+
+                                              ),
+
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.all(10.sp),
+                                          child: ButtonTheme(
+                                            minWidth: 182.sp,
+                                            height: 55.sp,
+                                            shape: new RoundedRectangleBorder(
+                                              borderRadius: new BorderRadius.circular(40.sp),
+                                            ),
+                                            child: RaisedButton(
+
+                                              onPressed: () async {
+
+                                              },
+
+                                              color: Color(0xFF29AAE1),
+                                              child: Text("Submit",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
 
-                            );
-                          }
+                        );
+                      }
                       );
-                      //  Navigator.pushNamed(context, 'patient/profile');
+                    //  Navigator.pushNamed(context, 'patient/profile');
                     },
                     child: Text(
                       "CHANGE PASSWORD",
@@ -2493,6 +2560,9 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
             )
         ),
         PopupMenuItem<String>(
+            onTap: () {
+              Navigator.pushNamed(context, 'patient/generalpreference');
+            },
             child:  Container(
               child: Row(
                 children: [
@@ -2528,6 +2598,23 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
             )
         ),
         PopupMenuItem<String>(
+            onTap: () async{
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.remove("p_id");
+              prefs.remove("userfname");
+              prefs.remove("usr_last_name");
+              prefs.remove("usr_user_name");
+              prefs.remove("usr_email");
+              prefs.remove("usr_phone");
+              prefs.remove("usr_birth_date");
+              prefs.remove("usr_gender");
+              prefs.remove("usr_language");
+              prefs.remove("usr_profile_image");
+              prefs.remove("authtoken");
+              await DefaultCacheManager().emptyCache();
+
+              Navigator.pushNamed(context, '/');
+            },
             child:  Container(
               child: Row(
                 children: [
@@ -2542,7 +2629,7 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                     ),
                   ),
                   GestureDetector(
-                    onTap: () async {
+                    onTap: () async{
                       SharedPreferences prefs = await SharedPreferences.getInstance();
                       prefs.remove("p_id");
                       prefs.remove("userfname");
@@ -2555,21 +2642,22 @@ class PatientgeneralpreferenceState extends State<Patientgeneralpreference>{
                       prefs.remove("usr_language");
                       prefs.remove("usr_profile_image");
                       prefs.remove("authtoken");
-
                       await DefaultCacheManager().emptyCache();
-                   //   Navigator.pushNamed(context, '/');
+
                       Navigator.pushNamed(context, '/');
                     },
-                    child: Text(
-                      "LOGOUT",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12.sp,
+                    child: Container(
+                      child: Text(
+                        "LOGOUT",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12.sp,
 
+
+                        ),
 
                       ),
-
                     ),
                   ),
 

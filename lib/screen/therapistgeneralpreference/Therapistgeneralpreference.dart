@@ -2051,39 +2051,47 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
         ),
         const PopupMenuDivider(),
         PopupMenuItem<String>(
-            child:   Container(
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 40.sp,
-                    width: 40.sp,
-                    child: IconButton(
-                      icon: Image.asset('assets/images/username.png'), onPressed: () {
+          onTap: () {
+            Navigator.pushNamed(context, 'therapist/generalpreference');
+          },
+          child:   Container(
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 40.sp,
+                  width: 40.sp,
+                  child: IconButton(
+                    icon: Image.asset('assets/images/username.png'), onPressed: () {
 
-                    },
+                  },
+
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, 'therapist/profile');
+                  },
+                  child: Text(
+                    "PROFILE",
+                    textAlign: TextAlign.center,
+
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12.sp,
+
+
 
                     ),
+
+
+
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, 'therapist/profile');
-                    },
-                    child: Text(
-                      "PROFILE",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12.sp,
+                ),
 
-
-                      ),
-
-                    ),
-                  ),
-
-                ],
-              ),
-            )
+              ],
+            ),
+          ),
+          value: "0",
         ),
         PopupMenuItem<String>(
             child:  Container(
@@ -2116,21 +2124,121 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
             )
         ),
         PopupMenuItem<String>(
-            child:  Container(
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 40.sp,
-                    width: 40.sp,
-                    child: IconButton(
-                      icon: Image.asset('assets/images/payment.png'), onPressed: () {
+          child:  Container(
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 40.sp,
+                  width: 40.sp,
+                  child: IconButton(
+                    icon: Image.asset('assets/images/payment.png'), onPressed: () {
 
-                    },
+                  },
 
-                    ),
                   ),
-                  Text(
-                    "PAYMENT METHOD",
+                ),
+                Text(
+                  "PAYMENT METHOD",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12.sp,
+
+
+                  ),
+
+                ),
+
+              ],
+            ),
+          ),
+          value: "1",
+        ),
+        PopupMenuItem<String>(
+          child:  Container(
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 40.sp,
+                  width: 40.sp,
+                  child: IconButton(
+                    icon: Image.asset('assets/images/username.png'), onPressed: () {
+
+                  },
+
+                  ),
+                ),
+                Text(
+                  "REPORTS",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12.sp,
+
+
+                  ),
+
+                ),
+
+              ],
+            ),
+          ),
+          value: "2",
+        ),
+        PopupMenuItem<String>(
+          child:  Container(
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 40.sp,
+                  width: 40.sp,
+                  child: IconButton(
+                    icon: Image.asset('assets/images/share.png'), onPressed: () {
+
+                  },
+
+                  ),
+                ),
+                Text(
+                  "SHARE",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12.sp,
+
+
+                  ),
+
+                ),
+
+              ],
+            ),
+          ),
+          value: "3",
+        ),
+        PopupMenuItem<String>(
+          onTap: () {
+            Navigator.pushNamed(context, 'therapist/generalpreference');
+          },
+          child:  Container(
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 40.sp,
+                  width: 40.sp,
+                  child: IconButton(
+                    icon: Image.asset('assets/images/generalperef.png'), onPressed: () {
+
+                  },
+
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, 'therapist/generalpreference');
+                  },
+                  child: Text(
+                    "GENERAL PREFERENCE",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
@@ -2140,27 +2248,63 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                     ),
 
                   ),
+                ),
 
-                ],
-              ),
-            )
+              ],
+            ),
+          ),
+          value: "4",
         ),
         PopupMenuItem<String>(
-            child:  Container(
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 40.sp,
-                    width: 40.sp,
-                    child: IconButton(
-                      icon: Image.asset('assets/images/username.png'), onPressed: () {
+          onTap: ()async{
 
-                    },
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            prefs.remove("doc_id");
+            prefs.remove("doctorauthtoken");
+            prefs.remove("docuserfname");
+            prefs.remove("docusr_last_name");
+            prefs.remove("docusr_user_name");
+            prefs.remove("docusr_email");
+            prefs.remove("docusr_phone");
+            prefs.remove("docusr_birth_date");
+            prefs.remove("docusr_gender");
+            prefs.remove("docusr_language");
+            prefs.remove("docusr_profile_image");
+            await DefaultCacheManager().emptyCache();
+            Navigator.pushNamed(context, '/');
+          },
+          child:  Container(
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 40.sp,
+                  width: 40.sp,
+                  child: IconButton(
+                    icon: Image.asset('assets/images/logous.png'), onPressed: () {
 
-                    ),
+                  },
+
                   ),
-                  Text(
-                    "REPORTS",
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    prefs.remove("doc_id");
+                    prefs.remove("doctorauthtoken");
+                    prefs.remove("docuserfname");
+                    prefs.remove("docusr_last_name");
+                    prefs.remove("docusr_user_name");
+                    prefs.remove("docusr_email");
+                    prefs.remove("docusr_phone");
+                    prefs.remove("docusr_birth_date");
+                    prefs.remove("docusr_gender");
+                    prefs.remove("docusr_language");
+                    prefs.remove("docusr_profile_image");
+                    await DefaultCacheManager().emptyCache();
+                    Navigator.pushNamed(context, '/');
+                  },
+                  child: Text(
+                    "LOG OUT",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
@@ -2170,123 +2314,12 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                     ),
 
                   ),
+                ),
 
-                ],
-              ),
-            )
-        ),
-        PopupMenuItem<String>(
-            child:  Container(
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 40.sp,
-                    width: 40.sp,
-                    child: IconButton(
-                      icon: Image.asset('assets/images/share.png'), onPressed: () {
-
-                    },
-
-                    ),
-                  ),
-                  Text(
-                    "SHARE",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12.sp,
-
-
-                    ),
-
-                  ),
-
-                ],
-              ),
-            )
-        ),
-        PopupMenuItem<String>(
-            child:  Container(
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 40.sp,
-                    width: 40.sp,
-                    child: IconButton(
-                      icon: Image.asset('assets/images/generalperef.png'), onPressed: () {
-
-                    },
-
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, 'therapist/generalpreference');
-                    },
-                    child: Text(
-                      "GENERAL PREFERENCE",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12.sp,
-
-
-                      ),
-
-                    ),
-                  ),
-
-                ],
-              ),
-            )
-        ),
-        PopupMenuItem<String>(
-            child:  Container(
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 40.sp,
-                    width: 40.sp,
-                    child: IconButton(
-                      icon: Image.asset('assets/images/logous.png'), onPressed: () {
-
-                    },
-
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () async {
-                      SharedPreferences prefs = await SharedPreferences.getInstance();
-                      prefs.remove("doc_id");
-                      prefs.remove("doctorauthtoken");
-                      prefs.remove("docuserfname");
-                      prefs.remove("docusr_last_name");
-                      prefs.remove("docusr_user_name");
-                      prefs.remove("docusr_email");
-                      prefs.remove("docusr_phone");
-                      prefs.remove("docusr_birth_date");
-                      prefs.remove("docusr_gender");
-                      prefs.remove("docusr_language");
-                      prefs.remove("docusr_profile_image");
-                      await DefaultCacheManager().emptyCache();
-                      Navigator.pushNamed(context, '/');
-                    },
-                    child: Text(
-                      "LOG OUT",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12.sp,
-
-
-                      ),
-
-                    ),
-                  ),
-
-                ],
-              ),
-            )
+              ],
+            ),
+          ),
+          value: "5",
         ),
 
 

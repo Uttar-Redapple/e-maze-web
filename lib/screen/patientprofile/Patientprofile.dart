@@ -2837,6 +2837,9 @@ class PatientprofileState extends State<Patientprofile>{
         ),
         const PopupMenuDivider(),
         PopupMenuItem<String>(
+            onTap: () {
+              Navigator.pushNamed(context, 'patient/profile');
+            },
             child:   Container(
               child: Row(
                 children: [
@@ -3332,6 +3335,9 @@ class PatientprofileState extends State<Patientprofile>{
             )
         ),
         PopupMenuItem<String>(
+            onTap: () {
+              Navigator.pushNamed(context, 'patient/generalpreference');
+            },
             child:  Container(
               child: Row(
                 children: [
@@ -3367,6 +3373,23 @@ class PatientprofileState extends State<Patientprofile>{
             )
         ),
         PopupMenuItem<String>(
+            onTap: () async{
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.remove("p_id");
+              prefs.remove("userfname");
+              prefs.remove("usr_last_name");
+              prefs.remove("usr_user_name");
+              prefs.remove("usr_email");
+              prefs.remove("usr_phone");
+              prefs.remove("usr_birth_date");
+              prefs.remove("usr_gender");
+              prefs.remove("usr_language");
+              prefs.remove("usr_profile_image");
+              prefs.remove("authtoken");
+              await DefaultCacheManager().emptyCache();
+
+              Navigator.pushNamed(context, '/');
+            },
             child:  Container(
               child: Row(
                 children: [
