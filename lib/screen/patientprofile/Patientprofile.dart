@@ -11,6 +11,7 @@ import 'package:emaze_brain/model/response/getresp.dart';
 import 'package:emaze_brain/model/response/updateprofileresponse.dart';
 import 'package:emaze_brain/screen/util/constants.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:http/http.dart' as http;
@@ -334,21 +335,36 @@ class PatientprofileState extends State<Patientprofile>{
   }
 
   @override
-  void initState() {
+  void initState()  {
     super.initState();
+    setState(() {
+    //  tokenanduserdetaisl();
+      _oncolor=Colors.transparent;
+      _offcolor=Color(0xFF989898);
+      offtext="ON";
+      ontext="Off";
+      _offcolortextcode=Colors.white;
+      _oncolortext=Color(0xFF666666);
+      _passwordVisible = false;
+      _confirmpasswordVisible=false;
+      _newpasswordVisible=false;
+      var now = new DateTime.now();
+      var formatter = new DateFormat('yyyy-MM-dd hh:mm:ss');
+      String formattedDate = formatter.format(now);
+      print(formattedDate); //
+      formatteddatetime=formattedDate;
+      formatters = new DateFormat('yyyy-MM-dd hh:mm:ss');
+      gettoken();
+      _futureAlbum= getuserdetails();
+    });
+
+
+
    /* gettoken();
     _futureAlbum= getuserdetails();*/
     /*gettoken();
     _futureAlbum=  getuserdetails();*/
-    _passwordVisible = false;
-    _confirmpasswordVisible=false;
-    _newpasswordVisible=false;
-    var now = new DateTime.now();
-    var formatter = new DateFormat('yyyy-MM-dd hh:mm:ss');
-    String formattedDate = formatter.format(now);
-    print(formattedDate); //
-    formatteddatetime=formattedDate;
-     formatters = new DateFormat('yyyy-MM-dd hh:mm:ss');
+
    /* gettoken();
     _futureAlbum= getuserdetails();*/
 
@@ -559,7 +575,7 @@ class PatientprofileState extends State<Patientprofile>{
           if (snapshot.hasData) {
             return
               Text(
-                "Patient/"+snapshot.data!.data.usrUserName+ " User id/"+snapshot.data!.data.id.toString(),
+                "Patient : "+snapshot.data!.data.usrUserName+ "| User ID : "+snapshot.data!.data.id.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
@@ -570,7 +586,7 @@ class PatientprofileState extends State<Patientprofile>{
               );
           } else if (snapshot.hasError) {
             return Text(
-                "Patient/"+usr_user_name!+ "User id/"+p_id!.toString(),
+                "Patient : "+usr_user_name!+ "| User ID : "+p_id!.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
@@ -590,8 +606,7 @@ class PatientprofileState extends State<Patientprofile>{
   @override
   Widget build(BuildContext context) {
     var radius = Radius.circular(40);
-   gettoken();
-    _futureAlbum= getuserdetails();
+
 
    /* gettoken();
     _futureAlbum= getuserdetails();*/
@@ -1191,7 +1206,7 @@ class PatientprofileState extends State<Patientprofile>{
                                               alignment: Alignment.centerLeft,
                                               child: Container(
                                                 child: Text(
-                                                  "Last login /"+formatteddatetime,
+                                                  "Last login : "+formatteddatetime,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       color: Color(0xFF989898 ),
@@ -1207,7 +1222,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                 Expanded(
                                                   flex: 7,
                                                   child: GestureDetector(
-                                                    onTap: () {
+                                                    onTap: () async{
                                                       setState(() {
                                                         showfirstnametextwidget();
                                                         hidefirstnamewidget();
@@ -1225,7 +1240,8 @@ class PatientprofileState extends State<Patientprofile>{
                                                         hidegenderwidget();
                                                         updatedetails();
                                                         //updatedetails();
-                                                        getuserdetails();
+                                                        gettoken();
+                                                        _futureAlbum= getuserdetails();
                                                         print(firstnameController.text);
                                                       });
                                                     },
@@ -1951,7 +1967,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                   ),
                                                 ),
 
-                                                   // scrollDirection: Axis.horizontal,
+
                                                    Expanded(
                                                     flex: 3,
                                                     child: Container(
@@ -1971,11 +1987,9 @@ class PatientprofileState extends State<Patientprofile>{
                                                                 child: SizedBox(
                                                                   height: 40.sp,
                                                                   width: 40.sp,
-                                                                  child: IconButton(
-                                                                    icon: Image.asset('assets/images/eye.png'),
-                                                                    onPressed: () {
+                                                                  child: Image(
+                                                                    image: AssetImage('assets/images/eye.png'),
 
-                                                                    },
                                                                   ),
                                                                 ),
                                                               ),
@@ -1985,7 +1999,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                   flex: 6,
                                                                 child: Container(
                                                                   padding: EdgeInsets.only(left: 5.sp,right: 5.sp,top: 5.sp),
-                                                                   height: 47.sp,
+                                                                //   height: 47.sp,
                                                                   // width: 100.sp,
                                                                    decoration: BoxDecoration(
                                                                      /* boxShadow: [
@@ -2013,7 +2027,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                    child: Row(
                                                                      children: [
                                                                      Expanded(
-                                                                       flex: 5,
+                                                                         flex: 5,
                                                                          child: GestureDetector(
                                                                            onTap: (){
                                                                              setState(() {
@@ -2044,14 +2058,7 @@ class PatientprofileState extends State<Patientprofile>{
 
 
                                                                                  ),
-                                                                              /* boxShadow: [
-                                                                                 BoxShadow(
-                                                                                   color: Colors.grey.withOpacity(0.2),
-                                                                                   blurRadius: 2.0,
-                                                                                   spreadRadius: 3.0,
-                                                                                   offset: Offset(2.0, 2.0), // changes position of shadow
-                                                                                 ),
-                                                                               ],*/
+
                                                                              ),
                                                                              child: GestureDetector(
                                                                                onTap: (){
@@ -2616,7 +2623,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                            msg: "Old Password Required or Old Password should be 6 charecter",
                                                                                                            toastLength: Toast.LENGTH_SHORT,
                                                                                                            gravity: ToastGravity.CENTER,
-                                                                                                           timeInSecForIosWeb: 2,
+                                                                                                           timeInSecForIosWeb: 5,
                                                                                                            backgroundColor: Colors.red,
                                                                                                            textColor: Colors.white,
                                                                                                            fontSize: 16.0,
@@ -2631,7 +2638,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                            msg: "New Password Required or New Password should 6 charecter",
                                                                                                            toastLength: Toast.LENGTH_SHORT,
                                                                                                            gravity: ToastGravity.CENTER,
-                                                                                                           timeInSecForIosWeb: 2,
+                                                                                                           timeInSecForIosWeb: 5,
                                                                                                            backgroundColor: Colors.red,
                                                                                                            textColor: Colors.white,
                                                                                                            fontSize: 16.0,
@@ -2646,7 +2653,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                            msg: "Confirm Password Required or Confirm Password should be minimum 6 charecter",
                                                                                                            toastLength: Toast.LENGTH_SHORT,
                                                                                                            gravity: ToastGravity.CENTER,
-                                                                                                           timeInSecForIosWeb: 2,
+                                                                                                           timeInSecForIosWeb: 5,
                                                                                                            backgroundColor: Colors.red,
                                                                                                            textColor: Colors.white,
                                                                                                            fontSize: 16.0,
@@ -2666,7 +2673,7 @@ class PatientprofileState extends State<Patientprofile>{
                                                                                                              msg: "Confirm password and new password should match",
                                                                                                              toastLength: Toast.LENGTH_SHORT,
                                                                                                              gravity: ToastGravity.CENTER,
-                                                                                                             timeInSecForIosWeb: 2,
+                                                                                                             timeInSecForIosWeb: 5,
                                                                                                              backgroundColor: Colors.red,
                                                                                                              textColor: Colors.white,
                                                                                                              fontSize: 16.0,
@@ -3387,7 +3394,7 @@ class PatientprofileState extends State<Patientprofile>{
                       prefs.remove("usr_language");
                       prefs.remove("usr_profile_image");
                       prefs.remove("authtoken");
-
+                      await DefaultCacheManager().emptyCache();
                       
                       Navigator.pushNamed(context, '/');
                     },
@@ -3423,22 +3430,38 @@ class PatientprofileState extends State<Patientprofile>{
 
   void gettoken()  async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-     token=prefs.getString("authtoken");
-     p_id=prefs.getInt("p_id");
-     userfname=prefs.getString("userfname");
-    usr_last_name=prefs.getString("usr_last_name");
-    usr_user_name=prefs.getString("usr_user_name");
-    usr_email=prefs.getString("usr_email");
-    usr_phone=prefs.getString("usr_phone");
-    usr_birth_date=prefs.getString("usr_birth_date");
-    usr_gender=prefs.getString("usr_gender");
+    await prefs.reload();
+    setState(() {
+      token=prefs.getString("authtoken");
+      p_id=prefs.getInt("p_id");
+      userfname=prefs.getString("userfname");
+      usr_last_name=prefs.getString("usr_last_name");
+      usr_user_name=prefs.getString("usr_user_name");
+      usr_email=prefs.getString("usr_email");
+      usr_phone=prefs.getString("usr_phone");
+      usr_birth_date=prefs.getString("usr_birth_date");
+      usr_gender=prefs.getString("usr_gender");
 
-    usr_language=prefs.getString("usr_language");
-    usr_profile_image=prefs.getString("usr_profile_image");
+      usr_language=prefs.getString("usr_language");
+      usr_profile_image=prefs.getString("usr_profile_image");
 
-    debugPrint("patrinttoken: ${token}");
-    debugPrint("patriid: ${p_id}");
-    print(p_id);
+      debugPrint("patrinttoken: ${token}");
+      debugPrint("patriid: ${p_id}");
+      debugPrint("userfname: ${userfname}");
+      debugPrint("usr_last_name: ${usr_last_name}");
+      debugPrint("usr_user_name: ${usr_user_name}");
+      debugPrint("usr_phone: ${usr_phone}");
+
+      debugPrint("usr_gender: ${usr_gender}");
+      debugPrint("usr_email: ${usr_email}");
+      debugPrint("usr_birth_date: ${usr_birth_date}");
+      debugPrint("usr_language: ${usr_language}");
+      debugPrint("usr_profile_image: ${usr_profile_image}");
+
+
+      print(p_id);
+    });
+
   }
   /*Future<http.Response> Getdata(int p_id) async {
     var headers = {
@@ -3501,6 +3524,7 @@ class PatientprofileState extends State<Patientprofile>{
       pref.setString('usr_language', usr_language);
       String usr_profile_image=data["data"]["usr_profile_image"];
       pref.setString('usr_profile_image', usr_profile_image);
+      gettoken();
      ///  userfname=data["data"]["usr_first_name"];
       return Getresp.fromJson(jsonDecode(response.body));
 
@@ -3515,6 +3539,7 @@ class PatientprofileState extends State<Patientprofile>{
 
   Future<Updateprofileresponse>  updatedetails() async {
      //print(fname);
+    showLoaderDialog(context);
     final response = await http.post(
       Uri.parse(Constants.baseurl+'user/update'),
       headers: <String, String>{
@@ -3537,6 +3562,7 @@ class PatientprofileState extends State<Patientprofile>{
     if (response.statusCode == 200) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
+      Navigator.pop(context);
       print(jsonDecode(response.body));
       gettoken();
       _futureAlbum= getuserdetails();
@@ -3546,6 +3572,17 @@ class PatientprofileState extends State<Patientprofile>{
     } else {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
+      Fluttertoast.showToast(
+          msg:"Something wrong from server.Please try again later",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 5,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+          webPosition: "center"
+      );
+      Navigator.pop(context);
       throw Exception('Failed to update user.');
     }
   }
@@ -3582,7 +3619,7 @@ class PatientprofileState extends State<Patientprofile>{
           msg: data["message"],
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 2,
+          timeInSecForIosWeb: 5,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0,
@@ -3598,7 +3635,7 @@ class PatientprofileState extends State<Patientprofile>{
           msg: "Old Password Not Matching",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 2,
+          timeInSecForIosWeb: 5,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0,
@@ -3606,6 +3643,26 @@ class PatientprofileState extends State<Patientprofile>{
       );
       throw Exception();
     }
+  }
+
+  showLoaderDialog(BuildContext context){
+    AlertDialog alert=AlertDialog(
+      content: new Row(
+        children: [
+          CircularProgressIndicator(),
+          Container(margin: EdgeInsets.only(left: 7),child:Text("Loading..." )),
+        ],),
+    );
+    showDialog(barrierDismissible: false,
+      context:context,
+      builder:(BuildContext context){
+        return alert;
+      },
+    );
+  }
+
+  void tokenanduserdetaisl() async{
+
   }
 
 }

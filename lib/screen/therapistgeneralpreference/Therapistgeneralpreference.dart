@@ -2,12 +2,15 @@ import 'dart:convert';
 
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:emaze_brain/model/response/get_terms.dart';
+import 'package:emaze_brain/model/response/getchangepwdresponse.dart';
 import 'package:emaze_brain/model/response/getresp.dart';
 import 'package:emaze_brain/screen/data_viz/data_viz.dart';
 import 'package:emaze_brain/screen/util/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:http/http.dart' as http;
@@ -730,10 +733,10 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                   flex: 4,
                                                                   child: RichText(
                                                                     text: TextSpan(
-                                                                      text: 'Patient Carlos moron\n',
+                                                                      text: 'Patient : Carlos Moron\n',
                                                                       children: [
                                                                         TextSpan(
-                                                                          text: 'Userid :8882222',
+                                                                          text: 'User ID : 8882222',
                                                                         ),
                                                                       ],
                                                                     ),
@@ -1073,7 +1076,155 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                                 icon: Image.asset('assets/images/messages.png'), onPressed: () {  },
                                                                               ),
 
-                                                                              onPressed: () {
+                                                                              onPressed: () async{
+                                                                                showDialog(
+                                                                                    context: context,
+                                                                                    builder: (context){
+                                                                                      return Dialog(
+                                                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                                        elevation: 16,
+                                                                                        child: Container(
+                                                                                          padding: EdgeInsets.all(20.sp),
+                                                                                          height: 200.sp,
+                                                                                          width: 300.sp,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                                            gradient: LinearGradient(
+                                                                                                begin: Alignment.topCenter,
+                                                                                                end: Alignment.bottomCenter,
+                                                                                                colors: <Color> [
+                                                                                                  Color(0xFF808080),
+                                                                                                  Color(0xFF535454),
+
+
+
+
+
+                                                                                                ],
+                                                                                                tileMode: TileMode.repeated
+                                                                                            ),
+                                                                                          ),
+                                                                                          child: Column(
+                                                                                            children: [
+                                                                                              /*Container(
+                                                                                                width: 200.sp,
+                                                                                                height: 150.sp,
+                                                                                                child: Image(image: AssetImage(
+                                                                                                    'assets/images/emazelogofirst.png'
+                                                                                                ),
+                                                                                                ),
+                                                                                              ),*/
+                                                                                              Text(
+                                                                                                "Are you sure you want to delete your account?",
+                                                                                                textAlign: TextAlign.center,
+                                                                                                style: TextStyle(
+                                                                                                    color: Colors.white,
+                                                                                                    fontSize: 20.sp
+                                                                                                ),
+
+                                                                                              ),
+                                                                                              Container(
+                                                                                                height: 40.sp,
+                                                                                              ),
+                                                                                              Row(
+                                                                                                children: [
+                                                                                                  Expanded(
+                                                                                                    flex: 5,
+                                                                                                    child:  GestureDetector(
+                                                                                                      onTap: () async{
+                                                                                                        deleteaccount();
+                                                                                                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                                                                                                        prefs.remove("doc_id");
+                                                                                                        prefs.remove("doctorauthtoken");
+                                                                                                        prefs.remove("docuserfname");
+                                                                                                        prefs.remove("docusr_last_name");
+                                                                                                        prefs.remove("docusr_user_name");
+                                                                                                        prefs.remove("docusr_email");
+                                                                                                        prefs.remove("docusr_phone");
+                                                                                                        prefs.remove("docusr_birth_date");
+                                                                                                        prefs.remove("docusr_gender");
+                                                                                                        prefs.remove("docusr_language");
+                                                                                                        prefs.remove("docusr_profile_image");
+                                                                                                        await DefaultCacheManager().emptyCache();
+                                                                                                        Navigator.pushNamed(context, '/');
+
+                                                                                                      },
+                                                                                                      child: Container(
+                                                                                                        height: 30.sp,
+                                                                                                        decoration: BoxDecoration(
+                                                                                                          color: Colors.white,
+                                                                                                          borderRadius: BorderRadius.only(
+                                                                                                            bottomLeft: Radius.circular(40.0),
+                                                                                                            bottomRight: Radius.circular(40.0),
+                                                                                                            topLeft: Radius.circular(40.0),
+                                                                                                            topRight: Radius.circular(40.0),
+
+
+                                                                                                          ),
+
+                                                                                                        ),
+                                                                                                        child: Center(
+                                                                                                          child: Text(
+                                                                                                            "Yes",
+                                                                                                            textAlign: TextAlign.center,
+                                                                                                            style: TextStyle(
+                                                                                                                color: Colors.black,
+                                                                                                                fontSize: 15.sp
+                                                                                                            ),
+
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  Container(
+                                                                                                    width: 5.sp,
+                                                                                                  ),
+                                                                                                  Expanded(
+                                                                                                    flex: 5,
+                                                                                                    child:  GestureDetector(
+                                                                                                      onTap: (){
+                                                                                                        Navigator.pop(context);
+                                                                                                      },
+                                                                                                      child: Container(
+                                                                                                        height: 30.sp,
+                                                                                                        decoration: BoxDecoration(
+                                                                                                          color: Colors.white,
+                                                                                                          borderRadius: BorderRadius.only(
+                                                                                                            bottomLeft: Radius.circular(40.0),
+                                                                                                            bottomRight: Radius.circular(40.0),
+                                                                                                            topLeft: Radius.circular(40.0),
+                                                                                                            topRight: Radius.circular(40.0),
+
+
+                                                                                                          ),
+
+                                                                                                        ),
+
+                                                                                                        child: Center(
+                                                                                                          child: Text(
+                                                                                                            "No",
+                                                                                                            textAlign: TextAlign.center,
+                                                                                                            style: TextStyle(
+                                                                                                                color: Colors.black,
+                                                                                                                fontSize: 15.sp
+                                                                                                            ),
+
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  )
+                                                                                                ],
+                                                                                              )
+
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }
+
+                                                                                );
 
                                                                               },
                                                                               style: ButtonStyle(
@@ -1160,19 +1311,109 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                               ),
 
                                                                               onPressed: () async{
-                                                                                SharedPreferences prefs = await SharedPreferences.getInstance();
-                                                                                prefs.remove("doc_id");
-                                                                                prefs.remove("doctorauthtoken");
-                                                                                prefs.remove("userfname");
-                                                                                prefs.remove("usr_last_name");
-                                                                                prefs.remove("usr_user_name");
-                                                                                prefs.remove("usr_email");
-                                                                                prefs.remove("usr_phone");
-                                                                                prefs.remove("usr_birth_date");
-                                                                                prefs.remove("usr_gender");
-                                                                                prefs.remove("usr_language");
-                                                                                prefs.remove("usr_profile_image");
-                                                                                Navigator.pushNamed(context, '/');
+                                                                                showDialog(
+                                                                                    context: context,
+                                                                                    builder: (context){
+                                                                                      return Dialog(
+                                                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                                        elevation: 16,
+                                                                                        child: Container(
+                                                                                          padding: EdgeInsets.all(20.sp),
+                                                                                        height: 200.sp,
+                                                                                          width: 300.sp,
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                                                                            gradient: LinearGradient(
+                                                                                                begin: Alignment.topCenter,
+                                                                                                end: Alignment.bottomCenter,
+                                                                                                colors: <Color> [
+                                                                                                  Color(0xFF808080),
+                                                                                                  Color(0xFF535454),
+
+
+
+
+
+                                                                                                ],
+                                                                                                tileMode: TileMode.repeated
+                                                                                            ),
+                                                                                          ),
+                                                                                          child: Column(
+                                                                                            children: [
+                                                                                              /*Container(
+                                                                                                width: 100.sp,
+                                                                                                height: 150.sp,
+                                                                                                child: Image(image: AssetImage(
+                                                                                                    'assets/images/emazelogofirst.png'
+                                                                                                ),
+                                                                                                ),
+                                                                                              ),*/
+                                                                                              Text(
+                                                                                                "You are about to erase all the caches",
+                                                                                                textAlign: TextAlign.center,
+                                                                                                style: TextStyle(
+                                                                                                    color: Colors.white,
+                                                                                                    fontSize: 20.sp
+                                                                                                ),
+
+                                                                                              ),
+                                                                                              Container(
+                                                                                                height: 40.sp,
+                                                                                              ),
+                                                                                              GestureDetector(
+                                                                                                onTap: () async{
+                                                                                                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                                                                                                  prefs.remove("doc_id");
+                                                                                                  prefs.remove("doctorauthtoken");
+                                                                                                  prefs.remove("docuserfname");
+                                                                                                  prefs.remove("docusr_last_name");
+                                                                                                  prefs.remove("docusr_user_name");
+                                                                                                  prefs.remove("docusr_email");
+                                                                                                  prefs.remove("docusr_phone");
+                                                                                                  prefs.remove("docusr_birth_date");
+                                                                                                  prefs.remove("docusr_gender");
+                                                                                                  prefs.remove("docusr_language");
+                                                                                                  prefs.remove("docusr_profile_image");
+                                                                                                  await DefaultCacheManager().emptyCache();
+                                                                                                  Navigator.pushNamed(context, '/');
+                                                                                                },
+                                                                                                child: Container(
+                                                                                                  height: 30.sp,
+                                                                                                  width: 100.sp,
+                                                                                                  decoration: BoxDecoration(
+                                                                                                    color: Colors.white,
+                                                                                                    borderRadius: BorderRadius.only(
+                                                                                                      bottomLeft: Radius.circular(40.0),
+                                                                                                      bottomRight: Radius.circular(40.0),
+                                                                                                      topLeft: Radius.circular(40.0),
+                                                                                                      topRight: Radius.circular(40.0),
+
+
+                                                                                                    ),
+
+                                                                                                  ),
+                                                                                                  child: Center(
+                                                                                                    child: Text(
+                                                                                                      "OK",
+                                                                                                      textAlign: TextAlign.center,
+                                                                                                      style: TextStyle(
+                                                                                                          color: Colors.black,
+                                                                                                          fontSize: 15.sp
+                                                                                                      ),
+
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                    }
+
+                                                                                );
+
                                                                               },
                                                                               style: ButtonStyle(
                                                                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -1200,7 +1441,7 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                       ),*/
 
 
-                                                                              label: Text("ERASE CHACHE",
+                                                                              label: Text("ERASE CACHE",
                                                                                 style: TextStyle(
                                                                                   color: Color(0xFF989898),
                                                                                   // fontSize: 16.sp
@@ -1279,13 +1520,11 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.all(Radius.circular(20.0)),
                                                                                             gradient: LinearGradient(
-                                                                                                begin: Alignment.topLeft,
-                                                                                                end: Alignment.bottomRight,
+                                                                                                begin: Alignment.topCenter,
+                                                                                                end: Alignment.bottomCenter,
                                                                                                 colors: <Color> [
-                                                                                                  Color(0xFF2b2b49),
-                                                                                                  Color(0xFF0d2561),
-                                                                                                  Color(0xFF005890),
-                                                                                                  Color(0xFF0071a6),
+                                                                                                  Color(0xFF808080),
+                                                                                                  Color(0xFF535454),
 
 
 
@@ -1298,6 +1537,14 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                                           child:  SingleChildScrollView(
                                                                                             child: Column(
                                                                                               children: [
+                                                                                                /*Container(
+                                                                                                  width: 200.sp,
+                                                                                                  height: 200.sp,
+                                                                                                  child: Image(image: AssetImage(
+                                                                                                      'assets/images/emazelogofirst.png'
+                                                                                                  ),
+                                                                                                  ),
+                                                                                                ),*/
                                                                                                 FutureBuilder<GetTerms>(
                                                                                                   future: privacypolicy,
                                                                                                   builder: (context, snapshot) {
@@ -1496,13 +1743,11 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                                           decoration: BoxDecoration(
                                                                                             borderRadius: BorderRadius.all(Radius.circular(20.0)),
                                                                                             gradient: LinearGradient(
-                                                                                                begin: Alignment.topLeft,
-                                                                                                end: Alignment.bottomRight,
+                                                                                                begin: Alignment.topCenter,
+                                                                                                end: Alignment.bottomCenter,
                                                                                                 colors: <Color> [
-                                                                                                  Color(0xFF2b2b49),
-                                                                                                  Color(0xFF0d2561),
-                                                                                                  Color(0xFF005890),
-                                                                                                  Color(0xFF0071a6),
+                                                                                                  Color(0xFF808080),
+                                                                                                  Color(0xFF535454),
 
 
 
@@ -1515,6 +1760,15 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                                                                                           child:  SingleChildScrollView(
                                                                                             child: Column(
                                                                                               children: [
+                                                                                                /*Container(
+                                                                                                  width: 200.sp,
+                                                                                                  height: 200.sp,
+                                                                                                  child: Image(image: AssetImage(
+                                                                                                'assets/images/emazelogofirst.png'
+                                                                                            ),
+                                                                                                ),
+                                                                                                ),*/
+
                                                                                                 FutureBuilder<GetTerms>(
                                                                                                   future: futureAlbum,
                                                                                                   builder: (context, snapshot) {
@@ -2005,15 +2259,16 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
                       SharedPreferences prefs = await SharedPreferences.getInstance();
                       prefs.remove("doc_id");
                       prefs.remove("doctorauthtoken");
-                      prefs.remove("userfname");
-                      prefs.remove("usr_last_name");
-                      prefs.remove("usr_user_name");
-                      prefs.remove("usr_email");
-                      prefs.remove("usr_phone");
-                      prefs.remove("usr_birth_date");
-                      prefs.remove("usr_gender");
-                      prefs.remove("usr_language");
-                      prefs.remove("usr_profile_image");
+                      prefs.remove("docuserfname");
+                      prefs.remove("docusr_last_name");
+                      prefs.remove("docusr_user_name");
+                      prefs.remove("docusr_email");
+                      prefs.remove("docusr_phone");
+                      prefs.remove("docusr_birth_date");
+                      prefs.remove("docusr_gender");
+                      prefs.remove("docusr_language");
+                      prefs.remove("docusr_profile_image");
+                      await DefaultCacheManager().emptyCache();
                       Navigator.pushNamed(context, '/');
                     },
                     child: Text(
@@ -2123,19 +2378,85 @@ class TherapistgeneralpreferenceState extends State<Therapistgeneralpreference>{
 
   void gettoken()  async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    token=prefs.getString("doctorauthtoken");
-    p_id=prefs.getInt("doc_id");
-    userfname=prefs.getString("userfname");
-    usr_last_name=prefs.getString("usr_last_name");
-    usr_user_name=prefs.getString("usr_user_name");
-    usr_email=prefs.getString("usr_email");
-    usr_phone=prefs.getString("usr_phone");
-    usr_birth_date=prefs.getString("usr_birth_date");
-    usr_gender=prefs.getString("usr_gender");
+    setState(() {
+      token=prefs.getString("doctorauthtoken");
+      p_id=prefs.getInt("doc_id");
+      userfname=prefs.getString("docuserfname");
+      usr_last_name=prefs.getString("docusr_last_name");
+      usr_user_name=prefs.getString("docusr_user_name");
+      usr_email=prefs.getString("docusr_email");
+      usr_phone=prefs.getString("docusr_phone");
+      usr_birth_date=prefs.getString("docusr_birth_date");
+      usr_gender=prefs.getString("docusr_gender");
 
-    usr_language=prefs.getString("usr_language");
-    usr_profile_image=prefs.getString("usr_profile_image");
-    print(token);
+      usr_language=prefs.getString("docusr_language");
+      usr_profile_image=prefs.getString("docusr_profile_image");
+      debugPrint("patrinttoken: ${token}");
+      debugPrint("patriid: ${p_id}");
+      debugPrint("userfname: ${userfname}");
+      debugPrint("usr_last_name: ${usr_last_name}");
+      debugPrint("usr_user_name: ${usr_user_name}");
+      debugPrint("usr_phone: ${usr_phone}");
+      debugPrint("usr_email: ${usr_email}");
+      debugPrint("usr_birth_date: ${usr_birth_date}");
+      debugPrint("usr_language: ${usr_language}");
+      debugPrint("usr_profile_image: ${usr_profile_image}");
+    });
+
+  }
+
+  Future<Getchangepwdresponse>  deleteaccount() async {
+    final response = await http.post(
+      Uri.parse(Constants.baseurl+'user/deactivated'),
+      headers: <String, String>{
+        //  "Access-Control-Allow-Origin": "*",
+        'Authorization': 'Bearer '+token!,
+
+      },
+      body: jsonEncode(<String, String>{
+
+
+
+      }
+      ),
+
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print(jsonDecode(response.body));
+      Map<String, dynamic> data = json.decode(response.body);
+      print(data["message"]);
+      Fluttertoast.showToast(
+          msg: "Your account is successfully deleted.Thank you for visiting us",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 5,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+          webPosition: "center"
+      );
+
+      return Getchangepwdresponse.fromJson(jsonDecode(response.body));
+
+
+    } else {
+      Fluttertoast.showToast(
+          msg: "Your account is already deactivated",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 5,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+          webPosition: "center"
+      );
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      throw Exception();
+    }
   }
 
 }

@@ -19,33 +19,33 @@ class Getresp {
   Map<String, dynamic> toJson() => _$GetrespToJson(this);
 }
 
-@JsonSerializable(nullable: true, ignoreUnannotated: false)
+@JsonSerializable(nullable: false, ignoreUnannotated: false)
 class Data {
-  @JsonKey(name: 'id',defaultValue: false)
+  @JsonKey(name: 'id')
   int id;
-  @JsonKey(name: 'usr_source_type',defaultValue: false)
+  @JsonKey(name: 'usr_source_type')
   int usrSourceType;
-  @JsonKey(name: 'usr_source_key',defaultValue: false)
+  @JsonKey(name: 'usr_source_key')
   String usrSourceKey;
-  @JsonKey(name: 'usr_first_name',defaultValue: false)
+  @JsonKey(name: 'usr_first_name')
   String usrFirstName;
-  @JsonKey(name: 'usr_last_name',defaultValue: false)
+  @JsonKey(name: 'usr_last_name')
   String usrLastName;
-  @JsonKey(name: 'usr_user_name',defaultValue: false)
+  @JsonKey(name: 'usr_user_name')
   String usrUserName;
-  @JsonKey(name: 'usr_email',defaultValue: false)
+  @JsonKey(name: 'usr_email')
   String usrEmail;
-  @JsonKey(name: 'usr_phone',defaultValue: false)
+  @JsonKey(name: 'usr_phone')
   String usrPhone;
-  @JsonKey(name: 'usr_type',defaultValue: false)
+  @JsonKey(name: 'usr_type')
   int usrType;
-  @JsonKey(name: 'usr_status',defaultValue: false)
+  @JsonKey(name: 'usr_status')
   int usrStatus;
-  @JsonKey(name: 'usr_birth_date',defaultValue: false)
+  @JsonKey(name: 'usr_birth_date')
   String usr_birth_date;
-  @JsonKey(name: 'usr_gender',defaultValue: false)
+  @JsonKey(name: 'usr_gender')
   String usr_gender;
-  @JsonKey(name: 'usr_language',defaultValue: false)
+  @JsonKey(name: 'usr_language')
   String usr_language;
 
   @JsonKey(name: 'usr_profile_image')

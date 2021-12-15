@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:emaze_brain/model/response/getchangepwdresponse.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
@@ -272,14 +273,25 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   @override
   void initState() {
     super.initState();
-    var now = new DateTime.now();
-    var formatter = new DateFormat('yyyy-MM-dd hh:mm:ss');
-    String formattedDate = formatter.format(now);
-    print(formattedDate); //
-    formatteddatetime=formattedDate;
-    _passwordVisible = false;
-    _confirmpasswordVisible=false;
-    _newpasswordVisible=false;
+    setState(() {
+      var now = new DateTime.now();
+      var formatter = new DateFormat('yyyy-MM-dd hh:mm:ss');
+      String formattedDate = formatter.format(now);
+      print(formattedDate); //
+      formatteddatetime=formattedDate;
+      _passwordVisible = false;
+      _confirmpasswordVisible=false;
+      _newpasswordVisible=false;
+      _oncolor=Colors.transparent;
+      _offcolor=Color(0xFF989898);
+      offtext="ON";
+      ontext="Off";
+      _offcolortextcode=Colors.white;
+      _oncolortext=Color(0xFF666666);
+      gettoken();
+      _futureAlbum= getuserdetails();
+    });
+
     /*gettoken();
     _futureAlbum= getuserdetails();*/
 
@@ -291,8 +303,8 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   Widget build(BuildContext context) {
     // TODO: implement build
     var radius = Radius.circular(40);
-    gettoken();
-    _futureAlbum= getuserdetails();
+  /*  gettoken();
+    _futureAlbum= getuserdetails();*/
     return ScreenUtilInit(
         builder: () =>
             ResponsiveBuilder(
@@ -889,7 +901,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                               alignment: Alignment.centerLeft,
                                               child: Container(
                                                 child: Text(
-                                                  "Last login/"+formatteddatetime,
+                                                  "Last login : "+formatteddatetime,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       color: Color(0xFF989898 ),
@@ -905,7 +917,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                 Expanded(
                                                   flex: 7,
                                                   child: GestureDetector(
-                                                    onTap: () {
+                                                    onTap: () async{
                                                       setState(() {
                                                         showfirstnametextwidget();
                                                         hidefirstnamewidget();
@@ -922,6 +934,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                         showgendertextwidget();
                                                         hidegenderwidget();
                                                         updatedetails();
+                                                        gettoken();
                                                         getuserdetails();
                                                         print(firstnameController.text);
                                                       });
@@ -1680,11 +1693,9 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                               child: SizedBox(
                                                                 height: 40.sp,
                                                                 width: 40.sp,
-                                                                child: IconButton(
-                                                                  icon: Image.asset('assets/images/eye.png'),
-                                                                  onPressed: () {
+                                                                child: Image(
+                                                                  image: AssetImage('assets/images/eye.png'),
 
-                                                                  },
                                                                 ),
                                                               ),
                                                             ),
@@ -2315,7 +2326,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                 msg: "Old Password Required or Old Password should be 6 charecter",
                                                                                                 toastLength: Toast.LENGTH_SHORT,
                                                                                                 gravity: ToastGravity.CENTER,
-                                                                                                timeInSecForIosWeb: 2,
+                                                                                                timeInSecForIosWeb: 5,
                                                                                                 backgroundColor: Colors.red,
                                                                                                 textColor: Colors.white,
                                                                                                 fontSize: 16.0,
@@ -2330,7 +2341,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                 msg: "New Password Required or New Password should 6 charecter",
                                                                                                 toastLength: Toast.LENGTH_SHORT,
                                                                                                 gravity: ToastGravity.CENTER,
-                                                                                                timeInSecForIosWeb: 2,
+                                                                                                timeInSecForIosWeb: 5,
                                                                                                 backgroundColor: Colors.red,
                                                                                                 textColor: Colors.white,
                                                                                                 fontSize: 16.0,
@@ -2345,7 +2356,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                 msg: "Confirm Password Required or Confirm Password should be minimum 6 charecter",
                                                                                                 toastLength: Toast.LENGTH_SHORT,
                                                                                                 gravity: ToastGravity.CENTER,
-                                                                                                timeInSecForIosWeb: 2,
+                                                                                                timeInSecForIosWeb: 5,
                                                                                                 backgroundColor: Colors.red,
                                                                                                 textColor: Colors.white,
                                                                                                 fontSize: 16.0,
@@ -2365,7 +2376,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                                                                                                   msg: "Confirm password and new password should match",
                                                                                                   toastLength: Toast.LENGTH_SHORT,
                                                                                                   gravity: ToastGravity.CENTER,
-                                                                                                  timeInSecForIosWeb: 2,
+                                                                                                  timeInSecForIosWeb: 5,
                                                                                                   backgroundColor: Colors.red,
                                                                                                   textColor: Colors.white,
                                                                                                   fontSize: 16.0,
@@ -2732,15 +2743,16 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
                       SharedPreferences prefs = await SharedPreferences.getInstance();
                       prefs.remove("doc_id");
                       prefs.remove("doctorauthtoken");
-                      prefs.remove("userfname");
-                      prefs.remove("usr_last_name");
-                      prefs.remove("usr_user_name");
-                      prefs.remove("usr_email");
-                      prefs.remove("usr_phone");
-                      prefs.remove("usr_birth_date");
-                      prefs.remove("usr_gender");
-                      prefs.remove("usr_language");
-                      prefs.remove("usr_profile_image");
+                      prefs.remove("docuserfname");
+                      prefs.remove("docusr_last_name");
+                      prefs.remove("docusr_user_name");
+                      prefs.remove("docusr_email");
+                      prefs.remove("docusr_phone");
+                      prefs.remove("docusr_birth_date");
+                      prefs.remove("docusr_gender");
+                      prefs.remove("docusr_language");
+                      prefs.remove("docusr_profile_image");
+                      await DefaultCacheManager().emptyCache();
                       Navigator.pushNamed(context, '/');
                     },
                     child: Text(
@@ -2773,21 +2785,36 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
 
   void gettoken()  async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    token=prefs.getString("doctorauthtoken");
-    p_id=prefs.getInt("doc_id");
-    userfname=prefs.getString("userfname");
-    usr_last_name=prefs.getString("usr_last_name");
-    usr_user_name=prefs.getString("usr_user_name");
-    usr_email=prefs.getString("usr_email");
-    usr_phone=prefs.getString("usr_phone");
-    usr_birth_date=prefs.getString("usr_birth_date");
-    usr_gender=prefs.getString("usr_gender");
+    await prefs.reload();
+    setState(() {
+      token=prefs.getString("doctorauthtoken");
+      p_id=prefs.getInt("doc_id");
+      userfname=prefs.getString("docuserfname");
+      usr_last_name=prefs.getString("docusr_last_name");
+      usr_user_name=prefs.getString("docusr_user_name");
+      usr_email=prefs.getString("docusr_email");
+      usr_phone=prefs.getString("docusr_phone");
+      usr_birth_date=prefs.getString("docusr_birth_date");
+      usr_gender=prefs.getString("docusr_gender");
 
-    usr_language=prefs.getString("usr_language");
-    usr_profile_image=prefs.getString("usr_profile_image");
-    print(token);
+      usr_language=prefs.getString("docusr_language");
+      usr_profile_image=prefs.getString("docusr_profile_image");
+      debugPrint("patrinttoken: ${token}");
+      debugPrint("patriid: ${p_id}");
+      debugPrint("userfname: ${userfname}");
+      debugPrint("usr_last_name: ${usr_last_name}");
+      debugPrint("usr_user_name: ${usr_user_name}");
+      debugPrint("usr_phone: ${usr_phone}");
+      debugPrint("usr_email: ${usr_email}");
+      debugPrint("usr_birth_date: ${usr_birth_date}");
+      debugPrint("usr_language: ${usr_language}");
+      debugPrint("usr_profile_image: ${usr_profile_image}");
+      print(token);
+    });
+
   }
   Future<Getresp> getuserdetails() async {
+
     final response = await http.post(
       Uri.parse(Constants.baseurl+'user/details'),
       headers: <String, String>{
@@ -2803,29 +2830,30 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     if (response.statusCode == 200) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
+
       print(jsonDecode(response.body));
       Map<String, dynamic> data = json.decode(response.body);
       print(data["data"]["usr_first_name"]);
       SharedPreferences pref = await SharedPreferences.getInstance();
       String userfname=data["data"]["usr_first_name"];
-      pref.setString('userfname', userfname);
+      pref.setString('docuserfname', userfname);
       String usr_last_name=data["data"]["usr_last_name"];
-      pref.setString('usr_last_name', usr_last_name);
+      pref.setString('docusr_last_name', usr_last_name);
       String usr_user_name=data["data"]["usr_user_name"];
-      pref.setString('usr_user_name', usr_user_name);
+      pref.setString('docusr_user_name', usr_user_name);
       String usr_email=data["data"]["usr_email"];
-      pref.setString('usr_email', usr_email);
+      pref.setString('docusr_email', usr_email);
       String usr_phone=data["data"]["usr_phone"];
-      pref.setString('usr_phone', usr_phone);
+      pref.setString('docusr_phone', usr_phone);
       String usr_birth_date=data["data"]["usr_birth_date"];
-      pref.setString('usr_birth_date', usr_birth_date);
+      pref.setString('docusr_birth_date', usr_birth_date);
       String usr_gender=data["data"]["usr_gender"];
-      pref.setString('usr_gender', usr_gender);
+      pref.setString('docusr_gender', usr_gender);
       String usr_language=data["data"]["usr_language"];
-      pref.setString('usr_language', usr_language);
+      pref.setString('docusr_language', usr_language);
       String usr_profile_image=data["data"]["usr_profile_image"];
-      pref.setString('usr_profile_image', usr_profile_image);
-
+      pref.setString('docusr_profile_image', usr_profile_image);
+      gettoken();
       return Getresp.fromJson(jsonDecode(response.body));
 
 
@@ -3038,7 +3066,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
           if (snapshot.hasData) {
             return
               Text(
-                "Therapist /"+snapshot.data!.data.usrUserName+ " User id/ "+snapshot.data!.data.id.toString(),
+                "THERAPIST USER : "+snapshot.data!.data.usrUserName+ "| User ID : "+snapshot.data!.data.id.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
@@ -3049,7 +3077,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
               );
           } else if (snapshot.hasError) {
             return Text(
-                "Therapist /"+usr_user_name!+ " User id/ "+p_id!.toString(),
+                "THERAPIST USER : "+usr_user_name!+ " | User ID : "+p_id!.toString(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xFF989898 ),
@@ -3067,6 +3095,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
   }
   Future<Updateprofileresponse>  updatedetails() async {
     //print(fname);
+    showLoaderDialog(context);
     final response = await http.post(
       Uri.parse(Constants.baseurl+'user/update'),
       headers: <String, String>{
@@ -3090,6 +3119,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
       // then parse the JSON.
      // gettoken();
 
+      Navigator.pop(context);
       print(jsonDecode(response.body));
       gettoken();
       _futureAlbum= getuserdetails();
@@ -3099,6 +3129,17 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
     } else {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
+      Fluttertoast.showToast(
+          msg:"Something wrong from server.Please try again later",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 5,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+          webPosition: "center"
+      );
+      Navigator.pop(context);
       throw Exception('Failed to update user.');
     }
   }
@@ -3135,7 +3176,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
           msg: data["message"],
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 10,
+          timeInSecForIosWeb: 5,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0,
@@ -3151,7 +3192,7 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
           msg: "Old Password Not Matching",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 10,
+          timeInSecForIosWeb: 5,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0,
@@ -3160,5 +3201,19 @@ class TherapistuserprofileState extends State<Therapistuserprofile>{
       throw Exception();
     }
   }
-
+  showLoaderDialog(BuildContext context){
+    AlertDialog alert=AlertDialog(
+      content: new Row(
+        children: [
+          CircularProgressIndicator(),
+          Container(margin: EdgeInsets.only(left: 7),child:Text("Loading..." )),
+        ],),
+    );
+    showDialog(barrierDismissible: false,
+      context:context,
+      builder:(BuildContext context){
+        return alert;
+      },
+    );
+  }
 }

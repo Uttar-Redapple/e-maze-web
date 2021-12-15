@@ -775,16 +775,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                                       if(resp.data.user_type==2){
                                                                         Navigator.pop(context);
-                                                                        Fluttertoast.showToast(
+                                                                       /* Fluttertoast.showToast(
                                                                             msg: resp.data.username+" "+resp.data.email+" "+resp.data.first_name+" "+resp.data.last_name+" "+resp.data.phone,
                                                                             toastLength: Toast.LENGTH_SHORT,
                                                                             gravity: ToastGravity.CENTER,
-                                                                            timeInSecForIosWeb: 12,
+                                                                            timeInSecForIosWeb: 2,
                                                                             backgroundColor: Colors.red,
                                                                             textColor: Colors.white,
                                                                             fontSize: 16.0,
                                                                             webPosition: "center"
-                                                                        );
+                                                                        );*/
                                                                         print("usertype: ${resp.data.user_type}");
                                                                         SharedPreferences pref = await SharedPreferences.getInstance();
                                                                         pref.setString('doctorauthtoken', resp.data.token);
@@ -1175,16 +1175,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
 
                                                                   if(resp.data.user_type==2){
                                                                     Navigator.pop(context);
-                                                                    Fluttertoast.showToast(
+                                                                   /* Fluttertoast.showToast(
                                                                         msg: resp.data.username+" "+resp.data.email+" "+resp.data.first_name+" "+resp.data.last_name+" "+resp.data.phone,
                                                                         toastLength: Toast.LENGTH_SHORT,
                                                                         gravity: ToastGravity.CENTER,
-                                                                        timeInSecForIosWeb: 12,
+                                                                        timeInSecForIosWeb: 2,
                                                                         backgroundColor: Colors.red,
                                                                         textColor: Colors.white,
                                                                         fontSize: 16.0,
                                                                         webPosition: "center"
-                                                                    );
+                                                                    );*/
                                                                     print("usertype: ${resp.data.user_type}");
                                                                     SharedPreferences pref = await SharedPreferences.getInstance();
                                                                     pref.setString('doctorauthtoken', resp.data.token);
@@ -1744,16 +1744,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                                 hidevalidemail();
                                                                                 hidevalidpwd();
                                                                                 hideWidget();
-                                                                                Fluttertoast.showToast(
+                                                                              /*  Fluttertoast.showToast(
                                                                                     msg: "validate",
                                                                                     toastLength: Toast.LENGTH_SHORT,
                                                                                     gravity: ToastGravity.CENTER,
-                                                                                    timeInSecForIosWeb: 12,
+                                                                                    timeInSecForIosWeb: 2,
                                                                                     backgroundColor: Colors.red,
                                                                                     textColor: Colors.white,
                                                                                     fontSize: 16.0,
                                                                                     webPosition: "center"
-                                                                                );
+                                                                                );*/
                                                                                 try {
                                                                                   String name = regnameController.text.toString();
                                                                                   String lastnames=regnameController.text.toString().trim();
@@ -1772,16 +1772,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                                             firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"2"
                                                                                         )
                                                                                     );
-                                                                                    Fluttertoast.showToast(
+                                                                                  /*  Fluttertoast.showToast(
                                                                                         msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
                                                                                         toastLength: Toast.LENGTH_SHORT,
                                                                                         gravity: ToastGravity.CENTER,
-                                                                                        timeInSecForIosWeb: 12,
+                                                                                        timeInSecForIosWeb: 2,
                                                                                         backgroundColor: Colors.red,
                                                                                         textColor: Colors.white,
                                                                                         fontSize: 16.0,
                                                                                         webPosition: "center"
-                                                                                    );
+                                                                                    );*/
                                                                                     print("Regions: ${resp.data.toJson()}");
                                                                                     showregsucesswidget();
                                                                                     /*ScaffoldMessenger.of(context).showSnackBar(
@@ -1803,16 +1803,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                                             firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"2"
                                                                                         )
                                                                                     );
-                                                                                    Fluttertoast.showToast(
+                                                                                   /* Fluttertoast.showToast(
                                                                                         msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
                                                                                         toastLength: Toast.LENGTH_SHORT,
                                                                                         gravity: ToastGravity.CENTER,
-                                                                                        timeInSecForIosWeb: 12,
+                                                                                        timeInSecForIosWeb: 2,
                                                                                         backgroundColor: Colors.red,
                                                                                         textColor: Colors.white,
                                                                                         fontSize: 16.0,
                                                                                         webPosition: "center"
-                                                                                    );
+                                                                                    );*/
                                                                                     print("Regions: ${resp.data.toJson()}");
                                                                                     showregsucesswidget();
 
@@ -2266,16 +2266,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                 hidevalidemail();
                                                                 hidevalidpwd();
                                                                 hideWidget();
-                                                                Fluttertoast.showToast(
+                                                               /* Fluttertoast.showToast(
                                                                     msg: "validate",
                                                                     toastLength: Toast.LENGTH_SHORT,
                                                                     gravity: ToastGravity.CENTER,
-                                                                    timeInSecForIosWeb: 12,
+                                                                    timeInSecForIosWeb: 2,
                                                                     backgroundColor: Colors.red,
                                                                     textColor: Colors.white,
                                                                     fontSize: 16.0,
                                                                     webPosition: "center"
-                                                                );
+                                                                );*/
                                                                 try {
                                                                   String name = regnameController.text.toString();
                                                                   String lastnames=regnameController.text.toString().trim();
@@ -2294,16 +2294,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                             firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"2"
                                                                         )
                                                                     );
-                                                                    Fluttertoast.showToast(
+                                                                   /* Fluttertoast.showToast(
                                                                         msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
                                                                         toastLength: Toast.LENGTH_SHORT,
                                                                         gravity: ToastGravity.CENTER,
-                                                                        timeInSecForIosWeb: 12,
+                                                                        timeInSecForIosWeb: 2,
                                                                         backgroundColor: Colors.red,
                                                                         textColor: Colors.white,
                                                                         fontSize: 16.0,
                                                                         webPosition: "center"
-                                                                    );
+                                                                    );*/
                                                                     print("Regions: ${resp.data.toJson()}");
                                                                     showregsucesswidget();
                                                                     /*ScaffoldMessenger.of(context).showSnackBar(
@@ -2325,16 +2325,16 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
                                                                             firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"2"
                                                                         )
                                                                     );
-                                                                    Fluttertoast.showToast(
+                                                                    /*Fluttertoast.showToast(
                                                                         msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
                                                                         toastLength: Toast.LENGTH_SHORT,
                                                                         gravity: ToastGravity.CENTER,
-                                                                        timeInSecForIosWeb: 12,
+                                                                        timeInSecForIosWeb: 2,
                                                                         backgroundColor: Colors.red,
                                                                         textColor: Colors.white,
                                                                         fontSize: 16.0,
                                                                         webPosition: "center"
-                                                                    );
+                                                                    );*/
                                                                     print("Regions: ${resp.data.toJson()}");
                                                                     showregsucesswidget();
 
@@ -2563,7 +2563,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
           msg: message,
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 10,
+          timeInSecForIosWeb: 2,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0,
@@ -2578,7 +2578,7 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
           msg: "Your email is not registered with us.Please try with registered email",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 10,
+          timeInSecForIosWeb: 2,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0,
@@ -2624,23 +2624,23 @@ class LoginregistrationState extends State<Loginregistration> with TickerProvide
       print(data["data"]["usr_first_name"]);
       SharedPreferences pref = await SharedPreferences.getInstance();
       String userfname=data["data"]["usr_first_name"];
-      pref.setString('userfname', userfname);
+      pref.setString('docuserfname', userfname);
       String usr_last_name=data["data"]["usr_last_name"];
-      pref.setString('usr_last_name', usr_last_name);
+      pref.setString('docusr_last_name', usr_last_name);
       String usr_user_name=data["data"]["usr_user_name"];
-      pref.setString('usr_user_name', usr_user_name);
+      pref.setString('docusr_user_name', usr_user_name);
       String usr_email=data["data"]["usr_email"];
-      pref.setString('usr_email', usr_email);
+      pref.setString('docusr_email', usr_email);
       String usr_phone=data["data"]["usr_phone"];
-      pref.setString('usr_phone', usr_phone);
+      pref.setString('docusr_phone', usr_phone);
       String usr_birth_date=data["data"]["usr_birth_date"];
-      pref.setString('usr_birth_date', usr_birth_date);
+      pref.setString('docusr_birth_date', usr_birth_date);
       String usr_gender=data["data"]["usr_gender"];
-      pref.setString('usr_gender', usr_gender);
+      pref.setString('docusr_gender', usr_gender);
       String usr_language=data["data"]["usr_language"];
-      pref.setString('usr_language', usr_language);
+      pref.setString('docusr_language', usr_language);
       String usr_profile_image=data["data"]["usr_profile_image"];
-      pref.setString('usr_profile_image', usr_profile_image);
+      pref.setString('docusr_profile_image', usr_profile_image);
       Navigator.pushNamed(context, 'therapist/profile');
       return Getresp.fromJson(jsonDecode(response.body));
 

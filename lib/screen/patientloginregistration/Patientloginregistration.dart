@@ -881,7 +881,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                         if(resp.data.user_type==1){
                                                                           Navigator.pop(context);
-                                                                          Fluttertoast.showToast(
+                                                                         /* Fluttertoast.showToast(
                                                                               msg: "Api hit",
                                                                               toastLength: Toast.LENGTH_SHORT,
                                                                               gravity: ToastGravity.CENTER,
@@ -912,7 +912,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                               fontSize: 16.0,
                                                                               webPosition: "center"
                                                                           );
-
+*/
                                                                           print("usertype: ${resp.data.user_type}");
                                                                           response=resp.data.user_type.toString();
                                                                           print("response: ${response}");
@@ -936,7 +936,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                         print(e);
                                                                         if (e is DioError) {
                                                                           Navigator.pop(context);
-                                                                          Fluttertoast.showToast(
+                                                                          /*Fluttertoast.showToast(
                                                                               msg: "Api hit",
                                                                               toastLength: Toast.LENGTH_SHORT,
                                                                               gravity: ToastGravity.CENTER,
@@ -945,8 +945,8 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                               textColor: Colors.white,
                                                                               fontSize: 16.0,
                                                                               webPosition: "center"
-                                                                          );
-                                                                          Fluttertoast.showToast(
+                                                                          );*/
+                                                                         /* Fluttertoast.showToast(
                                                                               msg: nameController.text.toString()+" "+passwordController.text.toString(),
                                                                               toastLength: Toast.LENGTH_SHORT,
                                                                               gravity: ToastGravity.CENTER,
@@ -965,7 +965,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                               textColor: Colors.white,
                                                                               fontSize: 16.0,
                                                                               webPosition: "center"
-                                                                          );
+                                                                          );*/
                                                                           showerrorWidget();
                                                                           clearlogintext();
                                                                           /* ScaffoldMessenger.of(context).showSnackBar(
@@ -985,7 +985,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                     }
                                                                     else{
-                                                                      Fluttertoast.showToast(
+                                                                    /*  Fluttertoast.showToast(
                                                                           msg: "Form not validate",
                                                                           toastLength: Toast.LENGTH_SHORT,
                                                                           gravity: ToastGravity.CENTER,
@@ -1004,7 +1004,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                           textColor: Colors.white,
                                                                           fontSize: 16.0,
                                                                           webPosition: "center"
-                                                                      );
+                                                                      );*/
                                                                     }
                                                                   },
                                                                   textInputAction: TextInputAction.done,
@@ -1348,22 +1348,22 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                     if(resp.data.user_type==1){
                                                                       Navigator.pop(context);
-                                                                      Fluttertoast.showToast(
+                                                                     /* Fluttertoast.showToast(
                                                                           msg: "Api hit",
                                                                           toastLength: Toast.LENGTH_SHORT,
                                                                           gravity: ToastGravity.CENTER,
-                                                                          timeInSecForIosWeb: 12,
+                                                                          timeInSecForIosWeb: 2,
                                                                           backgroundColor: Colors.red,
                                                                           textColor: Colors.white,
                                                                           fontSize: 16.0,
                                                                           webPosition: "center"
-                                                                      );
-
+                                                                      );*/
+/*
                                                                       Fluttertoast.showToast(
                                                                           msg: nameController.text.toString()+" "+passwordController.text.toString(),
                                                                           toastLength: Toast.LENGTH_SHORT,
                                                                           gravity: ToastGravity.CENTER,
-                                                                          timeInSecForIosWeb: 12,
+                                                                          timeInSecForIosWeb: 2,
                                                                           backgroundColor: Colors.red,
                                                                           textColor: Colors.white,
                                                                           fontSize: 16.0,
@@ -1373,12 +1373,12 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                           msg: resp.data.username+" "+resp.data.email+" "+resp.data.first_name+" "+resp.data.last_name+" "+resp.data.phone,
                                                                           toastLength: Toast.LENGTH_SHORT,
                                                                           gravity: ToastGravity.CENTER,
-                                                                          timeInSecForIosWeb: 12,
+                                                                          timeInSecForIosWeb: 2,
                                                                           backgroundColor: Colors.red,
                                                                           textColor: Colors.white,
                                                                           fontSize: 16.0,
                                                                           webPosition: "center"
-                                                                      );
+                                                                      );*/
 
                                                                       print("usertype: ${resp.data.user_type}");
                                                                       response=resp.data.user_type.toString();
@@ -1403,11 +1403,11 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                     print(e);
                                                                     if (e is DioError) {
                                                                       Navigator.pop(context);
-                                                                      Fluttertoast.showToast(
+                                                                    /*  Fluttertoast.showToast(
                                                                           msg: "Api hit",
                                                                           toastLength: Toast.LENGTH_SHORT,
                                                                           gravity: ToastGravity.CENTER,
-                                                                          timeInSecForIosWeb: 12,
+                                                                          timeInSecForIosWeb: 2,
                                                                           backgroundColor: Colors.red,
                                                                           textColor: Colors.white,
                                                                           fontSize: 16.0,
@@ -1417,7 +1417,7 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                           msg: nameController.text.toString()+" "+passwordController.text.toString(),
                                                                           toastLength: Toast.LENGTH_SHORT,
                                                                           gravity: ToastGravity.CENTER,
-                                                                          timeInSecForIosWeb: 12,
+                                                                          timeInSecForIosWeb: 2,
                                                                           backgroundColor: Colors.red,
                                                                           textColor: Colors.white,
                                                                           fontSize: 16.0,
@@ -1427,12 +1427,12 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                           msg: "Wrong username/password",
                                                                           toastLength: Toast.LENGTH_SHORT,
                                                                           gravity: ToastGravity.CENTER,
-                                                                          timeInSecForIosWeb: 12,
+                                                                          timeInSecForIosWeb: 2,
                                                                           backgroundColor: Colors.red,
                                                                           textColor: Colors.white,
                                                                           fontSize: 16.0,
                                                                           webPosition: "center"
-                                                                      );
+                                                                      );*/
                                                                       showerrorWidget();
                                                                       clearlogintext();
                                                                       /* ScaffoldMessenger.of(context).showSnackBar(
@@ -1452,11 +1452,11 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
 
                                                                 }
                                                                 else{
-                                                                  Fluttertoast.showToast(
+                                                                 /* Fluttertoast.showToast(
                                                                       msg: "Form not validate",
                                                                       toastLength: Toast.LENGTH_SHORT,
                                                                       gravity: ToastGravity.CENTER,
-                                                                      timeInSecForIosWeb: 12,
+                                                                      timeInSecForIosWeb: 2,
                                                                       backgroundColor: Colors.red,
                                                                       textColor: Colors.white,
                                                                       fontSize: 16.0,
@@ -1466,12 +1466,12 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                       msg: nameController.text.toString()+" "+passwordController.text.toString(),
                                                                       toastLength: Toast.LENGTH_SHORT,
                                                                       gravity: ToastGravity.CENTER,
-                                                                      timeInSecForIosWeb: 12,
+                                                                      timeInSecForIosWeb: 2,
                                                                       backgroundColor: Colors.red,
                                                                       textColor: Colors.white,
                                                                       fontSize: 16.0,
                                                                       webPosition: "center"
-                                                                  );
+                                                                  );*/
                                                                 }
 
                                                               },
@@ -2018,16 +2018,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                                   hidevalidemail();
                                                                                   hidevalidpwd();
                                                                                   hideWidget();
-                                                                                  Fluttertoast.showToast(
+                                                                                 /* Fluttertoast.showToast(
                                                                                       msg: "validate",
                                                                                       toastLength: Toast.LENGTH_SHORT,
                                                                                       gravity: ToastGravity.CENTER,
-                                                                                      timeInSecForIosWeb: 12,
+                                                                                      timeInSecForIosWeb: 2,
                                                                                       backgroundColor: Colors.red,
                                                                                       textColor: Colors.white,
                                                                                       fontSize: 16.0,
                                                                                       webPosition: "center"
-                                                                                  );
+                                                                                  );*/
                                                                                   try {
                                                                                     String name = regnameController.text.toString();
                                                                                     String lastnames=regnameController.text.toString().trim();
@@ -2046,16 +2046,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                                               firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
                                                                                           )
                                                                                       );
-                                                                                      Fluttertoast.showToast(
+                                                                                     /* Fluttertoast.showToast(
                                                                                           msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
                                                                                           toastLength: Toast.LENGTH_SHORT,
                                                                                           gravity: ToastGravity.CENTER,
-                                                                                          timeInSecForIosWeb: 12,
+                                                                                          timeInSecForIosWeb: 2,
                                                                                           backgroundColor: Colors.red,
                                                                                           textColor: Colors.white,
                                                                                           fontSize: 16.0,
                                                                                           webPosition: "center"
-                                                                                      );
+                                                                                      );*/
                                                                                       print("Regions: ${resp.data.toJson()}");
                                                                                       showregsucesswidget();
                                                                                       /*ScaffoldMessenger.of(context).showSnackBar(
@@ -2077,16 +2077,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                                               firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
                                                                                           )
                                                                                       );
-                                                                                      Fluttertoast.showToast(
+                                                                                    /*  Fluttertoast.showToast(
                                                                                           msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
                                                                                           toastLength: Toast.LENGTH_SHORT,
                                                                                           gravity: ToastGravity.CENTER,
-                                                                                          timeInSecForIosWeb: 12,
+                                                                                          timeInSecForIosWeb: 2,
                                                                                           backgroundColor: Colors.red,
                                                                                           textColor: Colors.white,
                                                                                           fontSize: 16.0,
                                                                                           webPosition: "center"
-                                                                                      );
+                                                                                      );*/
                                                                                       print("Regions: ${resp.data.toJson()}");
                                                                                       showregsucesswidget();
 
@@ -2549,16 +2549,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                   hidevalidemail();
                                                                   hidevalidpwd();
                                                                   hideWidget();
-                                                                  Fluttertoast.showToast(
+                                                                /*  Fluttertoast.showToast(
                                                                       msg: "validate",
                                                                       toastLength: Toast.LENGTH_SHORT,
                                                                       gravity: ToastGravity.CENTER,
-                                                                      timeInSecForIosWeb: 12,
+                                                                      timeInSecForIosWeb: 2,
                                                                       backgroundColor: Colors.red,
                                                                       textColor: Colors.white,
                                                                       fontSize: 16.0,
                                                                       webPosition: "center"
-                                                                  );
+                                                                  );*/
                                                                   try {
                                                                     String name = regnameController.text.toString();
                                                                     String lastnames=regnameController.text.toString().trim();
@@ -2577,16 +2577,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                               firstname+randomno.toString(), firstname,lastname,regemailController.text,regphnoController.text,regpasswordController.text,"1"
                                                                           )
                                                                       );
-                                                                      Fluttertoast.showToast(
+                                                                    /*  Fluttertoast.showToast(
                                                                           msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
                                                                           toastLength: Toast.LENGTH_SHORT,
                                                                           gravity: ToastGravity.CENTER,
-                                                                          timeInSecForIosWeb: 12,
+                                                                          timeInSecForIosWeb: 2,
                                                                           backgroundColor: Colors.red,
                                                                           textColor: Colors.white,
                                                                           fontSize: 16.0,
                                                                           webPosition: "center"
-                                                                      );
+                                                                      );*/
                                                                       print("Regions: ${resp.data.toJson()}");
                                                                       showregsucesswidget();
                                                                       /*ScaffoldMessenger.of(context).showSnackBar(
@@ -2608,16 +2608,16 @@ class PatientloginregistrationState extends State<Patientloginregistration> with
                                                                               firstname+randomno.toString(), firstname,"",regemailController.text,regphnoController.text,regpasswordController.text,"1"
                                                                           )
                                                                       );
-                                                                      Fluttertoast.showToast(
+                                                                   /*   Fluttertoast.showToast(
                                                                           msg: resp.data.phone+" " +resp.data.last_name+" "+resp.data.first_name+" "+resp.data.email,
                                                                           toastLength: Toast.LENGTH_SHORT,
                                                                           gravity: ToastGravity.CENTER,
-                                                                          timeInSecForIosWeb: 12,
+                                                                          timeInSecForIosWeb: 2,
                                                                           backgroundColor: Colors.red,
                                                                           textColor: Colors.white,
                                                                           fontSize: 16.0,
                                                                           webPosition: "center"
-                                                                      );
+                                                                      );*/
                                                                       print("Regions: ${resp.data.toJson()}");
                                                                       showregsucesswidget();
 
