@@ -2837,7 +2837,7 @@ class PatientprofileState extends State<Patientprofile>{
         ),
         const PopupMenuDivider(),
         PopupMenuItem<String>(
-            onTap: () {
+            onTap: ()async {
               Navigator.pushNamed(context, 'patient/profile');
             },
             child:   Container(
@@ -2854,8 +2854,8 @@ class PatientprofileState extends State<Patientprofile>{
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, 'patient/profile');
+                    onTap: () async{
+                     // Navigator.pushNamed(context, 'patient/profile');
                     },
                     child: Container(
                       
